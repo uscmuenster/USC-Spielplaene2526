@@ -2,34 +2,51 @@ from icalendar import Calendar
 from pathlib import Path
 from datetime import datetime
 
+# Lokale .ics-Dateien pro Liga
 ICS_FILES = {
-    "Oberliga 2 NRW": "usc3.ics"
+    "Oberliga 2 NRW": usc3.ics"
 }
 
+usc_keywords = ["USC Münster", "USC Muenster", "USC MÜNSTER"]
 events = []
 
 for liga, file_path in ICS_FILES.items():
     with open(file_path, "rb") as f:
         cal = Calendar.from_ical(f.read())
         for vevent in cal.walk("VEVENT"):
+            summary = str(vevent.get("SUMMARY", ""))
+            if not any(kw in summary for kw in usc_keywords):
+                continue  # Nur Spiele mit USC Münster
+
             start = vevent["DTSTART"].dt
             date = start.date()
             time_str = start.strftime("%H:%M") if isinstance(start, datetime) else "01:00"
-            summary = vevent.get("SUMMARY", "–")
-            location = vevent.get("LOCATION", "–")
-            if " - " in summary:
-                home, away = summary.split(" - ", 1)
-            else:
-                home, away = summary, ""
-            events.append((date, time_str, home.strip(), away.strip(), location.strip(), liga))
+            location = str(vevent.get("LOCATION", "–"))
 
+            # Heim und Gast extrahieren
+            if " - " in summary:
+                heim, gast = summary.split(" - ", 1)
+            elif " vs " in summary:
+                heim, gast = summary.split(" vs ", 1)
+            else:
+                heim, gast = summary, ""
+
+            # Gast-Mannschaft ggf. von ", ..." befreien
+            if "," in gast:
+                gast = gast.split(",", 1)[0]
+
+            events.append((date, time_str, heim.strip(), gast.strip(), location.strip(), liga))
+
+# Spiele sortieren
 events.sort(key=lambda e: (e[0], e[1]))
 
+# Tabelle als HTML
 rows = "\n".join(
     f"<tr><td>{d.strftime('%d.%m.%Y')}</td><td>{t}</td><td>{h}</td><td>{a}</td><td>{loc}</td><td>{lg}</td></tr>"
     for d, t, h, a, loc, lg in events
 )
 
+# HTML-Seite schreiben
 html = f"""<!doctype html>
 <html lang="de"><head>
 <meta charset="utf-8"><title>USC Münster Spielplan 2025/26</title>
@@ -39,7 +56,7 @@ table{{width:100%;border-collapse:collapse;margin-top:20px}}
 th,td{{border:1px solid #ccc;padding:8px;text-align:left}}
 th{{background:#f2f2f2}}
 </style></head><body>
-<h1>USC Münster – Spielplan aus lokalen ICS-Dateien</h1>
+<h1>USC Münster – Spielplan 2025/26</h1>
 <table><thead>
 <tr><th>Datum</th><th>Zeit</th><th>Heim</th><th>Gast</th><th>Ort</th><th>Liga</th></tr>
 </thead><tbody>
@@ -49,4 +66,4 @@ th{{background:#f2f2f2}}
 
 Path("docs").mkdir(exist_ok=True)
 Path("docs/index.html").write_text(html, encoding="utf-8")
-print("✅ Lokale HTML-Datei erfolgreich generiert.")
+print("✅ HTML-Datei nur mit USC-Spielen erfolgreich generiert.")
