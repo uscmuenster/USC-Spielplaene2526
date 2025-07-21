@@ -22,7 +22,7 @@ def get_ical_data(url, retries=3):
 def main():
     events = []
     for liga, url in ICS_URLS.items():
-         print(f"🔄 Lade: {liga} – {url}")
+        print(f"🔄 Lade: {liga} – {url}")
         try:
             data = get_ical_data(url)
             print(f"✅ {liga} erfolgreich geladen ({len(data)} Bytes)")
