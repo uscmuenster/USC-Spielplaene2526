@@ -22,8 +22,13 @@ def get_ical_data(url, retries=3):
 def main():
     events = []
     for liga, url in ICS_URLS.items():
-        print(f"🔄 Lade: {liga}")
-        data = get_ical_data(url)
+         print(f"🔄 Lade: {liga} – {url}")
+        try:
+            data = get_ical_data(url)
+            print(f"✅ {liga} erfolgreich geladen ({len(data)} Bytes)")
+        except Exception as e:
+            print(f"❌ Fehler bei {liga}: {e}")
+            continue
         cal = Calendar.from_ical(data)
         for vevent in cal.walk("VEVENT"):
             start = vevent["DTSTART"].dt
