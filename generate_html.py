@@ -2,6 +2,7 @@ import requests
 from icalendar import Calendar
 from datetime import datetime
 from pathlib import Path
+import time
 
 ICS_URLS = {
     "1. Bundesliga": "https://www.volleyball-bundesliga.de/iCal/matchSeries/matches.ical?matchSeriesId=776309163&calenderType=ics",
@@ -9,20 +10,32 @@ ICS_URLS = {
     "Oberliga 2 NRW": "https://ergebnisdienst.volleyball.nrw/iCal/matchSeries/matches.ical?matchSeriesId=95244340&calenderType=ics",
 }
 
+def get_ical_data(url, retries=3):
+    for attempt in range(retries):
+        try:
+            return requests.get(url, timeout=30).content
+        except requests.exceptions.RequestException:
+            print(f"⚠️ Fehler bei Abruf von {url}, Versuch {attempt + 1} von {retries}")
+            time.sleep(5)
+    raise RuntimeError(f"❌ Fehlgeschlagen nach {retries} Versuchen: {url}")
+
 def main():
     events = []
     for liga, url in ICS_URLS.items():
-        data = requests.get(url, timeout=30).content
+        print(f"🔄 Lade: {liga}")
+        data = get_ical_data(url)
         cal = Calendar.from_ical(data)
         for vevent in cal.walk("VEVENT"):
             start = vevent["DTSTART"].dt
             date = start.date()
-            time = start.strftime("%H:%M") if isinstance(start, datetime) else "01:00"
-            summary = vevent["SUMMARY"]
+            time_str = start.strftime("%H:%M") if isinstance(start, datetime) else "01:00"
+            summary = vevent.get("SUMMARY", "–")
             location = vevent.get("LOCATION", "–")
-            home, *rest = summary.split(" - ", 1)
-            away = rest[0] if rest else ""
-            events.append((date, time, home.strip(), away.strip(), location.strip(), liga))
+            if " - " in summary:
+                home, away = summary.split(" - ", 1)
+            else:
+                home, away = summary, ""
+            events.append((date, time_str, home.strip(), away.strip(), location.strip(), liga))
 
     events.sort(key=lambda e: (e[0], e[1]))
 
@@ -50,6 +63,7 @@ th{{background:#f2f2f2}}
 
     Path("docs").mkdir(exist_ok=True)
     Path("docs/index.html").write_text(html, encoding="utf-8")
+    print("✅ HTML-Datei wurde erstellt: docs/index.html")
 
 if __name__ == "__main__":
     main()
