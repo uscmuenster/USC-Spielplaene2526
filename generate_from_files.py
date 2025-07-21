@@ -5,7 +5,7 @@ from datetime import datetime
 ICS_FILES = {
     "1. Bundesliga": "data/usc1.ics",
     "2. Bundesliga Nord": "data/usc2.ics",
-    "Oberliga 2 NRW": "data/usc3.ics"
+    "Oberliga 2 NRW": "usc3.ics"
 }
 
 events = []
