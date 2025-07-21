@@ -4,7 +4,7 @@ from datetime import datetime
 
 # Lokale .ics-Dateien pro Liga
 ICS_FILES = {
-    "Oberliga 2 NRW": usc3.ics"
+    "Oberliga 2 NRW": "usc3.ics"
 }
 
 usc_keywords = ["USC Münster", "USC Muenster", "USC MÜNSTER"]
