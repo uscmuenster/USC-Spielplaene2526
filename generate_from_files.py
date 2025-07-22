@@ -5,6 +5,7 @@ import re
 
 # Lokale .ics-Dateien für die Ligen
 ICS_FILES = {
+    "1. Bundesliga": "1. Bundesliga Frauen.ics"
     "Oberliga 2 NRW": "usc3.ics"
 }
 
