@@ -2,6 +2,8 @@ name: Spielplan aus ICS-Dateien generieren
 
 on:
   workflow_dispatch:
+  schedule:
+      - cron: "0 3 * * *"
 
 jobs:
   build-from-files:
