@@ -1,8 +1,9 @@
 from icalendar import Calendar
 from pathlib import Path
 from datetime import datetime
+import re
 
-# Lokale .ics-Dateien pro Liga
+# Lokale .ics-Dateien für die Ligen
 ICS_FILES = {
     "Oberliga 2 NRW": "usc3.ics"
 }
@@ -16,36 +17,34 @@ for liga, file_path in ICS_FILES.items():
         for vevent in cal.walk("VEVENT"):
             summary = str(vevent.get("SUMMARY", ""))
             if not any(kw in summary for kw in usc_keywords):
-                continue  # Nur Spiele mit USC Münster
+                continue  # Nur USC-Spiele berücksichtigen
 
             start = vevent["DTSTART"].dt
             date = start.date()
             time_str = start.strftime("%H:%M") if isinstance(start, datetime) else "01:00"
             location = str(vevent.get("LOCATION", "–"))
 
-            import re
-
-            # Heim und Gast extrahieren (Trennung: " - " oder " vs ")
+            # Heim und Gast extrahieren mit Regex
             match = re.search(r"^(.*?)\s*(?:-|vs)\s*(.*?)(?:,|$)", summary)
             if match:
-                 heim = match.group(1).strip()
-                 gast = match.group(2).strip()
+                heim = match.group(1).strip()
+                gast = match.group(2).strip()
             else:
-                 heim = summary.strip()
-                  gast = ""
+                heim = summary.strip()
+                gast = ""
 
-            events.append((date, time_str, heim.strip(), gast.strip(), location.strip(), liga))
+            events.append((date, time_str, heim, gast, location.strip(), liga))
 
-# Spiele sortieren
+# Nach Datum und Uhrzeit sortieren
 events.sort(key=lambda e: (e[0], e[1]))
 
-# Tabelle als HTML
+# HTML-Tabelle generieren
 rows = "\n".join(
-    f"<tr><td>{d.strftime('%d.%m.%Y')}</td><td>{t}</td><td>{h}</td><td>{a}</td><td>{loc}</td><td>{lg}</td></tr>"
-    for d, t, h, a, loc, lg in events
+    f"<tr><td>{d.strftime('%d.%m.%Y')}</td><td>{t}</td><td>{h}</td><td>{g}</td><td>{loc}</td><td>{lg}</td></tr>"
+    for d, t, h, g, loc, lg in events
 )
 
-# HTML-Seite schreiben
+# HTML-Dokument schreiben
 html = f"""<!doctype html>
 <html lang="de"><head>
 <meta charset="utf-8"><title>USC Münster Spielplan 2025/26</title>
