@@ -32,6 +32,10 @@ for liga, file_path in ICS_FILES.items():
             else:
                 heim = summary.strip()
                 gast = ""
+                
+            # Unerwünschte Zeichen (wie ".", ",", Leerzeichen) am Rand entfernen
+            heim = re.sub(r"^[^A-Za-z0-9]+|[^A-Za-z0-9ÄÖÜäöüß\- ]+$", "", heim)
+            gast = re.sub(r"^[^A-Za-z0-9]+|[^A-Za-z0-9ÄÖÜäöüß\- ]+$", "", gast)
 
             events.append((date, time_str, heim, gast, location.strip(), liga))
 
