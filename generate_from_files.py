@@ -23,17 +23,16 @@ for liga, file_path in ICS_FILES.items():
             time_str = start.strftime("%H:%M") if isinstance(start, datetime) else "01:00"
             location = str(vevent.get("LOCATION", "–"))
 
-            # Heim und Gast extrahieren
-            if " - " in summary:
-                heim, gast = summary.split(" - ", 1)
-            elif " vs " in summary:
-                heim, gast = summary.split(" vs ", 1)
-            else:
-                heim, gast = summary, ""
+            import re
 
-            # Gast-Mannschaft ggf. von ", ..." befreien
-            if "," in gast:
-                gast = gast.split(",", 1)[0]
+# Heim und Gast extrahieren (Trennung: " - " oder " vs ")
+match = re.search(r"^(.*?)\s*(?:-|vs)\s*(.*?)(?:,|$)", summary)
+if match:
+    heim = match.group(1).strip()
+    gast = match.group(2).strip()
+else:
+    heim = summary.strip()
+    gast = ""
 
             events.append((date, time_str, heim.strip(), gast.strip(), location.strip(), liga))
 
