@@ -25,14 +25,14 @@ for liga, file_path in ICS_FILES.items():
 
             import re
 
-# Heim und Gast extrahieren (Trennung: " - " oder " vs ")
-match = re.search(r"^(.*?)\s*(?:-|vs)\s*(.*?)(?:,|$)", summary)
-if match:
-    heim = match.group(1).strip()
-    gast = match.group(2).strip()
-else:
-    heim = summary.strip()
-    gast = ""
+            # Heim und Gast extrahieren (Trennung: " - " oder " vs ")
+            match = re.search(r"^(.*?)\s*(?:-|vs)\s*(.*?)(?:,|$)", summary)
+            if match:
+                 heim = match.group(1).strip()
+                 gast = match.group(2).strip()
+            else:
+                 heim = summary.strip()
+                  gast = ""
 
             events.append((date, time_str, heim.strip(), gast.strip(), location.strip(), liga))
 
