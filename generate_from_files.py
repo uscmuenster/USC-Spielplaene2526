@@ -5,7 +5,7 @@ import re
 
 # Lokale .ics-Dateien für die Ligen
 ICS_FILES = {
-    "1. Bundesliga": "usc1.ics"
+    "1. Bundesliga": "usc1.ics",
     "Oberliga 2 NRW": "usc3.ics"
 }
 
