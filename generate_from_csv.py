@@ -12,19 +12,20 @@ csv_files = [
 
 usc_keywords = ["USC Münster", "USC Muenster", "USC MÜNSTER"]
 
+# Spalten umbenennen
 rename_map = {
     "Datum": "Datum",
     "Uhrzeit": "Uhrzeit",
-    "Heimmannschaft": "Heim",
-    "Gastmannschaft": "Gast",
+    "Mannschaft 1": "Heim",
+    "Mannschaft 2": "Gast",
     "Schiedsgericht": "SR",
     "Gastgeber": "Gastgeber",
     "Austragungsort": "Ort",
     "Spielrunde": "Spielrunde"
 }
 
-# CSV einlesen
 dfs = []
+
 for file in csv_files:
     df = pd.read_csv(file, sep=";", encoding="cp1252")
     df.columns = df.columns.str.strip()
