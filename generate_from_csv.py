@@ -3,13 +3,13 @@ from datetime import datetime
 import pandas as pd
 import html
 
-# CSV-Dateien mit zugewiesenem USC-Code
+# Zuordnung CSV-Dateien + Platzhalter für USC-Team
 csv_files = [
     ("Spielplan_1._Bundesliga_Frauen.csv", "USC Münster", "USC1"),
     ("Spielplan_2._Bundesliga_Frauen_Nord.csv", "USC Münster", "USC2"),
     ("Spielplan_Oberliga_2_Frauen.csv", "USC Münster", "USC3"),
-    ("Spielplan_Bezirksklasse_26_Frauen.csv", None, None),  # Unterscheidung erfolgt über Namen
-    ("Spielplan_NRW-Liga_wU18.csv", "USC Münster", "UXX")   # Dynamisch aus Spielrunde
+    ("Spielplan_Bezirksklasse_26_Frauen.csv", None, None),  # Besondere Logik für V & VI
+    ("Spielplan_NRW-Liga_wU18.csv", "USC Münster", "U18")   # wird später zu "USC-U18"
 ]
 
 usc_keywords = ["USC Münster", "USC Muenster", "USC MÜNSTER"]
@@ -27,51 +27,59 @@ rename_map = {
 
 dfs = []
 
-for file, keyword, default_code in csv_files:
-    df = pd.read_csv(f"/mnt/data/{file}", sep=";", encoding="cp1252")
+for file, keyword, team_code in csv_files:
+    df = pd.read_csv(file, sep=";", encoding="cp1252")
     df.columns = df.columns.str.strip()
     df = df.rename(columns=rename_map)
 
-    # Nur USC-Spiele
-    def team_involvement(row):
-        return any(
-            pd.notna(row.get(field)) and any(usc in str(row[field]) for usc in usc_keywords)
-            for field in ["Heim", "Gast", "SR"]
-        )
+    # Nur relevante USC-Spiele
+    def contains_usc(row):
+        return any(usc in str(row[f]) for f in ["Heim", "Gast", "SR"] for usc in usc_keywords)
 
-    df = df[df.apply(team_involvement, axis=1)]
+    df = df[df.apply(contains_usc, axis=1)]
 
     # USC-Team bestimmen
-    def assign_usc_team(row):
-        all_fields = f"{row['Heim']} {row['Gast']} {row['SR']}"
-        if "USC Münster VI" in all_fields:
-            return "USC6"
-        elif "USC Münster V" in all_fields:
-            return "USC5"
-        elif default_code == "UXX":
-            round_code = str(row["Spielrunde"])[-3:].upper()
-            return f"USC-{round_code}"
-        else:
-            return default_code
+    def get_usc_team(row):
+        text = f"{row['Heim']} {row['Gast']} {row['SR']} {row['Gastgeber']}"
 
-    df["USC_Team"] = df.apply(assign_usc_team, axis=1)
+        # Bezirksklasse: Unterscheidung nach V / VI
+        if file == "Spielplan_Bezirksklasse_26_Frauen.csv":
+            if "USC Münster VI" in text:
+                return "USC6"
+            elif "USC Münster V" in text:
+                return "USC5"
+            else:
+                return "USC5/6"
+
+        # Jugend: z. B. wU18 → USC-U18
+        if team_code == "U18":
+            jugend = str(row.get("Spielrunde", ""))[-3:]
+            return f"USC-{jugend.upper()}"
+
+        return team_code
+
+    df["USC_Team"] = df.apply(get_usc_team, axis=1)
     dfs.append(df)
 
 df_all = pd.concat(dfs, ignore_index=True)
 
-# Datum & Tag
-def parse_datum(datum_str):
+# Datum parsen & Tag extrahieren
+def parse_datum(s):
     try:
-        return datetime.strptime(datum_str, "%d.%m.%Y")
+        return datetime.strptime(s, "%d.%m.%Y")
     except:
         return pd.NaT
 
 df_all["Datum_DT"] = df_all["Datum"].apply(parse_datum)
 df_all["Tag"] = df_all["Datum_DT"].dt.strftime("%a").replace({"Sat": "Sa", "Sun": "So"})
+
+# Zeit ersetzen
 df_all["Uhrzeit"] = df_all["Uhrzeit"].replace("00:00", "offen")
+
+# Sortieren
 df_all = df_all.sort_values(by=["Datum_DT", "Uhrzeit"])
 
-# Optionen für Filter
+# Dropdown-Daten
 spielrunden = sorted(df_all["Spielrunde"].dropna().unique())
 orte = sorted([o for o in df_all["Ort"].dropna().unique() if "münster" in o.lower()])
 teams = sorted(df_all["USC_Team"].dropna().unique())
@@ -85,7 +93,7 @@ table_rows = "\n".join(
     for _, row in df_all.iterrows()
 )
 
-# HTML-Seite
+# HTML-Seite mit Bootstrap
 html_code = f"""<!doctype html>
 <html lang="de">
 <head>
@@ -97,8 +105,9 @@ html_code = f"""<!doctype html>
     .hidden {{ display: none; }}
     th, td {{ white-space: nowrap; }}
     @media print {{
-      .accordion, .btn, select {{ display: none !important; }}
-      table {{ font-size: 10pt; }}
+      body * {{ visibility: hidden; }}
+      #spielplan, #spielplan * {{ visibility: visible; }}
+      #spielplan {{ position: absolute; left: 0; top: 0; width: 100%; }}
     }}
   </style>
 </head>
@@ -138,19 +147,21 @@ html_code = f"""<!doctype html>
                 </select>
               </div>
             </div>
-            <button class="btn btn-secondary mt-3" onclick="resetFilter()">Zurücksetzen</button>
-            <button class="btn btn-outline-primary mt-3 ms-2" onclick="window.print()">Drucken</button>
+            <div class="mt-3">
+              <button class="btn btn-secondary" onclick="resetFilter()">Zurücksetzen</button>
+              <button class="btn btn-outline-primary" onclick="window.print()">🖨️ Drucken</button>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
     <div class="table-responsive">
-      <table class="table table-bordered table-striped table-hover">
+      <table class="table table-bordered table-striped table-hover" id="spielplan">
         <thead class="table-light">
           <tr><th>Datum</th><th>Uhrzeit</th><th>Tag</th><th>Mannschaft 1</th><th>Mannschaft 2</th><th>SR</th><th>Gastgeber</th><th>Ort</th><th>Spielrunde</th></tr>
         </thead>
-        <tbody id="spielplan">
+        <tbody>
           {table_rows}
         </tbody>
       </table>
@@ -163,7 +174,7 @@ html_code = f"""<!doctype html>
       const runde = document.getElementById("filterRunde").value;
       const ort = document.getElementById("filterOrt").value;
 
-      document.querySelectorAll("#spielplan tr").forEach(row => {{
+      document.querySelectorAll("#spielplan tbody tr").forEach(row => {{
         const show = (!team || row.dataset.team === team) &&
                      (!runde || row.dataset.spielrunde === runde) &&
                      (!ort || row.dataset.ort === ort);
@@ -183,6 +194,7 @@ html_code = f"""<!doctype html>
 </html>
 """
 
+# Speichern
 Path("docs").mkdir(exist_ok=True)
 Path("docs/index.html").write_text(html_code, encoding="utf-8")
-print("✅ HTML-Datei mit Filtern, Akkordeon und Druckansicht erstellt.")
+print("✅ HTML-Datei erfolgreich erstellt.")
