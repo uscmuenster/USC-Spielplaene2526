@@ -3,7 +3,7 @@ from datetime import datetime
 import pandas as pd
 import html
 
-# CSV-Dateien und zugehörige USC-Codes
+# CSV-Dateien mit zugewiesenem USC-Team
 csv_files = [
     ("Spielplan_1._Bundesliga_Frauen.csv", "USC1"),
     ("Spielplan_2._Bundesliga_Frauen_Nord.csv", "USC2"),
@@ -25,40 +25,67 @@ rename_map = {
     "Spielrunde": "Spielrunde"
 }
 
+# Mannschafts-Mapping für Vereinheitlichung
+usc_name_map = {
+    "USC Münster I": "USC1",
+    "USC Münster II": "USC2",
+    "USC Münster III": "USC3",
+    "USC Münster V": "USC5",
+    "USC Münster VI": "USC6",
+    "USC Münster U18": "USC-U18"
+}
+
+def normalize_usc_name(name: str) -> str:
+    for key, val in usc_name_map.items():
+        if key in name:
+            return val
+    return name
+
 dfs = []
 
-for file, usc_code in csv_files:
+for file, fallback_code in csv_files:
     df = pd.read_csv(file, sep=";", encoding="cp1252")
     df.columns = df.columns.str.strip()
     df = df.rename(columns=rename_map)
 
-    def team_involvement(row):
+    # Nur USC-Spiele
+    def is_usc_game(row):
         return any(
             pd.notna(row.get(field)) and any(usc in str(row[field]) for usc in usc_keywords)
             for field in ["Heim", "Gast", "SR"]
         )
 
-    df = df[df.apply(team_involvement, axis=1)]
+    df = df[df.apply(is_usc_game, axis=1)]
 
-    # USC-Team bestimmen
-    def assign_usc_team(row):
-        name_combined = f"{row['Heim']} {row['Gast']} {row['SR']}"
-        if usc_code == "USC5/6":
-            if "USC Münster V" in name_combined:
-                return "USC5"
-            elif "USC Münster VI" in name_combined:
-                return "USC6"
-            else:
-                return "USC5/6"
-        return usc_code
+    # USC-Team zuweisen
+    def find_usc_team(row):
+        text = f"{row['Heim']} {row['Gast']} {row['SR']}"
+        if "USC Münster V" in text:
+            return "USC5"
+        elif "USC Münster VI" in text:
+            return "USC6"
+        elif "USC Münster U18" in text:
+            return "USC-U18"
+        elif "USC Münster III" in text:
+            return "USC3"
+        elif "USC Münster II" in text:
+            return "USC2"
+        elif "USC Münster I" in text:
+            return "USC1"
+        else:
+            return fallback_code
 
-    df["USC_Team"] = df.apply(assign_usc_team, axis=1)
+    df["USC_Team"] = df.apply(find_usc_team, axis=1)
+
+    # Namen der USC-Mannschaften vereinheitlichen
+    for col in ["Heim", "Gast", "SR", "Gastgeber"]:
+        df[col] = df[col].astype(str).apply(normalize_usc_name)
+
     dfs.append(df)
 
-# Alles zusammenführen
 df_all = pd.concat(dfs, ignore_index=True)
 
-# Datum parsen & Wochentag ermitteln
+# Datum und Wochentag
 def parse_datum(datum_str):
     try:
         return datetime.strptime(datum_str, "%d.%m.%Y")
@@ -68,18 +95,18 @@ def parse_datum(datum_str):
 df_all["Datum_DT"] = df_all["Datum"].apply(parse_datum)
 df_all["Tag"] = df_all["Datum_DT"].dt.strftime("%a").replace({"Sat": "Sa", "Sun": "So"})
 
-# Uhrzeit 00:00 → "offen"
+# Uhrzeit "00:00" → "offen"
 df_all["Uhrzeit"] = df_all["Uhrzeit"].replace("00:00", "offen")
 
 # Sortierung
 df_all = df_all.sort_values(by=["Datum_DT", "Uhrzeit"])
 
-# Dropdown-Optionen
+# Dropdown-Daten
 spielrunden = sorted(df_all["Spielrunde"].dropna().unique())
 orte = sorted([o for o in df_all["Ort"].dropna().unique() if "münster" in o.lower()])
 teams = sorted(df_all["USC_Team"].dropna().unique())
 
-# Tabellenzeilen
+# Tabellenzeilen HTML
 table_rows = "\n".join(
     f"<tr data-team='{html.escape(row['USC_Team'])}' data-spielrunde='{html.escape(row['Spielrunde'])}' data-ort='{html.escape(row['Ort'])}'>" +
     "".join(f"<td>{html.escape(str(row[col]))}</td>" for col in [
@@ -88,7 +115,7 @@ table_rows = "\n".join(
     for _, row in df_all.iterrows()
 )
 
-# HTML generieren
+# HTML erstellen
 html_code = f"""<!doctype html>
 <html lang="de">
 <head>
@@ -185,7 +212,7 @@ html_code = f"""<!doctype html>
 </html>
 """
 
-# HTML speichern
+# Speichern
 Path("docs").mkdir(exist_ok=True)
 Path("docs/index.html").write_text(html_code, encoding="utf-8")
 print("✅ HTML-Datei erfolgreich generiert: docs/index.html")
