@@ -3,13 +3,13 @@ from datetime import datetime
 import pandas as pd
 import html
 
-# Zuordnung CSV-Dateien + Platzhalter für USC-Team
+# CSV-Dateien + Zuordnung
 csv_files = [
     ("Spielplan_1._Bundesliga_Frauen.csv", "USC Münster", "USC1"),
     ("Spielplan_2._Bundesliga_Frauen_Nord.csv", "USC Münster", "USC2"),
     ("Spielplan_Oberliga_2_Frauen.csv", "USC Münster", "USC3"),
-    ("Spielplan_Bezirksklasse_26_Frauen.csv", None, None),  # Besondere Logik für V & VI
-    ("Spielplan_NRW-Liga_wU18.csv", "USC Münster", "U18")   # wird später zu "USC-U18"
+    ("Spielplan_Bezirksklasse_26_Frauen.csv", None, None),
+    ("Spielplan_NRW-Liga_wU18.csv", "USC Münster", "U18")
 ]
 
 usc_keywords = ["USC Münster", "USC Muenster", "USC MÜNSTER"]
@@ -32,7 +32,7 @@ for file, keyword, team_code in csv_files:
     df.columns = df.columns.str.strip()
     df = df.rename(columns=rename_map)
 
-    # Nur relevante USC-Spiele
+    # Nur USC-Spiele behalten
     def contains_usc(row):
         return any(usc in str(row[f]) for f in ["Heim", "Gast", "SR"] for usc in usc_keywords)
 
@@ -41,8 +41,6 @@ for file, keyword, team_code in csv_files:
     # USC-Team bestimmen
     def get_usc_team(row):
         text = f"{row['Heim']} {row['Gast']} {row['SR']} {row['Gastgeber']}"
-
-        # Bezirksklasse: Unterscheidung nach V / VI
         if file == "Spielplan_Bezirksklasse_26_Frauen.csv":
             if "USC Münster VI" in text:
                 return "USC6"
@@ -50,20 +48,38 @@ for file, keyword, team_code in csv_files:
                 return "USC5"
             else:
                 return "USC5/6"
-
-        # Jugend: z. B. wU18 → USC-U18
         if team_code == "U18":
             jugend = str(row.get("Spielrunde", ""))[-3:]
             return f"USC-{jugend.upper()}"
-
         return team_code
 
     df["USC_Team"] = df.apply(get_usc_team, axis=1)
+
+    # Namen ersetzen
+    def replace_usc_names(s, team):
+        s = str(s)
+        if team == "USC6":
+            s = s.replace("USC Münster VI", "USC6")
+        if team == "USC5":
+            s = s.replace("USC Münster V", "USC5")
+        if team == "USC1":
+            s = s.replace("USC Münster", "USC1")
+        if team == "USC2":
+            s = s.replace("USC Münster", "USC2")
+        if team == "USC3":
+            s = s.replace("USC Münster", "USC3")
+        if team.startswith("USC-U"):
+            s = s.replace("USC Münster", team)
+        return s
+
+    for col in ["Heim", "Gast", "SR"]:
+        df[col] = df.apply(lambda row: replace_usc_names(row[col], row["USC_Team"]), axis=1)
+
     dfs.append(df)
 
 df_all = pd.concat(dfs, ignore_index=True)
 
-# Datum parsen & Tag extrahieren
+# Datum und Wochentag
 def parse_datum(s):
     try:
         return datetime.strptime(s, "%d.%m.%Y")
@@ -71,15 +87,20 @@ def parse_datum(s):
         return pd.NaT
 
 df_all["Datum_DT"] = df_all["Datum"].apply(parse_datum)
-df_all["Tag"] = df_all["Datum_DT"].dt.strftime("%a").replace({"Sat": "Sa", "Sun": "So"})
 
-# Zeit ersetzen
+tage_map = {
+    "Monday": "Mo", "Tuesday": "Di", "Wednesday": "Mi",
+    "Thursday": "Do", "Friday": "Fr", "Saturday": "Sa", "Sunday": "So"
+}
+df_all["Tag"] = df_all["Datum_DT"].dt.day_name().map(tage_map)
+
+# Uhrzeit ersetzen
 df_all["Uhrzeit"] = df_all["Uhrzeit"].replace("00:00:00", "offen")
 
 # Sortieren
 df_all = df_all.sort_values(by=["Datum_DT", "Uhrzeit"])
 
-# Dropdown-Daten
+# Dropdown-Werte
 spielrunden = sorted(df_all["Spielrunde"].dropna().unique())
 orte = sorted([o for o in df_all["Ort"].dropna().unique() if "münster" in o.lower()])
 teams = sorted(df_all["USC_Team"].dropna().unique())
@@ -93,7 +114,7 @@ table_rows = "\n".join(
     for _, row in df_all.iterrows()
 )
 
-# HTML-Seite mit Bootstrap
+# HTML Seite
 html_code = f"""<!doctype html>
 <html lang="de">
 <head>
