@@ -11,16 +11,14 @@ ICS_FILES = {
 }
 
 usc_keywords = ["USC Münster", "USC Muenster", "USC MÜNSTER"]
-events = []
+all_events = []
 
+# Schritt 1: Alle Events einlesen (auch Nicht-USC-Spiele)
 for liga, file_path in ICS_FILES.items():
     with open(file_path, "rb") as f:
         cal = Calendar.from_ical(f.read())
         for vevent in cal.walk("VEVENT"):
             summary = str(vevent.get("SUMMARY", ""))
-            if not any(kw in summary for kw in usc_keywords):
-                continue  # Nur USC-Spiele berücksichtigen
-
             start = vevent["DTSTART"].dt
             date = start.date()
             time_str = start.strftime("%H:%M") if isinstance(start, datetime) else "01:00"
@@ -34,20 +32,63 @@ for liga, file_path in ICS_FILES.items():
             else:
                 heim = summary.strip()
                 gast = ""
-                
-            # Unerwünschte Zeichen (wie ".", ",", Leerzeichen) am Rand entfernen
-            heim = re.sub(r"^[^A-Za-z0-9]+|[^A-Za-z0-9ÄÖÜäöüß\- ]+$", "", heim)
-            gast = re.sub(r"^[^A-Za-z0-9]+|[^A-Za-z0-9ÄÖÜäöüß\- ]+$", "", gast)
 
-            events.append((date, time_str, heim, gast, location.strip(), liga))
+            # Unerwünschte Zeichen entfernen
+            heim = re.sub(r"^[^A-Za-z0-9ÄÖÜäöüß\- ]+|[^A-Za-z0-9ÄÖÜäöüß\- ]+$", "", heim)
+            gast = re.sub(r"^[^A-Za-z0-9ÄÖÜäöüß\- ]+|[^A-Za-z0-9ÄÖÜäöüß\- ]+$", "", gast)
 
-# Nach Datum und Uhrzeit sortieren
-events.sort(key=lambda e: (e[0], e[1]))
+            all_events.append({
+                "date": date,
+                "time": time_str,
+                "heim": heim,
+                "gast": gast,
+                "location": location.strip(),
+                "liga": liga,
+                "summary": summary
+            })
+
+# Schritt 2: Sortieren nach Datum + Uhrzeit
+all_events.sort(key=lambda e: (e["date"], e["time"]))
+
+# Schritt 3: Nur USC-Spiele extrahieren + Bemerkung setzen
+usc_events = []
+
+for idx, event in enumerate(all_events):
+    if not any(kw in event["summary"] for kw in usc_keywords):
+        continue
+
+    bemerkung = ""
+
+    # Spiel davor prüfen
+    if idx > 0:
+        prev = all_events[idx - 1]
+        if (prev["date"] == event["date"] and
+            prev["location"] == event["location"]):
+            if event["heim"] in usc_keywords:
+                bemerkung = "SR im Spiel vorher"
+
+    # Spiel danach prüfen
+    if idx < len(all_events) - 1:
+        nxt = all_events[idx + 1]
+        if (nxt["date"] == event["date"] and
+            nxt["location"] == event["location"]):
+            if event["heim"] in usc_keywords:
+                bemerkung = "SR im Spiel danach"
+
+    usc_events.append((
+        event["date"],
+        event["time"],
+        event["heim"],
+        event["gast"],
+        event["location"],
+        bemerkung,
+        event["liga"]
+    ))
 
 # HTML-Tabelle generieren
 rows = "\n".join(
-    f"<tr><td>{d.strftime('%d.%m.%Y')}</td><td>{t}</td><td>{h}</td><td>{g}</td><td>{loc}</td><td>{lg}</td></tr>"
-    for d, t, h, g, loc, lg in events
+    f"<tr><td>{d.strftime('%d.%m.%Y')}</td><td>{t}</td><td>{h}</td><td>{g}</td><td>{loc}</td><td>{bem}</td><td>{lg}</td></tr>"
+    for d, t, h, g, loc, bem, lg in usc_events
 )
 
 # HTML-Dokument schreiben
@@ -62,7 +103,7 @@ th{{background:#f2f2f2}}
 </style></head><body>
 <h1>USC Münster – Spielplan 2025/26</h1>
 <table><thead>
-<tr><th>Datum</th><th>Zeit</th><th>Heim</th><th>Gast</th><th>Ort</th><th>Liga</th></tr>
+<tr><th>Datum</th><th>Zeit</th><th>Heim</th><th>Gast</th><th>Ort</th><th>Bemerkung</th><th>Liga</th></tr>
 </thead><tbody>
 {rows}
 </tbody></table></body></html>
@@ -70,4 +111,4 @@ th{{background:#f2f2f2}}
 
 Path("docs").mkdir(exist_ok=True)
 Path("docs/index.html").write_text(html, encoding="utf-8")
-print("✅ HTML-Datei nur mit USC-Spielen erfolgreich generiert.")
+print("✅ HTML-Datei mit Bemerkungen erfolgreich erstellt.")
