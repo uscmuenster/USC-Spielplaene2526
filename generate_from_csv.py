@@ -28,7 +28,7 @@ rename_map = {
 dfs = []
 
 for file, usc_code in csv_files:
-    df = pd.read_csv(f"/mnt/data/{file}", sep=";", encoding="cp1252")
+    df = pd.read_csv(f"/mnt/{file}", sep=";", encoding="cp1252")
     df.columns = df.columns.str.strip()
     df = df.rename(columns=rename_map)
 
