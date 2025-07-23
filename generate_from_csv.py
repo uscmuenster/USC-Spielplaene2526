@@ -3,13 +3,13 @@ from datetime import datetime
 import pandas as pd
 import html
 
-# CSV-Dateien mit zugewiesenem USC-Team
+# Zuordnung CSV-Dateien → Teamkürzel
 csv_files = [
     ("Spielplan_1._Bundesliga_Frauen.csv", "USC1"),
     ("Spielplan_2._Bundesliga_Frauen_Nord.csv", "USC2"),
     ("Spielplan_Oberliga_2_Frauen.csv", "USC3"),
     ("Spielplan_Bezirksklasse_26_Frauen.csv", "USC5/6"),
-    ("Spielplan_NRW-Liga_wU18.csv", "USC-U18")
+    ("Spielplan_NRW-Liga_wU18.csv", "USC-YOUTH")
 ]
 
 usc_keywords = ["USC Münster", "USC Muenster", "USC MÜNSTER"]
@@ -25,88 +25,81 @@ rename_map = {
     "Spielrunde": "Spielrunde"
 }
 
-# Mannschafts-Mapping für Vereinheitlichung
-usc_name_map = {
-    "USC Münster I": "USC1",
-    "USC Münster II": "USC2",
-    "USC Münster III": "USC3",
-    "USC Münster V": "USC5",
-    "USC Münster VI": "USC6",
-    "USC Münster U18": "USC-U18"
-}
-
-def normalize_usc_name(name: str) -> str:
-    for key, val in usc_name_map.items():
-        if key in name:
-            return val
-    return name
-
 dfs = []
 
-for file, fallback_code in csv_files:
+for file, usc_code in csv_files:
     df = pd.read_csv(file, sep=";", encoding="cp1252")
     df.columns = df.columns.str.strip()
     df = df.rename(columns=rename_map)
 
     # Nur USC-Spiele
-    def is_usc_game(row):
-        return any(
-            pd.notna(row.get(field)) and any(usc in str(row[field]) for usc in usc_keywords)
-            for field in ["Heim", "Gast", "SR"]
-        )
+    def is_usc_involved(row):
+        return any(any(usc in str(row[field]) for usc in usc_keywords) for field in ["Heim", "Gast", "SR"])
 
-    df = df[df.apply(is_usc_game, axis=1)]
+    df = df[df.apply(is_usc_involved, axis=1)]
 
-    # USC-Team zuweisen
-    def find_usc_team(row):
-        text = f"{row['Heim']} {row['Gast']} {row['SR']}"
-        if "USC Münster V" in text:
-            return "USC5"
-        elif "USC Münster VI" in text:
-            return "USC6"
-        elif "USC Münster U18" in text:
-            return "USC-U18"
-        elif "USC Münster III" in text:
-            return "USC3"
-        elif "USC Münster II" in text:
-            return "USC2"
-        elif "USC Münster I" in text:
-            return "USC1"
-        else:
-            return fallback_code
+    # Reine Text-Ersetzung für Mannschaftsnamen
+    df = df.replace({
+        "Heim": {
+            "USC Münster VI": "USC6",
+            "USC Münster V": "USC5",
+            "USC Münster": "USC"
+        },
+        "Gast": {
+            "USC Münster VI": "USC6",
+            "USC Münster V": "USC5",
+            "USC Münster": "USC"
+        },
+        "SR": {
+            "USC Münster VI": "USC6",
+            "USC Münster V": "USC5",
+            "USC Münster": "USC"
+        },
+        "Gastgeber": {
+            "USC Münster VI": "USC6",
+            "USC Münster V": "USC5",
+            "USC Münster": "USC"
+        }
+    })
 
-    df["USC_Team"] = df.apply(find_usc_team, axis=1)
+    # USC_Team zuweisen
+    def assign_usc_team(row):
+        text = f"{row['Heim']} {row['Gast']} {row['SR']} {row['Gastgeber']}"
+        if usc_code == "USC5/6":
+            if "USC6" in text:
+                return "USC6"
+            elif "USC5" in text:
+                return "USC5"
+            return "USC5/6"
+        elif usc_code == "USC-YOUTH":
+            if isinstance(row["Spielrunde"], str) and "U" in row["Spielrunde"]:
+                return "USC-" + row["Spielrunde"][-3:]  # z.B. U18, U16
+            return "USC-YOUTH"
+        return usc_code
 
-    # Namen der USC-Mannschaften vereinheitlichen
-    for col in ["Heim", "Gast", "SR", "Gastgeber"]:
-        df[col] = df[col].astype(str).apply(normalize_usc_name)
-
+    df["USC_Team"] = df.apply(assign_usc_team, axis=1)
     dfs.append(df)
 
 df_all = pd.concat(dfs, ignore_index=True)
 
-# Datum und Wochentag
-def parse_datum(datum_str):
+# Datum parsen
+def parse_date(d):
     try:
-        return datetime.strptime(datum_str, "%d.%m.%Y")
+        return datetime.strptime(d, "%d.%m.%Y")
     except:
         return pd.NaT
 
-df_all["Datum_DT"] = df_all["Datum"].apply(parse_datum)
+df_all["Datum_DT"] = df_all["Datum"].apply(parse_date)
 df_all["Tag"] = df_all["Datum_DT"].dt.strftime("%a").replace({"Sat": "Sa", "Sun": "So"})
-
-# Uhrzeit "00:00" → "offen"
 df_all["Uhrzeit"] = df_all["Uhrzeit"].replace("00:00", "offen")
-
-# Sortierung
 df_all = df_all.sort_values(by=["Datum_DT", "Uhrzeit"])
 
-# Dropdown-Daten
+# Dropdown-Inhalte
 spielrunden = sorted(df_all["Spielrunde"].dropna().unique())
 orte = sorted([o for o in df_all["Ort"].dropna().unique() if "münster" in o.lower()])
 teams = sorted(df_all["USC_Team"].dropna().unique())
 
-# Tabellenzeilen HTML
+# Tabelle generieren
 table_rows = "\n".join(
     f"<tr data-team='{html.escape(row['USC_Team'])}' data-spielrunde='{html.escape(row['Spielrunde'])}' data-ort='{html.escape(row['Ort'])}'>" +
     "".join(f"<td>{html.escape(str(row[col]))}</td>" for col in [
@@ -115,7 +108,7 @@ table_rows = "\n".join(
     for _, row in df_all.iterrows()
 )
 
-# HTML erstellen
+# HTML erzeugen
 html_code = f"""<!doctype html>
 <html lang="de">
 <head>
@@ -128,7 +121,7 @@ html_code = f"""<!doctype html>
     th, td {{ white-space: nowrap; }}
     @media print {{
       .accordion, .btn, select {{ display: none !important; }}
-      table {{ font-size: 12pt; }}
+      table {{ font-size: 0.8rem; }}
     }}
   </style>
 </head>
@@ -145,7 +138,7 @@ html_code = f"""<!doctype html>
         </h2>
         <div id="filters" class="accordion-collapse collapse show" aria-labelledby="headingFilters">
           <div class="accordion-body">
-            <div class="row g-3">
+            <div class="row g-2">
               <div class="col-md-4">
                 <label class="form-label">USC-Team:</label>
                 <select class="form-select" id="filterTeam" onchange="filter()">
@@ -169,6 +162,7 @@ html_code = f"""<!doctype html>
               </div>
             </div>
             <button class="btn btn-secondary mt-3" onclick="resetFilter()">Zurücksetzen</button>
+            <button class="btn btn-outline-primary mt-3 ms-2" onclick="window.print()">Drucken</button>
           </div>
         </div>
       </div>
@@ -215,4 +209,4 @@ html_code = f"""<!doctype html>
 # Speichern
 Path("docs").mkdir(exist_ok=True)
 Path("docs/index.html").write_text(html_code, encoding="utf-8")
-print("✅ HTML-Datei erfolgreich generiert: docs/index.html")
+print("✅ HTML-Datei erfolgreich erstellt mit Filtern, Bootstrap und Druckansicht.")
