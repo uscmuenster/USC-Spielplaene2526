@@ -96,7 +96,7 @@ df_all["Tag"] = df_all["Datum_DT"].dt.day_name().map(tage_map)
 # Uhrzeit umformatieren
 def format_uhrzeit(uhr):
     if uhr == "00:00:00":
-        return "offen"
+        return "???"
     try:
         return datetime.strptime(uhr, "%H:%M:%S").strftime("%H:%M")
     except:
