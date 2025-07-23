@@ -7,7 +7,8 @@ csv_files = [
     "Spielplan_1._Bundesliga_Frauen.csv",
     "Spielplan_2._Bundesliga_Frauen_Nord.csv",
     "Spielplan_Oberliga_2_Frauen.csv",
-    "Spielplan_Bezirksklasse_26_Frauen.csv"
+    "Spielplan_Bezirksklasse_26_Frauen.csv",
+    "Spielplan_NRW-Liga_wU18.csv"
 ]
 
 usc_keywords = ["USC Münster", "USC Muenster", "USC MÜNSTER"]
