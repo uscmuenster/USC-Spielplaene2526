@@ -34,7 +34,7 @@ for file, keyword, team_code in csv_files:
 
     # Nur USC-Spiele behalten
     def contains_usc(row):
-        return any(usc in str(row[f]) for f in ["Heim", "Gast", "SR"] for usc in usc_keywords)
+        return any(usc in str(row[f]) for f in ["Heim", "Gast", "SR", "Gastgeber"] for usc in usc_keywords)
 
     df = df[df.apply(contains_usc, axis=1)]
 
@@ -55,7 +55,7 @@ for file, keyword, team_code in csv_files:
 
     df["USC_Team"] = df.apply(get_usc_team, axis=1)
 
-    # Namen ersetzen
+    # Namen in ALLEN relevanten Spalten ersetzen
     def replace_usc_names(s, team):
         s = str(s)
         if team == "USC6":
@@ -65,21 +65,22 @@ for file, keyword, team_code in csv_files:
         if team == "USC1":
             s = s.replace("USC Münster", "USC1")
         if team == "USC2":
-            s = s.replace("USC Münster II", "USC2")
+            s = s.replace("USC MÜNSTER II", "USC2")
         if team == "USC3":
             s = s.replace("USC MÜNSTER III", "USC3")
         if team.startswith("USC-U"):
             s = s.replace("USC Münster", team)
         return s
 
-    for col in ["Heim", "Gast", "SR"]:
+    for col in ["Heim", "Gast", "SR", "Gastgeber"]:
         df[col] = df.apply(lambda row: replace_usc_names(row[col], row["USC_Team"]), axis=1)
 
     dfs.append(df)
 
+# Alles zusammenführen
 df_all = pd.concat(dfs, ignore_index=True)
 
-# Datum und Wochentag
+# Datum & Tag verarbeiten
 def parse_datum(s):
     try:
         return datetime.strptime(s, "%d.%m.%Y")
@@ -87,17 +88,16 @@ def parse_datum(s):
         return pd.NaT
 
 df_all["Datum_DT"] = df_all["Datum"].apply(parse_datum)
-
 tage_map = {
     "Monday": "Mo", "Tuesday": "Di", "Wednesday": "Mi",
     "Thursday": "Do", "Friday": "Fr", "Saturday": "Sa", "Sunday": "So"
 }
 df_all["Tag"] = df_all["Datum_DT"].dt.day_name().map(tage_map)
 
-# Uhrzeit ersetzen
+# Uhrzeit "00:00:00" → "offen"
 df_all["Uhrzeit"] = df_all["Uhrzeit"].replace("00:00:00", "offen")
 
-# Sortieren
+# Sortierung
 df_all = df_all.sort_values(by=["Datum_DT", "Uhrzeit"])
 
 # Dropdown-Werte
@@ -105,7 +105,7 @@ spielrunden = sorted(df_all["Spielrunde"].dropna().unique())
 orte = sorted([o for o in df_all["Ort"].dropna().unique() if "münster" in o.lower()])
 teams = sorted(df_all["USC_Team"].dropna().unique())
 
-# HTML-Zeilen
+# HTML-Zeilen generieren
 table_rows = "\n".join(
     f"<tr data-team='{html.escape(row['USC_Team'])}' data-spielrunde='{html.escape(row['Spielrunde'])}' data-ort='{html.escape(row['Ort'])}'>" +
     "".join(f"<td>{html.escape(str(row[col]))}</td>" for col in [
@@ -114,7 +114,7 @@ table_rows = "\n".join(
     for _, row in df_all.iterrows()
 )
 
-# HTML Seite
+# HTML-Seite generieren
 html_code = f"""<!doctype html>
 <html lang="de">
 <head>
