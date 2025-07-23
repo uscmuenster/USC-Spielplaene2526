@@ -2,6 +2,7 @@ from pathlib import Path
 from datetime import datetime
 import pandas as pd
 import html
+import re
 
 # CSV-Dateien + Zuordnung
 csv_files = [
@@ -11,8 +12,6 @@ csv_files = [
     ("Spielplan_Bezirksklasse_26_Frauen.csv", None, None),
     ("Spielplan_NRW-Liga_wU18.csv", "USC Münster", "U18")
 ]
-
-usc_keywords = ["USC Münster", "USC Muenster", "USC MÜNSTER"]
 
 rename_map = {
     "Datum": "Datum",
@@ -33,18 +32,18 @@ for file, keyword, team_code in csv_files:
     df = df.rename(columns=rename_map)
 
     # Nur USC-Spiele behalten
+    usc_keywords = ["usc münster", "usc muenster"]
     def contains_usc(row):
-        return any(usc in str(row[f]) for f in ["Heim", "Gast", "SR", "Gastgeber"] for usc in usc_keywords)
-
+        return any(kw in str(row[f]).lower() for f in ["Heim", "Gast", "SR", "Gastgeber"] for kw in usc_keywords)
     df = df[df.apply(contains_usc, axis=1)]
 
     # USC-Team bestimmen
     def get_usc_team(row):
-        text = f"{row['Heim']} {row['Gast']} {row['SR']} {row['Gastgeber']}"
+        text = f"{row['Heim']} {row['Gast']} {row['SR']} {row['Gastgeber']}".lower()
         if file == "Spielplan_Bezirksklasse_26_Frauen.csv":
-            if "USC Münster VI" in text:
+            if "usc münster vi" in text:
                 return "USC6"
-            elif "USC Münster V" in text:
+            elif "usc münster v" in text:
                 return "USC5"
             else:
                 return "USC5/6"
@@ -55,32 +54,31 @@ for file, keyword, team_code in csv_files:
 
     df["USC_Team"] = df.apply(get_usc_team, axis=1)
 
-    # Namen in allen relevanten Spalten ersetzen
-    def replace_usc_names(s, team):
+    # Namen ersetzen in allen relevanten Spalten
+    def replace_names(s, team):
         s = str(s)
-        if team == "USC6":
-            s = s.replace("USC Münster VI", "USC6")
-        if team == "USC5":
-            s = s.replace("USC Münster V", "USC5")
-        if team == "USC1":
-            s = s.replace("USC Münster", "USC1")
-        if team == "USC2":
-            s = s.replace("USC Münster II", "USC2")
-        if team == "USC3":
-            s = s.replace("USC Münster III", "USC3")
-        if team.startswith("USC-U"):
-            s = s.replace("USC Münster", team)
-        return s
+        s_lower = s.lower()
+        # Reihenfolge wichtig
+        replacements = [
+            ("usc münster vi", "USC6"),
+            ("usc münster v", "USC5"),
+            ("usc münster iii", "USC3"),
+            ("usc münster ii", "USC2"),
+            ("usc münster", team if team.startswith("USC-") else "USC1"),
+        ]
+        for old, new in replacements:
+            s_lower = re.sub(re.escape(old), new, s_lower, flags=re.IGNORECASE)
+        return s_lower.upper().replace("USC-", "USC-")  # Erhalte Bindestrich für Jugendteams
 
     for col in ["Heim", "Gast", "SR", "Gastgeber", "Ort", "Spielrunde"]:
-        df[col] = df.apply(lambda row: replace_usc_names(row[col], row["USC_Team"]), axis=1)
+        df[col] = df.apply(lambda row: replace_names(row[col], row["USC_Team"]), axis=1)
 
     dfs.append(df)
 
-# Alles zusammenführen
+# Zusammenführen
 df_all = pd.concat(dfs, ignore_index=True)
 
-# Datum & Tag verarbeiten
+# Datum & Tag
 def parse_datum(s):
     try:
         return datetime.strptime(s, "%d.%m.%Y")
@@ -94,26 +92,26 @@ tage_map = {
 }
 df_all["Tag"] = df_all["Datum_DT"].dt.day_name().map(tage_map)
 
-# Uhrzeit "00:00:00" → "offen"
-df_all["Uhrzeit"] = df_all["Uhrzeit"].replace("00:00:00", "offen")
+# Uhrzeit formatieren
+def clean_uhrzeit(u):
+    if u == "00:00:00":
+        return "offen"
+    try:
+        return datetime.strptime(u.strip(), "%H:%M:%S").strftime("%H:%M")
+    except:
+        return u
 
-# Letzte Ersetzung aller Spalten für die HTML-Ausgabe
-def clean_all_names(row):
-    for col in ["Heim", "Gast", "SR", "Gastgeber", "Ort", "Spielrunde"]:
-        row[col] = replace_usc_names(row[col], row["USC_Team"])
-    return row
+df_all["Uhrzeit"] = df_all["Uhrzeit"].apply(clean_uhrzeit)
 
-df_all = df_all.apply(clean_all_names, axis=1)
-
-# Sortierung
+# Sortieren
 df_all = df_all.sort_values(by=["Datum_DT", "Uhrzeit"])
 
-# Dropdown-Werte
+# Dropdown-Filter
 spielrunden = sorted(df_all["Spielrunde"].dropna().unique())
 orte = sorted([o for o in df_all["Ort"].dropna().unique() if "münster" in o.lower()])
 teams = sorted(df_all["USC_Team"].dropna().unique())
 
-# HTML-Zeilen generieren
+# HTML-Tabelle
 table_rows = "\n".join(
     f"<tr data-team='{html.escape(row['USC_Team'])}' data-spielrunde='{html.escape(row['Spielrunde'])}' data-ort='{html.escape(row['Ort'])}'>" +
     "".join(f"<td>{html.escape(str(row[col]))}</td>" for col in [
@@ -122,7 +120,7 @@ table_rows = "\n".join(
     for _, row in df_all.iterrows()
 )
 
-# HTML-Seite erzeugen
+# HTML-Template
 html_code = f"""<!doctype html>
 <html lang="de">
 <head>
@@ -131,7 +129,6 @@ html_code = f"""<!doctype html>
   <title>USC Münster Spielplan 2025/26</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
-    .hidden {{ display: none; }}
     th, td {{ white-space: nowrap; }}
     @media print {{
       body * {{ visibility: hidden; }}
@@ -151,7 +148,7 @@ html_code = f"""<!doctype html>
             Filter anzeigen
           </button>
         </h2>
-        <div id="filters" class="accordion-collapse collapse show" aria-labelledby="headingFilters">
+        <div id="filters" class="accordion-collapse collapse show">
           <div class="accordion-body">
             <div class="row g-2">
               <div class="col-md-4">
