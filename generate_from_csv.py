@@ -3,7 +3,7 @@ from datetime import datetime
 import pandas as pd
 import html
 
-# CSV-Dateien mit zugewiesenem USC-Team
+# CSV-Dateien und zugehörige USC-Codes
 csv_files = [
     ("Spielplan_1._Bundesliga_Frauen.csv", "USC1"),
     ("Spielplan_2._Bundesliga_Frauen_Nord.csv", "USC2"),
@@ -32,44 +32,33 @@ for file, usc_code in csv_files:
     df.columns = df.columns.str.strip()
     df = df.rename(columns=rename_map)
 
-    def contains_usc(row):
+    def team_involvement(row):
         return any(
-            pd.notna(row.get(col)) and any(kw in str(row[col]) for kw in usc_keywords)
-            for col in ["Heim", "Gast", "SR"]
+            pd.notna(row.get(field)) and any(usc in str(row[field]) for usc in usc_keywords)
+            for field in ["Heim", "Gast", "SR"]
         )
 
-    df = df[df.apply(contains_usc, axis=1)]
+    df = df[df.apply(team_involvement, axis=1)]
 
-    def assign_team(row):
-        text = f"{row['Heim']} {row['Gast']} {row['SR']}"
+    # USC-Team bestimmen
+    def assign_usc_team(row):
+        name_combined = f"{row['Heim']} {row['Gast']} {row['SR']}"
         if usc_code == "USC5/6":
-            if "USC Münster V" in text:
+            if "USC Münster V" in name_combined:
                 return "USC5"
-            elif "USC Münster VI" in text:
+            elif "USC Münster VI" in name_combined:
                 return "USC6"
             else:
                 return "USC5/6"
         return usc_code
 
-    df["USC_Team"] = df.apply(assign_team, axis=1)
-
-    # Vereinheitliche alle USC-Namen durch die Teamcodes
-    for col in ["Heim", "Gast", "SR", "Gastgeber"]:
-        df[col] = df.apply(
-            lambda row: row[col].replace("USC Münster V", "USC5")
-                             .replace("USC Münster VI", "USC6")
-                             .replace("USC Münster", row["USC_Team"])
-                             .replace("USC Muenster", row["USC_Team"])
-                             .replace("USC MÜNSTER", row["USC_Team"])
-            if pd.notna(row[col]) else row[col], axis=1
-        )
-
+    df["USC_Team"] = df.apply(assign_usc_team, axis=1)
     dfs.append(df)
 
-# Zusammenführen
+# Alles zusammenführen
 df_all = pd.concat(dfs, ignore_index=True)
 
-# Datum und Tag
+# Datum parsen & Wochentag ermitteln
 def parse_datum(datum_str):
     try:
         return datetime.strptime(datum_str, "%d.%m.%Y")
@@ -79,17 +68,18 @@ def parse_datum(datum_str):
 df_all["Datum_DT"] = df_all["Datum"].apply(parse_datum)
 df_all["Tag"] = df_all["Datum_DT"].dt.strftime("%a").replace({"Sat": "Sa", "Sun": "So"})
 
+# Uhrzeit 00:00 → "offen"
 df_all["Uhrzeit"] = df_all["Uhrzeit"].replace("00:00", "offen")
 
-# Sortieren
+# Sortierung
 df_all = df_all.sort_values(by=["Datum_DT", "Uhrzeit"])
 
-# Filterdaten vorbereiten
+# Dropdown-Optionen
 spielrunden = sorted(df_all["Spielrunde"].dropna().unique())
 orte = sorted([o for o in df_all["Ort"].dropna().unique() if "münster" in o.lower()])
 teams = sorted(df_all["USC_Team"].dropna().unique())
 
-# HTML-Zeilen
+# Tabellenzeilen
 table_rows = "\n".join(
     f"<tr data-team='{html.escape(row['USC_Team'])}' data-spielrunde='{html.escape(row['Spielrunde'])}' data-ort='{html.escape(row['Ort'])}'>" +
     "".join(f"<td>{html.escape(str(row[col]))}</td>" for col in [
@@ -98,7 +88,7 @@ table_rows = "\n".join(
     for _, row in df_all.iterrows()
 )
 
-# HTML-Dokument
+# HTML generieren
 html_code = f"""<!doctype html>
 <html lang="de">
 <head>
@@ -107,12 +97,12 @@ html_code = f"""<!doctype html>
   <title>USC Münster Spielplan 2025/26</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
-    @media print {{
-      .accordion, .btn, select {{ display: none !important; }}
-      table {{ font-size: 10pt; }}
-    }}
     .hidden {{ display: none; }}
     th, td {{ white-space: nowrap; }}
+    @media print {{
+      .accordion, .btn, select {{ display: none !important; }}
+      table {{ font-size: 12pt; }}
+    }}
   </style>
 </head>
 <body class="p-4">
@@ -128,7 +118,7 @@ html_code = f"""<!doctype html>
         </h2>
         <div id="filters" class="accordion-collapse collapse show" aria-labelledby="headingFilters">
           <div class="accordion-body">
-            <div class="row g-2">
+            <div class="row g-3">
               <div class="col-md-4">
                 <label class="form-label">USC-Team:</label>
                 <select class="form-select" id="filterTeam" onchange="filter()">
@@ -160,10 +150,7 @@ html_code = f"""<!doctype html>
     <div class="table-responsive">
       <table class="table table-bordered table-striped table-hover">
         <thead class="table-light">
-          <tr>
-            <th>Datum</th><th>Uhrzeit</th><th>Tag</th><th>Mannschaft 1</th><th>Mannschaft 2</th>
-            <th>SR</th><th>Gastgeber</th><th>Ort</th><th>Spielrunde</th>
-          </tr>
+          <tr><th>Datum</th><th>Uhrzeit</th><th>Tag</th><th>Mannschaft 1</th><th>Mannschaft 2</th><th>SR</th><th>Gastgeber</th><th>Ort</th><th>Spielrunde</th></tr>
         </thead>
         <tbody id="spielplan">
           {table_rows}
@@ -198,7 +185,7 @@ html_code = f"""<!doctype html>
 </html>
 """
 
-# Speichern
+# HTML speichern
 Path("docs").mkdir(exist_ok=True)
 Path("docs/index.html").write_text(html_code, encoding="utf-8")
-print("✅ HTML-Datei erfolgreich generiert.")
+print("✅ HTML-Datei erfolgreich generiert: docs/index.html")
