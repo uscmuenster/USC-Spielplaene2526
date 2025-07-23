@@ -2,39 +2,45 @@ from pathlib import Path
 from datetime import datetime
 import pandas as pd
 
-# CSV-Dateipfade
-csv_files = {
-    "1. Bundesliga": "Spielplan_1._Bundesliga_Frauen.csv",
-    "2. Bundesliga Nord": "Spielplan_2._Bundesliga_Frauen_Nord.csv",
-    "Oberliga 2": "Spielplan_Oberliga_2_Frauen.csv",
-    "Bezirksklasse 26": "Spielplan_Bezirksklasse_26_Frauen.csv"
-}
+# CSV-Dateien mit Ligazugehörigkeit
+csv_files = [
+    "Spielplan_1._Bundesliga_Frauen.csv",
+    "Spielplan_2._Bundesliga_Frauen_Nord.csv",
+    "Spielplan_Oberliga_2_Frauen.csv",
+    "Spielplan_Bezirksklasse_26_Frauen.csv"
+]
+
+usc_keywords = ["USC Münster", "USC Muenster", "USC MÜNSTER"]
 
 # Einheitliche Spaltennamen
 rename_map = {
     "Datum": "Datum",
     "Uhrzeit": "Uhrzeit",
-    "Heim": "Mannschaft 1",
-    "Gast": "Mannschaft 2",
-    "SR": "Schiedsgericht",
-    "Austragungsort": "Austragungsort",
+    "Heimmannschaft": "Mannschaft 1",
+    "Gastmannschaft": "Mannschaft 2",
+    "Schiedsgericht": "Schiedsgericht",
     "Gastgeber": "Gastgeber",
+    "Austragungsort": "Austragungsort",
     "Spielrunde": "Spielrunde"
 }
 
-# CSV-Dateien einlesen und verarbeiten
+# Einlesen & vereinheitlichen
 dfs = []
-for liga_name, file_path in csv_files.items():
-    df = pd.read_csv(file_path, sep=";", encoding="cp1252")
+for file in csv_files:
+    df = pd.read_csv(file, sep=";", encoding="cp1252")
     df.columns = df.columns.str.strip()
     df = df.rename(columns=rename_map)
-    df["Liga"] = liga_name
     dfs.append(df)
 
-# Zusammenführen
 df_all = pd.concat(dfs, ignore_index=True)
 
-# Datum parsen und Wochentag einfügen
+# Nur USC-Spiele behalten
+def contains_usc(*fields):
+    return any(any(usc in str(field) for usc in usc_keywords) for field in fields)
+
+df_all = df_all[df_all.apply(lambda row: contains_usc(row["Mannschaft 1"], row["Mannschaft 2"], row["Schiedsgericht"]), axis=1)]
+
+# Datum & Tag verarbeiten
 def parse_datum(datum_str):
     try:
         return datetime.strptime(datum_str, "%d.%m.%Y")
@@ -42,19 +48,19 @@ def parse_datum(datum_str):
         return pd.NaT
 
 df_all["Datum_DT"] = df_all["Datum"].apply(parse_datum)
-df_all["Wochentag"] = df_all["Datum_DT"].dt.strftime("%a").replace({"Sat": "Sa", "Sun": "So"})
+df_all["Tag"] = df_all["Datum_DT"].dt.strftime("%a").replace({"Sat": "Sa", "Sun": "So"})
 
-# Uhrzeit "00:00" zu "offen"
+# Uhrzeit "00:00" → "offen"
 df_all["Uhrzeit"] = df_all["Uhrzeit"].replace("00:00", "offen")
 
 # Sortieren
 df_all = df_all.sort_values(by=["Datum_DT", "Uhrzeit"])
 
-# Spaltenreihenfolge
+# Spalten für HTML
 df_result = df_all[[
-    "Datum", "Uhrzeit", "Wochentag",
+    "Datum", "Uhrzeit", "Tag",
     "Mannschaft 1", "Mannschaft 2", "Schiedsgericht",
-    "Gastgeber", "Austragungsort", "Spielrunde", "Liga"
+    "Gastgeber", "Austragungsort", "Spielrunde"
 ]]
 
 # HTML erzeugen
