@@ -58,9 +58,9 @@ df_all = df_all.sort_values(by=["Datum_DT", "Uhrzeit"])
 
 # Dropdown-Optionen
 spielrunden = sorted(df_all["Spielrunde"].dropna().unique())
-orte = sorted(df_all["Ort"].dropna().unique())
+orte = sorted([o for o in df_all["Ort"].dropna().unique() if "münster" in o.lower()])
 
-# HTML-Zeilen generieren
+# HTML-Zeilen
 table_rows = "\n".join(
     f"<tr data-gastgeber='{html.escape(row['Gastgeber'])}' data-spielrunde='{html.escape(row['Spielrunde'])}' data-ort='{html.escape(row['Ort'])}'>" +
     "".join(f"<td>{html.escape(str(row[col]))}</td>" for col in [
@@ -69,77 +69,90 @@ table_rows = "\n".join(
     for _, row in df_all.iterrows()
 )
 
-# HTML-Seite aufbauen
+# HTML
 html_code = f"""<!doctype html>
 <html lang="de">
 <head>
   <meta charset="utf-8">
   <title>USC Münster Spielplan 2025/26</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
-    body {{ font-family: Arial, sans-serif; padding: 20px; }}
-    table {{ width: 100%; border-collapse: collapse; margin-top: 20px; }}
-    th, td {{ border: 1px solid #ccc; padding: 8px; text-align: left; }}
-    th {{ background: #f2f2f2; }}
-    select, button {{ margin-right: 10px; padding: 5px; }}
     .hidden {{ display: none; }}
+    table {{ margin-top: 20px; }}
   </style>
 </head>
-<body>
-  <h1>USC Münster – Spielplan 2025/26</h1>
+<body class="p-3">
+  <h1 class="mb-4">USC Münster – Spielplan 2025/26</h1>
 
-  <div>
-    <strong>Filter:</strong>
-    <button onclick="filterHeim()">USC als Gastgeber</button>
-    <select id="filterRunde" onchange="filterRunde()">
-      <option value="">Spielrunde wählen</option>
-      {''.join(f"<option value='{html.escape(r)}'>{html.escape(r)}</option>" for r in spielrunden)}
-    </select>
-    <select id="filterOrt" onchange="filterOrt()">
-      <option value="">Ort wählen</option>
-      {''.join(f"<option value='{html.escape(o)}'>{html.escape(o)}</option>" for o in orte)}
-    </select>
-    <button onclick="resetFilter()">Zurücksetzen</button>
+  <div class="accordion mb-3" id="filterAccordion">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingFilters">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFilters" aria-expanded="true" aria-controls="collapseFilters">
+          Filteroptionen anzeigen
+        </button>
+      </h2>
+      <div id="collapseFilters" class="accordion-collapse collapse show" aria-labelledby="headingFilters" data-bs-parent="#filterAccordion">
+        <div class="accordion-body">
+          <div class="mb-2">
+            <button class="btn btn-outline-primary me-2" onclick="filterHeim()">USC als Gastgeber</button>
+            <select id="filterRunde" class="form-select d-inline w-auto me-2" onchange="filterRunde()">
+              <option value="">Spielrunde wählen</option>
+              {''.join(f"<option value='{html.escape(r)}'>{html.escape(r)}</option>" for r in spielrunden)}
+            </select>
+            <select id="filterOrt" class="form-select d-inline w-auto me-2" onchange="filterOrt()">
+              <option value="">Ort wählen</option>
+              {''.join(f"<option value='{html.escape(o)}'>{html.escape(o)}</option>" for o in orte)}
+            </select>
+            <button class="btn btn-outline-secondary" onclick="resetFilter()">Zurücksetzen</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <table id="spielplan">
-    <thead>
-      <tr><th>Datum</th><th>Uhrzeit</th><th>Tag</th><th>Mannschaft 1</th><th>Mannschaft 2</th><th>SR</th><th>Gastgeber</th><th>Ort</th><th>Spielrunde</th></tr>
-    </thead>
-    <tbody>
-      {table_rows}
-    </tbody>
-  </table>
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped" id="spielplan">
+      <thead class="table-light">
+        <tr>
+          <th>Datum</th><th>Uhrzeit</th><th>Tag</th>
+          <th>Mannschaft 1</th><th>Mannschaft 2</th><th>SR</th>
+          <th>Gastgeber</th><th>Ort</th><th>Spielrunde</th>
+        </tr>
+      </thead>
+      <tbody>
+        {table_rows}
+      </tbody>
+    </table>
+  </div>
 
-<script>
-function filterHeim() {{
-  document.querySelectorAll("#spielplan tbody tr").forEach(row => {{
-    row.classList.toggle("hidden", !row.dataset.gastgeber.includes("USC Münster"));
-  }});
-}}
-
-function filterRunde() {{
-  let runde = document.getElementById("filterRunde").value;
-  document.querySelectorAll("#spielplan tbody tr").forEach(row => {{
-    row.classList.toggle("hidden", runde && row.dataset.spielrunde !== runde);
-  }});
-}}
-
-function filterOrt() {{
-  let ort = document.getElementById("filterOrt").value;
-  document.querySelectorAll("#spielplan tbody tr").forEach(row => {{
-    row.classList.toggle("hidden", ort && row.dataset.ort !== ort);
-  }});
-}}
-
-function resetFilter() {{
-  document.getElementById("filterRunde").value = "";
-  document.getElementById("filterOrt").value = "";
-  document.querySelectorAll("#spielplan tbody tr").forEach(row => {{
-    row.classList.remove("hidden");
-  }});
-}}
-</script>
-
+  <script>
+    function filterHeim() {{
+      document.querySelectorAll("#spielplan tbody tr").forEach(row => {{
+        row.classList.toggle("hidden", !(row.cells[3].textContent.includes("USC") || row.dataset.gastgeber.includes("USC")));
+      }});
+    }}
+    function filterRunde() {{
+      let runde = document.getElementById("filterRunde").value;
+      document.querySelectorAll("#spielplan tbody tr").forEach(row => {{
+        row.classList.toggle("hidden", runde && row.dataset.spielrunde !== runde);
+      }});
+    }}
+    function filterOrt() {{
+      let ort = document.getElementById("filterOrt").value;
+      document.querySelectorAll("#spielplan tbody tr").forEach(row => {{
+        row.classList.toggle("hidden", ort && row.dataset.ort !== ort);
+      }});
+    }}
+    function resetFilter() {{
+      document.getElementById("filterRunde").value = "";
+      document.getElementById("filterOrt").value = "";
+      document.querySelectorAll("#spielplan tbody tr").forEach(row => {{
+        row.classList.remove("hidden");
+      }});
+    }}
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
 """
@@ -147,4 +160,4 @@ function resetFilter() {{
 # Speichern
 Path("docs").mkdir(exist_ok=True)
 Path("docs/index.html").write_text(html_code, encoding="utf-8")
-print("✅ HTML-Datei mit interaktiven Filtern erstellt.")
+print("✅ HTML-Datei mit Bootstrap, Akkordeon und Filtern erstellt.")
