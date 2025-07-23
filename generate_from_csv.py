@@ -3,13 +3,13 @@ from datetime import datetime
 import pandas as pd
 import html
 
-# Zuordnung CSV-Dateien → Teamkürzel
+# CSV-Dateien mit zugewiesenem USC-Code
 csv_files = [
-    ("Spielplan_1._Bundesliga_Frauen.csv", "USC1"),
-    ("Spielplan_2._Bundesliga_Frauen_Nord.csv", "USC2"),
-    ("Spielplan_Oberliga_2_Frauen.csv", "USC3"),
-    ("Spielplan_Bezirksklasse_26_Frauen.csv", "USC5/6"),
-    ("Spielplan_NRW-Liga_wU18.csv", "USC-YOUTH")
+    ("Spielplan_1._Bundesliga_Frauen.csv", "USC Münster", "USC1"),
+    ("Spielplan_2._Bundesliga_Frauen_Nord.csv", "USC Münster", "USC2"),
+    ("Spielplan_Oberliga_2_Frauen.csv", "USC Münster", "USC3"),
+    ("Spielplan_Bezirksklasse_26_Frauen.csv", None, None),  # Unterscheidung erfolgt über Namen
+    ("Spielplan_NRW-Liga_wU18.csv", "USC Münster", "UXX")   # Dynamisch aus Spielrunde
 ]
 
 usc_keywords = ["USC Münster", "USC Muenster", "USC MÜNSTER"]
@@ -27,79 +27,56 @@ rename_map = {
 
 dfs = []
 
-for file, usc_code in csv_files:
-    df = pd.read_csv(file, sep=";", encoding="cp1252")
+for file, keyword, default_code in csv_files:
+    df = pd.read_csv(f"/mnt/data/{file}", sep=";", encoding="cp1252")
     df.columns = df.columns.str.strip()
     df = df.rename(columns=rename_map)
 
     # Nur USC-Spiele
-    def is_usc_involved(row):
-        return any(any(usc in str(row[field]) for usc in usc_keywords) for field in ["Heim", "Gast", "SR"])
+    def team_involvement(row):
+        return any(
+            pd.notna(row.get(field)) and any(usc in str(row[field]) for usc in usc_keywords)
+            for field in ["Heim", "Gast", "SR"]
+        )
 
-    df = df[df.apply(is_usc_involved, axis=1)]
+    df = df[df.apply(team_involvement, axis=1)]
 
-    # Reine Text-Ersetzung für Mannschaftsnamen
-    df = df.replace({
-        "Heim": {
-            "USC Münster VI": "USC6",
-            "USC Münster V": "USC5",
-            "USC Münster": "USC"
-        },
-        "Gast": {
-            "USC Münster VI": "USC6",
-            "USC Münster V": "USC5",
-            "USC Münster": "USC"
-        },
-        "SR": {
-            "USC Münster VI": "USC6",
-            "USC Münster V": "USC5",
-            "USC Münster": "USC"
-        },
-        "Gastgeber": {
-            "USC Münster VI": "USC6",
-            "USC Münster V": "USC5",
-            "USC Münster": "USC"
-        }
-    })
-
-    # USC_Team zuweisen
+    # USC-Team bestimmen
     def assign_usc_team(row):
-        text = f"{row['Heim']} {row['Gast']} {row['SR']} {row['Gastgeber']}"
-        if usc_code == "USC5/6":
-            if "USC6" in text:
-                return "USC6"
-            elif "USC5" in text:
-                return "USC5"
-            return "USC5/6"
-        elif usc_code == "USC-YOUTH":
-            if isinstance(row["Spielrunde"], str) and "U" in row["Spielrunde"]:
-                return "USC-" + row["Spielrunde"][-3:]  # z.B. U18, U16
-            return "USC-YOUTH"
-        return usc_code
+        all_fields = f"{row['Heim']} {row['Gast']} {row['SR']}"
+        if "USC Münster VI" in all_fields:
+            return "USC6"
+        elif "USC Münster V" in all_fields:
+            return "USC5"
+        elif default_code == "UXX":
+            round_code = str(row["Spielrunde"])[-3:].upper()
+            return f"USC-{round_code}"
+        else:
+            return default_code
 
     df["USC_Team"] = df.apply(assign_usc_team, axis=1)
     dfs.append(df)
 
 df_all = pd.concat(dfs, ignore_index=True)
 
-# Datum parsen
-def parse_date(d):
+# Datum & Tag
+def parse_datum(datum_str):
     try:
-        return datetime.strptime(d, "%d.%m.%Y")
+        return datetime.strptime(datum_str, "%d.%m.%Y")
     except:
         return pd.NaT
 
-df_all["Datum_DT"] = df_all["Datum"].apply(parse_date)
+df_all["Datum_DT"] = df_all["Datum"].apply(parse_datum)
 df_all["Tag"] = df_all["Datum_DT"].dt.strftime("%a").replace({"Sat": "Sa", "Sun": "So"})
 df_all["Uhrzeit"] = df_all["Uhrzeit"].replace("00:00", "offen")
 df_all = df_all.sort_values(by=["Datum_DT", "Uhrzeit"])
 
-# Dropdown-Inhalte
+# Optionen für Filter
 spielrunden = sorted(df_all["Spielrunde"].dropna().unique())
 orte = sorted([o for o in df_all["Ort"].dropna().unique() if "münster" in o.lower()])
 teams = sorted(df_all["USC_Team"].dropna().unique())
 
-# Tabelle generieren
+# HTML-Zeilen
 table_rows = "\n".join(
     f"<tr data-team='{html.escape(row['USC_Team'])}' data-spielrunde='{html.escape(row['Spielrunde'])}' data-ort='{html.escape(row['Ort'])}'>" +
     "".join(f"<td>{html.escape(str(row[col]))}</td>" for col in [
@@ -108,7 +85,7 @@ table_rows = "\n".join(
     for _, row in df_all.iterrows()
 )
 
-# HTML erzeugen
+# HTML-Seite
 html_code = f"""<!doctype html>
 <html lang="de">
 <head>
@@ -121,7 +98,7 @@ html_code = f"""<!doctype html>
     th, td {{ white-space: nowrap; }}
     @media print {{
       .accordion, .btn, select {{ display: none !important; }}
-      table {{ font-size: 0.8rem; }}
+      table {{ font-size: 10pt; }}
     }}
   </style>
 </head>
@@ -206,7 +183,6 @@ html_code = f"""<!doctype html>
 </html>
 """
 
-# Speichern
 Path("docs").mkdir(exist_ok=True)
 Path("docs/index.html").write_text(html_code, encoding="utf-8")
-print("✅ HTML-Datei erfolgreich erstellt mit Filtern, Bootstrap und Druckansicht.")
+print("✅ HTML-Datei mit Filtern, Akkordeon und Druckansicht erstellt.")
