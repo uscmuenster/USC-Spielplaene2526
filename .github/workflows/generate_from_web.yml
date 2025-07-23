@@ -1,8 +1,6 @@
 name: 🌐 HTML aus Web-CSV-Dateien generieren
 
 on:
-  schedule:
-    - cron: '0 4 * * *'   # täglich um 03:00 Uhr UTC
   workflow_dispatch:
 
 jobs:
