@@ -74,7 +74,7 @@ df_all["Datum_DT"] = df_all["Datum"].apply(parse_datum)
 df_all["Tag"] = df_all["Datum_DT"].dt.strftime("%a").replace({"Sat": "Sa", "Sun": "So"})
 
 # Zeit ersetzen
-df_all["Uhrzeit"] = df_all["Uhrzeit"].replace("00:00", "offen")
+df_all["Uhrzeit"] = df_all["Uhrzeit"].replace("00:00:00", "offen")
 
 # Sortieren
 df_all = df_all.sort_values(by=["Datum_DT", "Uhrzeit"])
