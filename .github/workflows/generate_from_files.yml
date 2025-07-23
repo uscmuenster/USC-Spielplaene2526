@@ -29,7 +29,7 @@ jobs:
         run: pip install icalendar requests
 
       - name: 🛠 HTML generieren aus ICS-Dateien
-        run: python generate_html.py
+        run: python generate_from_files.py
 
       - name: 🔁 Commit und Push via Token
         run: |
