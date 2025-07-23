@@ -89,7 +89,7 @@ html_code = f"""<!doctype html>
 
   <div>
     <strong>Filter:</strong>
-    <button onclick="filterHeim()">Heimspiele von USC</button>
+    <button onclick="filterHeim()">USC als Gastgeber</button>
     <select id="filterRunde" onchange="filterRunde()">
       <option value="">Spielrunde wählen</option>
       {''.join(f"<option value='{html.escape(r)}'>{html.escape(r)}</option>" for r in spielrunden)}
