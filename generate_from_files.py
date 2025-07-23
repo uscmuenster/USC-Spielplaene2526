@@ -7,7 +7,8 @@ import re
 ICS_FILES = {
     "1.BL": "usc1.ics",
     "2.BLN": "usc2.ics",
-    "OL2": "usc3.ics"
+    "OL2": "usc3.ics",
+    "BK26": "usc5.ics"
 }
 
 usc_keywords = ["USC Münster", "USC Muenster", "USC MÜNSTER"]
