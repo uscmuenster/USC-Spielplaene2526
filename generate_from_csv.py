@@ -28,7 +28,7 @@ rename_map = {
 dfs = []
 
 for file, usc_code in csv_files:
-    df = pd.read_csv(f"/mnt/{file}", sep=";", encoding="cp1252")
+    df = pd.read_csv(file, sep=";", encoding="cp1252")
     df.columns = df.columns.str.strip()
     df = df.rename(columns=rename_map)
 
@@ -65,7 +65,6 @@ def parse_datum(datum_str):
 
 df_all["Datum_DT"] = df_all["Datum"].apply(parse_datum)
 df_all["Tag"] = df_all["Datum_DT"].dt.strftime("%a").replace({"Sat": "Sa", "Sun": "So"})
-
 df_all["Uhrzeit"] = df_all["Uhrzeit"].replace("00:00", "offen")
 df_all = df_all.sort_values(by=["Datum_DT", "Uhrzeit"])
 
@@ -81,6 +80,7 @@ table_rows = "\n".join(
     for _, row in df_all.iterrows()
 )
 
+# HTML-Seite mit Bootstrap und Akkordeon für Filter
 html_code = f"""<!doctype html>
 <html lang="de">
 <head>
@@ -91,6 +91,11 @@ html_code = f"""<!doctype html>
   <style>
     .hidden {{ display: none; }}
     th, td {{ white-space: nowrap; }}
+    @media print {{
+      body * {{ visibility: hidden; }}
+      table, table * {{ visibility: visible; }}
+      table {{ position: absolute; left: 0; top: 0; width: 100%; font-size: 10pt; }}
+    }}
   </style>
 </head>
 <body class="p-4">
@@ -175,3 +180,4 @@ html_code = f"""<!doctype html>
 
 Path("docs").mkdir(exist_ok=True)
 Path("docs/index.html").write_text(html_code, encoding="utf-8")
+print("✅ HTML-Datei mit responsivem Design, Akkordeon-Filtern und mobiler Druckansicht generiert.")
