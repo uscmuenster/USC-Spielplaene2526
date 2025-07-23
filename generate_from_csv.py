@@ -94,8 +94,16 @@ tage_map = {
 }
 df_all["Tag"] = df_all["Datum_DT"].dt.day_name().map(tage_map)
 
-# Uhrzeit "00:00:00" → "offen"
-df_all["Uhrzeit"] = df_all["Uhrzeit"].replace("00:00:00", "offen")
+# Uhrzeit umformatieren
+def format_uhrzeit(uhr):
+    if uhr == "00:00:00":
+        return "offen"
+    try:
+        return datetime.strptime(uhr, "%H:%M:%S").strftime("%H:%M")
+    except:
+        return uhr
+
+df_all["Uhrzeit"] = df_all["Uhrzeit"].apply(format_uhrzeit)
 
 # Letzte Ersetzung aller Spalten für die HTML-Ausgabe
 def clean_all_names(row):
