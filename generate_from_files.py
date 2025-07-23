@@ -3,15 +3,13 @@ from pathlib import Path
 from datetime import datetime
 import re
 
-# Lokale .ics-Dateien
 ICS_FILES = {
     "1. BL": "usc1.ics",
     "2. BLN": "usc2.ics",
-    "OL2": "usc3.ics",
+    "OL 2": "usc3.ics",
     "BK 26": "usc5.ics"
 }
 
-# Zielverein erkennen – unabhängig von Groß-/Kleinschreibung oder Zusatznummer
 def is_usc_game(summary):
     return "usc münster" in summary.lower()
 
@@ -24,15 +22,15 @@ for liga, file_path in ICS_FILES.items():
         for vevent in cal.walk("VEVENT"):
             summary = str(vevent.get("SUMMARY", ""))
             if not is_usc_game(summary):
-                continue  # Nur USC-Spiele
+                continue
 
             start = vevent["DTSTART"].dt
             date = start.date()
             time_str = start.strftime("%H:%M") if isinstance(start, datetime) else "01:00"
             location = str(vevent.get("LOCATION", "–"))
 
-            # Heim und Gast mit robuster Trennung
-            match = re.search(r"^(.*?)\s+(?:vs|\-\s)\s+(.*?)(?:,|$)", summary)
+            # Nur bei "vs" oder "vs." trennen
+            match = re.search(r"^(.*?)\s+vs\.?\s+(.*?)(?:,|$)", summary, flags=re.IGNORECASE)
             if match:
                 heim = match.group(1).strip()
                 gast = match.group(2).strip()
@@ -40,7 +38,7 @@ for liga, file_path in ICS_FILES.items():
                 heim = summary.strip()
                 gast = ""
 
-            # Bereinige unerwünschte Ränder
+            # Unerwünschte Zeichen entfernen
             heim = re.sub(r"^[^A-Za-z0-9ÄÖÜäöüß]+|[^A-Za-z0-9ÄÖÜäöüß\- ]+$", "", heim)
             gast = re.sub(r"^[^A-Za-z0-9ÄÖÜäöüß]+|[^A-Za-z0-9ÄÖÜäöüß\- ]+$", "", gast)
 
