@@ -6,8 +6,8 @@ import html
 # CSV-Dateien + Zuordnung
 csv_files = [
     ("Spielplan_1._Bundesliga_Frauen.csv", "USC Münster", "USC1"),
-    ("Spielplan_2._Bundesliga_Frauen_Nord.csv", "USC MÜNSTER II", "USC2"),
-    ("Spielplan_Oberliga_2_Frauen.csv", "USC MÜNSTER III", "USC3"),
+    ("Spielplan_2._Bundesliga_Frauen_Nord.csv", "USC Münster II", "USC2"),
+    ("Spielplan_Oberliga_2_Frauen.csv", "USC Münster III", "USC3"),
     ("Spielplan_Bezirksklasse_26_Frauen.csv", None, None),
     ("Spielplan_NRW-Liga_wU18.csv", "USC Münster", "U18")
 ]
@@ -55,7 +55,7 @@ for file, keyword, team_code in csv_files:
 
     df["USC_Team"] = df.apply(get_usc_team, axis=1)
 
-    # Namen in ALLEN relevanten Spalten ersetzen
+    # Namen in allen relevanten Spalten ersetzen
     def replace_usc_names(s, team):
         s = str(s)
         if team == "USC6":
@@ -65,14 +65,14 @@ for file, keyword, team_code in csv_files:
         if team == "USC1":
             s = s.replace("USC Münster", "USC1")
         if team == "USC2":
-            s = s.replace("USC MÜNSTER II", "USC2")
+            s = s.replace("USC Münster II", "USC2")
         if team == "USC3":
-            s = s.replace("USC MÜNSTER III", "USC3")
+            s = s.replace("USC Münster III", "USC3")
         if team.startswith("USC-U"):
             s = s.replace("USC Münster", team)
         return s
 
-    for col in ["Heim", "Gast", "SR", "Gastgeber"]:
+    for col in ["Heim", "Gast", "SR", "Gastgeber", "Ort", "Spielrunde"]:
         df[col] = df.apply(lambda row: replace_usc_names(row[col], row["USC_Team"]), axis=1)
 
     dfs.append(df)
@@ -97,6 +97,14 @@ df_all["Tag"] = df_all["Datum_DT"].dt.day_name().map(tage_map)
 # Uhrzeit "00:00:00" → "offen"
 df_all["Uhrzeit"] = df_all["Uhrzeit"].replace("00:00:00", "offen")
 
+# Letzte Ersetzung aller Spalten für die HTML-Ausgabe
+def clean_all_names(row):
+    for col in ["Heim", "Gast", "SR", "Gastgeber", "Ort", "Spielrunde"]:
+        row[col] = replace_usc_names(row[col], row["USC_Team"])
+    return row
+
+df_all = df_all.apply(clean_all_names, axis=1)
+
 # Sortierung
 df_all = df_all.sort_values(by=["Datum_DT", "Uhrzeit"])
 
@@ -114,7 +122,7 @@ table_rows = "\n".join(
     for _, row in df_all.iterrows()
 )
 
-# HTML-Seite generieren
+# HTML-Seite erzeugen
 html_code = f"""<!doctype html>
 <html lang="de">
 <head>
