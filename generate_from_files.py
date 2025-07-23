@@ -5,9 +5,9 @@ import re
 
 # Lokale .ics-Dateien für die Ligen
 ICS_FILES = {
-    "1. Bundesliga": "usc1.ics",
-    "2. Bundesliga Nord": "usc2.ics",
-    "Oberliga 2 NRW": "usc3.ics"
+    "1.BL": "usc1.ics",
+    "2.BLN": "usc2.ics",
+    "OL2": "usc3.ics"
 }
 
 usc_keywords = ["USC Münster", "USC Muenster", "USC MÜNSTER"]
