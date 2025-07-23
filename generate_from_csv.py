@@ -40,11 +40,11 @@ for file, keyword, team_code in csv_files:
 
     # USC-Team bestimmen
     def get_usc_team(row):
-        text = f"{row['Heim']} {row['Gast']} {row['SR']} {row['Gastgeber']}"
+        text = f"{row['Heim']} {row['Gast']} {row['SR']} {row['Gastgeber']}".lower()
         if file == "Spielplan_Bezirksklasse_26_Frauen.csv":
-            if "USC Münster VI" in text:
+            if "usc münster vi" in text:
                 return "USC6"
-            elif "USC Münster V" in text:
+            elif "usc münster v" in text:
                 return "USC5"
             else:
                 return "USC5/6"
@@ -55,21 +55,20 @@ for file, keyword, team_code in csv_files:
 
     df["USC_Team"] = df.apply(get_usc_team, axis=1)
 
-    # Namen in allen relevanten Spalten ersetzen
+    # Namen ersetzen (case-insensitive)
     def replace_usc_names(s, team):
         s = str(s)
-        if team == "USC6":
-            s = s.replace("USC Münster VI", "USC6")
-        if team == "USC5":
-            s = s.replace("USC Münster V", "USC5")
-        if team == "USC1":
-            s = s.replace("USC Münster", "USC1")
-        if team == "USC2":
-            s = s.replace("USC Münster II", "USC2")
-        if team == "USC3":
-            s = s.replace("USC Münster III", "USC3")
+        replacements = {
+            "USC6": [("USC Münster VI", "USC6")],
+            "USC5": [("USC Münster V", "USC5")],
+            "USC1": [("USC Münster", "USC1")],
+            "USC2": [("USC Münster II", "USC2")],
+            "USC3": [("USC Münster III", "USC3")],
+        }
         if team.startswith("USC-U"):
-            s = s.replace("USC Münster", team)
+            return s.replace("USC Münster", team)
+        for old, new in replacements.get(team, []):
+            s = s.replace(old, new)
         return s
 
     for col in ["Heim", "Gast", "SR", "Gastgeber", "Ort", "Spielrunde"]:
@@ -105,19 +104,13 @@ def format_uhrzeit(uhr):
 
 df_all["Uhrzeit"] = df_all["Uhrzeit"].apply(format_uhrzeit)
 
-# Ersetzung für HTML-Ausgabe
+# Letzte Ersetzung aller Spalten
 def clean_all_names(row):
     for col in ["Heim", "Gast", "SR", "Gastgeber", "Ort", "Spielrunde"]:
         row[col] = replace_usc_names(row[col], row["USC_Team"])
     return row
 
 df_all = df_all.apply(clean_all_names, axis=1)
-
-# Kalenderwoche und Farbklasse
-df_all["KW"] = df_all["Datum_DT"].dt.isocalendar().week
-# KW-Reihenfolge ermitteln und farblich abwechselnd markieren
-kw_order = {kw: i for i, kw in enumerate(sorted(df_all["KW"].dropna().unique()))}
-df_all["RowClass"] = df_all["KW"].map(lambda k: "kw-even" if kw_order.get(k, 0) % 2 == 0 else "kw-odd")
 
 # Sortierung
 df_all = df_all.sort_values(by=["Datum_DT", "Uhrzeit"])
@@ -129,14 +122,14 @@ teams = sorted(df_all["USC_Team"].dropna().unique())
 
 # HTML-Zeilen generieren
 table_rows = "\n".join(
-    f"<tr class='{row['RowClass']}' data-team='{html.escape(row['USC_Team'])}' data-spielrunde='{html.escape(row['Spielrunde'])}' data-ort='{html.escape(row['Ort'])}'>" +
+    f"<tr data-team='{html.escape(row['USC_Team'])}' data-spielrunde='{html.escape(row['Spielrunde'])}' data-ort='{html.escape(row['Ort'])}'>" +
     "".join(f"<td>{html.escape(str(row[col]))}</td>" for col in [
         "Datum", "Uhrzeit", "Tag", "Heim", "Gast", "SR", "Gastgeber", "Ort", "Spielrunde"
     ]) + "</tr>"
     for _, row in df_all.iterrows()
 )
 
-# HTML-Seite erzeugen
+# HTML-Datei generieren
 html_code = f"""<!doctype html>
 <html lang="de">
 <head>
@@ -146,8 +139,6 @@ html_code = f"""<!doctype html>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
     .hidden {{ display: none; }}
-    .kw-odd {{ background-color: #f9f9f9; }}
-    .kw-even {{ background-color: #ffffff; }}
     th, td {{ white-space: nowrap; }}
     @media print {{
       body * {{ visibility: hidden; }}
