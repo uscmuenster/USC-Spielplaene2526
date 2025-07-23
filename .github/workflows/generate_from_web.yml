@@ -25,7 +25,7 @@ jobs:
 
       - name: 🌐 CSV-Dateien herunterladen und HTML generieren
         run: |
-          python download_and_generate.py
+          python generate_from_web.py
 
       - name: 📤 Änderungen committen und pushen
         run: |
