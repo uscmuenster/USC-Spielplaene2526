@@ -14,9 +14,6 @@ jobs:
 
     steps:
 
-      - name: 📦 Abhängigkeiten installieren
-        run: pip install icalendar requests
-
       - name: 📥 Repository klonen
         uses: actions/checkout@v4
 
@@ -26,7 +23,7 @@ jobs:
           python-version: '3.10'
 
       - name: 📦 Abhängigkeiten installieren
-        run: pip install icalendar
+        run: pip install icalendar requests
 
       - name: 🛠 HTML generieren aus ICS-Dateien
         run: python generate_html.py
