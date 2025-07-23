@@ -1,37 +1,36 @@
-name: Spielplan aus ICS-Dateien generieren
+name: 🔁 HTML aus ICS-Dateien generieren
 
 on:
+  push:
+    paths:
+      - 'usc1.ics'
+      - 'usc2.ics'
+      - 'usc3.ics'
   workflow_dispatch:
-  schedule:
-      - cron: "0 3 * * *"
 
 jobs:
-  build-from-files:
+  build:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
 
-      - name: Python installieren
+    steps:
+      - name: 📥 Repository klonen
+        uses: actions/checkout@v4
+
+      - name: 🐍 Python einrichten
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
 
-      - name: Abhängigkeiten installieren
+      - name: 📦 Abhängigkeiten installieren
         run: pip install icalendar
 
-      - name: HTML aus lokalen ICS-Dateien erzeugen
-        run: python generate_from_files.py
+      - name: 🛠 HTML generieren aus ICS-Dateien
+        run: python generate_html.py
 
-      - name: Commit & Push
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "🔄 Auto-Update der ICS-Dateien"
-          commit_user_name: github-actions
-          commit_user_email: actions@github.com
-          push_options: --force
-          repository: https://x-access-token:${{ secrets.GH_PAT }}@github.com/uscmuenster/USC-Spielplaene2526.git
-      
-      - name: HTML automatisch committen
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "♻ HTML aus lokalen ICS-Dateien aktualisiert"
+      - name: 🔁 Commit und Push via Token
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add docs/index.html
+          git commit -m "📅 HTML-Aktualisierung" || echo "nichts zu committen"
+          git push https://x-access-token:${{ secrets.GH_PAT }}@github.com/uscmuenster/USC-Spielplaene2526.git
