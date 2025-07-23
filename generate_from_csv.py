@@ -2,7 +2,7 @@ from pathlib import Path
 from datetime import datetime
 import pandas as pd
 
-# CSV-Dateien mit Ligazugehörigkeit
+# CSV-Dateien mit Spielplänen
 csv_files = [
     "Spielplan_1._Bundesliga_Frauen.csv",
     "Spielplan_2._Bundesliga_Frauen_Nord.csv",
@@ -12,19 +12,18 @@ csv_files = [
 
 usc_keywords = ["USC Münster", "USC Muenster", "USC MÜNSTER"]
 
-# Einheitliche Spaltennamen
 rename_map = {
     "Datum": "Datum",
     "Uhrzeit": "Uhrzeit",
-    "Heimmannschaft": "Mannschaft 1",
-    "Gastmannschaft": "Mannschaft 2",
-    "Schiedsgericht": "Schiedsgericht",
+    "Heimmannschaft": "Heim",
+    "Gastmannschaft": "Gast",
+    "Schiedsgericht": "SR",
     "Gastgeber": "Gastgeber",
-    "Austragungsort": "Austragungsort",
+    "Austragungsort": "Ort",
     "Spielrunde": "Spielrunde"
 }
 
-# Einlesen & vereinheitlichen
+# CSV einlesen
 dfs = []
 for file in csv_files:
     df = pd.read_csv(file, sep=";", encoding="cp1252")
@@ -38,9 +37,9 @@ df_all = pd.concat(dfs, ignore_index=True)
 def contains_usc(*fields):
     return any(any(usc in str(field) for usc in usc_keywords) for field in fields)
 
-df_all = df_all[df_all.apply(lambda row: contains_usc(row["Mannschaft 1"], row["Mannschaft 2"], row["Schiedsgericht"]), axis=1)]
+df_all = df_all[df_all.apply(lambda row: contains_usc(row["Heim"], row["Gast"], row["SR"]), axis=1)]
 
-# Datum & Tag verarbeiten
+# Datum umwandeln & Tag extrahieren
 def parse_datum(datum_str):
     try:
         return datetime.strptime(datum_str, "%d.%m.%Y")
@@ -50,21 +49,23 @@ def parse_datum(datum_str):
 df_all["Datum_DT"] = df_all["Datum"].apply(parse_datum)
 df_all["Tag"] = df_all["Datum_DT"].dt.strftime("%a").replace({"Sat": "Sa", "Sun": "So"})
 
-# Uhrzeit "00:00" → "offen"
+# Uhrzeit 00:00 → offen
 df_all["Uhrzeit"] = df_all["Uhrzeit"].replace("00:00", "offen")
 
 # Sortieren
 df_all = df_all.sort_values(by=["Datum_DT", "Uhrzeit"])
 
-# Spalten für HTML
+# Spalten in gewünschter Reihenfolge
 df_result = df_all[[
     "Datum", "Uhrzeit", "Tag",
-    "Mannschaft 1", "Mannschaft 2", "Schiedsgericht",
-    "Gastgeber", "Austragungsort", "Spielrunde"
+    "Heim", "Gast", "SR",
+    "Gastgeber", "Ort", "Spielrunde"
 ]]
 
-# HTML erzeugen
+# HTML-Tabelle erzeugen
 html_table = df_result.to_html(index=False, escape=False)
+
+# HTML-Dokument bauen
 html = f"""<!doctype html>
 <html lang="de">
 <head>
@@ -84,7 +85,7 @@ html = f"""<!doctype html>
 </html>
 """
 
-# HTML speichern
+# Speichern
 Path("docs").mkdir(exist_ok=True)
 Path("docs/index.html").write_text(html, encoding="utf-8")
 print("✅ HTML-Datei erfolgreich generiert: docs/index.html")
