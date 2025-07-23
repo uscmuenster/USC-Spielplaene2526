@@ -11,13 +11,14 @@ ICS_FILES = {
     "BK 26": "usc5.ics"
 }
 
-# Zielverein, unabhängig von Schreibweise oder Zahl dahinter
+# Zielverein erkennen – unabhängig von Groß-/Kleinschreibung oder Zusatznummer
 def is_usc_game(summary):
     return "usc münster" in summary.lower()
 
 events = []
 
 for liga, file_path in ICS_FILES.items():
+    print(f"📂 Verarbeite Datei: {file_path} ({liga})")
     with open(file_path, "rb") as f:
         cal = Calendar.from_ical(f.read())
         for vevent in cal.walk("VEVENT"):
@@ -30,7 +31,7 @@ for liga, file_path in ICS_FILES.items():
             time_str = start.strftime("%H:%M") if isinstance(start, datetime) else "01:00"
             location = str(vevent.get("LOCATION", "–"))
 
-            # Heim und Gast sicher trennen (z. B. bei "TV Hörde - USC Münster 2")
+            # Heim und Gast mit robuster Trennung
             match = re.search(r"^(.*?)\s+(?:vs|\-\s)\s+(.*?)(?:,|$)", summary)
             if match:
                 heim = match.group(1).strip()
@@ -39,9 +40,11 @@ for liga, file_path in ICS_FILES.items():
                 heim = summary.strip()
                 gast = ""
 
-            # Ränder bereinigen
+            # Bereinige unerwünschte Ränder
             heim = re.sub(r"^[^A-Za-z0-9ÄÖÜäöüß]+|[^A-Za-z0-9ÄÖÜäöüß\- ]+$", "", heim)
             gast = re.sub(r"^[^A-Za-z0-9ÄÖÜäöüß]+|[^A-Za-z0-9ÄÖÜäöüß\- ]+$", "", gast)
+
+            print(f"➡️ Spiel erkannt: {date} {time_str} | {heim} vs {gast} ({liga}) @ {location}")
 
             events.append((date, time_str, heim, gast, location.strip(), liga))
 
