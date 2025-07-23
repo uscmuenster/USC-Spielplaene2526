@@ -34,7 +34,7 @@ for file, keyword, team_code in csv_files:
 
     # Nur USC-Spiele behalten
     def contains_usc(row):
-        return any(usc in str(row[f]) for f in ["Heim", "Gast", "SR", "Gastgeber"] for usc in usc_keywords)
+        return any(usc.lower() in str(row[f]).lower() for f in ["Heim", "Gast", "SR", "Gastgeber"] for usc in usc_keywords)
 
     df = df[df.apply(contains_usc, axis=1)]
 
@@ -105,13 +105,18 @@ def format_uhrzeit(uhr):
 
 df_all["Uhrzeit"] = df_all["Uhrzeit"].apply(format_uhrzeit)
 
-# Letzte Ersetzung aller Spalten für die HTML-Ausgabe
+# Ersetzung für HTML-Ausgabe
 def clean_all_names(row):
     for col in ["Heim", "Gast", "SR", "Gastgeber", "Ort", "Spielrunde"]:
         row[col] = replace_usc_names(row[col], row["USC_Team"])
     return row
 
 df_all = df_all.apply(clean_all_names, axis=1)
+
+# Kalenderwoche und Farbklasse
+df_all["KW"] = df_all["Datum_DT"].dt.isocalendar().week
+kw_ranks = df_all["KW"].rank(method="dense").astype(int)
+df_all["RowClass"] = (kw_ranks % 2).map({0: "kw-even", 1: "kw-odd"})
 
 # Sortierung
 df_all = df_all.sort_values(by=["Datum_DT", "Uhrzeit"])
@@ -123,7 +128,7 @@ teams = sorted(df_all["USC_Team"].dropna().unique())
 
 # HTML-Zeilen generieren
 table_rows = "\n".join(
-    f"<tr data-team='{html.escape(row['USC_Team'])}' data-spielrunde='{html.escape(row['Spielrunde'])}' data-ort='{html.escape(row['Ort'])}'>" +
+    f"<tr class='{row['RowClass']}' data-team='{html.escape(row['USC_Team'])}' data-spielrunde='{html.escape(row['Spielrunde'])}' data-ort='{html.escape(row['Ort'])}'>" +
     "".join(f"<td>{html.escape(str(row[col]))}</td>" for col in [
         "Datum", "Uhrzeit", "Tag", "Heim", "Gast", "SR", "Gastgeber", "Ort", "Spielrunde"
     ]) + "</tr>"
@@ -140,6 +145,8 @@ html_code = f"""<!doctype html>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
     .hidden {{ display: none; }}
+    .kw-odd {{ background-color: #f9f9f9; }}
+    .kw-even {{ background-color: #ffffff; }}
     th, td {{ white-space: nowrap; }}
     @media print {{
       body * {{ visibility: hidden; }}
