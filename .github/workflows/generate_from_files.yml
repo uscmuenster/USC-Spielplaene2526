@@ -6,6 +6,7 @@ on:
       - 'usc1.ics'
       - 'usc2.ics'
       - 'usc3.ics'
+      - 'usc5.ics'
   workflow_dispatch:
 
 jobs:
@@ -16,6 +17,8 @@ jobs:
 
       - name: 📥 Repository klonen
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_PAT }}
 
       - name: 🐍 Python einrichten
         uses: actions/setup-python@v5
