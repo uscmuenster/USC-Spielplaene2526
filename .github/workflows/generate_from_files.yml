@@ -13,6 +13,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
+      - name: 📦 Abhängigkeiten installieren
+        run: pip install icalendar requests
+
       - name: 📥 Repository klonen
         uses: actions/checkout@v4
 
