@@ -6,8 +6,8 @@ import html
 # CSV-Dateien + Zuordnung
 csv_files = [
     ("Spielplan_1._Bundesliga_Frauen.csv", "USC Münster", "USC1"),
-    ("Spielplan_2._Bundesliga_Frauen_Nord.csv", "USC Münster", "USC2"),
-    ("Spielplan_Oberliga_2_Frauen.csv", "USC Münster", "USC3"),
+    ("Spielplan_2._Bundesliga_Frauen_Nord.csv", "USC MÜNSTER II", "USC2"),
+    ("Spielplan_Oberliga_2_Frauen.csv", "USC MÜNSTER III", "USC3"),
     ("Spielplan_Bezirksklasse_26_Frauen.csv", None, None),
     ("Spielplan_NRW-Liga_wU18.csv", "USC Münster", "U18")
 ]
@@ -65,9 +65,9 @@ for file, keyword, team_code in csv_files:
         if team == "USC1":
             s = s.replace("USC Münster", "USC1")
         if team == "USC2":
-            s = s.replace("USC Münster", "USC2")
+            s = s.replace("USC Münster II", "USC2")
         if team == "USC3":
-            s = s.replace("USC Münster", "USC3")
+            s = s.replace("USC MÜNSTER III", "USC3")
         if team.startswith("USC-U"):
             s = s.replace("USC Münster", team)
         return s
