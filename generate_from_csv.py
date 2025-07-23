@@ -115,8 +115,9 @@ df_all = df_all.apply(clean_all_names, axis=1)
 
 # Kalenderwoche und Farbklasse
 df_all["KW"] = df_all["Datum_DT"].dt.isocalendar().week
-kw_ranks = df_all["KW"].rank(method="dense").astype(int)
-df_all["RowClass"] = (kw_ranks % 2).map({0: "kw-even", 1: "kw-odd"})
+# KW-Reihenfolge ermitteln und farblich abwechselnd markieren
+kw_order = {kw: i for i, kw in enumerate(sorted(df_all["KW"].dropna().unique()))}
+df_all["RowClass"] = df_all["KW"].map(lambda k: "kw-even" if kw_order.get(k, 0) % 2 == 0 else "kw-odd")
 
 # Sortierung
 df_all = df_all.sort_values(by=["Datum_DT", "Uhrzeit"])
