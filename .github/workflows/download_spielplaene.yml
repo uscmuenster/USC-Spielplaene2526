@@ -1,0 +1,34 @@
+name: Download Volleyball CSV
+
+on:
+  workflow_dispatch:   # Manuell auslösbar über GitHub-Oberfläche
+  schedule:
+    - cron: '0 6 * * *'  # Täglich um 6 Uhr UTC (8 Uhr MESZ)
+
+jobs:
+  download_csv:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Create csvdata directory if not exists
+        run: mkdir -p csvdata
+
+      - name: Download CSV file
+        run: |
+          curl -L "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95239897" \
+            -o csvdata/spielplan.csv
+
+      - name: Commit and push if changed
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add csvdata/spielplan.csv
+          if git diff --cached --quiet; then
+            echo "No changes in CSV. Nothing to commit."
+          else
+            git commit -m "Update volleyball CSV file"
+            git push
+          fi
