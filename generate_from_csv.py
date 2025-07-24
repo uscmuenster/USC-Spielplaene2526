@@ -3,10 +3,10 @@ from datetime import datetime
 import pandas as pd
 import html
 
-# Verzeichnis (leer lassen, weil Dateien im Hauptverzeichnis liegen)
+# Verzeichnis
 csv_dir = Path("csvdata")
 
-# Liste der CSV-Dateien und Teamcodes
+# CSV-Dateien mit zugehörigen USC-Codes
 csv_files = [
     ("Spielplan_1._Bundesliga_Frauen.csv", "USC1"),
     ("Spielplan_2._Bundesliga_Frauen_Nord.csv", "USC2"),
@@ -37,18 +37,16 @@ rename_map = {
 dfs = []
 
 for file, team_code in csv_files:
-    file_path = csv_dir / file  # z. B. Path("Spielplan_1._Bundesliga_Frauen.csv")
+    file_path = csv_dir / file
     df = pd.read_csv(file_path, sep=";", encoding="cp1252")
     df.columns = df.columns.str.strip()
     df = df.rename(columns=rename_map)
 
-    # Nur USC-Spiele behalten
     def contains_usc(row):
         return any(usc.lower() in str(row[f]).lower() for f in ["Heim", "Gast", "SR", "Gastgeber"] for usc in usc_keywords)
 
     df = df[df.apply(contains_usc, axis=1)]
 
-    # USC-Team bestimmen
     def get_usc_team(row):
         text = f"{row['Heim']} {row['Gast']} {row['SR']} {row['Gastgeber']}".lower()
         if file == "Spielplan_Bezirksklasse_26_Frauen.csv":
@@ -63,22 +61,12 @@ for file, team_code in csv_files:
                 return "USC8"
             elif "usc münster vii" in text:
                 return "USC7"
-            else:
+            elif "usc münster" in text:
                 return "USC7/8"
-        if team_code == "U18":
-            jugend = str(row.get("Spielrunde", ""))[-3:]
-            return f"USC-{jugend.upper()}"
-        if team_code == "U16":
-            jugend = str(row.get("Spielrunde", ""))[-3:]
-            return f"USC-{jugend.upper()}"
-        if team_code == "U14":
-            jugend = str(row.get("Spielrunde", ""))[-3:]
-            return f"USC-{jugend.upper()}"
         return team_code
 
     df["USC_Team"] = df.apply(get_usc_team, axis=1)
 
-    # Namen in allen relevanten Spalten ersetzen
     def replace_usc_names(s, team):
         s = str(s)
         replacements = {
@@ -90,9 +78,13 @@ for file, team_code in csv_files:
             "USC4": [("USC Münster IV", "USC4")],
             "USC8": [("USC Münster VIII", "USC8")],
             "USC7": [("USC Münster VII", "USC7")],
+            "USC-U14-1": [("USC Münster", "USC-U14-1")],
+            "USC-U14-2": [("USC Münster II", "USC-U14-2")],
+            "USC-U16-1": [("USC Münster", "USC-U16-1")],
+            "USC-U16-2": [("USC Münster II", "USC-U16-2")],
+            "USC-U18": [("USC Münster", "USC-U18")],
         }
-        if team.startswith("USC-U"):
-            return s.replace("USC Münster", team)
+
         for old, new in replacements.get(team, []):
             s = s.replace(old, new)
         return s
@@ -102,10 +94,8 @@ for file, team_code in csv_files:
 
     dfs.append(df)
 
-# Alles zusammenführen
 df_all = pd.concat(dfs, ignore_index=True)
 
-# Datum & Tag verarbeiten
 def parse_datum(s):
     try:
         return datetime.strptime(s, "%d.%m.%Y")
@@ -119,7 +109,6 @@ tage_map = {
 }
 df_all["Tag"] = df_all["Datum_DT"].dt.day_name().map(tage_map)
 
-# Uhrzeit umformatieren
 def format_uhrzeit(uhr):
     if uhr == "00:00:00":
         return "???"
@@ -130,7 +119,6 @@ def format_uhrzeit(uhr):
 
 df_all["Uhrzeit"] = df_all["Uhrzeit"].apply(format_uhrzeit)
 
-# Letzte Ersetzung aller Spalten
 def clean_all_names(row):
     for col in ["Heim", "Gast", "SR", "Gastgeber", "Ort", "Spielrunde"]:
         row[col] = replace_usc_names(row[col], row["USC_Team"])
@@ -138,15 +126,16 @@ def clean_all_names(row):
 
 df_all = df_all.apply(clean_all_names, axis=1)
 
-# Sortierung
+# Unerwünschte " II" bei Jugendteams entfernen
+for col in ["Heim", "Gast", "SR", "Gastgeber"]:
+    df_all[col] = df_all[col].str.replace(r'\b(USC-U\d{2}-\d) II\b', r'\1', regex=True)
+
 df_all = df_all.sort_values(by=["Datum_DT", "Uhrzeit"])
 
-# Dropdown-Werte
 spielrunden = sorted(df_all["Spielrunde"].dropna().unique())
 orte = sorted([o for o in df_all["Ort"].dropna().unique() if "münster" in o.lower()])
 teams = sorted(df_all["USC_Team"].dropna().unique())
 
-# HTML-Zeilen generieren
 table_rows = "\n".join(
     f"<tr data-team='{html.escape(row['USC_Team'])}' data-spielrunde='{html.escape(row['Spielrunde'])}' data-ort='{html.escape(row['Ort'])}'>" +
     "".join(f"<td>{html.escape(str(row[col]))}</td>" for col in [
@@ -155,7 +144,6 @@ table_rows = "\n".join(
     for _, row in df_all.iterrows()
 )
 
-# HTML-Datei generieren
 html_code = f"""<!doctype html>
 <html lang="de">
 <head>
@@ -256,7 +244,6 @@ html_code = f"""<!doctype html>
 </html>
 """
 
-# Speichern
 Path("docs").mkdir(exist_ok=True)
 Path("docs/index.html").write_text(html_code, encoding="utf-8")
 print("✅ HTML-Datei erfolgreich erstellt.")
