@@ -1,9 +1,9 @@
-name: 🌐 Download Volleyball CSVs
+name: Download Volleyball CSVs
 
 on:
-  workflow_dispatch:   # Manuell auslösbar
+  workflow_dispatch:
   schedule:
-    - cron: '0 6 * * *'  # Täglich um 6 Uhr UTC (8 Uhr MESZ)
+    - cron: '0 6 * * *'
 
 jobs:
   download_csv:
@@ -21,13 +21,11 @@ jobs:
       - name: 🌐 CSV-Dateien herunterladen mit Originalnamen
         run: |
           cd csvdata
-          rm -f *.csv  # Alte CSV-Dateien löschen
+          rm -f *.csv
 
           urls=(
             "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95239897"
-            "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95244480"
-
-"https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95244340" 
+            "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95244340"
             "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95243632"
             "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95241488"
             "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95245637"
