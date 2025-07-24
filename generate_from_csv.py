@@ -69,24 +69,34 @@ for file, team_code in csv_files:
 
     def replace_usc_names(s, team):
         s = str(s)
-        replacements = {
-            "USC6": [("USC Münster VI", "USC6")],
-            "USC5": [("USC Münster V", "USC5")],
-            "USC1": [("USC Münster", "USC1")],
-            "USC2": [("USC Münster II", "USC2")],
-            "USC3": [("USC Münster III", "USC3")],
-            "USC4": [("USC Münster IV", "USC4")],
-            "USC8": [("USC Münster VIII", "USC8")],
-            "USC7": [("USC Münster VII", "USC7")],
-            "USC-U14-1": [("USC Münster", "USC-U14-1")],
-            "USC-U14-2": [("USC Münster II", "USC-U14-2")],
-            "USC-U16-1": [("USC Münster", "USC-U16-1")],
-            "USC-U16-2": [("USC Münster II", "USC-U16-2")],
-            "USC-U18": [("USC Münster", "USC-U18")],
+
+        # Globale Ersetzungen (greifen unabhängig vom Team)
+        global_replacements = [
+            ("USC Münster VIII", "USC8"),
+            ("USC Münster VII", "USC7"),
+            ("USC Münster VI",  "USC6"),
+            ("USC Münster V",   "USC5"),
+            ("USC Münster IV",  "USC4"),
+            ("USC Münster III", "USC3"),
+            ("USC Münster II",  "USC2"),
+            ("USC Münster",     "USC1"),
+        ]
+
+        # Team-spezifische Korrekturen (z. B. Jugend)
+        team_specific = {
+            "USC-U14-1": [("USC1", "USC-U14-1")],
+            "USC-U14-2": [("USC2", "USC-U14-2")],
+            "USC-U16-1": [("USC1", "USC-U16-1")],
+            "USC-U16-2": [("USC2", "USC-U16-2")],
+            "USC-U18":   [("USC1", "USC-U18")],
         }
 
-        for old, new in replacements.get(team, []):
+        for old, new in global_replacements:
             s = s.replace(old, new)
+
+        for old, new in team_specific.get(team, []):
+            s = s.replace(old, new)
+
         return s
 
     for col in ["Heim", "Gast", "SR", "Gastgeber", "Ort", "Spielrunde"]:
@@ -126,9 +136,9 @@ def clean_all_names(row):
 
 df_all = df_all.apply(clean_all_names, axis=1)
 
-# Unerwünschte " II" bei Jugendteams entfernen
+# Falsche "II" entfernen z. B. "USC-U14-2 II"
 for col in ["Heim", "Gast", "SR", "Gastgeber"]:
-    df_all[col] = df_all[col].str.replace(r'\b(USC-U\d{2}-\d) II\b', r'\1', regex=True)
+    df_all[col] = df_all[col].str.replace(r'\b(USC-[U\d]+-\d) II\b', r'\1', regex=True)
 
 df_all = df_all.sort_values(by=["Datum_DT", "Uhrzeit"])
 
