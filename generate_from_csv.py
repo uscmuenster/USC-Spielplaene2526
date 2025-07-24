@@ -4,7 +4,7 @@ import pandas as pd
 import html
 
 # Verzeichnis (leer lassen, weil Dateien im Hauptverzeichnis liegen)
-csv_dir = Path("")
+csv_dir = Path("csvdata")
 
 # Liste der CSV-Dateien und Teamcodes
 csv_files = [
