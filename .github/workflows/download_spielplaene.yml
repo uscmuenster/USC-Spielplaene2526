@@ -1,9 +1,9 @@
-name: Download Volleyball CSV
+name: 🌐 Download Volleyball CSVs
 
 on:
-  workflow_dispatch:
+  workflow_dispatch:   # manuell auslösbar
   schedule:
-    - cron: '0 6 * * *'
+    - cron: '0 6 * * *'  # täglich um 6 Uhr UTC
 
 jobs:
   download_csv:
@@ -18,10 +18,26 @@ jobs:
       - name: 📁 Verzeichnis csvdata anlegen
         run: mkdir -p csvdata
 
-      - name: 🌐 CSV-Datei herunterladen mit Originalnamen
+      - name: 🌐 CSV-Dateien herunterladen mit Originalnamen
         run: |
           cd csvdata
-          curl -L -OJ "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95239897"
+          urls=(
+            "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95239897"
+            "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95244480"
+            "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95243632"
+            "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95241488"
+            "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95245637"
+            "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95245654"
+            "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95251101"
+            "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95251080"
+            "https://www.volleyball-bundesliga.de/servlet/league/PlayingScheduleCsvExport?matchSeriesId=776311171"
+            "https://www.volleyball-bundesliga.de/servlet/league/PlayingScheduleCsvExport?matchSeriesId=776309163"
+            "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95250874"
+          )
+
+          for url in "${urls[@]}"; do
+            curl -L -OJ "$url"
+          done
 
       - name: 🔁 Commit und Push via Token
         run: |
@@ -29,6 +45,6 @@ jobs:
           git config user.email "actions@github.com"
           git add csvdata/
           git diff --cached --quiet && echo "🟢 Keine Änderungen, nichts zu committen." || (
-            git commit -m "📊 Automatisches CSV-Update (Originalname)"
+            git commit -m "📊 Automatisches CSV-Update (mehrere Dateien)"
             git push
           )
