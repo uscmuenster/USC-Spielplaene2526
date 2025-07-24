@@ -58,7 +58,7 @@ for file, team_code in csv_files:
                 return "USC5"
             else:
                 return "USC5/6"
-        if file == "Spielplan_Kreisliga_Münster_Frauen.csv":
+        if file == "Spielplan_Kreisliga_Muenster_Frauen.csv":
             if "usc münster viii" in text:
                 return "USC8"
             elif "usc münster vii" in text:
