@@ -18,7 +18,7 @@ jobs:
       - name: 📁 Verzeichnis csvdata anlegen
         run: mkdir -p csvdata
 
-      - name: 🌐 CSV-Dateien herunterladen mit Originalnamen und Umbenennung
+      - name: 🌐 CSV-Dateien herunterladen und umbenennen
         run: |
           cd csvdata
           rm -f *.csv
@@ -41,12 +41,22 @@ jobs:
             curl -L -OJ "$url"
           done
 
-          # 🧼 Unicode-Sonderzeichen wie "ü" in Dateinamen ersetzen
+          # 🧼 Manuelle Umbenennung bekannter Problemdateien
+          if [[ -f "Spielplan_Kreisliga_Münster_Frauen.csv" ]]; then
+            mv "Spielplan_Kreisliga_Münster_Frauen.csv" "Spielplan_Kreisliga_Muenster_Frauen.csv"
+            echo "✅ Umbenannt: Spielplan_Kreisliga_Münster_Frauen.csv → Spielplan_Kreisliga_Muenster_Frauen.csv"
+          fi
+
+          # 🧼 Automatische Umbenennung sonstiger Sonderzeichen (robust)
           for file in *; do
-            newname=$(echo "$file" | iconv -f utf8 -t ascii//TRANSLIT)
+            newname=$(iconv -f utf8 -t ascii//TRANSLIT <<< "$file" 2>/dev/null || echo "$file")
             if [[ "$file" != "$newname" ]]; then
-              mv "$file" "$newname"
-              echo "✅ Umbenannt: $file → $newname"
+              if [[ -e "$newname" ]]; then
+                echo "⚠️  Zieldatei $newname existiert bereits. Datei $file wird übersprungen."
+              else
+                mv "$file" "$newname"
+                echo "✅ Umbenannt: $file → $newname"
+              fi
             fi
           done
 
@@ -56,6 +66,6 @@ jobs:
           git config user.email "actions@github.com"
           git add csvdata/
           git diff --cached --quiet && echo "🟢 Keine Änderungen, nichts zu committen." || (
-            git commit -m "📊 Automatisches CSV-Update (mit Umbenennung)"
+            git commit -m "📊 Automatisches CSV-Update (mit Sonderzeichen-Handling)"
             git push
           )
