@@ -18,7 +18,7 @@ jobs:
       - name: 📁 Verzeichnis csvdata anlegen
         run: mkdir -p csvdata
 
-      - name: 🌐 CSV-Dateien herunterladen und umbenennen
+      - name: 🌐 CSV-Dateien herunterladen mit fester Umbenennung für Münster
         run: |
           cd csvdata
           rm -f *.csv
@@ -27,7 +27,7 @@ jobs:
             "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95239897"
             "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95244340"
             "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95243632"
-            "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95241488"
+            # 95241488 wird gleich separat behandelt!
             "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95245637"
             "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95245654"
             "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95251101"
@@ -37,16 +37,14 @@ jobs:
             "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95250874"
           )
 
+          # 🔁 Standard-Downloads mit Originalnamen
           for url in "${urls[@]}"; do
             curl -L -OJ "$url"
           done
 
-          # 🧼 Manuelle Umbenennung bekannter Problemdateien
-          if [[ -f "Spielplan_Kreisliga_Münster_Frauen.csv" ]]; then
-            mv "Spielplan_Kreisliga_Münster_Frauen.csv" "Spielplan_Kreisliga_Muenster_Frauen.csv"
-            echo "✅ Umbenannt: Spielplan_Kreisliga_Münster_Frauen.csv → Spielplan_Kreisliga_Muenster_Frauen.csv"
-          fi
-
+          # 🎯 Spezieller Download für Münster mit manuellem Dateinamen
+          curl -L "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95241488" \
+            -o "Spielplan_Kreisliga_Muenster_Frauen.csv"
 
       - name: 🔁 Commit und Push via Token
         run: |
