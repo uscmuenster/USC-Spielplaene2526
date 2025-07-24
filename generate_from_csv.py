@@ -3,9 +3,23 @@ from datetime import datetime
 import pandas as pd
 import html
 
-# CSV-Dateien im Ordner csvdata/
-csv_dir = Path("csvdata")
-csv_files = list(csv_dir.glob("*.csv"))
+# Verzeichnis (leer lassen, weil Dateien im Hauptverzeichnis liegen)
+csv_dir = Path("")
+
+# Liste der CSV-Dateien und Teamcodes
+csv_files = [
+    ("Spielplan_1._Bundesliga_Frauen.csv", "USC1"),
+    ("Spielplan_2._Bundesliga_Frauen_Nord.csv", "USC2"),
+    ("Spielplan_Oberliga_2_Frauen.csv", "USC3"),
+    ("Spielplan_Bezirksliga_14_Frauen.csv", "USC4"),
+    ("Spielplan_NRW-Liga_wU14.csv", "USC-U14-1"),
+    ("Spielplan_NRW-Liga_wU16.csv", "USC-U16-1"),
+    ("Spielplan_NRW-Liga_wU18.csv", "USC-U18"),
+    ("Spielplan_Oberliga_5_wU14.csv", "USC-U14-2"),
+    ("Spielplan_Oberliga_5_wU16.csv", "USC-U16-2"),
+    ("Spielplan_Bezirksklasse_26_Frauen.csv", None),  # USC5/6
+    ("Spielplan_Kreisliga_Münster_Frauen.csv", None),  # USC7/8
+]
 
 usc_keywords = ["USC Münster", "USC Muenster", "USC MÜNSTER"]
 
@@ -22,11 +36,11 @@ rename_map = {
 
 dfs = []
 
-for file in csv_files:
-    df = pd.read_csv(file, sep=";", encoding="cp1252", dtype=str)
+for file, team_code in csv_files:
+    file_path = csv_dir / file  # z. B. Path("Spielplan_1._Bundesliga_Frauen.csv")
+    df = pd.read_csv(file_path, sep=";", encoding="cp1252")
     df.columns = df.columns.str.strip()
     df = df.rename(columns=rename_map)
-    df = df.fillna("")
 
     # Nur USC-Spiele behalten
     def contains_usc(row):
@@ -37,50 +51,49 @@ for file in csv_files:
     # USC-Team bestimmen
     def get_usc_team(row):
         text = f"{row['Heim']} {row['Gast']} {row['SR']} {row['Gastgeber']}".lower()
-        fname = file.name.lower()
-        if "bezirksklasse" in fname:
+        if file == "Spielplan_Bezirksklasse_26_Frauen.csv":
             if "usc münster vi" in text:
                 return "USC6"
             elif "usc münster v" in text:
                 return "USC5"
             else:
                 return "USC5/6"
-        if "kreisliga" in fname:
+        if file == "Spielplan_Kreisliga_Münster_Frauen.csv":
             if "usc münster viii" in text:
                 return "USC8"
             elif "usc münster vii" in text:
                 return "USC7"
             else:
                 return "USC7/8"
-        if any(x in fname for x in ["wU18", "wU16", "wU14"]):
+        if team_code == "U18":
             jugend = str(row.get("Spielrunde", ""))[-3:]
             return f"USC-{jugend.upper()}"
-        if "usc münster ii" in text:
-            return "USC2"
-        if "usc münster iii" in text:
-            return "USC3"
-        if "usc münster iv" in text:
-            return "USC4"
-        if "usc münster" in text:
-            return "USC1"
-        return "USC?"
+        if team_code == "U16":
+            jugend = str(row.get("Spielrunde", ""))[-3:]
+            return f"USC-{jugend.upper()}"
+        if team_code == "U14":
+            jugend = str(row.get("Spielrunde", ""))[-3:]
+            return f"USC-{jugend.upper()}"
+        return team_code
 
     df["USC_Team"] = df.apply(get_usc_team, axis=1)
 
-    # USC-Namen ersetzen
+    # Namen in allen relevanten Spalten ersetzen
     def replace_usc_names(s, team):
         s = str(s)
-        replacements = [
-            ("USC Münster VIII", "USC8"),
-            ("USC Münster VII", "USC7"),
-            ("USC Münster VI", "USC6"),
-            ("USC Münster V", "USC5"),
-            ("USC Münster IV", "USC4"),
-            ("USC Münster III", "USC3"),
-            ("USC Münster II", "USC2"),
-            ("USC Münster", team if team.startswith("USC-") else "USC1"),
-        ]
-        for old, new in replacements:
+        replacements = {
+            "USC6": [("USC Münster VI", "USC6")],
+            "USC5": [("USC Münster V", "USC5")],
+            "USC1": [("USC Münster", "USC1")],
+            "USC2": [("USC Münster II", "USC2")],
+            "USC3": [("USC Münster III", "USC3")],
+            "USC4": [("USC Münster IV", "USC4")],
+            "USC8": [("USC Münster VIII", "USC8")],
+            "USC7": [("USC Münster VII", "USC7")],
+        }
+        if team.startswith("USC-U"):
+            return s.replace("USC Münster", team)
+        for old, new in replacements.get(team, []):
             s = s.replace(old, new)
         return s
 
@@ -92,7 +105,7 @@ for file in csv_files:
 # Alles zusammenführen
 df_all = pd.concat(dfs, ignore_index=True)
 
-# Datum verarbeiten
+# Datum & Tag verarbeiten
 def parse_datum(s):
     try:
         return datetime.strptime(s, "%d.%m.%Y")
@@ -101,12 +114,12 @@ def parse_datum(s):
 
 df_all["Datum_DT"] = df_all["Datum"].apply(parse_datum)
 tage_map = {
-    "Monday": "Mo", "Tuesday": "Di", "Wednesday": "Mi",
-    "Thursday": "Do", "Friday": "Fr", "Saturday": "Sa", "Sunday": "So"
+    "Monday": "Mo", "Tuesday": "Di", "Wednesday": "Mi", "Thursday": "Do",
+    "Friday": "Fr", "Saturday": "Sa", "Sunday": "So"
 }
 df_all["Tag"] = df_all["Datum_DT"].dt.day_name().map(tage_map)
 
-# Uhrzeit vereinfachen
+# Uhrzeit umformatieren
 def format_uhrzeit(uhr):
     if uhr == "00:00:00":
         return "???"
@@ -117,7 +130,15 @@ def format_uhrzeit(uhr):
 
 df_all["Uhrzeit"] = df_all["Uhrzeit"].apply(format_uhrzeit)
 
-# Sortieren
+# Letzte Ersetzung aller Spalten
+def clean_all_names(row):
+    for col in ["Heim", "Gast", "SR", "Gastgeber", "Ort", "Spielrunde"]:
+        row[col] = replace_usc_names(row[col], row["USC_Team"])
+    return row
+
+df_all = df_all.apply(clean_all_names, axis=1)
+
+# Sortierung
 df_all = df_all.sort_values(by=["Datum_DT", "Uhrzeit"])
 
 # Dropdown-Werte
@@ -125,7 +146,7 @@ spielrunden = sorted(df_all["Spielrunde"].dropna().unique())
 orte = sorted([o for o in df_all["Ort"].dropna().unique() if "münster" in o.lower()])
 teams = sorted(df_all["USC_Team"].dropna().unique())
 
-# HTML-Zeilen
+# HTML-Zeilen generieren
 table_rows = "\n".join(
     f"<tr data-team='{html.escape(row['USC_Team'])}' data-spielrunde='{html.escape(row['Spielrunde'])}' data-ort='{html.escape(row['Ort'])}'>" +
     "".join(f"<td>{html.escape(str(row[col]))}</td>" for col in [
@@ -134,7 +155,7 @@ table_rows = "\n".join(
     for _, row in df_all.iterrows()
 )
 
-# HTML exportieren
+# HTML-Datei generieren
 html_code = f"""<!doctype html>
 <html lang="de">
 <head>
@@ -235,6 +256,7 @@ html_code = f"""<!doctype html>
 </html>
 """
 
+# Speichern
 Path("docs").mkdir(exist_ok=True)
 Path("docs/index.html").write_text(html_code, encoding="utf-8")
 print("✅ HTML-Datei erfolgreich erstellt.")
