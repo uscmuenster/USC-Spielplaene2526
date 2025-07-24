@@ -8,8 +8,14 @@ csv_files = [
     ("Spielplan_1._Bundesliga_Frauen.csv", "USC Münster", "USC1"),
     ("Spielplan_2._Bundesliga_Frauen_Nord.csv", "USC Münster II", "USC2"),
     ("Spielplan_Oberliga_2_Frauen.csv", "USC Münster III", "USC3"),
+    ("Spielplan_Bezirksliga_14_Frauen.csv", "USC Münster IV", "USC4"),
     ("Spielplan_Bezirksklasse_26_Frauen.csv", None, None),
-    ("Spielplan_NRW-Liga_wU18.csv", "USC Münster", "U18")
+    ("Spielplan_Kreisliga_Münster_Frauen.csv", None, None),
+    ("Spielplan_NRW-Liga_wU18.csv", "USC Münster", "U18"),
+    ("Spielplan_NRW-Liga_wU16.csv", "USC Münster", "U16"),
+    ("Spielplan_NRW-Liga_wU14.csv", "USC Münster", "U14")
+    ("Spielplan_Oberliga_5_wU16.csv", "USC Münster II", "U16-2")
+    ("Spielplan_Oberliga_5_wU14.csv", "USC Münster II", "U14-2")
 ]
 
 usc_keywords = ["USC Münster", "USC Muenster", "USC MÜNSTER"]
@@ -48,7 +54,22 @@ for file, keyword, team_code in csv_files:
                 return "USC5"
             else:
                 return "USC5/6"
+        if file == "Spielplan_Kreisliga_Münster_Frauen.csv":
+            if "usc münster viii" in text:
+                return "USC8"
+            elif "usc münster vii" in text:
+                return "USC7"
+            else:
+                return "USC7/8"
         if team_code == "U18":
+            jugend = str(row.get("Spielrunde", ""))[-3:]
+            return f"USC-{jugend.upper()}"
+        return team_code
+        if team_code == "U16":
+            jugend = str(row.get("Spielrunde", ""))[-3:]
+            return f"USC-{jugend.upper()}"
+        return team_code
+        if team_code == "U14":
             jugend = str(row.get("Spielrunde", ""))[-3:]
             return f"USC-{jugend.upper()}"
         return team_code
@@ -59,11 +80,14 @@ for file, keyword, team_code in csv_files:
     def replace_usc_names(s, team):
         s = str(s)
         replacements = {
+            "USC6": [("USC Münster VIII", "USC8")],
+            "USC5": [("USC Münster VII", "USC7")],
             "USC6": [("USC Münster VI", "USC6")],
             "USC5": [("USC Münster V", "USC5")],
             "USC1": [("USC Münster", "USC1")],
             "USC2": [("USC Münster II", "USC2")],
             "USC3": [("USC Münster III", "USC3")],
+            "USC3": [("USC Münster IV", "USC4")],
         }
         if team.startswith("USC-U"):
             return s.replace("USC Münster", team)
