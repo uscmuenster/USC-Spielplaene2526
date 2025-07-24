@@ -1,9 +1,9 @@
 name: Download Volleyball CSV
 
 on:
-  workflow_dispatch:   # Manuell auslösbar über GitHub UI
+  workflow_dispatch:
   schedule:
-    - cron: '0 6 * * *'  # Täglich um 6 Uhr UTC (8 Uhr MESZ)
+    - cron: '0 6 * * *'
 
 jobs:
   download_csv:
@@ -18,17 +18,17 @@ jobs:
       - name: 📁 Verzeichnis csvdata anlegen
         run: mkdir -p csvdata
 
-      - name: 🌐 CSV-Datei herunterladen
+      - name: 🌐 CSV-Datei herunterladen mit Originalnamen
         run: |
-          curl -L "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95239897" \
-            -o csvdata/spielplan.csv
+          cd csvdata
+          curl -L -OJ "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95239897"
 
       - name: 🔁 Commit und Push via Token
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add csvdata/spielplan.csv
+          git add csvdata/
           git diff --cached --quiet && echo "🟢 Keine Änderungen, nichts zu committen." || (
-            git commit -m "📊 Automatisches CSV-Update"
+            git commit -m "📊 Automatisches CSV-Update (Originalname)"
             git push
           )
