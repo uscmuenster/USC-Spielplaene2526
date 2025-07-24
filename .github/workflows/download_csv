@@ -1,9 +1,9 @@
 name: Download Volleyball CSV
 
 on:
-  workflow_dispatch:   # Manuell auslösbar über GitHub-Oberfläche
+  workflow_dispatch:
   schedule:
-    - cron: '0 6 * * *'  # Täglich um 6 Uhr UTC (8 Uhr MESZ)
+    - cron: '0 6 * * *'
 
 jobs:
   download_csv:
