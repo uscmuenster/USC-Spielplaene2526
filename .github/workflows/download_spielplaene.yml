@@ -47,18 +47,6 @@ jobs:
             echo "✅ Umbenannt: Spielplan_Kreisliga_Münster_Frauen.csv → Spielplan_Kreisliga_Muenster_Frauen.csv"
           fi
 
-          # 🧼 Automatische Umbenennung sonstiger Sonderzeichen (robust)
-          for file in *; do
-            newname=$(iconv -f utf8 -t ascii//TRANSLIT <<< "$file" 2>/dev/null || echo "$file")
-            if [[ "$file" != "$newname" ]]; then
-              if [[ -e "$newname" ]]; then
-                echo "⚠️  Zieldatei $newname existiert bereits. Datei $file wird übersprungen."
-              else
-                mv "$file" "$newname"
-                echo "✅ Umbenannt: $file → $newname"
-              fi
-            fi
-          done
 
       - name: 🔁 Commit und Push via Token
         run: |
