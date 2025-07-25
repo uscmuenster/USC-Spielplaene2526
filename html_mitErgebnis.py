@@ -196,6 +196,8 @@ html_code = f"""<!doctype html>
     }}
   </style>
 <link rel="icon" type="image/png" href="favicon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#008000">
 </head>
 <body class="p-4">
   <div class="container">
