@@ -1,6 +1,7 @@
 from pathlib import Path
 from datetime import datetime
 import pandas as pd
+import os
 
 # Verzeichnis
 csv_dir = Path("csvdata")
@@ -133,11 +134,21 @@ for col in ["Heim", "Gast", "SR", "Gastgeber"]:
 # Sortierung
 df_all = df_all.sort_values(by=["Datum_DT", "Uhrzeit"])
 
-# CSV-Dateipfad im aktuellen Verzeichnis
+
+# Prüfe DataFrame
+print(f"🔍 Anzahl Zeilen: {len(df_all)}")
+print(f"📄 Spalten: {df_all.columns.tolist()}")
+print("📁 Aktuelles Arbeitsverzeichnis:", os.getcwd())
+
+# Inhalt des Ordners anzeigen
+print("📂 Ordnerinhalt:", os.listdir())
+
+# Speicherort festlegen
 csv_path = Path("spielplan.csv")
 
-# Spielplan-Daten als CSV exportieren
-df_all.to_csv(csv_path, index=False, sep=";", encoding="utf-8-sig")
-
-# Ausgabe zur Bestätigung mit absolutem Pfad
-print(f"✅ CSV-Datei erfolgreich gespeichert unter: {csv_path.resolve()}")
+# Versuche, die Datei zu schreiben
+try:
+    df_all.to_csv(csv_path, index=False, sep=";", encoding="utf-8-sig")
+    print(f"✅ CSV-Datei erfolgreich gespeichert unter: {csv_path.resolve()}")
+except Exception as e:
+    print("❌ Fehler beim Schreiben der CSV-Datei:", e)
