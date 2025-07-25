@@ -1,4 +1,4 @@
-name: 🔁 HTML aus CSV-Dateien generieren und CSV Download anbieten
+name: 🔁 Spielplan CSV Datei erstellen
 
 on:
   push:
@@ -27,8 +27,8 @@ jobs:
       - name: 📦 Abhängigkeiten installieren
         run: pip install pandas
 
-      - name: 🛠 HTML generieren aus CSV-Dateien
-        run: python generate_html_csvdownload.py
+      - name: 🛠 Spielplan-CSV aus CSV-DATEIEN erstellen
+        run: python generate_csv.py
 
       - name: 🔁 Commit und Push via Token
         run: |
