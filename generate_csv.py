@@ -133,10 +133,11 @@ for col in ["Heim", "Gast", "SR", "Gastgeber"]:
 # Sortierung
 df_all = df_all.sort_values(by=["Datum_DT", "Uhrzeit"])
 
-# Exportieren als CSV
-Path("docs").mkdir(exist_ok=True)
+# CSV-Dateipfad im aktuellen Verzeichnis
+csv_path = Path("spielplan.csv")
 
-csv_path = Path("docs/spielplan.csv")
-df_all.to_csv("docs/spielplan.csv", index=False, sep=";", encoding="utf-8-sig")
+# Spielplan-Daten als CSV exportieren
+df_all.to_csv(csv_path, index=False, sep=";", encoding="utf-8-sig")
 
+# Ausgabe zur Bestätigung mit absolutem Pfad
 print(f"✅ CSV-Datei erfolgreich gespeichert unter: {csv_path.resolve()}")
