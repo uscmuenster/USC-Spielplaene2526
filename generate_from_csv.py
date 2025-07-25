@@ -17,6 +17,8 @@ csv_files = [
     ("Spielplan_NRW-Liga_wU18.csv", "USC-U18"),
     ("Spielplan_Oberliga_5_wU14.csv", "USC-U14-2"),
     ("Spielplan_Oberliga_5_wU16.csv", "USC-U16-2"),
+
+("Spielplan_Oberliga_6_wU13.csv", "USC-U13"),
     ("Spielplan_Bezirksklasse_26_Frauen.csv", None),  # USC5/6
     ("Spielplan_Kreisliga_Muenster_Frauen.csv", None),  # USC7/8
 ]
@@ -89,6 +91,7 @@ for file, team_code in csv_files:
             "USC-U16-1": [("USC1", "USC-U16-1")],
             "USC-U16-2": [("USC2", "USC-U16-2")],
             "USC-U18":   [("USC1", "USC-U18")],
+            "USC-U13":   [("USC1", "USC-U13")],
         }
 
         for old, new in global_replacements:
