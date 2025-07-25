@@ -284,7 +284,6 @@ html_code = f"""<!doctype html>
   </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-html_code += """
 <script>
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('service-worker.js')
@@ -296,7 +295,6 @@ html_code += """
       });
   }
 </script>
-"""
 
 </body>
 </html>
