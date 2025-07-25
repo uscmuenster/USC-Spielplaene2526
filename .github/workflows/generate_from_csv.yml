@@ -4,9 +4,7 @@ on:
   push:
     paths:
       - 'Spielplan_*.csv'
-  workflow_dispatch:
-  schedule:
-    - cron: '5 1 * * *'  # 03:05 MESZ (01:05 UTC)
+
 
 jobs:
   build:
