@@ -90,7 +90,7 @@ for file, team_code in csv_files:
             "USC-U16-2": [("USC2", "USC-U16-2")],
             "USC-U18":   [("USC1", "USC-U18")],
             "USC-U13":   [("USC1", "USC-U13")],
-       } 
+        ]
         for old, new in global_replacements:
             s = s.replace(old, new)
         for old, new in team_specific.get(team, []):
@@ -100,7 +100,25 @@ for file, team_code in csv_files:
     for col in ["Heim", "Gast", "SR", "Gastgeber", "Ort", "Spielrunde"]:
         df[col] = df.apply(lambda row: replace_usc_names(row[col], row["USC_Team"]), axis=1)
 
-    # Ergebnis-Spalte an die 8. Stelle verschieben
+    # Ergebnis generieren aus Satzwerten
+    def get_result(row):
+        try:
+            satzstand = f"{row['S']}:{row['U']}"
+            saetze = []
+            satzspalten = [("V", "X"), ("Z", "AB"), ("AD", "AF"), ("AH", "AJ"), ("AL", "AN")]
+            for l, r in satzspalten:
+                left = str(row.get(l, "")).strip()
+                right = str(row.get(r, "")).strip()
+                if left and right and left.lower() != 'nan' and right.lower() != 'nan':
+                    saetze.append(f"{left}:{right}")
+            return f"{satzstand} ({', '.join(saetze)})" if saetze else satzstand
+        except:
+            return ""
+
+    if all(col in df.columns for col in ["S", "U", "V", "X"]):
+        df["Ergebnis"] = df.apply(get_result, axis=1)
+
+    # Ergebnis-Spalte einsortieren
     cols = df.columns.tolist()
     if "Ergebnis" in cols:
         cols.remove("Ergebnis")
