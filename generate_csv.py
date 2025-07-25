@@ -100,6 +100,9 @@ for file, team_code in csv_files:
 
 df_all = pd.concat(dfs, ignore_index=True)
 
+print("📊 Anzahl Spiele im df_all:", len(df_all))
+print("🔍 Spalten:", df_all.columns.tolist())
+
 def parse_datum(s):
     try:
         return datetime.strptime(s, "%d.%m.%Y")
