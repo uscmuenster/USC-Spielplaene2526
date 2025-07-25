@@ -284,13 +284,19 @@ html_code = f"""<!doctype html>
   </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
+html_code += """
 <script>
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('service-worker.js')
-      .then(reg => console.log('✅ Service Worker registriert:', reg.scope))
-      .catch(err => console.warn('❌ Service Worker Fehler:', err));
+      .then(function(reg) {
+        console.log('✅ Service Worker registriert:', reg.scope);
+      })
+      .catch(function(err) {
+        console.warn('❌ Service Worker Fehler:', err);
+      });
   }
 </script>
+"""
 
 </body>
 </html>
