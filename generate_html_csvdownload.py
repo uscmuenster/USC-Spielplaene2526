@@ -259,6 +259,8 @@ Path("docs").mkdir(exist_ok=True)
 # HTML-Datei
 Path("docs/index.html").write_text(html_code, encoding="utf-8")
 
+print("📁 Speichere CSV-Datei...")
+
 # CSV-Datei
 df_all[[
     "Datum", "Uhrzeit", "Tag", "Heim", "Gast", "SR", "Gastgeber", "Ort", "Spielrunde", "USC_Team"
