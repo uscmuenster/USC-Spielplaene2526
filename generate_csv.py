@@ -137,8 +137,6 @@ df_all = df_all.sort_values(by=["Datum_DT", "Uhrzeit"])
 Path("docs").mkdir(exist_ok=True)
 
 csv_path = Path("docs/spielplan.csv")
-df_all[[
-    "Datum", "Uhrzeit", "Tag", "Heim", "Gast", "SR", "Gastgeber", "Ort", "Spielrunde", "USC_Team"
-]].to_csv(csv_path, index=False, sep=";", encoding="utf-8-sig")
+df_all.to_csv("docs/spielplan.csv", index=False, sep=";", encoding="utf-8-sig")
 
 print(f"✅ CSV-Datei erfolgreich gespeichert unter: {csv_path.resolve()}")
