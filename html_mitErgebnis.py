@@ -17,10 +17,9 @@ csv_files = [
     ("Spielplan_NRW-Liga_wU18.csv", "USC-U18"),
     ("Spielplan_Oberliga_5_wU14.csv", "USC-U14-2"),
     ("Spielplan_Oberliga_5_wU16.csv", "USC-U16-2"),
-
-("Spielplan_Oberliga_6_wU13.csv", "USC-U13"),
-    ("Spielplan_Bezirksklasse_26_Frauen.csv", None),  # USC5/6
-    ("Spielplan_Kreisliga_Muenster_Frauen.csv", None),  # USC7/8
+    ("Spielplan_Oberliga_6_wU13.csv", "USC-U13"),
+    ("Spielplan_Bezirksklasse_26_Frauen.csv", None),
+    ("Spielplan_Kreisliga_Muenster_Frauen.csv", None),
 ]
 
 usc_keywords = ["USC Münster", "USC Muenster", "USC MÜNSTER"]
@@ -43,6 +42,9 @@ for file, team_code in csv_files:
     df = pd.read_csv(file_path, sep=";", encoding="cp1252")
     df.columns = df.columns.str.strip()
     df = df.rename(columns=rename_map)
+
+    if "Ergebnis" not in df.columns:
+        df["Ergebnis"] = ""
 
     def contains_usc(row):
         return any(usc.lower() in str(row[f]).lower() for f in ["Heim", "Gast", "SR", "Gastgeber"] for usc in usc_keywords)
@@ -71,8 +73,6 @@ for file, team_code in csv_files:
 
     def replace_usc_names(s, team):
         s = str(s)
-
-        # Globale Ersetzungen (greifen unabhängig vom Team)
         global_replacements = [
             ("USC Münster VIII", "USC8"),
             ("USC Münster VII", "USC7"),
@@ -83,8 +83,6 @@ for file, team_code in csv_files:
             ("USC Münster II",  "USC2"),
             ("USC Münster",     "USC1"),
         ]
-
-        # Team-spezifische Korrekturen (z. B. Jugend)
         team_specific = {
             "USC-U14-1": [("USC1", "USC-U14-1")],
             "USC-U14-2": [("USC2", "USC-U14-2")],
@@ -92,18 +90,23 @@ for file, team_code in csv_files:
             "USC-U16-2": [("USC2", "USC-U16-2")],
             "USC-U18":   [("USC1", "USC-U18")],
             "USC-U13":   [("USC1", "USC-U13")],
-        }
-
+       } 
         for old, new in global_replacements:
             s = s.replace(old, new)
-
         for old, new in team_specific.get(team, []):
             s = s.replace(old, new)
-
         return s
 
     for col in ["Heim", "Gast", "SR", "Gastgeber", "Ort", "Spielrunde"]:
         df[col] = df.apply(lambda row: replace_usc_names(row[col], row["USC_Team"]), axis=1)
+
+    # Ergebnis-Spalte an die 8. Stelle verschieben
+    cols = df.columns.tolist()
+    if "Ergebnis" in cols:
+        cols.remove("Ergebnis")
+        pos = cols.index("Gastgeber") + 1
+        cols = cols[:pos] + ["Ergebnis"] + cols[pos:]
+        df = df[cols]
 
     dfs.append(df)
 
@@ -139,7 +142,6 @@ def clean_all_names(row):
 
 df_all = df_all.apply(clean_all_names, axis=1)
 
-# Falsche "II" entfernen z. B. "USC-U14-2 II"
 for col in ["Heim", "Gast", "SR", "Gastgeber"]:
     df_all[col] = df_all[col].str.replace(r'\b(USC-[U\d]+-\d) II\b', r'\1', regex=True)
 
@@ -151,8 +153,8 @@ teams = sorted(df_all["USC_Team"].dropna().unique())
 
 table_rows = "\n".join(
     f"<tr data-team='{html.escape(row['USC_Team'])}' data-spielrunde='{html.escape(row['Spielrunde'])}' data-ort='{html.escape(row['Ort'])}'>" +
-    "".join(f"<td>{html.escape(str(row[col]))}</td>" for col in [
-        "Datum", "Uhrzeit", "Tag", "Heim", "Gast", "SR", "Gastgeber", "Ort", "Spielrunde"
+    "".join(f"<td>{html.escape(str(row.get(col, '')))}</td>" for col in [
+        "Datum", "Uhrzeit", "Tag", "Heim", "Gast", "SR", "Gastgeber", "Ergebnis", "Ort", "Spielrunde"
     ]) + "</tr>"
     for _, row in df_all.iterrows()
 )
@@ -222,7 +224,7 @@ html_code = f"""<!doctype html>
     <div class="table-responsive">
       <table class="table table-bordered table-striped table-hover" id="spielplan">
         <thead class="table-light">
-          <tr><th>Datum</th><th>Uhrzeit</th><th>Tag</th><th>Heim</th><th>Gast</th><th>SR</th><th>Gastgeber</th><th>Ort</th><th>Spielrunde</th></tr>
+          <tr><th>Datum</th><th>Uhrzeit</th><th>Tag</th><th>Heim</th><th>Gast</th><th>SR</th><th>Gastgeber</th><th>Ergebnis</th><th>Ort</th><th>Spielrunde</th></tr>
         </thead>
         <tbody>
           {table_rows}
@@ -230,7 +232,7 @@ html_code = f"""<!doctype html>
       </table>
     </div>
 
-<div class="mt-4">
+    <div class="mt-4">
       <a class="btn btn-success" href="spielplan.csv" download>📥 Gesamten Spielplan als CSV herunterladen</a>
     </div>
 
@@ -264,4 +266,4 @@ html_code = f"""<!doctype html>
 
 Path("docs").mkdir(exist_ok=True)
 Path("docs/index.html").write_text(html_code, encoding="utf-8")
-print("✅ HTML-Datei erfolgreich erstellt.") 
+print("✅ HTML-Datei erfolgreich erstellt.")
