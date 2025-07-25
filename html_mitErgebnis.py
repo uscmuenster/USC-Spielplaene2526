@@ -285,15 +285,15 @@ html_code = f"""<!doctype html>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-  if ('serviceWorker' in navigator) {
+  if ('serviceWorker' in navigator) {{
     navigator.serviceWorker.register('service-worker.js')
-      .then(function(reg) {
+      .then(function(reg) {{
         console.log('✅ Service Worker registriert:', reg.scope);
-      })
-      .catch(function(err) {
+      }})
+      .catch(function(err) {{
         console.warn('❌ Service Worker Fehler:', err);
-      });
-  }
+      }});
+  }}
 </script>
 
 </body>
