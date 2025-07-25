@@ -144,7 +144,7 @@ print("📁 Aktuelles Arbeitsverzeichnis:", os.getcwd())
 print("📂 Ordnerinhalt:", os.listdir())
 
 # Speicherort festlegen
-csv_path = Path("spielplan.csv")
+csv_path = Path("docs/spielplan.csv")
 
 # Versuche, die Datei zu schreiben
 try:
