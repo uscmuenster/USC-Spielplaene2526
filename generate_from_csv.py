@@ -231,7 +231,7 @@ html_code = f"""<!doctype html>
     </div>
 
 <div class="mt-4">
-      <a class="btn btn-success" href="spielplan.csv" download>📥 Spielplan als CSV herunterladen</a>
+      <a class="btn btn-success" href="spielplan.csv" download>📥 Gesamten Spielplan als CSV herunterladen</a>
     </div>
 
   </div>
