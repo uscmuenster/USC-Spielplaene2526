@@ -195,6 +195,7 @@ html_code = f"""<!doctype html>
       #spielplan {{ position: absolute; left: 0; top: 0; width: 100%; }}
     }}
   </style>
+<link rel="icon" type="image/png" href="favicon.png">
 </head>
 <body class="p-4">
   <div class="container">
