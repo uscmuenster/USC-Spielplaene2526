@@ -177,6 +177,10 @@ table_rows = "\n".join(
     for _, row in df_all.iterrows()
 )
 
+
+
+# ... (alle vorherigen Teile bleiben unverändert)
+
 html_code = f"""<!doctype html>
 <html lang="de">
 <head>
@@ -189,6 +193,7 @@ html_code = f"""<!doctype html>
     th, td {{ white-space: nowrap; }}
     table tr {{ background-color: white; }}
     thead th {{ background-color: #f2f2f2 !important; color: #000; }}
+    #filters {{ background-color: #e6f9e6; }}  /* Hellgrün für Filterbereich */
     #filters select, #filters label {{
       color: #155724;
       border-color: #28a745;
@@ -302,6 +307,7 @@ html_code = f"""<!doctype html>
 </html>
 """
 
+# Speichern
 Path("docs").mkdir(exist_ok=True)
 Path("docs/index.html").write_text(html_code, encoding="utf-8")
 print("✅ HTML-Datei erfolgreich erstellt.")
