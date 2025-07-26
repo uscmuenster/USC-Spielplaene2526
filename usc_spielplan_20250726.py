@@ -185,15 +185,15 @@ html_code = f"""<!doctype html>
   <title>USC Münster Spielplan 2025/26</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
-    body {{ font-size: 0.9rem; }}
+    body {{ font-size: 0.8rem; }}
     th, td {{ white-space: nowrap; }}
     table tr {{ background-color: white; }}
     thead th {{ background-color: #f2f2f2 !important; color: #000; }}
     .accordion-button {{ background-color: #e6f9e6 !important; }}
-    #filters {{ background-color: #e6f9e6 !important; }}
+    #filters {{ background-color: #96d696 !important; }}
     #filters select, #filters label {{
       color: #155724;
-      border-color: #28a745;
+      border-color: #044714;
     }}
     .form-select:focus {{
       border-color: #28a745;
