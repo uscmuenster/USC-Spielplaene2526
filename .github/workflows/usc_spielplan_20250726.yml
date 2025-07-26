@@ -1,4 +1,4 @@
-name: 🔁 USC SPIELPLAN GENERIEREN - 20250726
+name: 🔁 USC SPIELPLAN generieren - 20250726
 
 on:
   push:
