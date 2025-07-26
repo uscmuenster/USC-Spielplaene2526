@@ -178,9 +178,6 @@ table_rows = "\n".join(
 )
 
 
-
-# ... (alle vorherigen Teile bleiben unverändert)
-
 html_code = f"""<!doctype html>
 <html lang="de">
 <head>
