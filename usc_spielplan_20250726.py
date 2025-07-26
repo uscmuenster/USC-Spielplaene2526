@@ -192,7 +192,7 @@ html_code = f"""<!doctype html>
     .accordion-button {{ background-color: #96d696 !important; }}
     #filters {{ background-color: #96d696 !important; }}
     #filters select, #filters label {{
-      color: #96d696;
+      color: #17a617;
       border-color: #96d696;
     }}
     .form-select:focus {{
