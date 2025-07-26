@@ -10,7 +10,8 @@
     th, td { white-space: nowrap; }
     table tr { background-color: white; }
     thead th { background-color: #f2f2f2 !important; color: #000; }
-    #filters { background-color: #e6f9e6; }  /* Hellgrün für Filterbereich */
+    .accordion-button { background-color: #e6f9e6 !important; }
+    #filters { background-color: #e6f9e6 !important; }
     #filters select, #filters label {
       color: #155724;
       border-color: #28a745;
@@ -32,7 +33,6 @@
 <body class="p-4">
   <div class="container">
     <h1 class="mb-4">USC Münster – Spielplan 2025/26</h1>
-
     <div class="accordion mb-3" id="filterAccordion">
       <div class="accordion-item">
         <h2 class="accordion-header" id="headingFilters">
@@ -73,7 +73,6 @@
         </div>
       </div>
     </div>
-
     <div class="table-responsive">
       <table class="table table-bordered" id="spielplan">
         <thead>
@@ -328,19 +327,15 @@
         </tbody>
       </table>
     </div>
-
     <div class="mt-4">
       <a class="btn btn-success" href="spielplan.csv" download>📥 Gesamten Spielplan als CSV herunterladen</a>
     </div>
-
   </div>
-
   <script>
     function filter() {
       const team = document.getElementById("filterTeam").value;
       const runde = document.getElementById("filterRunde").value;
       const ort = document.getElementById("filterOrt").value;
-
       document.querySelectorAll("#spielplan tbody tr").forEach(row => {
         const show = (!team || row.dataset.team === team) &&
                      (!runde || row.dataset.spielrunde === runde) &&
@@ -348,7 +343,6 @@
         row.style.display = show ? "" : "none";
       });
     }
-
     function resetFilter() {
       document.getElementById("filterTeam").value = "";
       document.getElementById("filterRunde").value = "";
