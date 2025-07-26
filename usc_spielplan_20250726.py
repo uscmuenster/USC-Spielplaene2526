@@ -90,7 +90,7 @@ for file, team_code in csv_files:
             "USC-U16-2": [("USC2", "USC-U16-2")],
             "USC-U18":   [("USC1", "USC-U18")],
             "USC-U13":   [("USC1", "USC-U13")],
-        }
+        ]
         for old, new in global_replacements:
             s = s.replace(old, new)
         for old, new in team_specific.get(team, []):
@@ -177,7 +177,6 @@ table_rows = "\n".join(
     for _, row in df_all.iterrows()
 )
 
-
 html_code = f"""<!doctype html>
 <html lang="de">
 <head>
@@ -190,7 +189,8 @@ html_code = f"""<!doctype html>
     th, td {{ white-space: nowrap; }}
     table tr {{ background-color: white; }}
     thead th {{ background-color: #f2f2f2 !important; color: #000; }}
-    #filters {{ background-color: #e6f9e6; }}  /* Hellgrün für Filterbereich */
+    .accordion-button {{ background-color: #e6f9e6 !important; }}
+    #filters {{ background-color: #e6f9e6 !important; }}
     #filters select, #filters label {{
       color: #155724;
       border-color: #28a745;
@@ -212,7 +212,6 @@ html_code = f"""<!doctype html>
 <body class="p-4">
   <div class="container">
     <h1 class="mb-4">USC Münster – Spielplan 2025/26</h1>
-
     <div class="accordion mb-3" id="filterAccordion">
       <div class="accordion-item">
         <h2 class="accordion-header" id="headingFilters">
@@ -253,7 +252,6 @@ html_code = f"""<!doctype html>
         </div>
       </div>
     </div>
-
     <div class="table-responsive">
       <table class="table table-bordered" id="spielplan">
         <thead>
@@ -264,19 +262,15 @@ html_code = f"""<!doctype html>
         </tbody>
       </table>
     </div>
-
     <div class="mt-4">
       <a class="btn btn-success" href="spielplan.csv" download>📥 Gesamten Spielplan als CSV herunterladen</a>
     </div>
-
   </div>
-
   <script>
     function filter() {{
       const team = document.getElementById("filterTeam").value;
       const runde = document.getElementById("filterRunde").value;
       const ort = document.getElementById("filterOrt").value;
-
       document.querySelectorAll("#spielplan tbody tr").forEach(row => {{
         const show = (!team || row.dataset.team === team) &&
                      (!runde || row.dataset.spielrunde === runde) &&
@@ -284,7 +278,6 @@ html_code = f"""<!doctype html>
         row.style.display = show ? "" : "none";
       }});
     }}
-
     function resetFilter() {{
       document.getElementById("filterTeam").value = "";
       document.getElementById("filterRunde").value = "";
@@ -304,7 +297,6 @@ html_code = f"""<!doctype html>
 </html>
 """
 
-# Speichern
 Path("docs").mkdir(exist_ok=True)
 Path("docs/index.html").write_text(html_code, encoding="utf-8")
 print("✅ HTML-Datei erfolgreich erstellt.")
