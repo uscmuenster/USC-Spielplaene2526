@@ -56,3 +56,5 @@ jobs:
             git commit -m "📊 Automatisches CSV-Update (mit Sonderzeichen-Handling)"
             git push
           )
+      - name: Zeitstempel
+        run: date
