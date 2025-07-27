@@ -13,7 +13,7 @@
     .accordion-button { background-color: #96d696 !important; }
     #filters { background-color: #96d696 !important; }
     #filters select, #filters label {
-      color: #088208;
+      color: #000000;
       border-color: #96d696;
     }
     .form-select:focus {
@@ -32,7 +32,8 @@
 </head>
 <body class="p-4">
   <div class="container">
-    <h1 class="mb-4">USC Münster – Spielplan 2025/26</h1>
+    <h1 class="mb-2">USC Münster – Spielplan 2025/26</h1>
+    <p class="text-muted mt-3">Stand: 27.07.2025 11:04 MESZ</p>
     <div class="accordion mb-3" id="filterAccordion">
       <div class="accordion-item">
         <h2 class="accordion-header" id="headingFilters">
@@ -330,6 +331,11 @@
     <div class="mt-4">
       <a class="btn btn-success" href="spielplan.csv" download>📥 Gesamten Spielplan als CSV herunterladen</a>
     </div>
+    
+<div class="text-center mt-5 mb-3">
+  <button class="btn btn-outline-secondary" onclick="location.reload()">🔄 Seite neu laden</button>
+</div>
+
   </div>
   <script>
     function filter() {
