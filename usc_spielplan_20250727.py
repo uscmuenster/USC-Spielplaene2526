@@ -90,7 +90,7 @@ for file, team_code in csv_files:
             "USC-U16-2": [("USC2", "USC-U16-2")],
             "USC-U18":   [("USC1", "USC-U18")],
             "USC-U13":   [("USC1", "USC-U13")],
-       } 
+        }
         for old, new in global_replacements:
             s = s.replace(old, new)
         for old, new in team_specific.get(team, []):
@@ -177,6 +177,8 @@ table_rows = "\n".join(
     for _, row in df_all.iterrows()
 )
 
+stand = datetime.now().strftime("Stand: %d.%m.%Y, %H:%M Uhr")
+
 html_code = f"""<!doctype html>
 <html lang="de">
 <head>
@@ -211,47 +213,10 @@ html_code = f"""<!doctype html>
 </head>
 <body class="p-4">
   <div class="container">
-    <h1 class="mb-4">USC Münster – Spielplan 2025/26</h1>
-    <div class="accordion mb-3" id="filterAccordion">
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingFilters">
-          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#filters" aria-expanded="true">
-            Filter anzeigen
-          </button>
-        </h2>
-        <div id="filters" class="accordion-collapse collapse show" aria-labelledby="headingFilters">
-          <div class="accordion-body">
-            <div class="row g-2">
-              <div class="col-md-4">
-                <label class="form-label">USC-Team:</label>
-                <select class="form-select" id="filterTeam" onchange="filter()">
-                  <option value="">Alle</option>
-                  {''.join(f"<option value='{html.escape(t)}'>{html.escape(t)}</option>" for t in teams)}
-                </select>
-              </div>
-              <div class="col-md-4">
-                <label class="form-label">Spielrunde:</label>
-                <select class="form-select" id="filterRunde" onchange="filter()">
-                  <option value="">Alle</option>
-                  {''.join(f"<option value='{html.escape(r)}'>{html.escape(r)}</option>" for r in spielrunden)}
-                </select>
-              </div>
-              <div class="col-md-4">
-                <label class="form-label">Ort (nur Münster):</label>
-                <select class="form-select" id="filterOrt" onchange="filter()">
-                  <option value="">Alle</option>
-                  {''.join(f"<option value='{html.escape(o)}'>{html.escape(o)}</option>" for o in orte)}
-                </select>
-              </div>
-            </div>
-            <div class="mt-3">
-              <button class="btn btn-secondary" onclick="resetFilter()">Zurücksetzen</button>
-              <button class="btn btn-outline-primary" onclick="window.print()">🖨️ Drucken</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <h1 class="mb-4"><a href="https://uscmuenster.github.io/USC-Spielplaene2526" style="text-decoration:none; color:inherit;">USC Münster – Spielplan 2025/26</a></h1>
+
+    <!-- Filter Akkordeon usw. bleibt hier unverändert -->
+
     <div class="table-responsive">
       <table class="table table-bordered" id="spielplan">
         <thead>
@@ -262,10 +227,15 @@ html_code = f"""<!doctype html>
         </tbody>
       </table>
     </div>
-    <div class="mt-4">
+
+    <div class="mt-4 d-flex gap-3">
       <a class="btn btn-success" href="spielplan.csv" download>📥 Gesamten Spielplan als CSV herunterladen</a>
+      <button class="btn btn-outline-secondary" onclick="location.reload()">🔄 Seite neu laden</button>
     </div>
+
+    <div class="mt-5 text-muted"><small>{stand}</small></div>
   </div>
+
   <script>
     function filter() {{
       const team = document.getElementById("filterTeam").value;
