@@ -1,5 +1,5 @@
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 import pandas as pd
 import html
 
@@ -177,7 +177,9 @@ table_rows = "\n".join(
     for _, row in df_all.iterrows()
 )
 
-stand = datetime.now().strftime("Stand: %d.%m.%Y, %H:%M Uhr")
+# MESZ-Zeitstempel
+mesz = timezone(timedelta(hours=2))
+stand = datetime.now(mesz).strftime("Stand: %d.%m.%Y, %H:%M Uhr MESZ")
 
 html_code = f"""<!doctype html>
 <html lang="de">
@@ -201,22 +203,11 @@ html_code = f"""<!doctype html>
       border-color: #28a745;
       box-shadow: 0 0 0 0.25rem rgba(40,167,69,.25);
     }}
-    @media print {{
-      body * {{ visibility: hidden; }}
-      #spielplan, #spielplan * {{ visibility: visible; }}
-      #spielplan {{ position: absolute; left: 0; top: 0; width: 100%; }}
-    }}
   </style>
-  <link rel="icon" type="image/png" href="favicon.png">
-  <link rel="manifest" href="manifest.webmanifest">
-  <meta name="theme-color" content="#008000">
 </head>
 <body class="p-4">
   <div class="container">
-    <h1 class="mb-4"><a href="https://uscmuenster.github.io/USC-Spielplaene2526" style="text-decoration:none; color:inherit;">USC Münster – Spielplan 2025/26</a></h1>
-
-    <!-- Filter Akkordeon usw. bleibt hier unverändert -->
-
+    <h1 class="mb-4">USC Münster – Spielplan 2025/26</h1>
     <div class="table-responsive">
       <table class="table table-bordered" id="spielplan">
         <thead>
@@ -227,42 +218,12 @@ html_code = f"""<!doctype html>
         </tbody>
       </table>
     </div>
-
     <div class="mt-4 d-flex gap-3">
       <a class="btn btn-success" href="spielplan.csv" download>📥 Gesamten Spielplan als CSV herunterladen</a>
       <button class="btn btn-outline-secondary" onclick="location.reload()">🔄 Seite neu laden</button>
     </div>
-
     <div class="mt-5 text-muted"><small>{stand}</small></div>
   </div>
-
-  <script>
-    function filter() {{
-      const team = document.getElementById("filterTeam").value;
-      const runde = document.getElementById("filterRunde").value;
-      const ort = document.getElementById("filterOrt").value;
-      document.querySelectorAll("#spielplan tbody tr").forEach(row => {{
-        const show = (!team || row.dataset.team === team) &&
-                     (!runde || row.dataset.spielrunde === runde) &&
-                     (!ort || row.dataset.ort === ort);
-        row.style.display = show ? "" : "none";
-      }});
-    }}
-    function resetFilter() {{
-      document.getElementById("filterTeam").value = "";
-      document.getElementById("filterRunde").value = "";
-      document.getElementById("filterOrt").value = "";
-      filter();
-    }}
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    if ('serviceWorker' in navigator) {{
-      navigator.serviceWorker.register('service-worker.js')
-        .then(reg => console.log('✅ Service Worker registriert:', reg.scope))
-        .catch(err => console.warn('❌ Service Worker Fehler:', err));
-    }}
-  </script>
 </body>
 </html>
 """
