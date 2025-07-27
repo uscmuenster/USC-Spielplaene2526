@@ -1,7 +1,17 @@
 from pathlib import Path
-from datetime import datetime, timedelta, timezone
+from datetime import datetime
 import pandas as pd
 import html
+from pytz import timezone
+
+# Aktuelle MESZ-Zeit für Anzeige im HTML
+mesz_time = datetime.now(timezone("Europe/Berlin")).strftime("%d.%m.%Y %H:%M")
+stand_info = f'<p class="text-muted mt-3">Stand: {mesz_time} MESZ</p>'
+reload_button = """
+<div class="text-center mt-5 mb-3">
+  <button class="btn btn-outline-secondary" onclick="location.reload()">🔄 Seite neu laden</button>
+</div>
+"""
 
 # Verzeichnis
 csv_dir = Path("csvdata")
@@ -177,17 +187,12 @@ table_rows = "\n".join(
     for _, row in df_all.iterrows()
 )
 
-# MESZ-Zeitstempel
-mesz = timezone(timedelta(hours=2))
-stand = datetime.now(mesz).strftime("Stand: %d.%m.%Y, %H:%M Uhr MESZ")
-
 html_code = f"""<!doctype html>
 <html lang="de">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>USC Münster Spielplan 2025/26</title>
-<div class="mt-5 text-muted"><small>{stand}</small></div>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
     body {{ font-size: 0.8rem; }}
@@ -204,27 +209,34 @@ html_code = f"""<!doctype html>
       border-color: #28a745;
       box-shadow: 0 0 0 0.25rem rgba(40,167,69,.25);
     }}
+    @media print {{
+      body * {{ visibility: hidden; }}
+      #spielplan, #spielplan * {{ visibility: visible; }}
+      #spielplan {{ position: absolute; left: 0; top: 0; width: 100%; }}
+    }}
   </style>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#008000">
 </head>
 <body class="p-4">
   <div class="container">
-    <h1 class="mb-4">USC Münster – Spielplan 2025/26</h1>
+    <h1 class="mb-2">USC Münster – Spielplan 2025/26</h1>
+    {stand_info}
+    <div class="accordion mb-3" id="filterAccordion">
+      ...
+    </div>
     <div class="table-responsive">
       <table class="table table-bordered" id="spielplan">
-        <thead>
-          <tr><th>Datum</th><th>Uhrzeit</th><th>Tag</th><th>Heim</th><th>Gast</th><th>SR</th><th>Gastgeber</th><th>Ergebnis</th><th>Ort</th><th>Spielrunde</th></tr>
-        </thead>
-        <tbody>
-          {table_rows}
-        </tbody>
+        ...
       </table>
     </div>
-    <div class="mt-4 d-flex gap-3">
+    <div class="mt-4">
       <a class="btn btn-success" href="spielplan.csv" download>📥 Gesamten Spielplan als CSV herunterladen</a>
-      <button class="btn btn-outline-secondary" onclick="location.reload()">🔄 Seite neu laden</button>
     </div>
-    <div class="mt-5 text-muted"><small>{stand}</small></div>
+    {reload_button}
   </div>
+  ...
 </body>
 </html>
 """
