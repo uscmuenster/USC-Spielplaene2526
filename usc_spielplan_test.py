@@ -2,6 +2,16 @@ from pathlib import Path
 from datetime import datetime
 import pandas as pd
 import html
+from pytz import timezone
+
+# Aktuelle MESZ-Zeit für Anzeige im HTML
+mesz_time = datetime.now(timezone("Europe/Berlin")).strftime("%d.%m.%Y %H:%M")
+stand_info = f'<p class="text-muted mt-3">Stand: {mesz_time} MESZ</p>'
+reload_button = """
+<div class="text-center mt-5 mb-3">
+  <button class="btn btn-outline-secondary" onclick="location.reload()">🔄 Seite neu laden</button>
+</div>
+"""
 
 # Verzeichnis
 csv_dir = Path("csvdata")
