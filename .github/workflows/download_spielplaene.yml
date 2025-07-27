@@ -3,7 +3,7 @@ name: 🌐 Download Volleyball CSVs
 on:
   workflow_dispatch:
   schedule:
-    - cron: '5 23 * * *'  # 01:05 MESZ (23:05 UTC)
+    - cron: '0 1 * * *' 
 
 jobs:
   download_csv:
