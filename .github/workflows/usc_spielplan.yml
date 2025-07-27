@@ -28,7 +28,7 @@ jobs:
         run: pip install pandas
 
       - name: 🛠 HTML mit Ergebnis generieren aus CSV-Dateien
-        run: python usc_spielplan_20250726.py
+        run: python usc_spielplan.py
 
       - name: 🔁 Commit und Push via Token
         run: |
