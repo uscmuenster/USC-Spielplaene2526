@@ -63,20 +63,21 @@ for file, team_code in csv_files:
 
     def get_usc_team(row):
         text = f"{row['Heim']} {row['Gast']} {row['SR']} {row['Gastgeber']}".lower()
+        teams = []
         if file == "Spielplan_Bezirksklasse_26_Frauen.csv":
             if "usc münster vi" in text:
-                return "USC6"
-            elif "usc münster v" in text:
-                return "USC5"
-            else:
-                return "USC5/6"
+                teams.append("USC6")
+            if "usc münster v" in text:
+                teams.append("USC5")
+            return "/".join(teams) if teams else "USC5/6"
         if file == "Spielplan_Kreisliga_Muenster_Frauen.csv":
             if "usc münster viii" in text:
-                return "USC8"
-            elif "usc münster vii" in text:
-                return "USC7"
-            elif "usc münster" in text:
+                teams.append("USC8")
+            if "usc münster vii" in text:
+                teams.append("USC7")
+            if not teams and "usc münster" in text:
                 return "USC7/8"
+            return "/".join(teams)
         return team_code
 
     df["USC_Team"] = df.apply(get_usc_team, axis=1)
@@ -100,7 +101,7 @@ for file, team_code in csv_files:
             "USC-U16-2": [("USC2", "USC-U16-2")],
             "USC-U18":   [("USC1", "USC-U18")],
             "USC-U13":   [("USC1", "USC-U13")],
-       } 
+        }
         for old, new in global_replacements:
             s = s.replace(old, new)
         for old, new in team_specific.get(team, []):
@@ -177,10 +178,11 @@ df_all = df_all.sort_values(by=["Datum_DT", "Uhrzeit"])
 
 spielrunden = sorted(df_all["Spielrunde"].dropna().unique())
 orte = sorted([o for o in df_all["Ort"].dropna().unique() if "münster" in o.lower()])
-teams = sorted(df_all["USC_Team"].dropna().unique())
+teams = sorted(set(t for team in df_all["USC_Team"].dropna() for t in team.split("/")))
 
 table_rows = "\n".join(
-    f"<tr data-team='{html.escape(row['USC_Team'])}' data-spielrunde='{html.escape(row['Spielrunde'])}' data-ort='{html.escape(row['Ort'])}'>" +
+    f"<tr {' '.join(f'data-team=\"{html.escape(t)}\"' for t in row['USC_Team'].split('/'))} "
+    f"data-spielrunde='{html.escape(row['Spielrunde'])}' data-ort='{html.escape(row['Ort'])}'>" +
     "".join(f"<td>{html.escape(str(row.get(col, '')))}</td>" for col in [
         "Datum", "Uhrzeit", "Tag", "Heim", "Gast", "SR", "Gastgeber", "Ergebnis", "Ort", "Spielrunde"
     ]) + "</tr>"
@@ -284,10 +286,10 @@ html_code = f"""<!doctype html>
       const runde = document.getElementById("filterRunde").value;
       const ort = document.getElementById("filterOrt").value;
       document.querySelectorAll("#spielplan tbody tr").forEach(row => {{
-        const show = (!team || row.dataset.team === team) &&
-                     (!runde || row.dataset.spielrunde === runde) &&
-                     (!ort || row.dataset.ort === ort);
-        row.style.display = show ? "" : "none";
+        const matchTeam = !team || row.matches(`[data-team='${{team}}']`);
+        const matchRunde = !runde || row.dataset.spielrunde === runde;
+        const matchOrt = !ort || row.dataset.ort === ort;
+        row.style.display = (matchTeam && matchRunde && matchOrt) ? "" : "none";
       }});
     }}
     function resetFilter() {{
