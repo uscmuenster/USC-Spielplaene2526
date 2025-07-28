@@ -321,6 +321,12 @@ html_code = html_code.replace(
     """.btn-success {
   background-color: #01a83b !important;
   border-color: #01a83b !important;"""
+    "</style>",
+    """h1 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+.form-label { font-size: 0.7rem; }
+.form-select { font-size: 0.7rem; padding: 0.25rem 0.5rem; }
+.btn { font-size: 0.7rem; padding: 0.25rem 0.6rem; }
+""" + "</style>"
 )
 
 # Standard-HTML erzeugen
