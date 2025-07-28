@@ -328,11 +328,19 @@ Path("docs").mkdir(exist_ok=True)
 Path("docs/index.html").write_text(html_code, encoding="utf-8")
 print("✅ index.html erfolgreich erstellt.")
 
-# App-Version mit kleinerer Schrift (0.65rem)
+# App-Version mit kleinerer Schrift
 html_code_app = html_code.replace("body { font-size: 0.8rem; }", "body { font-size: 0.6rem; }")
+
+# Weitere Schriftgrößen im <style>-Block anpassen
 html_code_app = html_code_app.replace(
     "</style>",
-    "h1 { font-size: 1rem; margin-bottom: 0.5rem; }\n</style>"
+    """h1 { font-size: 1rem; margin-bottom: 0.5rem; }
+.form-label { font-size: 0.7rem; }
+.form-select { font-size: 0.7rem; padding: 0.25rem 0.5rem; }
+.btn { font-size: 0.7rem; padding: 0.25rem 0.6rem; }
+""" + "</style>"
 )
+
+# indexapp.html schreiben
 Path("docs/indexapp.html").write_text(html_code_app, encoding="utf-8")
-print("✅ indexapp.html erfolgreich erstellt (kleinere Schriftgröße).")
+print("✅ indexapp.html erfolgreich erstellt (kleinere Schriftgröße + Filteranpassung).")
