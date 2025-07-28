@@ -183,7 +183,7 @@ teams = sorted(set(t for team in df_all["USC_Team"].dropna() for t in team.split
 # Tabelle mit mehreren data-team Attributen
 table_rows = "\n".join(
     "<tr " +
-    " ".join([f'data-team="{html.escape(t)}"' for t in row["USC_Team"].split("/")]) +
+    f'data-team="{" ".join([html.escape(t) for t in row["USC_Team"].split("/")])}"' +
     f' data-spielrunde="{html.escape(row["Spielrunde"])}" data-ort="{html.escape(row["Ort"])}">' +
     "".join(f"<td>{html.escape(str(row.get(col, '')))}</td>" for col in [
         "Datum", "Uhrzeit", "Tag", "Heim", "Gast", "SR", "Gastgeber", "Ergebnis", "Ort", "Spielrunde"
@@ -289,7 +289,8 @@ html_code = f"""<!doctype html>
       const runde = document.getElementById("filterRunde").value;
       const ort = document.getElementById("filterOrt").value;
       document.querySelectorAll("#spielplan tbody tr").forEach(row => {{
-        const matchTeam = !team || row.matches(`[data-team='${{team}}']`);
+        const teamList = (row.dataset.team || "").split(" ");
+        const matchTeam = !team || teamList.includes(team);
         const matchRunde = !runde || row.dataset.spielrunde === runde;
         const matchOrt = !ort || row.dataset.ort === ort;
         row.style.display = (matchTeam && matchRunde && matchOrt) ? "" : "none";
