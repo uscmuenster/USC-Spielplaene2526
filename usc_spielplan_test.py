@@ -316,6 +316,12 @@ html_code = f"""<!doctype html>
 </html>
 """
 
+# Standard-HTML erzeugen
 Path("docs").mkdir(exist_ok=True)
 Path("docs/index.html").write_text(html_code, encoding="utf-8")
-print("✅ HTML-Datei erfolgreich erstellt.")
+print("✅ index.html erfolgreich erstellt.")
+
+# App-Version mit kleinerer Schrift (0.65rem)
+html_code_app = html_code.replace("body { font-size: 0.8rem; }", "body { font-size: 0.65rem; }")
+Path("docs/indexapp.html").write_text(html_code_app, encoding="utf-8")
+print("✅ indexapp.html erfolgreich erstellt (kleinere Schriftgröße).")
