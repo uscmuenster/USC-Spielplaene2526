@@ -289,7 +289,7 @@ html_code = f"""<!doctype html>
       const runde = document.getElementById("filterRunde").value;
       const ort = document.getElementById("filterOrt").value;
       document.querySelectorAll("#spielplan tbody tr").forEach(row => {{
-        const teamList = (row.dataset.team || "").split("/");
+        const teamList = (row.dataset.teams || "").split("/");
         const matchTeam = !team || teamList.includes(team);
         const matchRunde = !runde || row.dataset.spielrunde === runde;
         const matchOrt = !ort || row.dataset.ort === ort;
