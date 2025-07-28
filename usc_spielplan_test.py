@@ -3,6 +3,7 @@ from datetime import datetime
 import pandas as pd
 import html
 from pytz import timezone
+import re
 
 # Aktuelle MESZ-Zeit für Anzeige im HTML
 mesz_time = datetime.now(timezone("Europe/Berlin")).strftime("%d.%m.%Y %H:%M")
