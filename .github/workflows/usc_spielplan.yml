@@ -18,6 +18,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GH_PAT }}
+          ref: main
 
       - name: 🐍 Python einrichten
         uses: actions/setup-python@v5
@@ -36,4 +37,4 @@ jobs:
           git config user.email "actions@github.com"
           git add docs/index.html
           git commit -m "📅 HTML-Aktualisierung" || echo "nichts zu committen"
-          git push https://x-access-token:${{ secrets.GH_PAT }}@github.com/uscmuenster/USC-Spielplaene2526.git
+          git push https://x-access-token:${{ secrets.GH_PAT }}@github.com/uscmuenster/USC-Spielplaene2526.git HEAD:main
