@@ -330,5 +330,9 @@ print("✅ index.html erfolgreich erstellt.")
 
 # App-Version mit kleinerer Schrift (0.65rem)
 html_code_app = html_code.replace("body { font-size: 0.8rem; }", "body { font-size: 0.6rem; }")
+html_code_app = html_code_app.replace(
+    "</style>",
+    "h1 { font-size: 1rem; margin-bottom: 0.5rem; }\n</style>"
+)
 Path("docs/indexapp.html").write_text(html_code_app, encoding="utf-8")
 print("✅ indexapp.html erfolgreich erstellt (kleinere Schriftgröße).")
