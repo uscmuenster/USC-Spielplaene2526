@@ -33,7 +33,7 @@
 <body class="p-4">
   <div class="container">
     <h1 class="mb-2">USC Münster – Spielplan 2025/26</h1>
-    <p class="text-muted mt-3">Stand: 28.07.2025 13:49 MESZ</p>
+    <p class="text-muted mt-3">Stand: 28.07.2025 13:53 MESZ</p>
     <div class="accordion mb-3" id="filterAccordion">
       <div class="accordion-item">
         <h2 class="accordion-header" id="headingFilters">
@@ -343,7 +343,7 @@
       const runde = document.getElementById("filterRunde").value;
       const ort = document.getElementById("filterOrt").value;
       document.querySelectorAll("#spielplan tbody tr").forEach(row => {
-        const teamList = (row.dataset.team || "").split("/");
+        const teamList = (row.dataset.teams || "").split("/");
         const matchTeam = !team || teamList.includes(team);
         const matchRunde = !runde || row.dataset.spielrunde === runde;
         const matchOrt = !ort || row.dataset.ort === ort;
