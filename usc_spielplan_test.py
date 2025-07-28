@@ -65,16 +65,17 @@ for file, team_code in csv_files:
         text = f"{row['Heim']} {row['Gast']} {row['SR']} {row['Gastgeber']}".lower()
         teams = []
         if file == "Spielplan_Bezirksklasse_26_Frauen.csv":
-            if "usc münster vi" in text:
-                teams.append("USC6")
-            if "usc münster v" in text:
-                teams.append("USC5")
-            return "/".join(teams)
-        if file == "Spielplan_Kreisliga_Muenster_Frauen.csv":
-            if "usc münster viii" in text:
-                teams.append("USC8")
-            if "usc münster vii" in text:
-                teams.append("USC7")
+        if re.search(r"\busc münster vi\b", text):
+            teams.append("USC6")
+        if re.search(r"\busc münster v\b", text):
+            teams.append("USC5")
+        return "/".join(teams)
+
+    if file == "Spielplan_Kreisliga_Muenster_Frauen.csv":
+        if re.search(r"\busc münster viii\b", text):
+            teams.append("USC8")
+        if re.search(r"\busc münster vii\b", text):
+            teams.append("USC7")
             return "/".join(teams)
         return team_code
 
