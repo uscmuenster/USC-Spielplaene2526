@@ -180,15 +180,18 @@ spielrunden = sorted(df_all["Spielrunde"].dropna().unique())
 orte = sorted([o for o in df_all["Ort"].dropna().unique() if "münster" in o.lower()])
 teams = sorted(set(t for team in df_all["USC_Team"].dropna() for t in team.split("/")))
 
+# Tabelle mit mehreren data-team Attributen
 table_rows = "\n".join(
-    f"<tr {' '.join(f'data-team=\"{html.escape(t)}\"' for t in row['USC_Team'].split('/'))} "
-    f"data-spielrunde='{html.escape(row['Spielrunde'])}' data-ort='{html.escape(row['Ort'])}'>" +
+    "<tr " +
+    " ".join([f'data-team="{html.escape(t)}"' for t in row["USC_Team"].split("/")]) +
+    f' data-spielrunde="{html.escape(row["Spielrunde"])}" data-ort="{html.escape(row["Ort"])}">' +
     "".join(f"<td>{html.escape(str(row.get(col, '')))}</td>" for col in [
         "Datum", "Uhrzeit", "Tag", "Heim", "Gast", "SR", "Gastgeber", "Ergebnis", "Ort", "Spielrunde"
     ]) + "</tr>"
     for _, row in df_all.iterrows()
 )
 
+# HTML-Ausgabe
 html_code = f"""<!doctype html>
 <html lang="de">
 <head>
