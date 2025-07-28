@@ -321,6 +321,8 @@ html_code = html_code.replace(
     """.btn-success {
   background-color: #01a83b !important;
   border-color: #01a83b !important;"""
+) 
+html_code = html_code.replace( 
     "</style>",
     """h1 { font-size: 1.2rem; margin-bottom: 0.5rem; }
 .form-label { font-size: 0.7rem; }
