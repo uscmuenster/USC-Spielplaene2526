@@ -71,14 +71,14 @@ for file, team_code in csv_files:
             teams.append("USC5")
         return "/".join(teams)
 
-    if file == "Spielplan_Kreisliga_Muenster_Frauen.csv":
-        if re.search(r"\busc münster viii\b", text):
-            teams.append("USC8")
-        if re.search(r"\busc münster vii\b", text):
-            teams.append("USC7")
-        return "/".join(teams)
+        if file == "Spielplan_Kreisliga_Muenster_Frauen.csv":
+            if re.search(r"\busc münster viii\b", text):
+                teams.append("USC8")
+            if re.search(r"\busc münster vii\b", text):
+                teams.append("USC7")
+            return "/".join(teams)
         
-    return team_code
+        return team_code
 
     df["USC_Team"] = df.apply(get_usc_team, axis=1)
 
