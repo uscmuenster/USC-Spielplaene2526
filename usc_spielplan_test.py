@@ -69,14 +69,12 @@ for file, team_code in csv_files:
                 teams.append("USC6")
             if "usc münster v" in text:
                 teams.append("USC5")
-            return "/".join(teams) if teams else "USC5/6"
+            return "/".join(teams)
         if file == "Spielplan_Kreisliga_Muenster_Frauen.csv":
             if "usc münster viii" in text:
                 teams.append("USC8")
             if "usc münster vii" in text:
                 teams.append("USC7")
-            if not teams and "usc münster" in text:
-                return "USC7/8"
             return "/".join(teams)
         return team_code
 
