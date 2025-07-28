@@ -78,7 +78,7 @@ for file, team_code in csv_files:
             if re.search(r"\busc münster vii\b", text):
                 teams.append("USC7")
             return "/".join(teams)
-        
+
         return team_code
 
     df["USC_Team"] = df.apply(get_usc_team, axis=1)
@@ -316,6 +316,23 @@ html_code = f"""<!doctype html>
 </html>
 """
 
+html_code = html_code.replace(
+    ".btn-success {",
+    """.btn-success {
+  background-color: #01a83b !important;
+  border-color: #01a83b !important;"""
+)
+
+# Standard-HTML erzeugen
 Path("docs").mkdir(exist_ok=True)
 Path("docs/index.html").write_text(html_code, encoding="utf-8")
-print("✅ HTML-Datei erfolgreich erstellt.")
+print("✅ index.html erfolgreich erstellt.")
+
+# App-Version mit kleinerer Schrift (0.65rem)
+html_code_app = html_code.replace("body { font-size: 0.8rem; }", "body { font-size: 0.6rem; }")
+html_code_app = html_code_app.replace(
+    "</style>",
+    "h1 { font-size: 1rem; margin-bottom: 0.5rem; }\n</style>"
+)
+Path("docs/indexapp.html").write_text(html_code_app, encoding="utf-8")
+print("✅ indexapp.html erfolgreich erstellt (kleinere Schriftgröße).")
