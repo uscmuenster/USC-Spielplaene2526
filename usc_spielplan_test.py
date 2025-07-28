@@ -316,6 +316,13 @@ html_code = f"""<!doctype html>
 </html>
 """
 
+html_code = html_code.replace(
+    ".btn-success {",
+    """.btn-success {
+  background-color: #01a83b !important;
+  border-color: #01a83b !important;"""
+)
+
 # Standard-HTML erzeugen
 Path("docs").mkdir(exist_ok=True)
 Path("docs/index.html").write_text(html_code, encoding="utf-8")
