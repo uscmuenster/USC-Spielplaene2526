@@ -92,7 +92,7 @@ df_all = df_all[df_all["USC_Team"].isin(["USC1", "USC2", "USC3"])]
 df_all = df_all.sort_values(by="DATETIME")
 
 # ICS-Datei erzeugen
-def generate_ics(df, output_file="usc_spielplan.ics"):
+def generate_ics(df, output_file="docs/usc_spielplan.ics"):
     berlin = timezone("Europe/Berlin")
     with open(output_file, "w", encoding="utf-8") as f:
         f.write("BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//USC Münster//Spielplan//DE\n")
