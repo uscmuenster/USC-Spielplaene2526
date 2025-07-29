@@ -1,4 +1,4 @@
-name: 🔁 USC SPIELPLAN generieren
+name: 🔁 USC SPIELPLAN inkl ICS generieren
 
 on:
   push:
