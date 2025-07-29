@@ -36,5 +36,6 @@ jobs:
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git add docs/index.html
+          git add docs/indexapp.html
           git commit -m "📅 HTML-Aktualisierung" || echo "nichts zu committen"
           git push https://x-access-token:${{ secrets.GH_PAT }}@github.com/uscmuenster/USC-Spielplaene2526.git HEAD:main
