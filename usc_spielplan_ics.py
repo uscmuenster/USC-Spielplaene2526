@@ -98,11 +98,11 @@ for file, team_code in csv_files:
 
 df_all = pd.concat(dfs, ignore_index=True)
 
-# Filter: Alle Spiele von USC1 oder USC2, oder Heimspiele anderer USC-Teams
+# Filter: Alle Spiele von USC1 und USC2 oder Heimspiele anderer USC-Teams (Gastgeber beginnt mit USC)
 def is_relevant(row):
     if row["USC_Team"] in ["USC1", "USC2"]:
         return True
-    return isinstance(row["Heim"], str) and row["Heim"].startswith("USC")
+    return isinstance(row["Gastgeber"], str) and row["Gastgeber"].strip().startswith("USC")
 
 df_all = df_all[df_all.apply(is_relevant, axis=1)]
 df_all = df_all.sort_values(by="DATETIME")
