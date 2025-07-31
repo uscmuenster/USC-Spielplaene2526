@@ -120,7 +120,7 @@ def generate_ics(df, output_file="docs/usc_spielplan.ics"):
 
             summary = f"{row['Heim']} vs. {row['Gast']}"
             location = row.get("Ort", "tbd").replace("\n", " ").strip()
-            description = f"Gastgeber: {row.get('Gastgeber', '').strip()}, Spielrunde: {row.get('Spielrunde', '').strip()}"
+            description = f"Gastgeber: {row.get('Gastgeber', '').strip()},\\nSpielrunde: {row.get('Spielrunde', '').strip()}"
             uid = f"{dtstart_utc}-{row['Heim'][:5]}-vs-{row['Gast'][:5]}@uscmuenster.de".replace(" ", "")
 
             f.write("BEGIN:VEVENT\n")
