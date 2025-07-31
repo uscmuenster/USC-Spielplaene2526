@@ -61,7 +61,7 @@ for file, team_code in csv_files:
             "USC-U16-2": [("USC2", "USC-U16-2")],
             "USC-U18":   [("USC1", "USC-U18")],
             "USC-U13":   [("USC1", "USC-U13")],
-      } 
+        }
         for old, new in replacements:
             s = s.replace(old, new)
         for old, new in team_specific.get(team, []):
@@ -88,7 +88,14 @@ for file, team_code in csv_files:
     dfs.append(df)
 
 df_all = pd.concat(dfs, ignore_index=True)
-df_all = df_all[df_all["USC_Team"].isin(["USC1", "USC2", "USC3"])]
+
+# Filter: Alle Spiele von USC1 oder USC2, oder Heimspiele anderer USC-Teams
+def is_relevant(row):
+    if row["USC_Team"] in ["USC1", "USC2"]:
+        return True
+    return isinstance(row["Heim"], str) and row["Heim"].startswith("USC")
+
+df_all = df_all[df_all.apply(is_relevant, axis=1)]
 df_all = df_all.sort_values(by="DATETIME")
 
 # ICS-Datei erzeugen
