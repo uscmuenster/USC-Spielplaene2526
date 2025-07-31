@@ -2,7 +2,6 @@ from pathlib import Path
 from datetime import datetime, timedelta
 import pandas as pd
 from pytz import timezone
-import re
 
 # Verzeichnis mit den CSV-Dateien
 csv_dir = Path("csvdata")
@@ -98,18 +97,14 @@ for file, team_code in csv_files:
 
 df_all = pd.concat(dfs, ignore_index=True)
 
-
-# Teil 2: USC-Team ist Gastgeber und gleichzeitig Heim oder Gast
+# Filter: USC-Team ist Gastgeber UND Heim oder Gast ist USC-Team
 def is_hosting_and_playing(row):
     gastgeber = str(row.get("Gastgeber", "")).strip()
     heim = str(row.get("Heim", "")).strip()
     gast = str(row.get("Gast", "")).strip()
     return gastgeber.startswith("USC") and (heim.startswith("USC") or gast.startswith("USC"))
 
-usc_host_games = df_all[df_all.apply(is_hosting_and_playing, axis=1)]
-
-# Kombination beider Teilmengen, Duplikate entfernen, sortieren
-df_all = pd.concat(usc_host_games]).drop_duplicates().sort_values(by="DATETIME")
+df_all = df_all[df_all.apply(is_hosting_and_playing, axis=1)].sort_values(by="DATETIME")
 
 # ICS-Datei erzeugen
 def generate_ics(df, output_file="docs/usc_spielplan.ics"):
@@ -125,7 +120,7 @@ def generate_ics(df, output_file="docs/usc_spielplan.ics"):
 
             summary = f"{row['Heim']} vs. {row['Gast']}"
             location = row.get("Ort", "tbd").replace("\n", " ").strip()
-            description = f"Gastgeber: {row.get('Gastgeber', '').strip()},\\nSpielrunde: {row.get('Spielrunde', '').strip()}"
+            description = f"Gastgeber: {row.get('Gastgeber', '').strip()}, Spielrunde: {row.get('Spielrunde', '').strip()}"
             uid = f"{dtstart_utc}-{row['Heim'][:5]}-vs-{row['Gast'][:5]}@uscmuenster.de".replace(" ", "")
 
             f.write("BEGIN:VEVENT\n")
