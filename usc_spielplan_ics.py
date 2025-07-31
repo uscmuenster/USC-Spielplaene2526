@@ -98,8 +98,6 @@ for file, team_code in csv_files:
 
 df_all = pd.concat(dfs, ignore_index=True)
 
-# Teil 1: Alle Spiele von USC1 oder USC2
-usc1_usc2 = df_all[df_all["USC_Team"].isin(["USC1", "USC2"])]
 
 # Teil 2: USC-Team ist Gastgeber und gleichzeitig Heim oder Gast
 def is_hosting_and_playing(row):
@@ -111,7 +109,7 @@ def is_hosting_and_playing(row):
 usc_host_games = df_all[df_all.apply(is_hosting_and_playing, axis=1)]
 
 # Kombination beider Teilmengen, Duplikate entfernen, sortieren
-df_all = pd.concat([usc1_usc2, usc_host_games]).drop_duplicates().sort_values(by="DATETIME")
+df_all = pd.concat(usc_host_games]).drop_duplicates().sort_values(by="DATETIME")
 
 # ICS-Datei erzeugen
 def generate_ics(df, output_file="docs/usc_spielplan.ics"):
