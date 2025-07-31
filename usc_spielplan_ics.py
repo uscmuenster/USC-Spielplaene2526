@@ -4,7 +4,7 @@ import pandas as pd
 from pytz import timezone
 import re
 
-# Nur relevante CSV-Dateien
+# Verzeichnis mit den CSV-Dateien
 csv_dir = Path("csvdata")
 csv_files = [
     ("Spielplan_1._Bundesliga_Frauen.csv", "USC1"),
@@ -98,14 +98,20 @@ for file, team_code in csv_files:
 
 df_all = pd.concat(dfs, ignore_index=True)
 
-# Filter: Alle Spiele von USC1 und USC2 oder Heimspiele anderer USC-Teams (Gastgeber beginnt mit USC)
-def is_relevant(row):
-    if row["USC_Team"] in ["USC1", "USC2"]:
-        return True
-    return isinstance(row["Gastgeber"], str) and row["Gastgeber"].strip().startswith("USC")
+# Teil 1: Alle Spiele von USC1 oder USC2
+usc1_usc2 = df_all[df_all["USC_Team"].isin(["USC1", "USC2"])]
 
-df_all = df_all[df_all.apply(is_relevant, axis=1)]
-df_all = df_all.sort_values(by="DATETIME")
+# Teil 2: USC-Team ist Gastgeber und gleichzeitig Heim oder Gast
+def is_hosting_and_playing(row):
+    gastgeber = str(row.get("Gastgeber", "")).strip()
+    heim = str(row.get("Heim", "")).strip()
+    gast = str(row.get("Gast", "")).strip()
+    return gastgeber.startswith("USC") and (heim.startswith("USC") or gast.startswith("USC"))
+
+usc_host_games = df_all[df_all.apply(is_hosting_and_playing, axis=1)]
+
+# Kombination beider Teilmengen, Duplikate entfernen, sortieren
+df_all = pd.concat([usc1_usc2, usc_host_games]).drop_duplicates().sort_values(by="DATETIME")
 
 # ICS-Datei erzeugen
 def generate_ics(df, output_file="docs/usc_spielplan.ics"):
