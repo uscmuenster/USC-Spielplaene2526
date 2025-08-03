@@ -5,9 +5,7 @@ on:
     paths:
       - 'Spielplan_*.csv'
   workflow_dispatch:
-  schedule:
-    - cron: '20 * * * *'  # 03:05 MESZ (01:05 UTC)
-
+  
 jobs:
   build:
     runs-on: ubuntu-latest
