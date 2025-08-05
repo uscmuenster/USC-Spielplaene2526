@@ -6,7 +6,6 @@ on:
       - 'Spielplan_*.csv'
   workflow_dispatch:
   schedule:
-    - cron: '10 * * * *'  # 03:01 MESZ (01:01 UTC)
 
 jobs:
   build:
