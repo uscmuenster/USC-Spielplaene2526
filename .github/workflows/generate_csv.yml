@@ -5,7 +5,7 @@ on:
     paths:
       - 'Spielplan_*.csv'
   workflow_dispatch:
-  schedule:
+
 
 jobs:
   build:
