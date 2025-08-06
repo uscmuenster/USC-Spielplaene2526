@@ -42,7 +42,7 @@ for event in events:
 
     try:
         dt_str = dtstart_line.split(":")[1]
-        dt = datetime.strptime(dt_str, "%Y%m%dT%H%M")
+        dt = datetime.strptime(dt_str, "%Y%m%dT%H%M%S")  # <-- jetzt korrekt mit Sekunden
         dt = berlin.localize(dt)
         heimspiele.append((dt.strftime("%d.%m.%Y"), dt.strftime("%H:%M"), gegner))
     except Exception as e:
