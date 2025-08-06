@@ -1,4 +1,4 @@
-name: Baskets ICS und CSV verarbeiten
+name: Baskets ICS and CSV verarbeiten
 
 on:
   workflow_dispatch:
@@ -67,4 +67,3 @@ jobs:
           git commit -m "🛠 CSV aus Baskets ICS generiert" || echo "nichts zu committen"
           git pull --rebase
           git push
-
