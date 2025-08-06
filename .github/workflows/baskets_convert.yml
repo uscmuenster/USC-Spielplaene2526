@@ -1,4 +1,4 @@
-name: Baskets CSV erzeugen
+name: 🔁 Baskets CSV erzeugen
 
 on:
   workflow_dispatch:
