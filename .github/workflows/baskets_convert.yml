@@ -15,9 +15,6 @@ jobs:
         with:
           token: ${{ secrets.GH_PAT }}
 
-      - name: Debug: Zeige Inhalt von csv_Baskets
-        run: ls -l csv_Baskets || echo "Ordner nicht vorhanden"
-
       - name: Python einrichten
         uses: actions/setup-python@v5
         with:
