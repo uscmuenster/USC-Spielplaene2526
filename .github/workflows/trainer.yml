@@ -54,7 +54,7 @@ jobs:
 
   generate_html:
     name: 🖥 HTML-Spielplan generieren
-    needs: generate_csv
+    needs: download_csv
     runs-on: ubuntu-latest
     steps:
       - name: 📥 Repository klonen
