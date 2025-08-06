@@ -3,58 +3,58 @@ from datetime import datetime
 import csv
 import pytz
 
-# Ordnerpfad
+# Ordner und Dateien
 csv_dir = Path("csv_Baskets")
+ics_file = csv_dir / "Baskets_2526.ics"
+csv_file = csv_dir / "Baskets_2526_Heimspiele.csv"
 
-# Eingabedatei (ICS)
-ics_path = csv_dir / "Baskets_2526.ics"
-
-# Ausgabedatei (CSV)
-csv_path = csv_dir / "Baskets_2526_Heimspiele.csv"
-
-# Zeitzone definieren
+# Zeitzone
 berlin = pytz.timezone("Europe/Berlin")
 
-# Prüfe ob die Datei existiert
-if not ics_path.exists():
-    print(f"❌ ICS-Datei nicht gefunden: {ics_path}")
+# Prüfen, ob ICS-Datei existiert
+if not ics_file.exists():
+    print(f"❌ ICS-Datei nicht gefunden: {ics_file}")
     exit(1)
 
-# Datei einlesen
-with ics_path.open(encoding="utf-8") as f:
+# ICS-Inhalt lesen
+with ics_file.open(encoding="utf-8") as f:
     content = f.read()
 
 # Events extrahieren
 events = content.split("BEGIN:VEVENT")[1:]
-print(f"🔍 Anzahl aller Events: {len(events)}")
+print(f"📅 Anzahl aller Events: {len(events)}")
 
-heimspiel_count = 0
+heimspiele = []
 
-# CSV-Datei schreiben
-with csv_path.open("w", newline="", encoding="utf-8") as csvfile:
-    writer = csv.writer(csvfile)
+for event in events:
+    lines = event.strip().splitlines()
+
+    # Gegner suchen
+    summary_line = next((line for line in lines if line.startswith("SUMMARY:Uni Baskets Münster - ")), None)
+    if not summary_line:
+        continue
+
+    gegner = summary_line.replace("SUMMARY:Uni Baskets Münster - ", "").strip()
+
+    dtstart_line = next((line for line in lines if line.startswith("DTSTART;TZID=Europe/Berlin:")), None)
+    if not dtstart_line:
+        continue
+
+    try:
+        dt_str = dtstart_line.split(":")[1]
+        dt = datetime.strptime(dt_str, "%Y%m%dT%H%M")
+        dt = berlin.localize(dt)
+        heimspiele.append((dt.strftime("%d.%m.%Y"), dt.strftime("%H:%M"), gegner))
+    except Exception as e:
+        print(f"⚠️ Fehler beim Datum: {e}")
+        continue
+
+# CSV schreiben
+with csv_file.open("w", newline="", encoding="utf-8") as f:
+    writer = csv.writer(f)
     writer.writerow(["Datum", "Startzeit", "Gegner"])
+    writer.writerows(heimspiele)
 
-    for event in events:
-        lines = event.splitlines()
-        summary_line = next((line for line in lines if line.startswith("SUMMARY:")), "")
-
-        if summary_line.startswith("SUMMARY:Uni Baskets Münster - "):
-            gegner = summary_line.replace("SUMMARY:Uni Baskets Münster - ", "").strip()
-            dtstart_line = next((line for line in lines if line.startswith("DTSTART;TZID=Europe/Berlin:")), "")
-
-            if not dtstart_line:
-                continue
-
-            dtstart_str = dtstart_line.split(":")[1]
-            try:
-                dt_local = berlin.localize(datetime.strptime(dtstart_str, "%Y%m%dT%H%M"))
-                datum = dt_local.strftime("%d.%m.%Y")
-                startzeit = dt_local.strftime("%H:%M")
-                writer.writerow([datum, startzeit, gegner])
-                heimspiel_count += 1
-            except ValueError:
-                continue
-
-print(f"✅ Heimspiele gefunden: {heimspiel_count}")
-print(f"✅ CSV gespeichert unter: {csv_path}")
+# Ergebnis
+print(f"✅ Heimspiele gefunden: {len(heimspiele)}")
+print(f"💾 CSV geschrieben: {csv_file}")
