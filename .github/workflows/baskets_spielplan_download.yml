@@ -30,7 +30,7 @@ jobs:
         run: pip install pytz
 
       - name: 🛠 Heimspiele als CSV extrahieren
-        run: python ics_to_csv.py
+        run: python baskets_csv.py
 
       - name: 🔁 Änderungen committen und pushen
         run: |
