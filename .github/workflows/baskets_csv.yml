@@ -37,6 +37,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: ⏳ 30 Sekunden warten
+        run: sleep 30
+      
       - name: 📥 Repository erneut klonen (inkl. ICS-Datei)
         uses: actions/checkout@v4
         with:
