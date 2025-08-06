@@ -1,23 +1,21 @@
 name: Baskets CSV erzeugen
 
 on:
-  workflow_run:
-    workflows: ["Baskets ICS herunterladen"]
-    types:
-      - completed
+  workflow_dispatch:
+  schedule:
+    - cron: '10 2 * * *'  # täglich um 02:10 UTC = 04:10 MESZ
 
 jobs:
   convert_ics_to_csv:
-    if: github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
 
     steps:
-      - name: Repository klonen
+      - name: Repository klonen (inkl. ICS-Datei)
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GH_PAT }}
 
-      - name: Zeige Inhalt von csv_Baskets (Debug)
+      - name: Debug: Zeige Inhalt von csv_Baskets
         run: ls -l csv_Baskets || echo "Ordner nicht vorhanden"
 
       - name: Python einrichten
