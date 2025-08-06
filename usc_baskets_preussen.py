@@ -5,7 +5,7 @@ import html
 from pytz import timezone
 import re
 
-# Aktuelle MESZ-Zeit
+# Aktuelle MESZ-Zeit für Anzeige im HTML
 mesz_time = datetime.now(timezone("Europe/Berlin")).strftime("%d.%m.%Y %H:%M")
 stand_info = f'<p class="text-muted mt-3">Stand: {mesz_time} MESZ</p>'
 reload_button = """
@@ -14,10 +14,10 @@ reload_button = """
 </div>
 """
 
-# Verzeichnisse
+# Verzeichnis
 csv_dir = Path("csvdata")
-baskets_file = Path("csv_Baskets/Baskets_2526_Heimspiele.csv")
 
+# CSV-Dateien mit zugehörigen USC-Codes
 csv_files = [
     ("Spielplan_1._Bundesliga_Frauen.csv", "USC1"),
     ("Spielplan_2._Bundesliga_Frauen_Nord.csv", "USC2"),
@@ -46,18 +46,14 @@ rename_map = {
     "Spielrunde": "Spielrunde"
 }
 
-tage_map = {
-    "Monday": "Mo", "Tuesday": "Di", "Wednesday": "Mi", "Thursday": "Do",
-    "Friday": "Fr", "Saturday": "Sa", "Sunday": "So"
-}
-
 dfs = []
 
-# USC-Dateien verarbeiten
 for file, team_code in csv_files:
-    df = pd.read_csv(csv_dir / file, sep=";", encoding="cp1252")
+    file_path = csv_dir / file
+    df = pd.read_csv(file_path, sep=";", encoding="cp1252")
     df.columns = df.columns.str.strip()
     df = df.rename(columns=rename_map)
+
     if "Ergebnis" not in df.columns:
         df["Ergebnis"] = ""
 
@@ -142,8 +138,10 @@ for file, team_code in csv_files:
 
     dfs.append(df)
 
-# Baskets-Spiele einlesen
+# 🟧 Baskets-Spiele ergänzen
+baskets_file = Path("csv_Baskets/Baskets_2526_Heimspiele.csv")
 df_baskets = pd.read_csv(baskets_file)
+
 df_baskets["Heim"] = "Uni Baskets Münster"
 df_baskets["Ort"] = "Sporthalle Berg Fidel (48153 Münster)"
 df_baskets["Spielrunde"] = "Basketball Pro A"
@@ -151,21 +149,35 @@ df_baskets["SR"] = ""
 df_baskets["Gastgeber"] = ""
 df_baskets["Ergebnis"] = ""
 df_baskets["USC_Team"] = "Baskets"
+
 df_baskets = df_baskets.rename(columns={"Startzeit": "Uhrzeit", "Gegner": "Gast"})
 df_baskets["Datum"] = df_baskets["Datum"].str.strip()
 df_baskets["Uhrzeit"] = df_baskets["Uhrzeit"].str.strip()
 df_baskets["Datum_DT"] = pd.to_datetime(df_baskets["Datum"], format="%d.%m.%Y", errors="coerce")
+tage_map = {
+    "Monday": "Mo", "Tuesday": "Di", "Wednesday": "Mi", "Thursday": "Do",
+    "Friday": "Fr", "Saturday": "Sa", "Sunday": "So"
+}
 df_baskets["Tag"] = df_baskets["Datum_DT"].dt.day_name().map(tage_map)
+
 df_baskets = df_baskets[[
     "Datum", "Uhrzeit", "Tag", "Heim", "Gast", "SR", "Gastgeber",
     "Ergebnis", "Ort", "Spielrunde", "Datum_DT", "USC_Team"
 ]]
+
 dfs.append(df_baskets)
 
-# Gesamt-DataFrame erzeugen
+# Alle Daten zusammenführen
 df_all = pd.concat(dfs, ignore_index=True)
 
-# Uhrzeitformat korrigieren
+# Sicherstellen, dass Datum_DT vorhanden ist
+if "Datum_DT" not in df_all.columns:
+    df_all["Datum_DT"] = pd.to_datetime(df_all["Datum"], format="%d.%m.%Y", errors="coerce")
+
+# Wochentag neu setzen
+df_all["Tag"] = df_all["Datum_DT"].dt.day_name().map(tage_map)
+
+# Uhrzeit vereinheitlichen
 def format_uhrzeit(uhr):
     if uhr in ["00:00:00", "00:00"]:
         return "???"
@@ -178,7 +190,7 @@ def format_uhrzeit(uhr):
 
 df_all["Uhrzeit"] = df_all["Uhrzeit"].apply(format_uhrzeit)
 
-# Namen bereinigen
+# Letzte Korrekturen
 def clean_all_names(row):
     for col in ["Heim", "Gast", "SR", "Gastgeber", "Ort", "Spielrunde"]:
         row[col] = replace_usc_names(row[col], row["USC_Team"])
@@ -186,26 +198,14 @@ def clean_all_names(row):
 
 df_all = df_all.apply(clean_all_names, axis=1)
 
-# Suffixe entfernen
 for col in ["Heim", "Gast", "SR", "Gastgeber"]:
     df_all[col] = df_all[col].str.replace(r'\b(USC-[U\d]+-\d) II\b', r'\1', regex=True)
 
-# Sortierung und Filterwerte vorbereiten
+# Sortieren
 df_all = df_all.sort_values(by=["Datum_DT", "Uhrzeit"])
-spielrunden = sorted(df_all["Spielrunde"].dropna().unique())
-orte = sorted([o for o in df_all["Ort"].dropna().unique() if "münster" in o.lower()])
-teams = sorted(set(t for team in df_all["USC_Team"].dropna() for t in team.split("/")))
 
-# Tabellenzeilen generieren
-table_rows = "\n".join(
-    "<tr " +
-    f'data-teams="{html.escape(row["USC_Team"])}"' +
-    f' data-spielrunde="{html.escape(row["Spielrunde"])}" data-ort="{html.escape(row["Ort"])}">' +
-    "".join(f"<td>{html.escape(str(row.get(col, '')))}</td>" for col in [
-        "Datum", "Uhrzeit", "Tag", "Heim", "Gast", "SR", "Gastgeber", "Ergebnis", "Ort", "Spielrunde"
-    ]) + "</tr>"
-    for _, row in df_all.iterrows()
-)
+# ⚙️ Weitere Ausgabe (Filter, HTML etc.) folgt...
+
 
 # HTML-Code vorbereiten
 html_code = f"""<!doctype html>
