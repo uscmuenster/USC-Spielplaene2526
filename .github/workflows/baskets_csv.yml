@@ -27,10 +27,11 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git pull --rebase
           git add -A csv_Baskets
           git commit -m "📥 Baskets ICS-Datei aktualisiert" || echo "nichts zu committen"
+          git pull --rebase
           git push
+
 
   convert_ics_to_csv:
     needs: download_ics
@@ -60,7 +61,7 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git pull --rebase
           git add csv_Baskets/Baskets_2526_Heimspiele.csv
           git commit -m "🛠 CSV aus Baskets ICS generiert" || echo "nichts zu committen"
+          git pull --rebase
           git push
