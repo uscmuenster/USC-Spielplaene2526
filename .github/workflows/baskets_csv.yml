@@ -50,7 +50,7 @@ jobs:
         run: pip install pytz
 
       - name: 🛠 CSV aus ICS erzeugen mit Baskets_csv.py
-        run: python Baskets_csv.py
+        run: python baskets_csv.py
 
       - name: 🔁 Commit und Push der CSV-Datei
         run: |
