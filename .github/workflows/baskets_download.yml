@@ -3,7 +3,7 @@ name: 📥 Baskets ICS herunterladen
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 2 * * *'  # täglich um 02:00 UTC = 04:00 MESZ
+    - cron: '0 1 * * *'  # täglich um 02:00 UTC = 04:00 MESZ
 
 jobs:
   download_ics:
