@@ -15,8 +15,10 @@ jobs:
         with:
           token: ${{ secrets.GH_PAT }}
 
-      - name: 📁 Ordner csv_Baskets anlegen
-        run: mkdir -p csv_Baskets
+      - name: 🧹 Ordner csv_Baskets leeren (wenn vorhanden)
+        run: |
+          mkdir -p csv_Baskets
+          rm -f csv_Baskets/*
 
       - name: 🌐 Baskets-Kalender (ICS) herunterladen
         run: curl -L "https://api.2basketballbundesliga.de/cal/562" --output csv_Baskets/Baskets_2526.ics
@@ -25,7 +27,7 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add csv_Baskets/Baskets_2526.ics
+          git add -A csv_Baskets
           git commit -m "📥 Baskets ICS-Datei aktualisiert" || echo "nichts zu committen"
           git push
 
@@ -47,8 +49,8 @@ jobs:
       - name: 📦 Abhängigkeiten installieren
         run: pip install pytz
 
-      - name: 🛠 CSV aus ICS erzeugen
-        run: python baskets_csv.py
+      - name: 🛠 CSV aus ICS erzeugen mit Baskets_csv.py
+        run: python Baskets_csv.py
 
       - name: 🔁 Commit und Push der CSV-Datei
         run: |
