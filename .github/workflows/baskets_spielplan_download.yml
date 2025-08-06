@@ -1,0 +1,28 @@
+name: 🏀 Baskets Kalender herunterladen
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 3 * * *'  # täglich um 03:00 UTC = 05:00 MESZ
+
+jobs:
+  download_calendar:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Repository klonen
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_PAT }}
+
+      - name: 🌐 Kalenderdatei herunterladen
+        run: |
+          curl -L "https://api.2basketballbundesliga.de/cal/562" --output Baskets_2526.ics
+
+      - name: 🔁 Änderungen committen und pushen
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add Baskets_2526.ics
+          git commit -m "🗓️ Baskets Kalender aktualisiert" || echo "nichts zu committen"
+          git push
