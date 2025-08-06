@@ -236,32 +236,44 @@ html_code = f"""<!doctype html>
   <title>USC Münster Spielplan 2025/26</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
-    body {{ font-size: 0.8rem; }}
-    th, td {{ white-space: nowrap; }}
-    table tr {{ background-color: white; }}
-    thead th {{ background-color: #f2f2f2 !important; color: #000; }}
-    .accordion-button {{ background-color: #96d696 !important; }}
-    #filters {{ background-color: #96d696 !important; }}
-    #filters select, #filters label {{
+    body { font-size: 0.8rem; }
+    th, td { white-space: nowrap; }
+    table tr { background-color: white; }
+    thead th { background-color: #f2f2f2 !important; color: #000; }
+    .accordion-button { background-color: #96d696 !important; }
+    #filters { background-color: #96d696 !important; }
+    #filters select, #filters label {
       color: #000000;
       border-color: #96d696;
-    }}
-    .form-select:focus {{
+    }
+    .form-select:focus {
       border-color: #28a745;
       box-shadow: 0 0 0 0.25rem rgba(40,167,69,.25);
-    }}
-    @media print {{
-      body * {{ visibility: hidden; }}
-      #spielplan, #spielplan * {{ visibility: visible; }}
-      #spielplan {{ position: absolute; left: 0; top: 0; width: 100%; }}
-    }}
+    }
+    #spielplan {
+      width: 100%;
+      table-layout: auto;
+    }
+    @media print {
+      body * { visibility: hidden; }
+      #spielplan, #spielplan * { visibility: visible; }
+      #spielplan { position: absolute; left: 0; top: 0; width: 100%; }
+    }
+    h1 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+    .form-label { font-size: 0.7rem; }
+    .form-select { font-size: 0.7rem; padding: 0.25rem 0.5rem; }
+    .btn { font-size: 0.7rem; padding: 0.25rem 0.6rem; }
+    .btn-success {
+      background-color: #01a83b !important;
+      border-color: #01a83b !important;
+    }
   </style>
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="manifest" href="manifest.webmanifest">
   <meta name="theme-color" content="#008000">
 </head>
-<body class="p-4">
-  <div class="container">
+<body class="px-4 pt-4 pb-2">
+  <div class="container-fluid">
     <h1 class="mb-2">USC Münster – Spielplan 2025/26</h1>
     {stand_info}
     <div class="accordion mb-3" id="filterAccordion">
@@ -304,8 +316,9 @@ html_code = f"""<!doctype html>
         </div>
       </div>
     </div>
-    <div class="table-responsive" style="overflow-x: visible;">
-      <table class="table table-bordered" id="spielplan">
+
+    <div style="overflow-x: auto; width: 100%;">
+      <table class="table table-bordered w-100" id="spielplan">
         <thead>
           <tr><th>Datum</th><th>Uhrzeit</th><th>Tag</th><th>Heim</th><th>Gast</th><th>SR</th><th>Gastgeber</th><th>Ergebnis</th><th>Ort</th><th>Spielrunde</th></tr>
         </thead>
@@ -314,41 +327,44 @@ html_code = f"""<!doctype html>
         </tbody>
       </table>
     </div>
+
     <div class="mt-4">
       <a class="btn btn-success" href="spielplan.csv" download>📥 Gesamten Spielplan als CSV herunterladen</a>
     </div>
     {reload_button}
   </div>
+
   <script>
-    function filter() {{
+    function filter() {
       const team = document.getElementById("filterTeam").value;
       const runde = document.getElementById("filterRunde").value;
       const ort = document.getElementById("filterOrt").value;
-      document.querySelectorAll("#spielplan tbody tr").forEach(row => {{
+      document.querySelectorAll("#spielplan tbody tr").forEach(row => {
         const teamList = (row.dataset.teams || "").split("/");
         const matchTeam = !team || teamList.includes(team);
         const matchRunde = !runde || row.dataset.spielrunde === runde;
         const matchOrt = !ort || row.dataset.ort === ort;
         row.style.display = (matchTeam && matchRunde && matchOrt) ? "" : "none";
-      }});
-    }}
-    function resetFilter() {{
+      });
+    }
+    function resetFilter() {
       document.getElementById("filterTeam").value = "";
       document.getElementById("filterRunde").value = "";
       document.getElementById("filterOrt").value = "";
       filter();
-    }}
+    }
   </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    if ('serviceWorker' in navigator) {{
+    if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('service-worker.js')
         .then(reg => console.log('✅ Service Worker registriert:', reg.scope))
         .catch(err => console.warn('❌ Service Worker Fehler:', err));
-    }}
+    }
   </script>
 </body>
 </html>
+
 """
 
 html_code = html_code.replace(
