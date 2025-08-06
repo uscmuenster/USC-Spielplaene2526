@@ -1,12 +1,12 @@
-name: 🏀 Baskets Kalender verarbeiten
+name: 📥 Baskets ICS herunterladen
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 3 * * *'  # täglich um 03:00 UTC = 05:00 MESZ
+    - cron: '0 4 * * *'  # täglich um 04:00 UTC = 06:00 MESZ
 
 jobs:
-  download_and_convert:
+  download_ics:
     runs-on: ubuntu-latest
 
     steps:
@@ -15,28 +15,16 @@ jobs:
         with:
           token: ${{ secrets.GH_PAT }}
 
-      - name: 📁 Ordner csv_Baskets anlegen (falls nicht vorhanden)
+      - name: 📁 Ordner csv_Baskets anlegen
         run: mkdir -p csv_Baskets
 
-      - name: 🌐 Kalender herunterladen
+      - name: 🌐 Baskets-Kalender (ICS) herunterladen
         run: curl -L "https://api.2basketballbundesliga.de/cal/562" --output csv_Baskets/Baskets_2526.ics
 
-      - name: 🐍 Python einrichten
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.10'
-
-      - name: 📦 Abhängigkeiten installieren
-        run: pip install pytz
-
-      - name: 🛠 Heimspiele als CSV extrahieren
-        run: python baskets_csv.py
-
-      - name: 🔁 Änderungen committen und pushen
+      - name: 🔁 Commit und Push der ICS-Datei
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git add csv_Baskets/Baskets_2526.ics
-          git add csv_Baskets/Baskets_2526_Heimspiele.csv
-          git commit -m "📅 Baskets Kalender & CSV aktualisiert" || echo "nichts zu committen"
+          git commit -m "📥 Baskets ICS-Datei aktualisiert" || echo "nichts zu committen"
           git push
