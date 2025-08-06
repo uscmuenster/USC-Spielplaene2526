@@ -304,7 +304,7 @@ html_code = f"""<!doctype html>
         </div>
       </div>
     </div>
-    <div class="table-responsive">
+    <div class="table-responsive" style="overflow-x: visible;">
       <table class="table table-bordered" id="spielplan">
         <thead>
           <tr><th>Datum</th><th>Uhrzeit</th><th>Tag</th><th>Heim</th><th>Gast</th><th>SR</th><th>Gastgeber</th><th>Ergebnis</th><th>Ort</th><th>Spielrunde</th></tr>
