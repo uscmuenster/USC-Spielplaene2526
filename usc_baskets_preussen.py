@@ -71,12 +71,14 @@ for file, team_code in csv_files:
             if re.search(r"\busc münster v\b", text):
                 teams.append("USC5")
             return "/".join(teams)
+
         if file == "Spielplan_Kreisliga_Muenster_Frauen.csv":
             if re.search(r"\busc münster viii\b", text):
                 teams.append("USC8")
             if re.search(r"\busc münster vii\b", text):
                 teams.append("USC7")
             return "/".join(teams)
+
         return team_code
 
     df["USC_Team"] = df.apply(get_usc_team, axis=1)
@@ -153,13 +155,18 @@ df_baskets["USC_Team"] = "Baskets"
 df_baskets = df_baskets.rename(columns={"Startzeit": "Uhrzeit", "Gegner": "Gast"})
 df_baskets["Datum"] = df_baskets["Datum"].str.strip()
 df_baskets["Uhrzeit"] = df_baskets["Uhrzeit"].str.strip()
+
+# Datumsobjekte erzeugen
 df_baskets["Datum_DT"] = pd.to_datetime(df_baskets["Datum"], format="%d.%m.%Y", errors="coerce")
+
+# Wochentag hinzufügen
 tage_map = {
     "Monday": "Mo", "Tuesday": "Di", "Wednesday": "Mi", "Thursday": "Do",
     "Friday": "Fr", "Saturday": "Sa", "Sunday": "So"
 }
 df_baskets["Tag"] = df_baskets["Datum_DT"].dt.day_name().map(tage_map)
 
+# Spalten in gewünschter Reihenfolge
 df_baskets = df_baskets[[
     "Datum", "Uhrzeit", "Tag", "Heim", "Gast", "SR", "Gastgeber",
     "Ergebnis", "Ort", "Spielrunde", "Datum_DT", "USC_Team"
@@ -167,30 +174,32 @@ df_baskets = df_baskets[[
 
 dfs.append(df_baskets)
 
-# Alle Daten zusammenführen
+
 df_all = pd.concat(dfs, ignore_index=True)
 
-# Sicherstellen, dass Datum_DT vorhanden ist
-if "Datum_DT" not in df_all.columns:
-    df_all["Datum_DT"] = pd.to_datetime(df_all["Datum"], format="%d.%m.%Y", errors="coerce")
+def parse_datum(s):
+    try:
+        return datetime.strptime(s, "%d.%m.%Y")
+    except:
+        return pd.NaT
 
-# Wochentag neu setzen
+df_all["Datum_DT"] = df_all["Datum"].apply(parse_datum)
+tage_map = {
+    "Monday": "Mo", "Tuesday": "Di", "Wednesday": "Mi", "Thursday": "Do",
+    "Friday": "Fr", "Saturday": "Sa", "Sunday": "So"
+}
 df_all["Tag"] = df_all["Datum_DT"].dt.day_name().map(tage_map)
 
-# Uhrzeit vereinheitlichen
 def format_uhrzeit(uhr):
-    if uhr in ["00:00:00", "00:00"]:
+    if uhr == "00:00:00":
         return "???"
-    for fmt in ("%H:%M:%S", "%H:%M"):
-        try:
-            return datetime.strptime(uhr, fmt).strftime("%H:%M")
-        except:
-            continue
-    return uhr
+    try:
+        return datetime.strptime(uhr, "%H:%M:%S").strftime("%H:%M")
+    except:
+        return uhr
 
 df_all["Uhrzeit"] = df_all["Uhrzeit"].apply(format_uhrzeit)
 
-# Letzte Korrekturen
 def clean_all_names(row):
     for col in ["Heim", "Gast", "SR", "Gastgeber", "Ort", "Spielrunde"]:
         row[col] = replace_usc_names(row[col], row["USC_Team"])
@@ -201,13 +210,24 @@ df_all = df_all.apply(clean_all_names, axis=1)
 for col in ["Heim", "Gast", "SR", "Gastgeber"]:
     df_all[col] = df_all[col].str.replace(r'\b(USC-[U\d]+-\d) II\b', r'\1', regex=True)
 
-# Sortieren
 df_all = df_all.sort_values(by=["Datum_DT", "Uhrzeit"])
 
-# ⚙️ Weitere Ausgabe (Filter, HTML etc.) folgt...
+spielrunden = sorted(df_all["Spielrunde"].dropna().unique())
+orte = sorted([o for o in df_all["Ort"].dropna().unique() if "münster" in o.lower()])
+teams = sorted(set(t for team in df_all["USC_Team"].dropna() for t in team.split("/")))
 
+# Tabelle mit mehreren data-team Attributen
+table_rows = "\n".join(
+    "<tr " +
+    f'data-teams="{html.escape(row["USC_Team"])}"' +
+    f' data-spielrunde="{html.escape(row["Spielrunde"])}" data-ort="{html.escape(row["Ort"])}">' +
+    "".join(f"<td>{html.escape(str(row.get(col, '')))}</td>" for col in [
+        "Datum", "Uhrzeit", "Tag", "Heim", "Gast", "SR", "Gastgeber", "Ergebnis", "Ort", "Spielrunde"
+    ]) + "</tr>"
+    for _, row in df_all.iterrows()
+)
 
-# HTML-Code vorbereiten
+# HTML-Ausgabe
 html_code = f"""<!doctype html>
 <html lang="de">
 <head>
@@ -230,27 +250,18 @@ html_code = f"""<!doctype html>
       border-color: #28a745;
       box-shadow: 0 0 0 0.25rem rgba(40,167,69,.25);
     }}
-    #spielplan {{
-      width: 100%;
-      table-layout: auto;
-    }}
-    .btn-success {{
-      background-color: #01a83b !important;
-      border-color: #01a83b !important;
-    }}
     @media print {{
       body * {{ visibility: hidden; }}
       #spielplan, #spielplan * {{ visibility: visible; }}
       #spielplan {{ position: absolute; left: 0; top: 0; width: 100%; }}
     }}
-    h1 {{ font-size: 1.2rem; margin-bottom: 0.5rem; }}
-    .form-label {{ font-size: 0.7rem; }}
-    .form-select {{ font-size: 0.7rem; padding: 0.25rem 0.5rem; }}
-    .btn {{ font-size: 0.7rem; padding: 0.25rem 0.6rem; }}
   </style>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#008000">
 </head>
-<body class="px-4 pt-4 pb-2">
-  <div class="container-fluid">
+<body class="p-4">
+  <div class="container">
     <h1 class="mb-2">USC Münster – Spielplan 2025/26</h1>
     {stand_info}
     <div class="accordion mb-3" id="filterAccordion">
@@ -293,9 +304,8 @@ html_code = f"""<!doctype html>
         </div>
       </div>
     </div>
-
-    <div style="overflow-x: auto; width: 100%;">
-      <table class="table table-bordered w-100" id="spielplan">
+    <div class="table-responsive">
+      <table class="table table-bordered" id="spielplan">
         <thead>
           <tr><th>Datum</th><th>Uhrzeit</th><th>Tag</th><th>Heim</th><th>Gast</th><th>SR</th><th>Gastgeber</th><th>Ergebnis</th><th>Ort</th><th>Spielrunde</th></tr>
         </thead>
@@ -304,7 +314,6 @@ html_code = f"""<!doctype html>
         </tbody>
       </table>
     </div>
-
     <div class="mt-4">
       <a class="btn btn-success" href="spielplan.csv" download>📥 Gesamten Spielplan als CSV herunterladen</a>
     </div>
@@ -331,11 +340,35 @@ html_code = f"""<!doctype html>
     }}
   </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {{
+      navigator.serviceWorker.register('service-worker.js')
+        .then(reg => console.log('✅ Service Worker registriert:', reg.scope))
+        .catch(err => console.warn('❌ Service Worker Fehler:', err));
+    }}
+  </script>
 </body>
 </html>
 """
 
-# Datei speichern
+html_code = html_code.replace(
+    ".btn-success {",
+    """.btn-success {
+  background-color: #01a83b !important;
+  border-color: #01a83b !important;"""
+) 
+html_code = html_code.replace( 
+    "</style>",
+    """h1 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+.form-label { font-size: 0.7rem; }
+.form-select { font-size: 0.7rem; padding: 0.25rem 0.5rem; }
+.btn { font-size: 0.7rem; padding: 0.25rem 0.6rem; }
+""" + "</style>"
+)
+
+# Standard-HTML erzeugen
 Path("docs").mkdir(exist_ok=True)
 Path("docs/index_trainer.html").write_text(html_code, encoding="utf-8")
 print("✅ index_trainer.html erfolgreich erstellt.")
+
+
