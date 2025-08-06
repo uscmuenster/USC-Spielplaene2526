@@ -1,0 +1,33 @@
+name: 📥 Baskets ICS herunterladen
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 2 * * *'  # täglich um 02:00 UTC = 04:00 MESZ
+
+jobs:
+  download_ics:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Repository klonen
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_PAT }}
+
+      - name: 🧹 Ordner csv_Baskets leeren (wenn vorhanden)
+        run: |
+          mkdir -p csv_Baskets
+          rm -f csv_Baskets/*
+
+      - name: 🌐 Baskets-Kalender (ICS) herunterladen
+        run: curl -L "https://api.2basketballbundesliga.de/cal/562" --output csv_Baskets/Baskets_2526.ics
+
+      - name: 🔁 Commit und Push der ICS-Datei
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add -A csv_Baskets
+          git commit -m "📥 Baskets ICS-Datei aktualisiert" || echo "nichts zu committen"
+          git pull --rebase
+          git push
