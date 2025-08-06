@@ -364,7 +364,6 @@ html_code = f"""<!doctype html>
   </script>
 </body>
 </html>
-
 """
 
 html_code = html_code.replace(
