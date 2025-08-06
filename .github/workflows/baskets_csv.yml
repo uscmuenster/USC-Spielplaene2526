@@ -40,6 +40,9 @@ jobs:
     steps:
       - name: ⏳ 30 Sekunden warten
         run: sleep 30
+
+      - name: 🧪 Debug: Zeige Inhalt von csv_Baskets
+        run: ls -l csv_Baskets
       
       - name: 📥 Repository erneut klonen (inkl. ICS-Datei)
         uses: actions/checkout@v4
