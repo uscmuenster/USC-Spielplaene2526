@@ -1,0 +1,112 @@
+name: 🔁 USC Baskets Preussen Gesamtspielplan
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 3 * * *'  # Start: einmal pro Nacht
+
+jobs:
+  download_csv:
+    name: 🌐 CSV-Dateien herunterladen
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Repository auschecken
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GH_PAT }}
+
+      - name: 📁 Verzeichnis csvdata anlegen
+        run: mkdir -p csvdata
+
+      - name: 🌐 CSV-Dateien herunterladen mit fester Umbenennung
+        run: |
+          cd csvdata
+          rm -f *.csv
+          urls=(
+            "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95239897"
+            "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95244340"
+            "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95243632"
+            "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95245637"
+            "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95245654"
+            "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95251101"
+            "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95251080"
+            "https://www.volleyball-bundesliga.de/servlet/league/PlayingScheduleCsvExport?matchSeriesId=776311171"
+            "https://www.volleyball-bundesliga.de/servlet/league/PlayingScheduleCsvExport?matchSeriesId=776309163"
+            "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95245226" 
+            "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95250874"
+          )
+          for url in "${urls[@]}"; do
+            curl -L -OJ "$url"
+          done
+          curl -L "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95241488" \
+            -o "Spielplan_Kreisliga_Muenster_Frauen.csv"
+
+      - name: 🔁 Commit und Push CSV
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add csvdata/
+          git diff --cached --quiet && echo "🟢 Keine Änderungen, nichts zu committen." || (
+            git commit -m "📊 Automatisches CSV-Update (mit Sonderzeichen-Handling)"
+            git push
+          )
+
+  generate_csv:
+    name: 📄 Spielplan CSV generieren
+    needs: download_csv
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Repository klonen
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_PAT }}
+
+      - name: 🐍 Python einrichten
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: 📦 Abhängigkeiten installieren
+        run: pip install pandas
+
+      - name: 🛠 Spielplan-CSV generieren
+        run: python generate_csv.py
+
+      - name: 🔁 Commit und Push CSV-Datei
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add docs/spielplan.csv
+          git commit -m "📅 CSV-Aktualisierung" || echo "nichts zu committen"
+          git push https://x-access-token:${{ secrets.GH_PAT }}@github.com/uscmuenster/USC-Spielplaene2526.git
+
+  generate_html:
+    name: 🖥 HTML-Spielplan generieren
+    needs: generate_csv
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Repository klonen
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_PAT }}
+          ref: main
+
+      - name: 🐍 Python einrichten
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: 📦 Abhängigkeiten installieren
+        run: pip install pandas
+
+      - name: 🛠 HTML mit Ergebnis generieren
+        run: python usc_baskets_preussen.py
+
+      - name: 🔁 Commit und Push HTML
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add docs/index_trainer.html
+          git commit -m "📅 HTML-Aktualisierung" || echo "nichts zu committen"
+          git push https://x-access-token:${{ secrets.GH_PAT }}@github.com/uscmuenster/USC-Spielplaene2526.git HEAD:main
