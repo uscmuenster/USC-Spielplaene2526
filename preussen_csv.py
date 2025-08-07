@@ -43,7 +43,7 @@ for event in events:
         print(f"⚠️ Fehler beim Gegner: {e}")
         continue
 
-    # DESCRIPTION zusammensetzen
+    # DESCRIPTION zusammensetzen (mehrzeilig)
     desc_lines = []
     desc_started = False
     for line in lines:
