@@ -23,14 +23,14 @@ jobs:
       - name: Abhängigkeiten installieren
         run: pip install pytz
 
-      - name: CSV aus ICS erzeugen mit baskets_csv.py
+      - name: CSV aus ICS erzeugen mit preussen_csv.py
         run: python preussen_csv.py
 
       - name: Commit und Push der CSV-Datei
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add csv_Baskets/Baskets_2526_Heimspiele.csv
+          git add csv_Baskets/Preussen_2526_Heimspiele.csv
           git commit -m "CSV aus Baskets ICS generiert" || echo "nichts zu committen"
           git pull --rebase
           git push
