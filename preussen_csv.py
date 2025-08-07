@@ -23,59 +23,62 @@ with ics_file.open(encoding="utf-8") as f:
 
 # Events extrahieren
 events = content.split("BEGIN:VEVENT")[1:]
-print(f"📅 Anzahl aller Events: {len(events)}")
+print(f"📅 Anzahl Events: {len(events)}")
 
 heimspiele = []
 
 for event in events:
     lines = event.strip().splitlines()
 
-    # Heimspiel identifizieren
+    # Gegnersuche: Nur Heimspiele von Preußen Münster
     summary_line = next((line for line in lines if "SUMMARY:SC Preußen Münster - " in line), None)
     if not summary_line:
         continue
 
     try:
-        summary = summary_line.split("SUMMARY:SC Preußen Münster - ")[1].strip()
-        gegner = summary.split(" | ")[0].strip()
+        gegner_raw = summary_line.split("SUMMARY:SC Preußen Münster - ")[1].strip()
+        gegner = gegner_raw.split(" | ")[0].strip()
     except Exception as e:
-        print(f"⚠️ Fehler beim Gegner: {e}")
+        print(f"⚠️ Gegner-Fehler: {e}")
         continue
 
-    # DESCRIPTION zusammensetzen
-    description = ""
-    collecting = False
+    # DESCRIPTION vollständig zusammensetzen
+    description_parts = []
+    capture = False
     for line in lines:
-        if line.startswith("DESCRIPTION"):
-            description += line.partition("DESCRIPTION:")[2].strip() + " "
-            collecting = True
-        elif collecting and not line[:1].isupper():
-            description += line.strip() + " "
-        elif collecting:
+        if line.startswith("DESCRIPTION:"):
+            description_parts.append(line[len("DESCRIPTION:"):].strip())
+            capture = True
+        elif capture and (line == "" or line[0].isspace() or not line[0].isalpha()):
+            description_parts.append(line.strip())
+        elif capture:
             break
-
+    description = " ".join(description_parts)
     termin_offen = "Der endgültige Spieltermin wurde noch nicht festgelegt" in description
 
-    # DTSTART extrahieren
+    # DTSTART auslesen
     dtstart_line = next((line for line in lines if line.startswith("DTSTART")), None)
     if not dtstart_line:
         continue
 
     try:
-        dt_str = dtstart_line.split(":")[1]
+        dt_raw = dtstart_line.split(":")[1]
+
         if "VALUE=DATE" in dtstart_line:
-            dt = datetime.strptime(dt_str, "%Y%m%d")
+            # Nur Datum vorhanden → kein Zeitpunkt festgelegt
+            dt = datetime.strptime(dt_raw, "%Y%m%d")
             dt = berlin.localize(dt)
             uhrzeit = "???"
         else:
-            dt = datetime.strptime(dt_str, "%Y%m%dT%H%M%S")
+            dt = datetime.strptime(dt_raw, "%Y%m%dT%H%M%S")
             dt = berlin.localize(dt)
             uhrzeit = "???" if termin_offen else dt.strftime("%H:%M")
 
+        # Nur Spiele ab 01.08.2025
         if dt >= stichtag:
             heimspiele.append((dt.strftime("%d.%m.%Y"), uhrzeit, gegner))
     except Exception as e:
-        print(f"⚠️ Fehler beim Datum: {e}")
+        print(f"⚠️ Fehler bei DTSTART: {e}")
         continue
 
 # CSV schreiben
@@ -84,5 +87,6 @@ with csv_file.open("w", newline="", encoding="utf-8") as f:
     writer.writerow(["Datum", "Startzeit", "Gegner"])
     writer.writerows(heimspiele)
 
-print(f"✅ Heimspiele gefunden: {len(heimspiele)}")
-print(f"💾 CSV geschrieben: {csv_file}")
+# Ergebnisanzeige
+print(f"✅ Heimspiele extrahiert: {len(heimspiele)}")
+print(f"💾 Datei gespeichert: {csv_file}")
