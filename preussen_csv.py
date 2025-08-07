@@ -30,31 +30,24 @@ heimspiele = []
 for event in events:
     lines = event.strip().splitlines()
 
-    # Gegnersuche: Nur Heimspiele von Preußen Münster
-    summary_line = next((line for line in lines if "SUMMARY:SC Preußen Münster - " in line), None)
+    # SUMMARY-Zeile finden
+    summary_line = next((line for line in lines if "SUMMARY:" in line and "Preußen Münster" in line), None)
     if not summary_line:
         continue
 
+    # Nur Heimspiele: SC Preußen Münster steht am Anfang
+    if "SC Preußen Münster - " not in summary_line:
+        continue
+
     try:
-        gegner_raw = summary_line.split("SUMMARY:SC Preußen Münster - ")[1].strip()
-        gegner = gegner_raw.split(" | ")[0].strip()
+        # Stern vorne? → Termin unsicher
+        is_unsicher = summary_line.startswith("SUMMARY:* SC Preußen Münster - ")
+
+        # Gegner extrahieren
+        gegner = summary_line.split("SC Preußen Münster - ")[1].split(" | ")[0].strip()
     except Exception as e:
         print(f"⚠️ Gegner-Fehler: {e}")
         continue
-
-    # DESCRIPTION vollständig zusammensetzen
-    description_parts = []
-    capture = False
-    for line in lines:
-        if line.startswith("DESCRIPTION:"):
-            description_parts.append(line[len("DESCRIPTION:"):].strip())
-            capture = True
-        elif capture and (line == "" or line[0].isspace() or not line[0].isalpha()):
-            description_parts.append(line.strip())
-        elif capture:
-            break
-    description = " ".join(description_parts)
-    termin_offen = "Der endgültige Spieltermin wurde noch nicht festgelegt" in description
 
     # DTSTART auslesen
     dtstart_line = next((line for line in lines if line.startswith("DTSTART")), None)
@@ -65,16 +58,14 @@ for event in events:
         dt_raw = dtstart_line.split(":")[1]
 
         if "VALUE=DATE" in dtstart_line:
-            # Nur Datum vorhanden → kein Zeitpunkt festgelegt
             dt = datetime.strptime(dt_raw, "%Y%m%d")
             dt = berlin.localize(dt)
             uhrzeit = "???"
         else:
             dt = datetime.strptime(dt_raw, "%Y%m%dT%H%M%S")
             dt = berlin.localize(dt)
-            uhrzeit = "???" if termin_offen else dt.strftime("%H:%M")
+            uhrzeit = "???" if is_unsicher else dt.strftime("%H:%M")
 
-        # Nur Spiele ab 01.08.2025
         if dt >= stichtag:
             heimspiele.append((dt.strftime("%d.%m.%Y"), uhrzeit, gegner))
     except Exception as e:
@@ -87,6 +78,5 @@ with csv_file.open("w", newline="", encoding="utf-8") as f:
     writer.writerow(["Datum", "Startzeit", "Gegner"])
     writer.writerows(heimspiele)
 
-# Ergebnisanzeige
 print(f"✅ Heimspiele extrahiert: {len(heimspiele)}")
 print(f"💾 Datei gespeichert: {csv_file}")
