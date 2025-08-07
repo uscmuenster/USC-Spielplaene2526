@@ -43,8 +43,18 @@ for event in events:
         print(f"⚠️ Fehler beim Gegner: {e}")
         continue
 
-    # Description analysieren
-    description = "\n".join(line for line in lines if line.startswith("DESCRIPTION") or not line.startswith(tuple("ABCDEFGHIJKLMNOPQRSTUVWXYZ")))
+    # DESCRIPTION zusammensetzen (mehrzeilig)
+    desc_lines = []
+    desc_started = False
+    for line in lines:
+        if line.startswith("DESCRIPTION"):
+            desc_lines.append(line.split("DESCRIPTION:")[1])
+            desc_started = True
+        elif desc_started and not line.startswith(tuple("ABCDEFGHIJKLMNOPQRSTUVWXYZ")):
+            desc_lines.append(line.strip())
+        elif desc_started:
+            break
+    description = " ".join(desc_lines)
     termin_offen = "Der endgültige Spieltermin wurde noch nicht festgelegt" in description
 
     # DTSTART extrahieren
@@ -54,11 +64,10 @@ for event in events:
 
     try:
         dt_str = dtstart_line.split(":")[1]
-
         if "VALUE=DATE" in dtstart_line:
             dt = datetime.strptime(dt_str, "%Y%m%d")
             dt = berlin.localize(dt)
-            uhrzeit = "???" if termin_offen else "00:00"
+            uhrzeit = "???"  # Ganztägiger Eintrag
         else:
             dt = datetime.strptime(dt_str, "%Y%m%dT%H%M%S")
             dt = berlin.localize(dt)
