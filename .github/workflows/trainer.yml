@@ -5,6 +5,11 @@ on:
   schedule:
     - cron: '0 * * * *'  # stündlich
 
+# ✅ Stabilitätstipp 2: verhindert überlappende Läufe
+concurrency:
+  group: pipeline
+  cancel-in-progress: true
+
 jobs:
   pipeline:
     runs-on: ubuntu-latest
@@ -95,7 +100,6 @@ jobs:
       - name: ⏱️ Pause (30s) nach CSV-Downloads
         run: sleep 30
 
-
       # =================================
       # BLOCK 3: Baskets CSV aus ICS bauen
       # =================================
@@ -136,8 +140,9 @@ jobs:
       # BLOCK 5: HTML generieren & veröffentlichen
       # =====================================
       - name: 🛠 HTML mit Ergebnis generieren
-        run: python usc_baskets_preussen.py
-        run: python usc_spielplan.py
+        run: |
+          python usc_baskets_preussen.py
+          python usc_spielplan.py
 
       - name: 🔁 Commit und Push HTML
         run: |
