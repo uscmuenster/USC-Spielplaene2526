@@ -1,11 +1,12 @@
-name: 🔁 Spielplan CSV Datei erstellen
+name: 🔁 USC-Spielplan CSV Datei erstellen
 
 on:
   push:
     paths:
       - 'Spielplan_*.csv'
   workflow_dispatch:
-
+  schedule:
+    - cron: '10 * * * *'  # stündlich
 
 jobs:
   build:
