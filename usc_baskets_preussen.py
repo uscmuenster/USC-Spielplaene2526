@@ -148,7 +148,7 @@ df_baskets["Heim"] = "Uni Baskets Münster"
 df_baskets["Ort"] = "Sporthalle Berg Fidel (48153 Münster)"
 df_baskets["Spielrunde"] = "Basketball Pro A"
 df_baskets["SR"] = ""
-df_baskets["Gastgeber"] = ""
+df_baskets["Gastgeber"] = "Baskets"
 df_baskets["Ergebnis"] = ""
 df_baskets["USC_Team"] = "Baskets"
 
@@ -200,9 +200,9 @@ else:
     df_preussen["Ort"] = "Sporthalle Berg Fidel (48153 Münster)"
     df_preussen["Spielrunde"] = "Fußball 2. BL"
     df_preussen["SR"] = ""
-    df_preussen["Gastgeber"] = ""
+    df_preussen["Gastgeber"] = "Preußen Münster"
     df_preussen["Ergebnis"] = ""
-    df_preussen["USC_Team"] = "Preussen"
+    df_preussen["USC_Team"] = "Preußen Münster"
 
     # Bereinigen
     df_preussen["Datum"] = df_preussen["Datum"].astype(str).str.strip()
