@@ -1,4 +1,4 @@
-name: 📥 Download & CSV/HTML mit Pausen
+name: 📥 Gesamtworkflow Spielplan2526
 
 on:
   workflow_dispatch:
