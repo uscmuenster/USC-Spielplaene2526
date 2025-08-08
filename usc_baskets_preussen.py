@@ -102,7 +102,7 @@ for file, team_code in csv_files:
             "USC-U16-2": [("USC2", "USC-U16-2")],
             "USC-U18":   [("USC1", "USC-U18")],
             "USC-U13":   [("USC1", "USC-U13")],
-        ]
+        }
         for old, new in global_replacements:
             s = s.replace(old, new)
         for old, new in team_specific.get(team, []):
@@ -275,7 +275,7 @@ def replace_usc_names(s, team):
         "USC-U16-2": [("USC2", "USC-U16-2")],
         "USC-U18":   [("USC1", "USC-U18")],
         "USC-U13":   [("USC1", "USC-U13")],
-    ]
+    }
     for old, new in global_replacements:
         s = s.replace(old, new)
     for old, new in team_specific.get(team, []):
