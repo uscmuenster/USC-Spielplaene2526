@@ -2,8 +2,6 @@ name: 🔁 Preussen CSV erzeugen
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '10 2 * * *'  # täglich um 02:10 UTC = 04:10 MESZ
 
 jobs:
   convert_ics_to_csv:
