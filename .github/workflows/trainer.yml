@@ -52,45 +52,8 @@ jobs:
       - name: 📦 Abhängigkeiten installieren
         run: pip install pandas pytz
 
-      # =================================
-      # BLOCK 2: Baskets CSV aus ICS bauen
-      # =================================
-      - name: 🛠 CSV aus ICS erzeugen mit baskets_csv.py
-        run: python baskets_csv.py
-
-      - name: 🔁 Commit und Push der Baskets-CSV
-        run: |
-          git config user.name "github-actions"
-          git config user.email "actions@github.com"
-          git add csv_Baskets/Baskets_2526_Heimspiele.csv
-          git commit -m "CSV aus Baskets ICS generiert" || echo "nichts zu committen"
-          git pull --rebase
-          git push
-
-      - name: ⏱️ Pause (30s) nach Baskets-CSV
-        run: sleep 30
-
-      # ==================================
-      # BLOCK 3: Preußen CSV aus ICS bauen
-      # ==================================
-      - name: 🛠 CSV aus ICS erzeugen mit preussen_csv.py
-        run: python preussen_csv.py
-
-      - name: 🔁 Commit und Push der Preußen-CSV
-        run: |
-          git config user.name "github-actions"
-          git config user.email "actions@github.com"
-          git add csv_Baskets/Preussen_2526_Heimspiele.csv
-          git commit -m "CSV aus Preußen ICS generiert" || echo "nichts zu committen"
-          git pull --rebase
-          git push
-
-      - name: ⏱️ Pause (30s) nach Preußen-CSV
-        run: sleep 30
-
       # ===========================================
-      # BLOCK 4: Volleyball-CSV-Paket herunterladen
-      # (ehemals Job "download_csv")
+      # BLOCK 2: Volleyball-CSV-Paket herunterladen
       # ===========================================
       - name: 📁 Verzeichnis csvdata anlegen
         run: mkdir -p csvdata
@@ -132,18 +95,57 @@ jobs:
       - name: ⏱️ Pause (30s) nach CSV-Downloads
         run: sleep 30
 
+
+      # =================================
+      # BLOCK 3: Baskets CSV aus ICS bauen
+      # =================================
+      - name: 🛠 CSV aus ICS erzeugen mit baskets_csv.py
+        run: python baskets_csv.py
+
+      - name: 🔁 Commit und Push der Baskets-CSV
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add csv_Baskets/Baskets_2526_Heimspiele.csv
+          git commit -m "CSV aus Baskets ICS generiert" || echo "nichts zu committen"
+          git pull --rebase
+          git push
+
+      - name: ⏱️ Pause (30s) nach Baskets-CSV
+        run: sleep 30
+
+      # ==================================
+      # BLOCK 4: Preußen CSV aus ICS bauen
+      # ==================================
+      - name: 🛠 CSV aus ICS erzeugen mit preussen_csv.py
+        run: python preussen_csv.py
+
+      - name: 🔁 Commit und Push der Preußen-CSV
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add csv_Baskets/Preussen_2526_Heimspiele.csv
+          git commit -m "CSV aus Preußen ICS generiert" || echo "nichts zu committen"
+          git pull --rebase
+          git push
+
+      - name: ⏱️ Pause (30s) nach Preußen-CSV
+        run: sleep 30
+
       # =====================================
       # BLOCK 5: HTML generieren & veröffentlichen
-      # (ehemals Job "generate_html")
       # =====================================
       - name: 🛠 HTML mit Ergebnis generieren
         run: python usc_baskets_preussen.py
+        run: python usc_spielplan.py
 
       - name: 🔁 Commit und Push HTML
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git add docs/index_trainer.html
+          git add docs/index.html
+          git add docs/indexapp.html
           git commit -m "📅 HTML-Aktualisierung" || echo "nichts zu committen"
           git pull --rebase
           git push
