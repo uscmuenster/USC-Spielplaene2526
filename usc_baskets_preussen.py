@@ -102,7 +102,7 @@ for file, team_code in csv_files:
             "USC-U16-2": [("USC2", "USC-U16-2")],
             "USC-U18":   [("USC1", "USC-U18")],
             "USC-U13":   [("USC1", "USC-U13")],
-        }
+        ]
         for old, new in global_replacements:
             s = s.replace(old, new)
         for old, new in team_specific.get(team, []):
@@ -174,7 +174,60 @@ df_baskets = df_baskets[[
 
 dfs.append(df_baskets)
 
+# 🟩 Preußen Münster – Heimspiele ergänzen
+# Primär im vom Nutzer genannten Ordner "csv_Basktes", Fallback "csv_Baskets"
+preussen_candidates = [
+    Path("csv_Basktes/Preussen_2526_Heimspiele.csv"),
+    Path("csv_Baskets/Preussen_2526_Heimspiele.csv"),
+]
+preussen_file = next((p for p in preussen_candidates if p.exists()), None)
+if preussen_file is None:
+    # Falls Datei (noch) nicht existiert, ohne Fehler fortfahren
+    pass
+else:
+    df_preussen = pd.read_csv(preussen_file)
+    # Flexible Spalten-Übernahme (falls mal "Uhrzeit" statt "Startzeit" o.ä.)
+    col_map = {}
+    if "Startzeit" in df_preussen.columns and "Uhrzeit" not in df_preussen.columns:
+        col_map["Startzeit"] = "Uhrzeit"
+    if "Gegner" in df_preussen.columns and "Gast" not in df_preussen.columns:
+        col_map["Gegner"] = "Gast"
+    if col_map:
+        df_preussen = df_preussen.rename(columns=col_map)
 
+    # Pflichtfelder setzen/ergänzen
+    df_preussen["Heim"] = "Preußen Münster"
+    df_preussen["Ort"] = "Sporthalle Berg Fidel (48153 Münster)"
+    df_preussen["Spielrunde"] = "Fußball 2. BL"
+    df_preussen["SR"] = ""
+    df_preussen["Gastgeber"] = ""
+    df_preussen["Ergebnis"] = ""
+    df_preussen["USC_Team"] = "Preussen"
+
+    # Bereinigen
+    df_preussen["Datum"] = df_preussen["Datum"].astype(str).str.strip()
+    if "Uhrzeit" in df_preussen.columns:
+        df_preussen["Uhrzeit"] = df_preussen["Uhrzeit"].astype(str).str.strip()
+    else:
+        df_preussen["Uhrzeit"] = ""
+
+    # Datumsobjekte erzeugen
+    df_preussen["Datum_DT"] = pd.to_datetime(df_preussen["Datum"], format="%d.%m.%Y", errors="coerce")
+    df_preussen["Tag"] = df_preussen["Datum_DT"].dt.day_name().map(tage_map)
+
+    # Spalten in gewünschter Reihenfolge
+    for need_col in ["Gast"]:
+        if need_col not in df_preussen.columns:
+            df_preussen[need_col] = ""
+
+    df_preussen = df_preussen[[
+        "Datum", "Uhrzeit", "Tag", "Heim", "Gast", "SR", "Gastgeber",
+        "Ergebnis", "Ort", "Spielrunde", "Datum_DT", "USC_Team"
+    ]]
+
+    dfs.append(df_preussen)
+
+# ---------- Gesamttabelle zusammenbauen ----------
 df_all = pd.concat(dfs, ignore_index=True)
 
 def parse_datum(s):
@@ -196,9 +249,38 @@ def format_uhrzeit(uhr):
     try:
         return datetime.strptime(uhr, "%H:%M:%S").strftime("%H:%M")
     except:
-        return uhr
+        try:
+            return datetime.strptime(uhr, "%H:%M").strftime("%H:%M")
+        except:
+            return uhr
 
 df_all["Uhrzeit"] = df_all["Uhrzeit"].apply(format_uhrzeit)
+
+def replace_usc_names(s, team):
+    s = str(s)
+    global_replacements = [
+        ("USC Münster VIII", "USC8"),
+        ("USC Münster VII", "USC7"),
+        ("USC Münster VI",  "USC6"),
+        ("USC Münster V",   "USC5"),
+        ("USC Münster IV",  "USC4"),
+        ("USC Münster III", "USC3"),
+        ("USC Münster II",  "USC2"),
+        ("USC Münster",     "USC1"),
+    ]
+    team_specific = {
+        "USC-U14-1": [("USC1", "USC-U14-1")],
+        "USC-U14-2": [("USC2", "USC-U14-2")],
+        "USC-U16-1": [("USC1", "USC-U16-1")],
+        "USC-U16-2": [("USC2", "USC-U16-2")],
+        "USC-U18":   [("USC1", "USC-U18")],
+        "USC-U13":   [("USC1", "USC-U13")],
+    ]
+    for old, new in global_replacements:
+        s = s.replace(old, new)
+    for old, new in team_specific.get(team, []):
+        s = s.replace(old, new)
+    return s
 
 def clean_all_names(row):
     for col in ["Heim", "Gast", "SR", "Gastgeber", "Ort", "Spielrunde"]:
@@ -356,8 +438,8 @@ html_code = html_code.replace(
     """.btn-success {
   background-color: #01a83b !important;
   border-color: #01a83b !important;"""
-) 
-html_code = html_code.replace( 
+)
+html_code = html_code.replace(
     "</style>",
     """h1 { font-size: 1.2rem; margin-bottom: 0.5rem; }
 .form-label { font-size: 0.7rem; }
@@ -370,5 +452,3 @@ html_code = html_code.replace(
 Path("docs").mkdir(exist_ok=True)
 Path("docs/index_trainer.html").write_text(html_code, encoding="utf-8")
 print("✅ index_trainer.html erfolgreich erstellt.")
-
-
