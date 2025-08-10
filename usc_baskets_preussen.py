@@ -318,7 +318,7 @@ html_code = f"""<!doctype html>
   <title>USC Münster Spielplan 2025/26</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
-    body {{ font-size: 0.8rem; }}
+    body {{ font-size: 0.6rem; }}
     th, td {{ white-space: nowrap; }}
     table tr {{ background-color: white; }}
     thead th {{ background-color: #f2f2f2 !important; color: #000; }}
@@ -442,9 +442,9 @@ html_code = html_code.replace(
 html_code = html_code.replace(
     "</style>",
     """h1 { font-size: 1.2rem; margin-bottom: 0.5rem; }
-.form-label { font-size: 0.7rem; }
-.form-select { font-size: 0.7rem; padding: 0.25rem 0.5rem; }
-.btn { font-size: 0.7rem; padding: 0.25rem 0.6rem; }
+.form-label { font-size: 0.6rem; }
+.form-select { font-size: 0.6rem; padding: 0.25rem 0.5rem; }
+.btn { font-size: 0.6rem; padding: 0.25rem 0.6rem; }
 """ + "</style>"
 )
 
