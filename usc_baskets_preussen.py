@@ -442,8 +442,8 @@ html_code = html_code.replace(
 html_code = html_code.replace(
     "</style>",
     """h1 { font-size: 1.2rem; margin-bottom: 0.5rem; }
-.form-label { font-size: 0.6rem; }
-.form-select { font-size: 0.6rem; padding: 0.25rem 0.5rem; }
+.form-label { font-size: 0.7rem; }
+.form-select { font-size: 0.7rem; padding: 0.25rem 0.5rem; }
 .btn { font-size: 0.6rem; padding: 0.25rem 0.6rem; }
 """ + "</style>"
 )
