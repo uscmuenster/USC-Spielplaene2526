@@ -11,29 +11,6 @@ X-WR-TIMEZONE:Europe/Berlin
 X-WR-RELCALID:7dc6da48.a8ea1dd5@7477.calovo.com
 X-PUBLISHED-TTL:PT30M
 BEGIN:VEVENT
-UID:6686a36d7a378@7477.calovo
-DTSTART;TZID=Europe/Berlin:20240831T130000
-SEQUENCE:0
-TRANSP:TRANSPARENT
-STATUS:CONFIRMED
-DTEND;TZID=Europe/Berlin:20240831T150000
-LOCATION:Volksparkstadion
-SUMMARY:Hamburger SV - SC Preußen Münster | 2. Bundesliga | 4. Spieltag
-DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
- n\n4. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de/
- bundesliga/info/impressum/\n\n\ncalfeed löschen? Anleitung: bit.ly/calfee
- d_loeschen
-DTSTAMP:20240830T210215Z
-CREATED:20240704T132813Z
-LAST-MODIFIED:20240830T210215Z
-BEGIN:VALARM
-TRIGGER:-P0DT1H0M0S
-ACTION:DISPLAY
-DESCRIPTION:Reminder: Hamburger SV - SC Preußen Münster | 2. Bundesliga |
-  4. Spieltag
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
 UID:6686a37814c12@7477.calovo
 DTSTART;TZID=Europe/Berlin:20240913T183000
 SEQUENCE:0
