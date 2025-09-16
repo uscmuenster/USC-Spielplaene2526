@@ -872,9 +872,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  n\n6. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de/
  bundesliga/info/impressum/\n\n\ncalfeed löschen? Anleitung: bit.ly/calfee
  d_loeschen
-DTSTAMP:20250916T110257Z
+DTSTAMP:20250916T190543Z
 CREATED:20250627T122307Z
-LAST-MODIFIED:20250916T110257Z
+LAST-MODIFIED:20250916T190543Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -896,9 +896,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  n\n7. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de/
  bundesliga/info/impressum/\n\n\ncalfeed löschen? Anleitung: bit.ly/calfee
  d_loeschen
-DTSTAMP:20250916T110300Z
+DTSTAMP:20250916T190548Z
 CREATED:20250627T122318Z
-LAST-MODIFIED:20250916T110300Z
+LAST-MODIFIED:20250916T190548Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -919,9 +919,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  n\n8. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de/
  bundesliga/info/impressum/\n\n\ncalfeed löschen? Anleitung: bit.ly/calfee
  d_loeschen
-DTSTAMP:20250916T110305Z
+DTSTAMP:20250916T190551Z
 CREATED:20250627T122325Z
-LAST-MODIFIED:20250916T110305Z
+LAST-MODIFIED:20250916T190551Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -943,9 +943,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  n\n9. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de/
  bundesliga/info/impressum/\n\n\ncalfeed löschen? Anleitung: bit.ly/calfee
  d_loeschen
-DTSTAMP:20250916T110312Z
+DTSTAMP:20250916T190556Z
 CREATED:20250627T122337Z
-LAST-MODIFIED:20250916T110312Z
+LAST-MODIFIED:20250916T190556Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -967,9 +967,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  n\n10. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
  /bundesliga/info/impressum/\n\n\ncalfeed löschen? Anleitung: bit.ly/calfe
  ed_loeschen
-DTSTAMP:20250916T110316Z
+DTSTAMP:20250916T190559Z
 CREATED:20250627T122343Z
-LAST-MODIFIED:20250916T110316Z
+LAST-MODIFIED:20250916T190559Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -990,9 +990,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  n\n11. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
  /bundesliga/info/impressum/\n\n\ncalfeed löschen? Anleitung: bit.ly/calfe
  ed_loeschen
-DTSTAMP:20250916T110322Z
+DTSTAMP:20250916T190606Z
 CREATED:20250627T122354Z
-LAST-MODIFIED:20250916T110322Z
+LAST-MODIFIED:20250916T190606Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1014,9 +1014,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  n\n12. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
  /bundesliga/info/impressum/\n\n\ncalfeed löschen? Anleitung: bit.ly/calfe
  ed_loeschen
-DTSTAMP:20250916T110326Z
+DTSTAMP:20250916T190610Z
 CREATED:20250627T122405Z
-LAST-MODIFIED:20250916T110326Z
+LAST-MODIFIED:20250916T190610Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1037,9 +1037,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  n\n13. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
  /bundesliga/info/impressum/\n\n\ncalfeed löschen? Anleitung: bit.ly/calfe
  ed_loeschen
-DTSTAMP:20250916T110331Z
+DTSTAMP:20250916T190615Z
 CREATED:20250627T122420Z
-LAST-MODIFIED:20250916T110331Z
+LAST-MODIFIED:20250916T190615Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1061,9 +1061,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  n\n14. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
  /bundesliga/info/impressum/\n\n\ncalfeed löschen? Anleitung: bit.ly/calfe
  ed_loeschen
-DTSTAMP:20250916T110334Z
+DTSTAMP:20250916T190619Z
 CREATED:20250627T122428Z
-LAST-MODIFIED:20250916T110334Z
+LAST-MODIFIED:20250916T190619Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1086,9 +1086,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  esliga/info/impressum/\n\n\ncalfeed löschen? Anleitung: bit.ly/calfeed_lo
  eschen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20250916T110338Z
+DTSTAMP:20250916T190621Z
 CREATED:20250627T122436Z
-LAST-MODIFIED:20250916T110338Z
+LAST-MODIFIED:20250916T190621Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1112,9 +1112,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  esliga/info/impressum/\n\n\ncalfeed löschen? Anleitung: bit.ly/calfeed_lo
  eschen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20250916T110341Z
+DTSTAMP:20250916T190625Z
 CREATED:20250627T122444Z
-LAST-MODIFIED:20250916T110341Z
+LAST-MODIFIED:20250916T190625Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1138,9 +1138,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  esliga/info/impressum/\n\n\ncalfeed löschen? Anleitung: bit.ly/calfeed_lo
  eschen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20250916T110345Z
+DTSTAMP:20250916T190629Z
 CREATED:20250627T122454Z
-LAST-MODIFIED:20250916T110345Z
+LAST-MODIFIED:20250916T190629Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1164,9 +1164,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  esliga/info/impressum/\n\n\ncalfeed löschen? Anleitung: bit.ly/calfeed_lo
  eschen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20250916T110350Z
+DTSTAMP:20250916T190634Z
 CREATED:20250627T122517Z
-LAST-MODIFIED:20250916T110350Z
+LAST-MODIFIED:20250916T190634Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1190,9 +1190,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  esliga/info/impressum/\n\n\ncalfeed löschen? Anleitung: bit.ly/calfeed_lo
  eschen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20250916T110353Z
+DTSTAMP:20250916T190638Z
 CREATED:20250627T122525Z
-LAST-MODIFIED:20250916T110353Z
+LAST-MODIFIED:20250916T190638Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1216,9 +1216,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  esliga/info/impressum/\n\n\ncalfeed löschen? Anleitung: bit.ly/calfeed_lo
  eschen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20250916T110357Z
+DTSTAMP:20250916T190642Z
 CREATED:20250627T122536Z
-LAST-MODIFIED:20250916T110357Z
+LAST-MODIFIED:20250916T190642Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1242,9 +1242,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  esliga/info/impressum/\n\n\ncalfeed löschen? Anleitung: bit.ly/calfeed_lo
  eschen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20250916T110400Z
+DTSTAMP:20250916T190646Z
 CREATED:20250627T122547Z
-LAST-MODIFIED:20250916T110400Z
+LAST-MODIFIED:20250916T190646Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1268,9 +1268,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  esliga/info/impressum/\n\n\ncalfeed löschen? Anleitung: bit.ly/calfeed_lo
  eschen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20250916T110403Z
+DTSTAMP:20250916T190648Z
 CREATED:20250627T122554Z
-LAST-MODIFIED:20250916T110403Z
+LAST-MODIFIED:20250916T190648Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1294,9 +1294,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  esliga/info/impressum/\n\n\ncalfeed löschen? Anleitung: bit.ly/calfeed_lo
  eschen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20250916T110407Z
+DTSTAMP:20250916T190653Z
 CREATED:20250627T122613Z
-LAST-MODIFIED:20250916T110407Z
+LAST-MODIFIED:20250916T190653Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1320,9 +1320,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  esliga/info/impressum/\n\n\ncalfeed löschen? Anleitung: bit.ly/calfeed_lo
  eschen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20250916T110410Z
+DTSTAMP:20250916T190656Z
 CREATED:20250627T122623Z
-LAST-MODIFIED:20250916T110410Z
+LAST-MODIFIED:20250916T190656Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1345,9 +1345,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  esliga/info/impressum/\n\n\ncalfeed löschen? Anleitung: bit.ly/calfeed_lo
  eschen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20250916T110414Z
+DTSTAMP:20250916T190659Z
 CREATED:20250627T122633Z
-LAST-MODIFIED:20250916T110414Z
+LAST-MODIFIED:20250916T190659Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1371,9 +1371,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  esliga/info/impressum/\n\n\ncalfeed löschen? Anleitung: bit.ly/calfeed_lo
  eschen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20250916T110417Z
+DTSTAMP:20250916T190703Z
 CREATED:20250627T122643Z
-LAST-MODIFIED:20250916T110417Z
+LAST-MODIFIED:20250916T190703Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1397,9 +1397,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  esliga/info/impressum/\n\n\ncalfeed löschen? Anleitung: bit.ly/calfeed_lo
  eschen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20250916T110420Z
+DTSTAMP:20250916T190707Z
 CREATED:20250627T122651Z
-LAST-MODIFIED:20250916T110420Z
+LAST-MODIFIED:20250916T190707Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1423,9 +1423,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  esliga/info/impressum/\n\n\ncalfeed löschen? Anleitung: bit.ly/calfeed_lo
  eschen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20250916T110422Z
+DTSTAMP:20250916T190709Z
 CREATED:20250627T122656Z
-LAST-MODIFIED:20250916T110422Z
+LAST-MODIFIED:20250916T190709Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1449,9 +1449,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  esliga/info/impressum/\n\n\ncalfeed löschen? Anleitung: bit.ly/calfeed_lo
  eschen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20250916T110427Z
+DTSTAMP:20250916T190714Z
 CREATED:20250627T122710Z
-LAST-MODIFIED:20250916T110427Z
+LAST-MODIFIED:20250916T190714Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1475,9 +1475,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  esliga/info/impressum/\n\n\ncalfeed löschen? Anleitung: bit.ly/calfeed_lo
  eschen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20250916T110429Z
+DTSTAMP:20250916T190717Z
 CREATED:20250627T124804Z
-LAST-MODIFIED:20250916T110429Z
+LAST-MODIFIED:20250916T190717Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1501,9 +1501,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  esliga/info/impressum/\n\n\ncalfeed löschen? Anleitung: bit.ly/calfeed_lo
  eschen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20250916T110432Z
+DTSTAMP:20250916T190721Z
 CREATED:20250627T124813Z
-LAST-MODIFIED:20250916T110432Z
+LAST-MODIFIED:20250916T190721Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1526,9 +1526,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  esliga/info/impressum/\n\n\ncalfeed löschen? Anleitung: bit.ly/calfeed_lo
  eschen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20250916T110434Z
+DTSTAMP:20250916T190724Z
 CREATED:20250627T124819Z
-LAST-MODIFIED:20250916T110434Z
+LAST-MODIFIED:20250916T190724Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1552,9 +1552,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  esliga/info/impressum/\n\n\ncalfeed löschen? Anleitung: bit.ly/calfeed_lo
  eschen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20250916T110437Z
+DTSTAMP:20250916T190727Z
 CREATED:20250627T124828Z
-LAST-MODIFIED:20250916T110437Z
+LAST-MODIFIED:20250916T190727Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1575,9 +1575,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  n\n34. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
  /bundesliga/info/impressum/\n\n\ncalfeed löschen? Anleitung: bit.ly/calfe
  ed_loeschen
-DTSTAMP:20250916T110440Z
+DTSTAMP:20250916T190730Z
 CREATED:20250627T124833Z
-LAST-MODIFIED:20250916T110440Z
+LAST-MODIFIED:20250916T190730Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
