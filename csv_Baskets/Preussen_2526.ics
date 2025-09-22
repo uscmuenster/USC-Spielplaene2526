@@ -11,30 +11,6 @@ X-WR-TIMEZONE:Europe/Berlin
 X-WR-RELCALID:7dc6da48.a8ea1dd5@7477.calovo.com
 X-PUBLISHED-TTL:PT30M
 BEGIN:VEVENT
-UID:6686a37eb2c3e@7477.calovo
-DTSTART;TZID=Europe/Berlin:20240922T133000
-SEQUENCE:0
-TRANSP:TRANSPARENT
-STATUS:CONFIRMED
-DTEND;TZID=Europe/Berlin:20240922T153000
-LOCATION:Jahnstadion Regensburg
-SUMMARY:SSV Jahn Regensburg - SC Preußen Münster | 2. Bundesliga | 6. Spi
- eltag
-DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
- n\n6. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de/
- bundesliga/info/impressum/\n\n\ncalfeed löschen? Anleitung: bit.ly/calfee
- d_loeschen
-DTSTAMP:20240922T050121Z
-CREATED:20240704T132830Z
-LAST-MODIFIED:20240922T050121Z
-BEGIN:VALARM
-TRIGGER:-P0DT1H0M0S
-ACTION:DISPLAY
-DESCRIPTION:Reminder: SSV Jahn Regensburg - SC Preußen Münster | 2. Bunde
- sliga | 6. Spieltag
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
 UID:6686a3858f49c@7477.calovo
 DTSTART;TZID=Europe/Berlin:20240928T203000
 SEQUENCE:0
@@ -896,9 +872,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  n\n7. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de/
  bundesliga/info/impressum/\n\n\ncalfeed löschen? Anleitung: bit.ly/calfee
  d_loeschen
-DTSTAMP:20250922T110034Z
+DTSTAMP:20250922T140111Z
 CREATED:20250627T122318Z
-LAST-MODIFIED:20250922T110034Z
+LAST-MODIFIED:20250922T140111Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -919,9 +895,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  n\n8. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de/
  bundesliga/info/impressum/\n\n\ncalfeed löschen? Anleitung: bit.ly/calfee
  d_loeschen
-DTSTAMP:20250922T110038Z
+DTSTAMP:20250922T140116Z
 CREATED:20250627T122325Z
-LAST-MODIFIED:20250922T110038Z
+LAST-MODIFIED:20250922T140116Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -943,9 +919,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  n\n9. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de/
  bundesliga/info/impressum/\n\n\ncalfeed löschen? Anleitung: bit.ly/calfee
  d_loeschen
-DTSTAMP:20250922T110044Z
+DTSTAMP:20250922T140121Z
 CREATED:20250627T122337Z
-LAST-MODIFIED:20250922T110044Z
+LAST-MODIFIED:20250922T140121Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -967,9 +943,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  n\n10. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
  /bundesliga/info/impressum/\n\n\ncalfeed löschen? Anleitung: bit.ly/calfe
  ed_loeschen
-DTSTAMP:20250922T110047Z
+DTSTAMP:20250922T140124Z
 CREATED:20250627T122343Z
-LAST-MODIFIED:20250922T110047Z
+LAST-MODIFIED:20250922T140124Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -990,9 +966,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  n\n11. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
  /bundesliga/info/impressum/\n\n\ncalfeed löschen? Anleitung: bit.ly/calfe
  ed_loeschen
-DTSTAMP:20250922T110053Z
+DTSTAMP:20250922T140131Z
 CREATED:20250627T122354Z
-LAST-MODIFIED:20250922T110053Z
+LAST-MODIFIED:20250922T140131Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1014,9 +990,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  n\n12. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
  /bundesliga/info/impressum/\n\n\ncalfeed löschen? Anleitung: bit.ly/calfe
  ed_loeschen
-DTSTAMP:20250922T110056Z
+DTSTAMP:20250922T140135Z
 CREATED:20250627T122405Z
-LAST-MODIFIED:20250922T110056Z
+LAST-MODIFIED:20250922T140135Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1037,9 +1013,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  n\n13. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
  /bundesliga/info/impressum/\n\n\ncalfeed löschen? Anleitung: bit.ly/calfe
  ed_loeschen
-DTSTAMP:20250922T110102Z
+DTSTAMP:20250922T140140Z
 CREATED:20250627T122420Z
-LAST-MODIFIED:20250922T110102Z
+LAST-MODIFIED:20250922T140140Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1061,9 +1037,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  n\n14. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
  /bundesliga/info/impressum/\n\n\ncalfeed löschen? Anleitung: bit.ly/calfe
  ed_loeschen
-DTSTAMP:20250922T110106Z
+DTSTAMP:20250922T140144Z
 CREATED:20250627T122428Z
-LAST-MODIFIED:20250922T110106Z
+LAST-MODIFIED:20250922T140144Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1086,9 +1062,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  esliga/info/impressum/\n\n\ncalfeed löschen? Anleitung: bit.ly/calfeed_lo
  eschen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20250922T110109Z
+DTSTAMP:20250922T140147Z
 CREATED:20250627T122436Z
-LAST-MODIFIED:20250922T110109Z
+LAST-MODIFIED:20250922T140147Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1112,9 +1088,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  esliga/info/impressum/\n\n\ncalfeed löschen? Anleitung: bit.ly/calfeed_lo
  eschen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20250922T110112Z
+DTSTAMP:20250922T140151Z
 CREATED:20250627T122444Z
-LAST-MODIFIED:20250922T110112Z
+LAST-MODIFIED:20250922T140151Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1138,9 +1114,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  esliga/info/impressum/\n\n\ncalfeed löschen? Anleitung: bit.ly/calfeed_lo
  eschen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20250922T110115Z
+DTSTAMP:20250922T140154Z
 CREATED:20250627T122454Z
-LAST-MODIFIED:20250922T110115Z
+LAST-MODIFIED:20250922T140154Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1164,9 +1140,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  esliga/info/impressum/\n\n\ncalfeed löschen? Anleitung: bit.ly/calfeed_lo
  eschen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20250922T110121Z
+DTSTAMP:20250922T140159Z
 CREATED:20250627T122517Z
-LAST-MODIFIED:20250922T110121Z
+LAST-MODIFIED:20250922T140159Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1190,9 +1166,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  esliga/info/impressum/\n\n\ncalfeed löschen? Anleitung: bit.ly/calfeed_lo
  eschen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20250922T110124Z
+DTSTAMP:20250922T140204Z
 CREATED:20250627T122525Z
-LAST-MODIFIED:20250922T110124Z
+LAST-MODIFIED:20250922T140204Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1216,9 +1192,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  esliga/info/impressum/\n\n\ncalfeed löschen? Anleitung: bit.ly/calfeed_lo
  eschen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20250922T110128Z
+DTSTAMP:20250922T140209Z
 CREATED:20250627T122536Z
-LAST-MODIFIED:20250922T110128Z
+LAST-MODIFIED:20250922T140209Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1242,9 +1218,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  esliga/info/impressum/\n\n\ncalfeed löschen? Anleitung: bit.ly/calfeed_lo
  eschen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20250922T110131Z
+DTSTAMP:20250922T140212Z
 CREATED:20250627T122547Z
-LAST-MODIFIED:20250922T110131Z
+LAST-MODIFIED:20250922T140212Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1268,9 +1244,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  esliga/info/impressum/\n\n\ncalfeed löschen? Anleitung: bit.ly/calfeed_lo
  eschen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20250922T110134Z
+DTSTAMP:20250922T140215Z
 CREATED:20250627T122554Z
-LAST-MODIFIED:20250922T110134Z
+LAST-MODIFIED:20250922T140215Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1294,9 +1270,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  esliga/info/impressum/\n\n\ncalfeed löschen? Anleitung: bit.ly/calfeed_lo
  eschen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20250922T110137Z
+DTSTAMP:20250922T140219Z
 CREATED:20250627T122613Z
-LAST-MODIFIED:20250922T110137Z
+LAST-MODIFIED:20250922T140219Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1320,9 +1296,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  esliga/info/impressum/\n\n\ncalfeed löschen? Anleitung: bit.ly/calfeed_lo
  eschen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20250922T110140Z
+DTSTAMP:20250922T140223Z
 CREATED:20250627T122623Z
-LAST-MODIFIED:20250922T110140Z
+LAST-MODIFIED:20250922T140223Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1345,9 +1321,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  esliga/info/impressum/\n\n\ncalfeed löschen? Anleitung: bit.ly/calfeed_lo
  eschen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20250922T110143Z
+DTSTAMP:20250922T140226Z
 CREATED:20250627T122633Z
-LAST-MODIFIED:20250922T110143Z
+LAST-MODIFIED:20250922T140226Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1371,9 +1347,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  esliga/info/impressum/\n\n\ncalfeed löschen? Anleitung: bit.ly/calfeed_lo
  eschen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20250922T110146Z
+DTSTAMP:20250922T140230Z
 CREATED:20250627T122643Z
-LAST-MODIFIED:20250922T110146Z
+LAST-MODIFIED:20250922T140230Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1397,9 +1373,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  esliga/info/impressum/\n\n\ncalfeed löschen? Anleitung: bit.ly/calfeed_lo
  eschen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20250922T110149Z
+DTSTAMP:20250922T140234Z
 CREATED:20250627T122651Z
-LAST-MODIFIED:20250922T110149Z
+LAST-MODIFIED:20250922T140234Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1423,9 +1399,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  esliga/info/impressum/\n\n\ncalfeed löschen? Anleitung: bit.ly/calfeed_lo
  eschen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20250922T110151Z
+DTSTAMP:20250922T140236Z
 CREATED:20250627T122656Z
-LAST-MODIFIED:20250922T110151Z
+LAST-MODIFIED:20250922T140236Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1449,9 +1425,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  esliga/info/impressum/\n\n\ncalfeed löschen? Anleitung: bit.ly/calfeed_lo
  eschen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20250922T110156Z
+DTSTAMP:20250922T140240Z
 CREATED:20250627T122710Z
-LAST-MODIFIED:20250922T110156Z
+LAST-MODIFIED:20250922T140240Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1475,9 +1451,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  esliga/info/impressum/\n\n\ncalfeed löschen? Anleitung: bit.ly/calfeed_lo
  eschen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20250922T110158Z
+DTSTAMP:20250922T140243Z
 CREATED:20250627T124804Z
-LAST-MODIFIED:20250922T110158Z
+LAST-MODIFIED:20250922T140243Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1501,9 +1477,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  esliga/info/impressum/\n\n\ncalfeed löschen? Anleitung: bit.ly/calfeed_lo
  eschen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20250922T110203Z
+DTSTAMP:20250922T140247Z
 CREATED:20250627T124813Z
-LAST-MODIFIED:20250922T110203Z
+LAST-MODIFIED:20250922T140247Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1526,9 +1502,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  esliga/info/impressum/\n\n\ncalfeed löschen? Anleitung: bit.ly/calfeed_lo
  eschen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20250922T110206Z
+DTSTAMP:20250922T140250Z
 CREATED:20250627T124819Z
-LAST-MODIFIED:20250922T110206Z
+LAST-MODIFIED:20250922T140250Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1552,9 +1528,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  esliga/info/impressum/\n\n\ncalfeed löschen? Anleitung: bit.ly/calfeed_lo
  eschen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20250922T110209Z
+DTSTAMP:20250922T140253Z
 CREATED:20250627T124828Z
-LAST-MODIFIED:20250922T110209Z
+LAST-MODIFIED:20250922T140253Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1575,9 +1551,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  n\n34. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
  /bundesliga/info/impressum/\n\n\ncalfeed löschen? Anleitung: bit.ly/calfe
  ed_loeschen
-DTSTAMP:20250922T110213Z
+DTSTAMP:20250922T140256Z
 CREATED:20250627T124833Z
-LAST-MODIFIED:20250922T110213Z
+LAST-MODIFIED:20250922T140256Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
