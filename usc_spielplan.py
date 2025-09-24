@@ -114,11 +114,17 @@ for file, team_code in csv_files:
 
     def get_result(row):
         try:
-            if pd.isna(row.get("S")) or str(row["S"]).strip() == "":
+            if pd.isna(row.get("Satzpunkte")) or str(row["Satzpunkte"]).strip() == "":
                 return ""
-            satzstand = f"{row['S']}:{row['U']}"
+            satzstand = str(row["Satzpunkte"])
             saetze = []
-            satzspalten = [("V", "X"), ("Z", "AB"), ("AD", "AF"), ("AH", "AJ"), ("AL", "AN")]
+            satzspalten = [
+                ("Satz 1 - Ballpunkte 1", "Satz 1 - Ballpunkte 2"),
+                ("Satz 2 - Ballpunkte 1", "Satz 2 - Ballpunkte 2"),
+                ("Satz 3 - Ballpunkte 1", "Satz 3 - Ballpunkte 2"),
+                ("Satz 4 - Ballpunkte 1", "Satz 4 - Ballpunkte 2"),
+                ("Satz 5 - Ballpunkte 1", "Satz 5 - Ballpunkte 2"),
+            ]
             for l, r in satzspalten:
                 left = str(row.get(l, "")).strip()
                 right = str(row.get(r, "")).strip()
@@ -128,7 +134,7 @@ for file, team_code in csv_files:
         except:
             return ""
 
-    if all(col in df.columns for col in ["S", "U", "V", "X"]):
+    if "Satzpunkte" in df.columns:
         df["Ergebnis"] = df.apply(get_result, axis=1)
 
     cols = df.columns.tolist()
@@ -176,6 +182,15 @@ for col in ["Heim", "Gast", "SR", "Gastgeber"]:
     df_all[col] = df_all[col].str.replace(r'\b(USC-[U\d]+-\d) II\b', r'\1', regex=True)
 
 df_all = df_all.sort_values(by=["Datum_DT", "Uhrzeit"])
+
+# 🔴 Änderung 1: Vergangene Spiele mit Ergebnis ohne USC ausfiltern
+now = datetime.now(timezone("Europe/Berlin"))
+df_all = df_all[~(
+    (df_all["Ergebnis"].str.strip() != "") &
+    (df_all["Datum_DT"] < now) &
+    ~(df_all["Heim"].str.contains("USC")) &
+    ~(df_all["Gast"].str.contains("USC"))
+)]
 
 spielrunden = sorted(df_all["Spielrunde"].dropna().unique())
 orte = sorted([o for o in df_all["Ort"].dropna().unique() if "münster" in o.lower()])
