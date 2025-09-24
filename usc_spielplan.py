@@ -112,11 +112,12 @@ for file, team_code in csv_files:
     for col in ["Heim", "Gast", "SR", "Gastgeber", "Ort", "Spielrunde"]:
         df[col] = df.apply(lambda row: replace_usc_names(row[col], row["USC_Team"]), axis=1)
 
+    # Ergebnis-Funktion: robust + saubere Ganzzahlen
     def get_result(row):
         try:
             if pd.isna(row.get("Satzpunkte")) or str(row["Satzpunkte"]).strip() == "":
                 return ""
-            satzstand = str(row["Satzpunkte"])
+            satzstand = str(row["Satzpunkte"]).strip()
             saetze = []
             satzspalten = [
                 ("Satz 1 - Ballpunkte 1", "Satz 1 - Ballpunkte 2"),
@@ -125,18 +126,18 @@ for file, team_code in csv_files:
                 ("Satz 4 - Ballpunkte 1", "Satz 4 - Ballpunkte 2"),
                 ("Satz 5 - Ballpunkte 1", "Satz 5 - Ballpunkte 2"),
             ]
-            left = row.get(l, "")
-            right = row.get(r, "")
-            if pd.notna(left) and pd.notna(right) and str(left).strip() != "" and str(right).strip() != "":
-                try:
-                    left_val = int(float(left))
-                    right_val = int(float(right))
-                    saetze.append(f"{left_val}:{right_val}")
-                except ValueError:
-                    saetze.append(f"{left}:{right}")
-
+            for l, r in satzspalten:
+                left = row.get(l, "")
+                right = row.get(r, "")
+                if pd.notna(left) and pd.notna(right) and str(left).strip() != "" and str(right).strip() != "":
+                    try:
+                        left_val = int(float(left))
+                        right_val = int(float(right))
+                        saetze.append(f"{left_val}:{right_val}")
+                    except Exception:
+                        saetze.append(f"{str(left).strip()}:{str(right).strip()}")
             return f"{satzstand} ({', '.join(saetze)})" if saetze else satzstand
-        except:
+        except Exception:
             return ""
 
     if "Satzpunkte" in df.columns:
