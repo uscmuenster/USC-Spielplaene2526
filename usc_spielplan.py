@@ -184,7 +184,7 @@ for col in ["Heim", "Gast", "SR", "Gastgeber"]:
 df_all = df_all.sort_values(by=["Datum_DT", "Uhrzeit"])
 
 # 🔴 Änderung 1: Vergangene Spiele mit Ergebnis ohne USC ausfiltern
-now = datetime.now(timezone("Europe/Berlin"))
+now = datetime.now(timezone("Europe/Berlin")).replace(tzinfo=None)
 df_all = df_all[~(
     (df_all["Ergebnis"].str.strip() != "") &
     (df_all["Datum_DT"] < now) &
