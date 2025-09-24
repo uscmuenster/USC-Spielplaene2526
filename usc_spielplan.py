@@ -125,11 +125,16 @@ for file, team_code in csv_files:
                 ("Satz 4 - Ballpunkte 1", "Satz 4 - Ballpunkte 2"),
                 ("Satz 5 - Ballpunkte 1", "Satz 5 - Ballpunkte 2"),
             ]
-            for l, r in satzspalten:
-                left = str(row.get(l, "")).strip()
-                right = str(row.get(r, "")).strip()
-                if left and right and left.lower() != 'nan' and right.lower() != 'nan':
+            left = row.get(l, "")
+            right = row.get(r, "")
+            if pd.notna(left) and pd.notna(right) and str(left).strip() != "" and str(right).strip() != "":
+                try:
+                    left_val = int(float(left))
+                    right_val = int(float(right))
+                    saetze.append(f"{left_val}:{right_val}")
+                except ValueError:
                     saetze.append(f"{left}:{right}")
+
             return f"{satzstand} ({', '.join(saetze)})" if saetze else satzstand
         except:
             return ""
