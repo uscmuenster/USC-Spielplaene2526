@@ -112,6 +112,7 @@ for file, team_code in csv_files:
     for col in ["Heim", "Gast", "SR", "Gastgeber", "Ort", "Spielrunde"]:
         df[col] = df.apply(lambda row: replace_usc_names(row[col], row["USC_Team"]), axis=1)
 
+    # 🔴 Ergebnisfunktion angepasst
     def get_result(row):
         try:
             if pd.isna(row.get("S")) or str(row["S"]).strip() == "":
@@ -120,12 +121,17 @@ for file, team_code in csv_files:
             saetze = []
             satzspalten = [("V", "X"), ("Z", "AB"), ("AD", "AF"), ("AH", "AJ"), ("AL", "AN")]
             for l, r in satzspalten:
-                left = str(row.get(l, "")).strip()
-                right = str(row.get(r, "")).strip()
-                if left and right and left.lower() != 'nan' and right.lower() != 'nan':
-                    saetze.append(f"{left}:{right}")
+                left = row.get(l, "")
+                right = row.get(r, "")
+                if pd.notna(left) and pd.notna(right) and str(left).strip() != "" and str(right).strip() != "":
+                    try:
+                        left_val = int(float(left))
+                        right_val = int(float(right))
+                        saetze.append(f"{left_val}:{right_val}")
+                    except Exception:
+                        saetze.append(f"{str(left).strip()}:{str(right).strip()}")
             return f"{satzstand} ({', '.join(saetze)})" if saetze else satzstand
-        except:
+        except Exception:
             return ""
 
     if all(col in df.columns for col in ["S", "U", "V", "X"]):
@@ -143,7 +149,6 @@ for file, team_code in csv_files:
 # 🟧 Baskets-Spiele ergänzen
 baskets_file = Path("csv_Baskets/Baskets_2526_Heimspiele.csv")
 df_baskets = pd.read_csv(baskets_file)
-
 df_baskets["Heim"] = "Uni Baskets Münster"
 df_baskets["Ort"] = "Sporthalle Berg Fidel (48153 Münster)"
 df_baskets["Spielrunde"] = "Basketball Pro A"
@@ -151,42 +156,29 @@ df_baskets["SR"] = ""
 df_baskets["Gastgeber"] = "Baskets"
 df_baskets["Ergebnis"] = ""
 df_baskets["USC_Team"] = "Baskets"
-
 df_baskets = df_baskets.rename(columns={"Startzeit": "Uhrzeit", "Gegner": "Gast"})
 df_baskets["Datum"] = df_baskets["Datum"].str.strip()
 df_baskets["Uhrzeit"] = df_baskets["Uhrzeit"].str.strip()
-
-# Datumsobjekte erzeugen
 df_baskets["Datum_DT"] = pd.to_datetime(df_baskets["Datum"], format="%d.%m.%Y", errors="coerce")
-
-# Wochentag hinzufügen
 tage_map = {
     "Monday": "Mo", "Tuesday": "Di", "Wednesday": "Mi", "Thursday": "Do",
     "Friday": "Fr", "Saturday": "Sa", "Sunday": "So"
 }
 df_baskets["Tag"] = df_baskets["Datum_DT"].dt.day_name().map(tage_map)
-
-# Spalten in gewünschter Reihenfolge
 df_baskets = df_baskets[[
     "Datum", "Uhrzeit", "Tag", "Heim", "Gast", "SR", "Gastgeber",
     "Ergebnis", "Ort", "Spielrunde", "Datum_DT", "USC_Team"
 ]]
-
 dfs.append(df_baskets)
 
 # 🟩 Preußen Münster – Heimspiele ergänzen
-# Primär im vom Nutzer genannten Ordner "csv_Basktes", Fallback "csv_Baskets"
 preussen_candidates = [
     Path("csv_Basktes/Preussen_2526_Heimspiele.csv"),
     Path("csv_Baskets/Preussen_2526_Heimspiele.csv"),
 ]
 preussen_file = next((p for p in preussen_candidates if p.exists()), None)
-if preussen_file is None:
-    # Falls Datei (noch) nicht existiert, ohne Fehler fortfahren
-    pass
-else:
+if preussen_file is not None:
     df_preussen = pd.read_csv(preussen_file)
-    # Flexible Spalten-Übernahme (falls mal "Uhrzeit" statt "Startzeit" o.ä.)
     col_map = {}
     if "Startzeit" in df_preussen.columns and "Uhrzeit" not in df_preussen.columns:
         col_map["Startzeit"] = "Uhrzeit"
@@ -194,8 +186,6 @@ else:
         col_map["Gegner"] = "Gast"
     if col_map:
         df_preussen = df_preussen.rename(columns=col_map)
-
-    # Pflichtfelder setzen/ergänzen
     df_preussen["Heim"] = "Preußen Münster"
     df_preussen["Ort"] = "Sporthalle Berg Fidel (48153 Münster)"
     df_preussen["Spielrunde"] = "Fußball 2. BL"
@@ -203,31 +193,22 @@ else:
     df_preussen["Gastgeber"] = "Preußen Münster"
     df_preussen["Ergebnis"] = ""
     df_preussen["USC_Team"] = "Preußen Münster"
-
-    # Bereinigen
     df_preussen["Datum"] = df_preussen["Datum"].astype(str).str.strip()
     if "Uhrzeit" in df_preussen.columns:
         df_preussen["Uhrzeit"] = df_preussen["Uhrzeit"].astype(str).str.strip()
     else:
         df_preussen["Uhrzeit"] = ""
-
-    # Datumsobjekte erzeugen
     df_preussen["Datum_DT"] = pd.to_datetime(df_preussen["Datum"], format="%d.%m.%Y", errors="coerce")
     df_preussen["Tag"] = df_preussen["Datum_DT"].dt.day_name().map(tage_map)
-
-    # Spalten in gewünschter Reihenfolge
-    for need_col in ["Gast"]:
-        if need_col not in df_preussen.columns:
-            df_preussen[need_col] = ""
-
+    if "Gast" not in df_preussen.columns:
+        df_preussen["Gast"] = ""
     df_preussen = df_preussen[[
         "Datum", "Uhrzeit", "Tag", "Heim", "Gast", "SR", "Gastgeber",
         "Ergebnis", "Ort", "Spielrunde", "Datum_DT", "USC_Team"
     ]]
-
     dfs.append(df_preussen)
 
-# ---------- Gesamttabelle zusammenbauen ----------
+# ---------- Gesamttabelle ----------
 df_all = pd.concat(dfs, ignore_index=True)
 
 def parse_datum(s):
@@ -282,23 +263,26 @@ def replace_usc_names(s, team):
         s = s.replace(old, new)
     return s
 
-def clean_all_names(row):
-    for col in ["Heim", "Gast", "SR", "Gastgeber", "Ort", "Spielrunde"]:
-        row[col] = replace_usc_names(row[col], row["USC_Team"])
-    return row
-
-df_all = df_all.apply(clean_all_names, axis=1)
-
+df_all = df_all.apply(lambda row: {**row, **{col: replace_usc_names(row[col], row["USC_Team"]) for col in ["Heim", "Gast", "SR", "Gastgeber", "Ort", "Spielrunde"]}}, axis=1)
 for col in ["Heim", "Gast", "SR", "Gastgeber"]:
     df_all[col] = df_all[col].str.replace(r'\b(USC-[U\d]+-\d) II\b', r'\1', regex=True)
 
 df_all = df_all.sort_values(by=["Datum_DT", "Uhrzeit"])
 
+# 🔴 Änderung 1: vergangene Spiele mit Ergebnis ohne USC rausfiltern
+now = datetime.now(timezone("Europe/Berlin")).replace(tzinfo=None)
+df_all = df_all[~(
+    (df_all["Ergebnis"].str.strip() != "") &
+    (df_all["Datum_DT"] < now) &
+    ~(df_all["Heim"].str.contains("USC")) &
+    ~(df_all["Gast"].str.contains("USC"))
+)]
+
 spielrunden = sorted(df_all["Spielrunde"].dropna().unique())
 orte = sorted([o for o in df_all["Ort"].dropna().unique() if "münster" in o.lower()])
 teams = sorted(set(t for team in df_all["USC_Team"].dropna() for t in team.split("/")))
 
-# Tabelle mit mehreren data-team Attributen
+# Tabelle
 table_rows = "\n".join(
     "<tr " +
     f'data-teams="{html.escape(row["USC_Team"])}"' +
