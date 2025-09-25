@@ -112,7 +112,7 @@ for file, team_code in csv_files:
     for col in ["Heim", "Gast", "SR", "Gastgeber", "Ort", "Spielrunde"]:
         df[col] = df.apply(lambda row: replace_usc_names(row[col], row["USC_Team"]), axis=1)
 
-    # 🔴 Ergebnisfunktion angepasst
+    # Ergebnisfunktion angepasst
     def get_result(row):
         try:
             if pd.isna(row.get("S")) or str(row["S"]).strip() == "":
@@ -146,68 +146,6 @@ for file, team_code in csv_files:
 
     dfs.append(df)
 
-# 🟧 Baskets-Spiele ergänzen
-baskets_file = Path("csv_Baskets/Baskets_2526_Heimspiele.csv")
-df_baskets = pd.read_csv(baskets_file)
-df_baskets["Heim"] = "Uni Baskets Münster"
-df_baskets["Ort"] = "Sporthalle Berg Fidel (48153 Münster)"
-df_baskets["Spielrunde"] = "Basketball Pro A"
-df_baskets["SR"] = ""
-df_baskets["Gastgeber"] = "Baskets"
-df_baskets["Ergebnis"] = ""
-df_baskets["USC_Team"] = "Baskets"
-df_baskets = df_baskets.rename(columns={"Startzeit": "Uhrzeit", "Gegner": "Gast"})
-df_baskets["Datum"] = df_baskets["Datum"].str.strip()
-df_baskets["Uhrzeit"] = df_baskets["Uhrzeit"].str.strip()
-df_baskets["Datum_DT"] = pd.to_datetime(df_baskets["Datum"], format="%d.%m.%Y", errors="coerce")
-tage_map = {
-    "Monday": "Mo", "Tuesday": "Di", "Wednesday": "Mi", "Thursday": "Do",
-    "Friday": "Fr", "Saturday": "Sa", "Sunday": "So"
-}
-df_baskets["Tag"] = df_baskets["Datum_DT"].dt.day_name().map(tage_map)
-df_baskets = df_baskets[[
-    "Datum", "Uhrzeit", "Tag", "Heim", "Gast", "SR", "Gastgeber",
-    "Ergebnis", "Ort", "Spielrunde", "Datum_DT", "USC_Team"
-]]
-dfs.append(df_baskets)
-
-# 🟩 Preußen Münster – Heimspiele ergänzen
-preussen_candidates = [
-    Path("csv_Basktes/Preussen_2526_Heimspiele.csv"),
-    Path("csv_Baskets/Preussen_2526_Heimspiele.csv"),
-]
-preussen_file = next((p for p in preussen_candidates if p.exists()), None)
-if preussen_file is not None:
-    df_preussen = pd.read_csv(preussen_file)
-    col_map = {}
-    if "Startzeit" in df_preussen.columns and "Uhrzeit" not in df_preussen.columns:
-        col_map["Startzeit"] = "Uhrzeit"
-    if "Gegner" in df_preussen.columns and "Gast" not in df_preussen.columns:
-        col_map["Gegner"] = "Gast"
-    if col_map:
-        df_preussen = df_preussen.rename(columns=col_map)
-    df_preussen["Heim"] = "Preußen Münster"
-    df_preussen["Ort"] = "Sporthalle Berg Fidel (48153 Münster)"
-    df_preussen["Spielrunde"] = "Fußball 2. BL"
-    df_preussen["SR"] = ""
-    df_preussen["Gastgeber"] = "Preußen Münster"
-    df_preussen["Ergebnis"] = ""
-    df_preussen["USC_Team"] = "Preußen Münster"
-    df_preussen["Datum"] = df_preussen["Datum"].astype(str).str.strip()
-    if "Uhrzeit" in df_preussen.columns:
-        df_preussen["Uhrzeit"] = df_preussen["Uhrzeit"].astype(str).str.strip()
-    else:
-        df_preussen["Uhrzeit"] = ""
-    df_preussen["Datum_DT"] = pd.to_datetime(df_preussen["Datum"], format="%d.%m.%Y", errors="coerce")
-    df_preussen["Tag"] = df_preussen["Datum_DT"].dt.day_name().map(tage_map)
-    if "Gast" not in df_preussen.columns:
-        df_preussen["Gast"] = ""
-    df_preussen = df_preussen[[
-        "Datum", "Uhrzeit", "Tag", "Heim", "Gast", "SR", "Gastgeber",
-        "Ergebnis", "Ort", "Spielrunde", "Datum_DT", "USC_Team"
-    ]]
-    dfs.append(df_preussen)
-
 # ---------- Gesamttabelle ----------
 df_all = pd.concat(dfs, ignore_index=True)
 
@@ -237,39 +175,13 @@ def format_uhrzeit(uhr):
 
 df_all["Uhrzeit"] = df_all["Uhrzeit"].apply(format_uhrzeit)
 
-def replace_usc_names(s, team):
-    s = str(s)
-    global_replacements = [
-        ("USC Münster VIII", "USC8"),
-        ("USC Münster VII", "USC7"),
-        ("USC Münster VI",  "USC6"),
-        ("USC Münster V",   "USC5"),
-        ("USC Münster IV",  "USC4"),
-        ("USC Münster III", "USC3"),
-        ("USC Münster II",  "USC2"),
-        ("USC Münster",     "USC1"),
-    ]
-    team_specific = {
-        "USC-U14-1": [("USC1", "USC-U14-1")],
-        "USC-U14-2": [("USC2", "USC-U14-2")],
-        "USC-U16-1": [("USC1", "USC-U16-1")],
-        "USC-U16-2": [("USC2", "USC-U16-2")],
-        "USC-U18":   [("USC1", "USC-U18")],
-        "USC-U13":   [("USC1", "USC-U13")],
-    }
-    for old, new in global_replacements:
-        s = s.replace(old, new)
-    for old, new in team_specific.get(team, []):
-        s = s.replace(old, new)
-    return s
-
-df_all = df_all.apply(lambda row: {**row, **{col: replace_usc_names(row[col], row["USC_Team"]) for col in ["Heim", "Gast", "SR", "Gastgeber", "Ort", "Spielrunde"]}}, axis=1)
 for col in ["Heim", "Gast", "SR", "Gastgeber"]:
-    df_all[col] = df_all[col].str.replace(r'\b(USC-[U\d]+-\d) II\b', r'\1', regex=True)
+    if col in df_all.columns:
+        df_all[col] = df_all[col].astype(str).str.replace(r'\b(USC-[U\d]+-\d) II\b', r'\1', regex=True)
 
 df_all = df_all.sort_values(by=["Datum_DT", "Uhrzeit"])
 
-# 🔴 Änderung 1: vergangene Spiele mit Ergebnis ohne USC rausfiltern
+# Spiele mit Ergebnis rausfiltern, wenn kein USC-Team beteiligt ist
 now = datetime.now(timezone("Europe/Berlin")).replace(tzinfo=None)
 df_all = df_all[~(
     (df_all["Ergebnis"].str.strip() != "") &
