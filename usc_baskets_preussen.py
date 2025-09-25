@@ -306,15 +306,16 @@ for col in ["Heim", "Gast", "SR", "Gastgeber"]:
 
 df_all = df_all.sort_values(by=["Datum_DT", "Uhrzeit"])
 
-# (Änderung 1) Vergangene Spiele mit Ergebnis ohne USC ausfiltern
+# 🔴 Spiele filtern
 now = datetime.now(timezone("Europe/Berlin")).replace(tzinfo=None)
-df_all = df_all[~(
-    (df_all["Ergebnis"].astype(str).str.strip() != "") &
-    (df_all["Datum_DT"] < now) &
-    ~(df_all["Heim"].str.contains("USC")) &
-    ~(df_all["Gast"].str.contains("USC"))
-)]
 
+df_all = df_all[
+    # Behalte immer USC-Spiele
+    (df_all["Heim"].str.contains("USC") | df_all["Gast"].str.contains("USC"))
+    |
+    # Behalte alle Nicht-USC-Spiele, wenn sie noch nicht gespielt sind
+    (df_all["Datum_DT"] >= now)
+]
 spielrunden = sorted(df_all["Spielrunde"].dropna().unique())
 orte = sorted([o for o in df_all["Ort"].dropna().unique() if "münster" in o.lower()])
 teams = sorted(set(t for team in df_all["USC_Team"].dropna() for t in team.split("/")))
