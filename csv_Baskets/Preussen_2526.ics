@@ -1551,9 +1551,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  n\n34. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
  /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
  ine.de/ical/loeschen
-DTSTAMP:20250925T090735Z
+DTSTAMP:20250926T100721Z
 CREATED:20250627T124833Z
-LAST-MODIFIED:20250925T090735Z
+LAST-MODIFIED:20250926T100721Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
