@@ -11,29 +11,6 @@ X-WR-TIMEZONE:Europe/Berlin
 X-WR-RELCALID:7dc6da48.a8ea1dd5@7477.calovo.com
 X-PUBLISHED-TTL:PT30M
 BEGIN:VEVENT
-UID:6686a3858f49c@7477.calovo
-DTSTART;TZID=Europe/Berlin:20240928T203000
-SEQUENCE:0
-TRANSP:TRANSPARENT
-STATUS:CONFIRMED
-DTEND;TZID=Europe/Berlin:20240928T223000
-LOCATION:Preußenstadion
-SUMMARY:SC Preußen Münster - FC Schalke 04 | 2. Bundesliga | 7. Spieltag
-DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
- n\n7. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de/
- bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: termi
- ne.de/ical/loeschen
-DTSTAMP:20240928T180414Z
-CREATED:20240704T132837Z
-LAST-MODIFIED:20240928T180414Z
-BEGIN:VALARM
-TRIGGER:-P0DT1H0M0S
-ACTION:DISPLAY
-DESCRIPTION:Reminder: SC Preußen Münster - FC Schalke 04 | 2. Bundesliga 
- | 7. Spieltag
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
 UID:6686a38ac4075@7477.calovo
 DTSTART;TZID=Europe/Berlin:20241005T130000
 SEQUENCE:0
