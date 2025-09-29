@@ -143,6 +143,7 @@ jobs:
         run: |
           python usc_baskets_preussen.py
           python usc_spielplan.py
+          python usc_spielplan_ics.py
 
       - name: 🔁 Commit und Push HTML
         run: |
@@ -151,6 +152,7 @@ jobs:
           git add docs/index_trainer.html
           git add docs/index.html
           git add docs/indexapp.html
+          git add docs/usc_spielplan.ics
           git commit -m "📅 HTML-Aktualisierung" || echo "nichts zu committen"
           git pull --rebase
           git push
