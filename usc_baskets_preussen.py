@@ -5,6 +5,24 @@ import html
 from pytz import timezone
 import re
 
+from usc_team_links import build_team_table_overview
+
+
+def escape_text(value):
+    """Wandelt Zellen- bzw. Attributwerte in sauber escapte Strings um."""
+
+    if value is None:
+        return ""
+    try:
+        if pd.isna(value):
+            return ""
+    except Exception:
+        pass
+    text = str(value)
+    if text.strip().lower() == "nan":
+        return ""
+    return html.escape(text)
+
 # Aktuelle MESZ-Zeit für Anzeige im HTML
 mesz_time = datetime.now(timezone("Europe/Berlin")).strftime("%d.%m.%Y %H:%M")
 stand_info = f'<p class="text-muted mt-3">Stand: {mesz_time} Uhr</p>'
@@ -319,17 +337,38 @@ df_all = df_all[
 spielrunden = sorted(df_all["Spielrunde"].dropna().unique())
 orte = sorted([o for o in df_all["Ort"].dropna().unique() if "münster" in o.lower()])
 teams = sorted(set(t for team in df_all["USC_Team"].dropna() for t in team.split("/")))
+usc_team_codes = [team for team in teams if team.startswith("USC")]
+
+columns_display = [
+    "Datum",
+    "Uhrzeit",
+    "Tag",
+    "Heim",
+    "Gast",
+    "SR",
+    "Gastgeber",
+    "Ergebnis",
+    "Ort",
+    "Spielrunde",
+]
+table_header_html = "".join(f"<th>{col}</th>" for col in columns_display)
+
+
+def render_cells(row):
+    return "".join(f"<td>{escape_text(row.get(col, ''))}</td>" for col in columns_display)
 
 # Tabelle mit mehreren data-team Attributen
 table_rows = "\n".join(
-    "<tr " +
-    f'data-teams="{html.escape(row["USC_Team"])}"' +
-    f' data-spielrunde="{html.escape(row["Spielrunde"])}" data-ort="{html.escape(row["Ort"])}">' +
-    "".join(f"<td>{html.escape(str(row.get(col, '')))}</td>" for col in [
-        "Datum", "Uhrzeit", "Tag", "Heim", "Gast", "SR", "Gastgeber", "Ergebnis", "Ort", "Spielrunde"
-    ]) + "</tr>"
+    "<tr "
+    + f'data-teams="{escape_text(row["USC_Team"])}"'
+    + f' data-spielrunde="{escape_text(row["Spielrunde"])}" data-ort="{escape_text(row["Ort"])}">'
+    + render_cells(row)
+    + "</tr>"
     for _, row in df_all.iterrows()
 )
+
+
+team_tables_html = build_team_table_overview(usc_team_codes)
 
 # HTML-Ausgabe
 html_code = f"""<!doctype html>
@@ -368,6 +407,7 @@ html_code = f"""<!doctype html>
   <div class="container">
     <h1 class="mb-2">USC Münster – Spielplan 2025/26</h1>
     {stand_info}
+    {team_tables_html}
     <div class="accordion mb-3" id="filterAccordion">
       <div class="accordion-item">
         <h2 class="accordion-header" id="headingFilters">
@@ -411,7 +451,7 @@ html_code = f"""<!doctype html>
     <div class="table-responsive">
       <table class="table table-bordered" id="spielplan">
         <thead>
-          <tr><th>Datum</th><th>Uhrzeit</th><th>Tag</th><th>Heim</th><th>Gast</th><th>SR</th><th>Gastgeber</th><th>Ergebnis</th><th>Ort</th><th>Spielrunde</th></tr>
+          <tr>{table_header_html}</tr>
         </thead>
         <tbody>
           {table_rows}
