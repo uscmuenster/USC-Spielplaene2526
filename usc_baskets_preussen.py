@@ -5,6 +5,8 @@ import html
 from pytz import timezone
 import re
 
+from usc_team_links import build_team_table_overview
+
 
 def escape_text(value):
     """Wandelt Zellen- bzw. Attributwerte in sauber escapte Strings um."""
@@ -366,66 +368,7 @@ table_rows = "\n".join(
 )
 
 
-team_accordion_items = []
-for team in usc_team_codes:
-    team_df = df_all[
-        df_all["USC_Team"].fillna("").apply(lambda value: team in [t for t in str(value).split("/") if t])
-    ]
-    if team_df.empty:
-        continue
-    team_rows_html = "\n".join(
-        "<tr>" + render_cells(row) + "</tr>"
-        for _, row in team_df.iterrows()
-    )
-    team_slug = re.sub(r"[^a-z0-9]+", "-", team.lower()).strip("-") or "team"
-    team_accordion_items.append(
-        f"""
-      <div class=\"accordion-item\">
-        <h2 class=\"accordion-header\" id=\"heading-{team_slug}\">
-          <button class=\"accordion-button collapsed\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#collapse-{team_slug}\" aria-expanded=\"false\" aria-controls=\"collapse-{team_slug}\">
-            {html.escape(team)}
-          </button>
-        </h2>
-        <div id=\"collapse-{team_slug}\" class=\"accordion-collapse collapse\" aria-labelledby=\"heading-{team_slug}\" data-bs-parent=\"#teamTablesInner\">
-          <div class=\"accordion-body\">
-            <div class=\"table-responsive\">
-              <table class=\"table table-sm table-bordered mb-0\">
-                <thead>
-                  <tr>{table_header_html}</tr>
-                </thead>
-                <tbody>
-                  {team_rows_html}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-        """
-    )
-
-team_tables_html = ""
-if team_accordion_items:
-    inner_items_html = "".join(team_accordion_items)
-    team_tables_html = f"""
-    <div class=\"accordion mb-3\" id=\"teamTables\">
-      <div class=\"accordion-item\">
-        <h2 class=\"accordion-header\" id=\"headingTeamTables\">
-          <button class=\"accordion-button collapsed\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#collapseTeamTables\" aria-expanded=\"false\" aria-controls=\"collapseTeamTables\">
-            Tabellen der USC-Teams anzeigen
-          </button>
-        </h2>
-        <div id=\"collapseTeamTables\" class=\"accordion-collapse collapse\" aria-labelledby=\"headingTeamTables\">
-          <div class=\"accordion-body\">
-            <p class=\"mb-3\">Jede Tabelle fasst alle Spiele des ausgewählten USC-Teams zusammen.</p>
-            <div class=\"accordion\" id=\"teamTablesInner\">
-              {inner_items_html}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    """
+team_tables_html = build_team_table_overview(usc_team_codes)
 
 # HTML-Ausgabe
 html_code = f"""<!doctype html>
