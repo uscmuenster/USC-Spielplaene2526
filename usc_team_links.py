@@ -72,7 +72,7 @@ USC_TEAM_TABLE_INFO = {
         "order": 110,
     },
     "USC-U16-1": {
-        "name": "USC Münster wU16 I",
+        "name": "USC-U16-1",
         "league": "NRW-Liga wU16",
         "url": "https://ergebnisdienst.volleyball.nrw/cms/home/jugend/u16/u16_weiblich/nrw_liga.xhtml",
         "order": 120,
