@@ -6,90 +6,99 @@ from typing import Iterable
 
 BASE_URL = "https://ergebnisdienst.volleyball.nrw/"
 
+
+def _nrw(path: str) -> str:
+    """Erzeugt einen vollständigen Ergebnisdienst-Link aus einem relativen Pfad."""
+
+    if path.startswith("http"):
+        return path
+    return f"{BASE_URL}{path.lstrip('/')}"
+
+
 # Metadaten zu allen USC-Mannschaften inkl. Liga- und Tabellen-Links.
 USC_TEAM_TABLE_INFO = {
     "USC1": {
         "name": "USC Münster I",
         "league": "1. Bundesliga Frauen",
-        "path": "cms/home/bundesligen/1._bundesliga_frauen.xhtml",
+        "url": "https://www.volleyball-bundesliga.de/cms/home/1_bundesliga_frauen/statistik/hauptrunde/tabelle_hauptrunde.xhtml",
         "order": 10,
     },
     "USC2": {
         "name": "USC Münster II",
         "league": "2. Bundesliga Frauen Nord",
-        "path": "cms/home/bundesligen/2._bundesliga_frauen_nord.xhtml",
+        "url": "https://www.volleyball-bundesliga.de/cms/home/2_bundesliga_frauen/2_bundesliga_frauen_nord/tabellespielplan/tabelle.xhtml",
         "order": 20,
     },
     "USC3": {
         "name": "USC Münster III",
         "league": "Oberliga 2 Frauen",
-        "path": "cms/home/erwachsene/oberligen/oberliga_frauen/oberliga_2_frauen.xhtml",
+        "url": _nrw("cms/home/erwachsene/oberligen/oberliga_frauen/oberliga_2.xhtml"),
         "order": 30,
     },
     "USC4": {
         "name": "USC Münster IV",
         "league": "Bezirksliga 14 Frauen",
-        "path": "cms/home/erwachsene/bezirksligen/bezirksligen_frauen/bezirksliga_14_frauen.xhtml",
+        "url": _nrw("cms/home/erwachsene/bezirksligen/bezirksligen_frauen/bezirksliga_14_frauen.xhtml"),
         "order": 40,
     },
     "USC5": {
         "name": "USC Münster V",
         "league": "Bezirksklasse 26 Frauen",
-        "path": "cms/home/erwachsene/bezirksklassen/bezirksklassen_frauen/bezirksklasse_26_frauen.xhtml",
+        "url": _nrw("cms/home/erwachsene/bezirksklassen/bezirksklassen_frauen/bezirksklasse_26_frauen.xhtml"),
         "order": 50,
     },
     "USC6": {
         "name": "USC Münster VI",
         "league": "Bezirksklasse 26 Frauen",
-        "path": "cms/home/erwachsene/bezirksklassen/bezirksklassen_frauen/bezirksklasse_26_frauen.xhtml",
+        "url": _nrw("cms/home/erwachsene/bezirksklassen/bezirksklassen_frauen/bezirksklasse_26_frauen.xhtml"),
         "order": 55,
     },
     "USC7": {
         "name": "USC Münster VII",
         "league": "Kreisliga Münster Frauen",
-        "path": "cms/home/erwachsene/kreisligen/kreisligen_frauen/kreisliga_muenster_frauen.xhtml",
+        "url": "https://ergebnisdienst.volleyball.nrw/cms/home/erwachsene/kreisligen/alle_kreisligen.xhtml?LeaguePresenter.view=resultTable&LeaguePresenter.matchSeriesId=95241488#samsCmsComponent_103072206",
         "order": 60,
     },
     "USC8": {
         "name": "USC Münster VIII",
         "league": "Kreisliga Münster Frauen",
-        "path": "cms/home/erwachsene/kreisligen/kreisligen_frauen/kreisliga_muenster_frauen.xhtml",
+        "url": "https://ergebnisdienst.volleyball.nrw/cms/home/erwachsene/kreisligen/alle_kreisligen.xhtml?LeaguePresenter.view=resultTable&LeaguePresenter.matchSeriesId=95241488#samsCmsComponent_103072206",
         "order": 65,
     },
     "USC-U18": {
         "name": "USC Münster wU18",
         "league": "NRW-Liga wU18",
-        "path": "cms/home/jugend/nrw-ligen-weiblich/nrw-liga_wu18.xhtml",
+        "url": "https://ergebnisdienst.volleyball.nrw/cms/home/jugend/u18/u18_weiblich/nrw_liga.xhtml",
         "order": 110,
     },
     "USC-U16-1": {
         "name": "USC Münster wU16 I",
         "league": "NRW-Liga wU16",
-        "path": "cms/home/jugend/nrw-ligen-weiblich/nrw-liga_wu16.xhtml",
+        "url": "https://ergebnisdienst.volleyball.nrw/cms/home/jugend/u16/u16_weiblich/nrw_liga.xhtml",
         "order": 120,
     },
     "USC-U16-2": {
         "name": "USC Münster wU16 II",
         "league": "Oberliga 5 wU16",
-        "path": "cms/home/jugend/oberligen-weiblich/oberliga_5_wu16.xhtml",
+        "url": "https://ergebnisdienst.volleyball.nrw/cms/home/jugend/u16/u16_weiblich/oberliga_5.xhtml",
         "order": 130,
     },
     "USC-U14-1": {
         "name": "USC Münster wU14 I",
         "league": "NRW-Liga wU14",
-        "path": "cms/home/jugend/nrw-ligen-weiblich/nrw-liga_wu14.xhtml",
+        "url": "https://ergebnisdienst.volleyball.nrw/cms/home/jugend/u14/u14_weiblich/nrw_liga.xhtml",
         "order": 140,
     },
     "USC-U14-2": {
         "name": "USC Münster wU14 II",
         "league": "Oberliga 5 wU14",
-        "path": "cms/home/jugend/oberligen-weiblich/oberliga_5_wu14.xhtml",
+        "url": "https://ergebnisdienst.volleyball.nrw/cms/home/jugend/u14/u14_weiblich/oberliga_5.xhtml",
         "order": 150,
     },
     "USC-U13": {
         "name": "USC Münster wU13",
         "league": "Oberliga 6 wU13",
-        "path": "cms/home/jugend/oberligen-weiblich/oberliga_6_wu13.xhtml",
+        "url": "https://ergebnisdienst.volleyball.nrw/cms/home/jugend/u13/u13_weiblich/oberliga_6.xhtml",
         "order": 160,
     },
 }
@@ -112,8 +121,12 @@ def build_team_table_overview(team_codes: Iterable[str]) -> str:
 
         team_name = info.get("name", code)
         league = info.get("league", "")
-        path = info.get("path")
-        url = f"{BASE_URL}{path}" if path else None
+        url = info.get("url")
+        if not url:
+            path = info.get("path")
+            if path:
+                url = _nrw(path)
+
         if url:
             link_html = (
                 f'<a href="{escape(url)}" class="link-dark" target="_blank" rel="noopener">'
