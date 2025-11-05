@@ -3,7 +3,10 @@ name: 📥 Gesamtworkflow Spielplan2526
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 * * * *'  # stündlich
+    # Wochenende (Samstag=6, Sonntag=0): stündlich
+    - cron: '0 * * * 6,0'
+    # Wochentage (Montag–Freitag): alle 6 Stunden
+    - cron: '0 */6 * * 1-5'
 
 # ✅ Stabilitätstipp 2: verhindert überlappende Läufe
 concurrency:

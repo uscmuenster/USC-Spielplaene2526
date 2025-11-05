@@ -80,7 +80,7 @@ USC_TEAM_TABLE_INFO = {
     "USC-U16-2": {
         "name": "USC Münster wU16 II",
         "league": "Oberliga 5 wU16",
-        "url": "https://ergebnisdienst.volleyball.nrw/cms/home/jugend/u16/u16_weiblich/oberliga_2.xhtml",
+        "url": "https://ergebnisdienst.volleyball.nrw/cms/home/jugend/u16/u16_weiblich/oberliga_5.xhtml",
         "order": 130,
     },
     "USC-U14-1": {
