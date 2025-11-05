@@ -86,7 +86,7 @@ USC_TEAM_TABLE_INFO = {
     "USC-U14-1": {
         "name": "USC Münster wU14 I",
         "league": "NRW-Liga wU14",
-        "url": "https://ergebnisdienst.volleyball.nrw/cms/home/jugend/u14/u14_weiblich/nrw_liga.xhtml",
+        "url": "https://ergebnisdienst.volleyball.nrw/cms/home/jugend/u14/nrw_ligen/wu14_NRW.xhtml",
         "order": 140,
     },
     "USC-U14-2": {
