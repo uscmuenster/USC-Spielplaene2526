@@ -95,6 +95,20 @@
                 </select>
               </div>
             </div>
+            <div class="row g-2 mt-2">
+              <div class="col-md-4">
+                <label class="form-label">Woche (Mo–So):</label>
+                <select class="form-select" id="filterWeek" onchange="filter()">
+                  <option value="">Alle</option>
+                </select>
+              </div>
+              <div class="col-md-4 d-flex align-items-end" id="togglePastContainer">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="1" id="togglePast" onchange="filter()">
+                  <label class="form-check-label" for="togglePast">Vergangene Spiele anzeigen</label>
+                </div>
+              </div>
+            </div>
             <div class="mt-3">
               <button class="btn btn-secondary" onclick="resetFilter()">Zurücksetzen</button>
               <button class="btn btn-outline-primary" onclick="window.print()">🖨️ Drucken</button>
@@ -338,24 +352,90 @@
 
   </div>
   <script>
+    function parseDate(dateStr) {
+      const parts = (dateStr || "").split(".");
+      if (parts.length !== 3) return null;
+      const [day, month, year] = parts;
+      return new Date(`${year}-${month}-${day}`);
+    }
+    function formatWeekLabel(startDate) {
+      const end = new Date(startDate);
+      end.setDate(end.getDate() + 6);
+      const fmt = (d) => `${String(d.getDate()).padStart(2, "0")}.${String(d.getMonth() + 1).padStart(2, "0")}.${d.getFullYear()}`;
+      return `Mo ${fmt(startDate)} – So ${fmt(end)}`;
+    }
+    function buildWeekOptions() {
+      const select = document.getElementById("filterWeek");
+      if (!select) return;
+      const weeks = new Map();
+      document.querySelectorAll("#spielplan tbody tr").forEach(row => {
+        if (!row.dataset.datum || !row.dataset.week) {
+          const firstCell = row.querySelector("td");
+          const parsed = firstCell ? parseDate(firstCell.textContent.trim()) : null;
+          if (parsed && !isNaN(parsed)) {
+            const weekStart = new Date(parsed);
+            weekStart.setDate(parsed.getDate() - ((parsed.getDay() + 6) % 7));
+            row.dataset.datum = parsed.toISOString().slice(0, 10);
+            row.dataset.week = weekStart.toISOString().slice(0, 10);
+          }
+        }
+        if (row.dataset.week) {
+          const start = new Date(row.dataset.week);
+          if (!isNaN(start)) {
+            weeks.set(row.dataset.week, formatWeekLabel(start));
+          }
+        }
+      });
+      const current = select.value;
+      Array.from(select.querySelectorAll("option:not([value=''])")).forEach(opt => opt.remove());
+      Array.from(weeks.entries())
+        .sort((a, b) => a[0].localeCompare(b[0]))
+        .forEach(([value, label]) => {
+          const option = document.createElement("option");
+          option.value = value;
+          option.textContent = label;
+          select.appendChild(option);
+        });
+      select.value = current && weeks.has(current) ? current : "";
+    }
     function filter() {
       const team = document.getElementById("filterTeam").value;
       const runde = document.getElementById("filterRunde").value;
       const ort = document.getElementById("filterOrt").value;
+      const week = document.getElementById("filterWeek").value;
+      const showPast = document.getElementById("togglePast").checked;
+      const pastContainer = document.getElementById("togglePastContainer");
+      if (pastContainer) {
+        pastContainer.style.display = week ? "none" : "flex";
+      }
+      const now = new Date();
+      const cutoff = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 10);
+      const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
       document.querySelectorAll("#spielplan tbody tr").forEach(row => {
         const teamList = (row.dataset.teams || "").split("/");
         const matchTeam = !team || teamList.includes(team);
         const matchRunde = !runde || row.dataset.spielrunde === runde;
         const matchOrt = !ort || row.dataset.ort === ort;
-        row.style.display = (matchTeam && matchRunde && matchOrt) ? "" : "none";
+        const matchWeek = !week || row.dataset.week === week;
+        const rowDate = row.dataset.datum ? new Date(row.dataset.datum) : null;
+        const isRecent = !rowDate || rowDate >= cutoff;
+        const isFuture = !rowDate || rowDate >= today;
+        const withinTime = week ? true : (showPast ? true : (isFuture || isRecent));
+        row.style.display = (matchTeam && matchRunde && matchOrt && matchWeek && withinTime) ? "" : "none";
       });
     }
     function resetFilter() {
       document.getElementById("filterTeam").value = "";
       document.getElementById("filterRunde").value = "";
       document.getElementById("filterOrt").value = "";
+      document.getElementById("filterWeek").value = "";
+      document.getElementById("togglePast").checked = false;
       filter();
     }
+    document.addEventListener("DOMContentLoaded", () => {
+      buildWeekOptions();
+      filter();
+    });
   </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>

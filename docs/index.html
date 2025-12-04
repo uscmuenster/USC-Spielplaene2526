@@ -348,7 +348,12 @@
       const runde = document.getElementById("filterRunde").value;
       const ort = document.getElementById("filterOrt").value;
       const week = document.getElementById("filterWeek").value;
-      const showPast = document.getElementById("togglePast").checked;
+      const weekSelected = week !== "";
+      const togglePastWrapper = document.getElementById("togglePast").closest(".form-check");
+      if (togglePastWrapper) {
+        togglePastWrapper.style.display = weekSelected ? "none" : "";
+      }
+      const showPast = weekSelected ? true : document.getElementById("togglePast").checked;
       const now = new Date();
       const cutoff = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 10);
       const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
@@ -361,7 +366,7 @@
         const rowDate = row.dataset.datum ? new Date(row.dataset.datum) : null;
         const isRecent = !rowDate || rowDate >= cutoff;
         const isFuture = !rowDate || rowDate >= today;
-        const withinTime = showPast ? true : (isFuture || isRecent);
+        const withinTime = weekSelected ? true : (showPast ? true : (isFuture || isRecent));
         row.style.display = (matchTeam && matchRunde && matchOrt && matchWeek && withinTime) ? "" : "none";
       });
     }

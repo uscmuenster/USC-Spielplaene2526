@@ -341,7 +341,7 @@ html_code = f"""<!doctype html>
                   {''.join(f"<option value='{w[0].strftime('%Y-%m-%d')}'>{html.escape(w[1])}</option>" for w in wochen)}
                 </select>
               </div>
-              <div class="col-md-4 d-flex align-items-end">
+              <div class="col-md-4 d-flex align-items-end" id="togglePastContainer">
                 <div class="form-check">
                   <input class="form-check-input" type="checkbox" value="1" id="togglePast" onchange="filter()">
                   <label class="form-check-label" for="togglePast">Vergangene Spiele anzeigen</label>
@@ -378,6 +378,10 @@ html_code = f"""<!doctype html>
       const ort = document.getElementById("filterOrt").value;
       const week = document.getElementById("filterWeek").value;
       const showPast = document.getElementById("togglePast").checked;
+      const pastContainer = document.getElementById("togglePastContainer");
+      if (pastContainer) {
+        pastContainer.style.display = week ? "none" : "flex";
+      }
       const now = new Date();
       const cutoff = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 10);
       const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
@@ -390,7 +394,7 @@ html_code = f"""<!doctype html>
         const rowDate = row.dataset.datum ? new Date(row.dataset.datum) : null;
         const isRecent = !rowDate || rowDate >= cutoff;
         const isFuture = !rowDate || rowDate >= today;
-        const withinTime = showPast ? true : (isFuture || isRecent);
+        const withinTime = week ? true : (showPast ? true : (isFuture || isRecent));
         row.style.display = (matchTeam && matchRunde && matchOrt && matchWeek && withinTime) ? "" : "none";
       }});
     }}
