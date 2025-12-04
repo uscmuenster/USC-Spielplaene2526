@@ -184,6 +184,12 @@ tage_map = {
     "Friday": "Fr", "Saturday": "Sa", "Sunday": "So"
 }
 df_all["Tag"] = df_all["Datum_DT"].dt.day_name().map(tage_map)
+df_all["Woche_Start"] = df_all["Datum_DT"].apply(lambda d: d - pd.to_timedelta(d.weekday(), unit="d"))
+df_all["Woche_Ende"] = df_all["Woche_Start"] + pd.to_timedelta(6, unit="d")
+df_all["Woche_Label"] = df_all.apply(
+    lambda row: f"Mo {row['Woche_Start'].strftime('%d.%m.%Y')} – So {row['Woche_Ende'].strftime('%d.%m.%Y')}",
+    axis=1
+)
 
 def format_uhrzeit(uhr):
     if uhr == "00:00:00":
@@ -220,6 +226,10 @@ spielrunden = sorted(df_all["Spielrunde"].dropna().unique())
 orte = sorted([o for o in df_all["Ort"].dropna().unique() if "münster" in o.lower()])
 teams = sorted(set(t for team in df_all["USC_Team"].dropna() for t in team.split("/")))
 usc_team_codes = [team for team in teams if team.startswith("USC")]
+wochen = sorted(
+    {(row["Woche_Start"], row["Woche_Label"]) for _, row in df_all.iterrows()},
+    key=lambda x: x[0]
+)
 
 columns_display = [
     "Datum",
@@ -243,7 +253,8 @@ def render_cells(row):
 table_rows = "\n".join(
     "<tr "
     + f'data-teams="{escape_text(row["USC_Team"])}"'
-    + f' data-spielrunde="{escape_text(row["Spielrunde"])}" data-ort="{escape_text(row["Ort"])}">'
+    + f' data-spielrunde="{escape_text(row["Spielrunde"])}" data-ort="{escape_text(row["Ort"])}"'
+    + f' data-week="{row["Woche_Start"].strftime("%Y-%m-%d")}" data-datum="{row["Datum_DT"].strftime("%Y-%m-%d")}">'
     + render_cells(row)
     + "</tr>"
     for _, row in df_all.iterrows()
@@ -322,6 +333,21 @@ html_code = f"""<!doctype html>
                 </select>
               </div>
             </div>
+            <div class="row g-2 mt-2">
+              <div class="col-md-4">
+                <label class="form-label">Woche (Mo–So):</label>
+                <select class="form-select" id="filterWeek" onchange="filter()">
+                  <option value="">Alle</option>
+                  {''.join(f"<option value='{w[0].strftime('%Y-%m-%d')}'>{html.escape(w[1])}</option>" for w in wochen)}
+                </select>
+              </div>
+              <div class="col-md-4 d-flex align-items-end">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="1" id="togglePast" onchange="filter()">
+                  <label class="form-check-label" for="togglePast">Vergangene Spiele anzeigen</label>
+                </div>
+              </div>
+            </div>
             <div class="mt-3">
               <button class="btn btn-secondary" onclick="resetFilter()">Zurücksetzen</button>
               <button class="btn btn-outline-primary" onclick="window.print()">🖨️ Drucken</button>
@@ -350,20 +376,33 @@ html_code = f"""<!doctype html>
       const team = document.getElementById("filterTeam").value;
       const runde = document.getElementById("filterRunde").value;
       const ort = document.getElementById("filterOrt").value;
+      const week = document.getElementById("filterWeek").value;
+      const showPast = document.getElementById("togglePast").checked;
+      const now = new Date();
+      const cutoff = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 10);
+      const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
       document.querySelectorAll("#spielplan tbody tr").forEach(row => {{
         const teamList = (row.dataset.teams || "").split("/");
         const matchTeam = !team || teamList.includes(team);
         const matchRunde = !runde || row.dataset.spielrunde === runde;
         const matchOrt = !ort || row.dataset.ort === ort;
-        row.style.display = (matchTeam && matchRunde && matchOrt) ? "" : "none";
+        const matchWeek = !week || row.dataset.week === week;
+        const rowDate = row.dataset.datum ? new Date(row.dataset.datum) : null;
+        const isRecent = !rowDate || rowDate >= cutoff;
+        const isFuture = !rowDate || rowDate >= today;
+        const withinTime = showPast ? true : (isFuture || isRecent);
+        row.style.display = (matchTeam && matchRunde && matchOrt && matchWeek && withinTime) ? "" : "none";
       }});
     }}
     function resetFilter() {{
       document.getElementById("filterTeam").value = "";
       document.getElementById("filterRunde").value = "";
       document.getElementById("filterOrt").value = "";
+      document.getElementById("filterWeek").value = "";
+      document.getElementById("togglePast").checked = false;
       filter();
     }}
+    document.addEventListener("DOMContentLoaded", filter);
   </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
