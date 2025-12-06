@@ -379,9 +379,9 @@ html_code = f"""<!doctype html>
       const week = document.getElementById("filterWeek").value;
       const showPast = document.getElementById("togglePast").checked;
       const pastContainer = document.getElementById("togglePastContainer");
-      if (pastContainer) {
+      if (pastContainer) {{
         pastContainer.style.display = week ? "none" : "flex";
-      }
+      }}
       const now = new Date();
       const cutoff = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 10);
       const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
