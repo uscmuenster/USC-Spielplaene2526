@@ -41,7 +41,7 @@ h1 { font-size: 1rem; margin-bottom: 0.5rem; }
 <body class="p-4">
   <div class="container">
     <h1 class="mb-2">USC Münster – Spielplan 2025/26</h1>
-    <p class="text-muted mt-3">Stand: 04.12.2025 17:18 Uhr</p>
+    <p class="text-muted mt-3">Stand: 06.12.2025 15:19 Uhr</p>
     <div class="accordion mb-3" id="teamTables">
   <div class="accordion-item">
     <h2 class="accordion-header" id="headingTeamTables">
@@ -107,7 +107,7 @@ h1 { font-size: 1rem; margin-bottom: 0.5rem; }
                   <option value='2025-09-15'>Mo 15.09.2025 – So 21.09.2025</option><option value='2025-09-22'>Mo 22.09.2025 – So 28.09.2025</option><option value='2025-09-29'>Mo 29.09.2025 – So 05.10.2025</option><option value='2025-10-06'>Mo 06.10.2025 – So 12.10.2025</option><option value='2025-10-13'>Mo 13.10.2025 – So 19.10.2025</option><option value='2025-10-20'>Mo 20.10.2025 – So 26.10.2025</option><option value='2025-10-27'>Mo 27.10.2025 – So 02.11.2025</option><option value='2025-11-03'>Mo 03.11.2025 – So 09.11.2025</option><option value='2025-11-10'>Mo 10.11.2025 – So 16.11.2025</option><option value='2025-11-17'>Mo 17.11.2025 – So 23.11.2025</option><option value='2025-11-24'>Mo 24.11.2025 – So 30.11.2025</option><option value='2025-12-01'>Mo 01.12.2025 – So 07.12.2025</option><option value='2025-12-08'>Mo 08.12.2025 – So 14.12.2025</option><option value='2025-12-15'>Mo 15.12.2025 – So 21.12.2025</option><option value='2025-12-22'>Mo 22.12.2025 – So 28.12.2025</option><option value='2026-01-05'>Mo 05.01.2026 – So 11.01.2026</option><option value='2026-01-12'>Mo 12.01.2026 – So 18.01.2026</option><option value='2026-01-19'>Mo 19.01.2026 – So 25.01.2026</option><option value='2026-01-26'>Mo 26.01.2026 – So 01.02.2026</option><option value='2026-02-02'>Mo 02.02.2026 – So 08.02.2026</option><option value='2026-02-09'>Mo 09.02.2026 – So 15.02.2026</option><option value='2026-02-16'>Mo 16.02.2026 – So 22.02.2026</option><option value='2026-02-23'>Mo 23.02.2026 – So 01.03.2026</option><option value='2026-03-02'>Mo 02.03.2026 – So 08.03.2026</option><option value='2026-03-09'>Mo 09.03.2026 – So 15.03.2026</option><option value='2026-03-16'>Mo 16.03.2026 – So 22.03.2026</option><option value='2026-03-23'>Mo 23.03.2026 – So 29.03.2026</option><option value='2026-04-06'>Mo 06.04.2026 – So 12.04.2026</option><option value='2026-04-20'>Mo 20.04.2026 – So 26.04.2026</option>
                 </select>
               </div>
-              <div class="col-md-4 d-flex align-items-end">
+              <div class="col-md-4 d-flex align-items-end" id="togglePastContainer">
                 <div class="form-check">
                   <input class="form-check-input" type="checkbox" value="1" id="togglePast" onchange="filter()">
                   <label class="form-check-label" for="togglePast">Vergangene Spiele anzeigen</label>
@@ -216,14 +216,12 @@ h1 { font-size: 1rem; margin-bottom: 0.5rem; }
 <tr data-teams="USC-U18" data-spielrunde="NRW-Liga wU18" data-ort="Halle Berg Fidel (48151 Münster)" data-week="2025-11-24" data-datum="2025-11-30"><td>30.11.2025</td><td>13:00</td><td>So</td><td>VoR Paderborn</td><td>USC-U18</td><td>VV Humann Essen</td><td>USC-U18</td><td>1:2 (26:28, 25:18, 10:15)</td><td>Halle Berg Fidel (48151 Münster)</td><td>NRW-Liga wU18</td></tr>
 <tr data-teams="USC-U14-2" data-spielrunde="Oberliga 5 wU14" data-ort="Carl Severing-Berufskolleg (Halle 2) (33607 Bielefeld)" data-week="2025-11-24" data-datum="2025-11-30"><td>30.11.2025</td><td>14:00</td><td>So</td><td>Telekom Post SV Bielefeld</td><td>USC-U14-2</td><td>VoR Paderborn</td><td>Telekom Post SV Bielefeld</td><td>2:0 (25:8, 25:13)</td><td>Carl Severing-Berufskolleg (Halle 2) (33607 Bielefeld)</td><td>Oberliga 5 wU14</td></tr>
 <tr data-teams="USC-U14-2" data-spielrunde="Oberliga 5 wU14" data-ort="Carl Severing-Berufskolleg (Halle 2) (33607 Bielefeld)" data-week="2025-11-24" data-datum="2025-11-30"><td>30.11.2025</td><td>15:00</td><td>So</td><td>USC-U14-2</td><td>VoR Paderborn</td><td>Telekom Post SV Bielefeld</td><td>Telekom Post SV Bielefeld</td><td>0:2 (8:25, 11:25)</td><td>Carl Severing-Berufskolleg (Halle 2) (33607 Bielefeld)</td><td>Oberliga 5 wU14</td></tr>
-<tr data-teams="USC6" data-spielrunde="Bezirksklasse 26 Frauen" data-ort="Erich-Klausener-Schule (48151 Münster)" data-week="2025-12-01" data-datum="2025-12-06"><td>06.12.2025</td><td>12:00</td><td>Sa</td><td>SV Blau-Weiß Aasee VI</td><td>TSC Gievenbeck IV</td><td>USC6</td><td>SV Blau-Weiß Aasee VI</td><td></td><td>Erich-Klausener-Schule (48151 Münster)</td><td>Bezirksklasse 26 Frauen</td></tr>
-<tr data-teams="USC6" data-spielrunde="Bezirksklasse 26 Frauen" data-ort="Erich-Klausener-Schule (48151 Münster)" data-week="2025-12-01" data-datum="2025-12-06"><td>06.12.2025</td><td>13:15</td><td>Sa</td><td>USC6</td><td>SV Arminia Appelhülsen II</td><td>SV Blau-Weiß Aasee VI</td><td>SV Blau-Weiß Aasee VI</td><td></td><td>Erich-Klausener-Schule (48151 Münster)</td><td>Bezirksklasse 26 Frauen</td></tr>
+<tr data-teams="USC6" data-spielrunde="Bezirksklasse 26 Frauen" data-ort="Erich-Klausener-Schule (48151 Münster)" data-week="2025-12-01" data-datum="2025-12-06"><td>06.12.2025</td><td>12:45</td><td>Sa</td><td>USC6</td><td>SV Arminia Appelhülsen II</td><td>SV Blau-Weiß Aasee VI</td><td>SV Blau-Weiß Aasee VI</td><td></td><td>Erich-Klausener-Schule (48151 Münster)</td><td>Bezirksklasse 26 Frauen</td></tr>
 <tr data-teams="USC3" data-spielrunde="Oberliga 2 Frauen" data-ort="Kardinal-von-Galen-Gymnasium (48165 Münster)" data-week="2025-12-01" data-datum="2025-12-06"><td>06.12.2025</td><td>15:00</td><td>Sa</td><td>USC3</td><td>SV Blau-Weiß Sande</td><td>-</td><td>USC3</td><td></td><td>Kardinal-von-Galen-Gymnasium (48165 Münster)</td><td>Oberliga 2 Frauen</td></tr>
 <tr data-teams="USC8" data-spielrunde="Kreisliga Münster Frauen" data-ort="Sporthalle Ost (Zweifachhalle) (48145 Münster)" data-week="2025-12-01" data-datum="2025-12-06"><td>06.12.2025</td><td>15:00</td><td>Sa</td><td>SC Münster 08 III</td><td>USC8</td><td>TSC Gievenbeck VI</td><td>SC Münster 08 III</td><td></td><td>Sporthalle Ost (Zweifachhalle) (48145 Münster)</td><td>Kreisliga Münster Frauen</td></tr>
 <tr data-teams="USC1" data-spielrunde="1. Bundesliga Frauen" data-ort="Sporthalle am Platz der Deutschen Einheit (65185 Wiesbaden)" data-week="2025-12-01" data-datum="2025-12-06"><td>06.12.2025</td><td>18:00</td><td>Sa</td><td>VC Wiesbaden</td><td>USC1</td><td>-</td><td>VC Wiesbaden</td><td></td><td>Sporthalle am Platz der Deutschen Einheit (65185 Wiesbaden)</td><td>1. Bundesliga Frauen</td></tr>
 <tr data-teams="USC2" data-spielrunde="2. Bundesliga Frauen Nord" data-ort="Hallenkomplex Poznaner Straße (03048 Cottbus)" data-week="2025-12-01" data-datum="2025-12-06"><td>06.12.2025</td><td>19:00</td><td>Sa</td><td>SV Energie Cottbus</td><td>USC2</td><td>-</td><td>SV Energie Cottbus</td><td></td><td>Hallenkomplex Poznaner Straße (03048 Cottbus)</td><td>2. Bundesliga Frauen Nord</td></tr>
 <tr data-teams="USC5" data-spielrunde="Bezirksklasse 26 Frauen" data-ort="Halle Berg Fidel (48151 Münster)" data-week="2025-12-01" data-datum="2025-12-07"><td>07.12.2025</td><td>12:00</td><td>So</td><td>USC5</td><td>TSV Handorf</td><td>TuS Saxonia Münster IV</td><td>USC5</td><td></td><td>Halle Berg Fidel (48151 Münster)</td><td>Bezirksklasse 26 Frauen</td></tr>
-<tr data-teams="USC7" data-spielrunde="Kreisliga Münster Frauen" data-ort="St.-Christophorus-Schule (48291 Telgte)" data-week="2025-12-01" data-datum="2025-12-07"><td>07.12.2025</td><td>12:00</td><td>So</td><td>SV Ems Westbevern III</td><td>USC7</td><td>SV Blau-Weiß Aasee VIII</td><td>SV Ems Westbevern III</td><td></td><td>St.-Christophorus-Schule (48291 Telgte)</td><td>Kreisliga Münster Frauen</td></tr>
 <tr data-teams="USC4" data-spielrunde="Bezirksliga 14 Frauen" data-ort="Anne-Frank-Schule (49477 Ibbenbüren)" data-week="2025-12-01" data-datum="2025-12-07"><td>07.12.2025</td><td>12:30</td><td>So</td><td>BSV Ostbevern II</td><td>USC4</td><td>VSG Ibbenbüren</td><td>VSG Ibbenbüren</td><td></td><td>Anne-Frank-Schule (49477 Ibbenbüren)</td><td>Bezirksliga 14 Frauen</td></tr>
 <tr data-teams="USC5" data-spielrunde="Bezirksklasse 26 Frauen" data-ort="Halle Berg Fidel (48151 Münster)" data-week="2025-12-01" data-datum="2025-12-07"><td>07.12.2025</td><td>13:15</td><td>So</td><td>TuS Saxonia Münster IV</td><td>SV Blau-Weiß Aasee V</td><td>USC5</td><td>USC5</td><td></td><td>Halle Berg Fidel (48151 Münster)</td><td>Bezirksklasse 26 Frauen</td></tr>
 <tr data-teams="USC-U16-1" data-spielrunde="NRW-Liga wU16" data-ort="Sportpark Hennen (58640 Iserlohn)" data-week="2025-12-08" data-datum="2025-12-13"><td>13.12.2025</td><td>11:00</td><td>Sa</td><td>SC Hennen</td><td>USC-U16-1</td><td>TV Gladbeck</td><td>SC Hennen</td><td></td><td>Sportpark Hennen (58640 Iserlohn)</td><td>NRW-Liga wU16</td></tr>
@@ -256,6 +254,7 @@ h1 { font-size: 1rem; margin-bottom: 0.5rem; }
 <tr data-teams="USC6/USC5" data-spielrunde="Bezirksklasse 26 Frauen" data-ort="Kardinal-von-Galen-Gymnasium (48165 Münster)" data-week="2025-12-15" data-datum="2025-12-21"><td>21.12.2025</td><td>12:00</td><td>So</td><td>USC5</td><td>USC6</td><td>TuS Saxonia Münster IV</td><td>USC5</td><td></td><td>Kardinal-von-Galen-Gymnasium (48165 Münster)</td><td>Bezirksklasse 26 Frauen</td></tr>
 <tr data-teams="USC5" data-spielrunde="Bezirksklasse 26 Frauen" data-ort="Kardinal-von-Galen-Gymnasium (48165 Münster)" data-week="2025-12-15" data-datum="2025-12-21"><td>21.12.2025</td><td>13:15</td><td>So</td><td>TuS Saxonia Münster IV</td><td>TSC Gievenbeck IV</td><td>USC5</td><td>USC5</td><td></td><td>Kardinal-von-Galen-Gymnasium (48165 Münster)</td><td>Bezirksklasse 26 Frauen</td></tr>
 <tr data-teams="USC1" data-spielrunde="1. Bundesliga Frauen" data-ort="Riethsporthalle (99089 Erfurt)" data-week="2025-12-22" data-datum="2025-12-27"><td>27.12.2025</td><td>18:00</td><td>Sa</td><td>Schwarz-Weiß Erfurt</td><td>USC1</td><td>-</td><td>Schwarz-Weiß Erfurt</td><td></td><td>Riethsporthalle (99089 Erfurt)</td><td>1. Bundesliga Frauen</td></tr>
+<tr data-teams="USC7" data-spielrunde="Kreisliga Münster Frauen" data-ort="Kardinal-von-Galen-Gymnasium (48165 Münster)" data-week="2026-01-05" data-datum="2026-01-07"><td>07.01.2026</td><td>17:30</td><td>Mi</td><td>SV Ems Westbevern III</td><td>USC7</td><td>-</td><td>USC7</td><td></td><td>Kardinal-von-Galen-Gymnasium (48165 Münster)</td><td>Kreisliga Münster Frauen</td></tr>
 <tr data-teams="USC7" data-spielrunde="Kreisliga Münster Frauen" data-ort="Kardinal-von-Galen-Gymnasium (48165 Münster)" data-week="2026-01-05" data-datum="2026-01-10"><td>10.01.2026</td><td>11:00</td><td>Sa</td><td>USC7</td><td>SV Blau-Weiß Aasee IX</td><td>-</td><td>USC7</td><td></td><td>Kardinal-von-Galen-Gymnasium (48165 Münster)</td><td>Kreisliga Münster Frauen</td></tr>
 <tr data-teams="USC4" data-spielrunde="Bezirksliga 14 Frauen" data-ort="Kardinal-von-Galen-Gymnasium (48165 Münster)" data-week="2026-01-05" data-datum="2026-01-10"><td>10.01.2026</td><td>15:00</td><td>Sa</td><td>USC4</td><td>SV Blau-Weiß Aasee IV</td><td>TuS Saxonia Münster III</td><td>USC4</td><td></td><td>Kardinal-von-Galen-Gymnasium (48165 Münster)</td><td>Bezirksliga 14 Frauen</td></tr>
 <tr data-teams="USC3" data-spielrunde="Oberliga 2 Frauen" data-ort="Westtorhalle (48324 Sendenhorst)" data-week="2026-01-05" data-datum="2026-01-10"><td>10.01.2026</td><td>16:00</td><td>Sa</td><td>SG Sendenhorst</td><td>USC3</td><td>-</td><td>SG Sendenhorst</td><td></td><td>Westtorhalle (48324 Sendenhorst)</td><td>Oberliga 2 Frauen</td></tr>
@@ -352,12 +351,11 @@ h1 { font-size: 1rem; margin-bottom: 0.5rem; }
       const runde = document.getElementById("filterRunde").value;
       const ort = document.getElementById("filterOrt").value;
       const week = document.getElementById("filterWeek").value;
-      const weekSelected = week !== "";
-      const togglePastWrapper = document.getElementById("togglePast").closest(".form-check");
-      if (togglePastWrapper) {
-        togglePastWrapper.style.display = weekSelected ? "none" : "";
+      const showPast = document.getElementById("togglePast").checked;
+      const pastContainer = document.getElementById("togglePastContainer");
+      if (pastContainer) {
+        pastContainer.style.display = week ? "none" : "flex";
       }
-      const showPast = weekSelected ? true : document.getElementById("togglePast").checked;
       const now = new Date();
       const cutoff = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 10);
       const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
@@ -370,7 +368,7 @@ h1 { font-size: 1rem; margin-bottom: 0.5rem; }
         const rowDate = row.dataset.datum ? new Date(row.dataset.datum) : null;
         const isRecent = !rowDate || rowDate >= cutoff;
         const isFuture = !rowDate || rowDate >= today;
-        const withinTime = weekSelected ? true : (showPast ? true : (isFuture || isRecent));
+        const withinTime = week ? true : (showPast ? true : (isFuture || isRecent));
         row.style.display = (matchTeam && matchRunde && matchOrt && matchWeek && withinTime) ? "" : "none";
       });
     }
