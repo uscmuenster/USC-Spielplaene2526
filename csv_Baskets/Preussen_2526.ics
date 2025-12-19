@@ -872,9 +872,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  n\n17. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
  /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
  ine.de/ical/loeschen
-DTSTAMP:20251218T110036Z
+DTSTAMP:20251219T110043Z
 CREATED:20250627T122454Z
-LAST-MODIFIED:20251218T110036Z
+LAST-MODIFIED:20251219T110043Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -895,9 +895,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  n\n18. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
  /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
  ine.de/ical/loeschen
-DTSTAMP:20251218T110043Z
+DTSTAMP:20251219T110049Z
 CREATED:20250627T122517Z
-LAST-MODIFIED:20251218T110043Z
+LAST-MODIFIED:20251219T110049Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -919,9 +919,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  n\n19. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
  /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
  ine.de/ical/loeschen
-DTSTAMP:20251218T110046Z
+DTSTAMP:20251219T110053Z
 CREATED:20250627T122525Z
-LAST-MODIFIED:20251218T110046Z
+LAST-MODIFIED:20251219T110053Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -931,132 +931,122 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:685e8dc070bd2@7477.calovo
-DTSTART;TZID=Europe/Berlin;VALUE=DATE:20260130
+DTSTART;TZID=Europe/Berlin:20260130T183000
 SEQUENCE:0
 TRANSP:TRANSPARENT
 STATUS:CONFIRMED
-DTEND;TZID=Europe/Berlin;VALUE=DATE:20260202
+DTEND;TZID=Europe/Berlin:20260130T203000
 LOCATION:Max-Morlock-Stadion
-SUMMARY:* 1. FC Nürnberg - SC Preußen Münster | 2. Bundesliga | 20. Spie
- ltag
+SUMMARY:1. FC Nürnberg - SC Preußen Münster | 2. Bundesliga | 20. Spielt
+ ag
 DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
- n\n20. Spieltag\n\nAchtung: Der endgültige Spieltermin wurde noch nicht f
- estgelegt.\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de/bund
- esliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: termine.d
- e/ical/loeschen
-X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20251218T110051Z
+ n\n20. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
+ /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
+ ine.de/ical/loeschen
+DTSTAMP:20251219T110058Z
 CREATED:20250627T122536Z
-LAST-MODIFIED:20251218T110051Z
+LAST-MODIFIED:20251219T110058Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
-DESCRIPTION:Reminder: * 1. FC Nürnberg - SC Preußen Münster | 2. Bundesl
- iga | 20. Spieltag
+DESCRIPTION:Reminder: 1. FC Nürnberg - SC Preußen Münster | 2. Bundeslig
+ a | 20. Spieltag
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:685e8dcb7ca89@7477.calovo
-DTSTART;TZID=Europe/Berlin;VALUE=DATE:20260206
+DTSTART;TZID=Europe/Berlin:20260206T183000
 SEQUENCE:0
 TRANSP:TRANSPARENT
 STATUS:CONFIRMED
-DTEND;TZID=Europe/Berlin;VALUE=DATE:20260209
+DTEND;TZID=Europe/Berlin:20260206T203000
 LOCATION:LVM-Preußenstadion
-SUMMARY:* SC Preußen Münster - VfL Bochum 1848 | 2. Bundesliga | 21. Spie
- ltag
+SUMMARY:SC Preußen Münster - VfL Bochum 1848 | 2. Bundesliga | 21. Spielt
+ ag
 DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
- n\n21. Spieltag\n\nAchtung: Der endgültige Spieltermin wurde noch nicht f
- estgelegt.\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de/bund
- esliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: termine.d
- e/ical/loeschen
-X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20251218T110055Z
+ n\n21. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
+ /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
+ ine.de/ical/loeschen
+DTSTAMP:20251219T110104Z
 CREATED:20250627T122547Z
-LAST-MODIFIED:20251218T110055Z
+LAST-MODIFIED:20251219T110104Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
-DESCRIPTION:Reminder: * SC Preußen Münster - VfL Bochum 1848 | 2. Bundesl
- iga | 21. Spieltag
+DESCRIPTION:Reminder: SC Preußen Münster - VfL Bochum 1848 | 2. Bundeslig
+ a | 21. Spieltag
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:685e8dd2a3cab@7477.calovo
-DTSTART;TZID=Europe/Berlin;VALUE=DATE:20260213
+DTSTART;TZID=Europe/Berlin:20260213T183000
 SEQUENCE:0
 TRANSP:TRANSPARENT
 STATUS:CONFIRMED
-DTEND;TZID=Europe/Berlin;VALUE=DATE:20260216
+DTEND;TZID=Europe/Berlin:20260213T203000
 LOCATION:Merkur Spielarena
-SUMMARY:* Fortuna Düsseldorf - SC Preußen Münster | 2. Bundesliga | 22. 
- Spieltag
+SUMMARY:Fortuna Düsseldorf - SC Preußen Münster | 2. Bundesliga | 22. Sp
+ ieltag
 DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
- n\n22. Spieltag\n\nAchtung: Der endgültige Spieltermin wurde noch nicht f
- estgelegt.\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de/bund
- esliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: termine.d
- e/ical/loeschen
-X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20251218T110058Z
+ n\n22. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
+ /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
+ ine.de/ical/loeschen
+DTSTAMP:20251219T110108Z
 CREATED:20250627T122554Z
-LAST-MODIFIED:20251218T110058Z
+LAST-MODIFIED:20251219T110108Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
-DESCRIPTION:Reminder: * Fortuna Düsseldorf - SC Preußen Münster | 2. Bun
- desliga | 22. Spieltag
+DESCRIPTION:Reminder: Fortuna Düsseldorf - SC Preußen Münster | 2. Bunde
+ sliga | 22. Spieltag
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:685e8de521272@7477.calovo
-DTSTART;TZID=Europe/Berlin;VALUE=DATE:20260220
+DTSTART;TZID=Europe/Berlin:20260222T133000
 SEQUENCE:0
 TRANSP:TRANSPARENT
 STATUS:CONFIRMED
-DTEND;TZID=Europe/Berlin;VALUE=DATE:20260223
+DTEND;TZID=Europe/Berlin:20260222T153000
 LOCATION:LVM-Preußenstadion
-SUMMARY:* SC Preußen Münster - 1. FC Kaiserslautern | 2. Bundesliga | 23.
-  Spieltag
+SUMMARY:SC Preußen Münster - 1. FC Kaiserslautern | 2. Bundesliga | 23. S
+ pieltag
 DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
- n\n23. Spieltag\n\nAchtung: Der endgültige Spieltermin wurde noch nicht f
- estgelegt.\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de/bund
- esliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: termine.d
- e/ical/loeschen
-X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20251218T110103Z
+ n\n23. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
+ /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
+ ine.de/ical/loeschen
+DTSTAMP:20251219T110112Z
 CREATED:20250627T122613Z
-LAST-MODIFIED:20251218T110103Z
+LAST-MODIFIED:20251219T110112Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
-DESCRIPTION:Reminder: * SC Preußen Münster - 1. FC Kaiserslautern | 2. Bu
- ndesliga | 23. Spieltag
+DESCRIPTION:Reminder: SC Preußen Münster - 1. FC Kaiserslautern | 2. Bund
+ esliga | 23. Spieltag
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:685e8def78294@7477.calovo
-DTSTART;TZID=Europe/Berlin;VALUE=DATE:20260227
+DTSTART;TZID=Europe/Berlin:20260301T133000
 SEQUENCE:0
 TRANSP:TRANSPARENT
 STATUS:CONFIRMED
-DTEND;TZID=Europe/Berlin;VALUE=DATE:20260302
+DTEND;TZID=Europe/Berlin:20260301T153000
 LOCATION:EINTRACHT-STADION
-SUMMARY:* Eintracht Braunschweig - SC Preußen Münster | 2. Bundesliga | 2
- 4. Spieltag
+SUMMARY:Eintracht Braunschweig - SC Preußen Münster | 2. Bundesliga | 24.
+  Spieltag
 DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
- n\n24. Spieltag\n\nAchtung: Der endgültige Spieltermin wurde noch nicht f
- estgelegt.\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de/bund
- esliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: termine.d
- e/ical/loeschen
-X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20251218T110106Z
+ n\n24. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
+ /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
+ ine.de/ical/loeschen
+DTSTAMP:20251219T110115Z
 CREATED:20250627T122623Z
-LAST-MODIFIED:20251218T110106Z
+LAST-MODIFIED:20251219T110115Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
-DESCRIPTION:Reminder: * Eintracht Braunschweig - SC Preußen Münster | 2. 
- Bundesliga | 24. Spieltag
+DESCRIPTION:Reminder: Eintracht Braunschweig - SC Preußen Münster | 2. Bu
+ ndesliga | 24. Spieltag
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -1074,9 +1064,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  esliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: termine.d
  e/ical/loeschen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20251218T110110Z
+DTSTAMP:20251219T110119Z
 CREATED:20250627T122633Z
-LAST-MODIFIED:20251218T110110Z
+LAST-MODIFIED:20251219T110119Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1100,9 +1090,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  esliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: termine.d
  e/ical/loeschen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20251218T110113Z
+DTSTAMP:20251219T110123Z
 CREATED:20250627T122643Z
-LAST-MODIFIED:20251218T110113Z
+LAST-MODIFIED:20251219T110123Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1126,9 +1116,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  esliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: termine.d
  e/ical/loeschen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20251218T110116Z
+DTSTAMP:20251219T110126Z
 CREATED:20250627T122651Z
-LAST-MODIFIED:20251218T110116Z
+LAST-MODIFIED:20251219T110126Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1152,9 +1142,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  esliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: termine.d
  e/ical/loeschen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20251218T110118Z
+DTSTAMP:20251219T110128Z
 CREATED:20250627T122656Z
-LAST-MODIFIED:20251218T110118Z
+LAST-MODIFIED:20251219T110128Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1178,9 +1168,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  esliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: termine.d
  e/ical/loeschen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20251218T110122Z
+DTSTAMP:20251219T110134Z
 CREATED:20250627T122710Z
-LAST-MODIFIED:20251218T110122Z
+LAST-MODIFIED:20251219T110134Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1204,9 +1194,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  esliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: termine.d
  e/ical/loeschen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20251218T110125Z
+DTSTAMP:20251219T110137Z
 CREATED:20250627T124804Z
-LAST-MODIFIED:20251218T110125Z
+LAST-MODIFIED:20251219T110137Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1230,9 +1220,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  esliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: termine.d
  e/ical/loeschen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20251218T110128Z
+DTSTAMP:20251219T110140Z
 CREATED:20250627T124813Z
-LAST-MODIFIED:20251218T110128Z
+LAST-MODIFIED:20251219T110140Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1255,9 +1245,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  esliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: termine.d
  e/ical/loeschen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20251218T110131Z
+DTSTAMP:20251219T110143Z
 CREATED:20250627T124819Z
-LAST-MODIFIED:20251218T110131Z
+LAST-MODIFIED:20251219T110143Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1281,9 +1271,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  esliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: termine.d
  e/ical/loeschen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20251218T110134Z
+DTSTAMP:20251219T110147Z
 CREATED:20250627T124828Z
-LAST-MODIFIED:20251218T110134Z
+LAST-MODIFIED:20251219T110147Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1304,9 +1294,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  n\n34. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
  /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
  ine.de/ical/loeschen
-DTSTAMP:20251218T110137Z
+DTSTAMP:20251219T110150Z
 CREATED:20250627T124833Z
-LAST-MODIFIED:20251218T110137Z
+LAST-MODIFIED:20251219T110150Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
