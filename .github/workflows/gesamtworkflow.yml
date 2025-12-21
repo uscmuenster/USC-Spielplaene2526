@@ -35,7 +35,9 @@ jobs:
         run: curl -L "https://api.2basketballbundesliga.de/cal/562" --output csv_Baskets/Baskets_2526.ics
 
       - name: 🌐 Preußen Münster-Kalender (ICS) herunterladen
-        run: curl -L "http://i.cal.to/ical/7477/bundesliga/sc-preussen-muenster/7dc6da48.a8ea1dd5-20526fdc.ics" --output csv_Baskets/Preussen_2526.ics
+        run: |
+          curl -L "http://i.cal.to/ical/7477/bundesliga/sc-preussen-muenster/7dc6da48.a8ea1dd5-20526fdc.ics" \
+            --output csv_Baskets/Preussen_2526.ics || echo "⚠️ Preußen-ICS nicht erreichbar – Schritt übersprungen"
 
       - name: 🔁 Commit und Push der ICS-Dateien
         run: |
