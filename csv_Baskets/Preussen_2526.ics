@@ -11,30 +11,6 @@ X-WR-TIMEZONE:Europe/Berlin
 X-WR-RELCALID:7dc6da48.a8ea1dd5@7477.calovo.com
 X-PUBLISHED-TTL:PT30M
 BEGIN:VEVENT
-UID:6686a3c971456@7477.calovo
-DTSTART;TZID=Europe/Berlin:20250118T130000
-SEQUENCE:0
-TRANSP:TRANSPARENT
-STATUS:CONFIRMED
-DTEND;TZID=Europe/Berlin:20250118T150000
-LOCATION:Preußenstadion
-SUMMARY:SC Preußen Münster - SpVgg Greuther Fürth | 2. Bundesliga | 18. 
- Spieltag
-DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
- n\n18. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
- /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
- ine.de/ical/loeschen
-DTSTAMP:20250118T060151Z
-CREATED:20240704T132945Z
-LAST-MODIFIED:20250118T060151Z
-BEGIN:VALARM
-TRIGGER:-P0DT1H0M0S
-ACTION:DISPLAY
-DESCRIPTION:Reminder: SC Preußen Münster - SpVgg Greuther Fürth | 2. Bun
- desliga | 18. Spieltag
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
 UID:6686a3cd747f7@7477.calovo
 DTSTART;TZID=Europe/Berlin:20250126T133000
 SEQUENCE:0
