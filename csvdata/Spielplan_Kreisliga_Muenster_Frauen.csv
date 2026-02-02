@@ -1,57 +1,69 @@
-"Datum";"Uhrzeit";"Wochentag";"#";"ST";"Mannschaft 1";"Mannschaft 2";"Schiedsgericht";"Gastgeber";"Austragungsort/Ergebnis";"Austragungsort";"Ergebnis";"Saison";"Spielrunde";"Geschlecht";"Satzpunkte";"Ballpunkte";"Spieldauer";"Satzpunkte 1";":";"Satzpunkte 2";"Satz 1 - Ballpunkte 1";":";"Satz 1 - Ballpunkte 2";"Satz 1 - Satzdauer";"Satz 2 - Ballpunkte 1";":";"Satz 2 - Ballpunkte 2";"Satz 2 - Satzdauer";"Satz 3 - Ballpunkte 1";":";"Satz 3 - Ballpunkte 2";"Satz 3 - Satzdauer";"Satz 4 - Ballpunkte 1";":";"Satz 4 - Ballpunkte 2";"Satz 4 - Satzdauer";"Satz 5 - Ballpunkte 1";":";"Satz 5 - Ballpunkte 2";"Satz 5 - Satzdauer";
-"21.09.2025";"11:00:00";"Sonntag";"1";"Spieltag 1";"SC Münster 08 III";"SC Münster 08 II";"USC Münster VII";"SC Münster 08 III";"0:3 / 47:75";"Sporthalle Ost (Zweifachhalle) (48145 Münster)";"0:3 / 47:75";"2025/26";"Kreisliga Münster Frauen";"mixed";"0:3";"47:75";"42";"0";":";"3";"12";":";"25";"12";"19";":";"25";"14";"16";":";"25";"16";
-"21.09.2025";"12:00:00";"Sonntag";"2";"Spieltag 1";"USC Münster VII";"USC Münster VIII";"SC Münster 08 III";"SC Münster 08 III";"3:0 / 75:27";"Sporthalle Ost (Zweifachhalle) (48145 Münster)";"3:0 / 75:27";"2025/26";"Kreisliga Münster Frauen";"mixed";"3:0";"75:27";"93";"3";":";"0";"25";":";"6";"59";"25";":";"4";"14";"25";":";"17";"20";
-"21.09.2025";"15:00:00";"Sonntag";"4";"Spieltag 1";"SV Ems Westbevern III";"SV Blau-Weiß Aasee IX";"-";"SV Ems Westbevern III";"3:0 / 75:51";"St.-Christophorus-Schule (48291 Telgte)";"3:0 / 75:51";"2025/26";"Kreisliga Münster Frauen";"mixed";"3:0";"75:51";"67";"3";":";"0";"25";":";"22";"26";"25";":";"12";"19";"25";":";"17";"22";
-"05.10.2025";"14:00:00";"Sonntag";"7";"Spieltag 2";"SC Münster 08 III";"TSC Gievenbeck VI";"SV Ems Westbevern III";"SV Ems Westbevern III";"0:3 / 28:75";"St.-Christophorus-Schule (48291 Telgte)";"0:3 / 28:75";"2025/26";"Kreisliga Münster Frauen";"mixed";"0:3";"28:75";"42";"0";":";"3";"7";":";"25";"14";"12";":";"25";"13";"9";":";"25";"15";
-"08.10.2025";"17:30:00";"Mittwoch";"8";"Spieltag 2";"SV Blau-Weiß Aasee IX";"USC Münster VII";"-";"SV Blau-Weiß Aasee IX";"0:3 / 38:75";"Kardinal-von-Galen-Gymnasium (48165 Münster)";"0:3 / 38:75";"2025/26";"Kreisliga Münster Frauen";"mixed";"0:3";"38:75";"80";"0";":";"3";"7";":";"25";"38";"11";":";"25";"19";"20";":";"25";"23";
-"11.10.2025";"12:00:00";"Samstag";"11";"Spieltag 3";"SC Münster 08 II";"TSC Gievenbeck VI";"SC Münster 08 III";"SC Münster 08 II";"0:3 / 39:75";"Sporthalle Ost (Zweifachhalle) (48145 Münster)";"0:3 / 39:75";"2025/26";"Kreisliga Münster Frauen";"mixed";"0:3";"39:75";"46";"0";":";"3";"5";":";"25";"2";"16";":";"25";"22";"18";":";"25";"22";
-"11.10.2025";"13:00:00";"Samstag";"16";"Spieltag 4";"SC Münster 08 III";"SV Ems Westbevern III";"SC Münster 08 II";"SC Münster 08 III";"3:0 / 75:54";"Sporthalle Ost (Zweifachhalle) (48145 Münster)";"3:0 / 75:54";"2025/26";"Kreisliga Münster Frauen";"mixed";"3:0";"75:54";"117";"3";":";"0";"25";":";"19";"77";"25";":";"16";"21";"25";":";"19";"19";
-"25.10.2025";"12:00:00";"Samstag";"23";"Spieltag 5";"SV Blau-Weiß Aasee VIII";"USC Münster VIII";"SV Blau-Weiß Aasee IX";"SV Blau-Weiß Aasee VIII";"3:0 / 75:35";"Sporthalle Ost (Zweifachhalle) (48145 Münster)";"3:0 / 75:35";"2025/26";"Kreisliga Münster Frauen";"mixed";"3:0";"75:35";"54";"3";":";"0";"25";":";"9";"19";"25";":";"13";"18";"25";":";"13";"17";
-"25.10.2025";"13:00:00";"Samstag";"24";"Spieltag 5";"SV Blau-Weiß Aasee IX";"SC Münster 08 III";"SV Blau-Weiß Aasee VIII";"SV Blau-Weiß Aasee VIII";"2:3 / 106:102";"Sporthalle Ost (Zweifachhalle) (48145 Münster)";"2:3 / 106:102";"2025/26";"Kreisliga Münster Frauen";"mixed";"2:3";"106:102";"138";"2";":";"3";"25";":";"19";"70";"20";":";"25";"17";"25";":";"18";"18";"23";":";"25";"21";"13";":";"15";"12";
-"26.10.2025";"12:00:00";"Sonntag";"22";"Spieltag 5";"SV Ems Westbevern III";"SC Münster 08 II";"-";"SV Ems Westbevern III";"0:3 / 34:75";"Mehrzweckhalle Vadrup (48291 Telgte)";"0:3 / 34:75";"2025/26";"Kreisliga Münster Frauen";"mixed";"0:3";"34:75";"60";"0";":";"3";"18";":";"25";"28";"6";":";"25";"16";"10";":";"25";"16";
-"27.10.2025";"18:30:00";"Montag";"20";"Spieltag 4";"SV Blau-Weiß Aasee VIII";"TSC Gievenbeck VI";"-";"SV Blau-Weiß Aasee VIII";"2:3 / 77:110";"Friedensschule (48163 Münster)";"2:3 / 77:110";"2025/26";"Kreisliga Münster Frauen";"mixed";"2:3";"77:110";"115";"2";":";"3";"25";":";"22";"40";"6";":";"25";"16";"15";":";"25";"18";"25";":";"23";"28";"6";":";"15";"13";
-"02.11.2025";"11:00:00";"Sonntag";"27";"Spieltag 6";"SC Münster 08 III";"SV Blau-Weiß Aasee VIII";"USC Münster VII";"SC Münster 08 III";"0:3 / 25:75";"Sporthalle Ost (Zweifachhalle) (48145 Münster)";"0:3 / 25:75";"2025/26";"Kreisliga Münster Frauen";"mixed";"0:3";"25:75";"42";"0";":";"3";"5";":";"25";"14";"12";":";"25";"15";"8";":";"25";"13";
-"02.11.2025";"12:00:00";"Sonntag";"30";"Spieltag 6";"USC Münster VII";"TSC Gievenbeck VI";"SC Münster 08 III";"SC Münster 08 III";"0:3 / 40:75";"Sporthalle Ost (Zweifachhalle) (48145 Münster)";"0:3 / 40:75";"2025/26";"Kreisliga Münster Frauen";"mixed";"0:3";"40:75";"98";"0";":";"3";"8";":";"25";"54";"15";":";"25";"22";"17";":";"25";"22";
-"05.11.2025";"17:30:00";"Mittwoch";"14";"Spieltag 3";"SV Blau-Weiß Aasee VIII";"USC Münster VII";"-";"USC Münster VII";"0:3 / 64:75";"Kardinal-von-Galen-Gymnasium (48165 Münster)";"0:3 / 64:75";"2025/26";"Kreisliga Münster Frauen";"mixed";"0:3";"64:75";"109";"0";":";"3";"22";":";"25";"61";"20";":";"25";"23";"22";":";"25";"25";
-"13.11.2025";"16:30:00";"Donnerstag";"13";"Spieltag 3";"USC Münster VIII";"SV Blau-Weiß Aasee IX";"-";"SV Blau-Weiß Aasee IX";"1:3 / 69:94";"Erich-Klausener-Schule (48151 Münster)";"1:3 / 69:94";"2025/26";"Kreisliga Münster Frauen";"mixed";"1:3";"69:94";"110";"1";":";"3";"21";":";"25";"45";"16";":";"25";"23";"25";":";"19";"23";"7";":";"25";"19";
-"15.11.2025";"12:00:00";"Samstag";"31";"Spieltag 7";"SC Münster 08 II";"USC Münster VII";"SV Blau-Weiß Aasee IX";"SC Münster 08 II";"1:3 / 69:94";"Sporthalle Ost (Zweifachhalle) (48145 Münster)";"1:3 / 69:94";"2025/26";"Kreisliga Münster Frauen";"mixed";"1:3";"69:94";"74";"1";":";"3";"15";":";"25";"13";"25";":";"19";"22";"15";":";"25";"20";"14";":";"25";"19";
-"15.11.2025";"13:00:00";"Samstag";"32";"Spieltag 7";"SV Blau-Weiß Aasee IX";"SV Blau-Weiß Aasee VIII";"SC Münster 08 II";"SC Münster 08 II";"0:3 / 48:75";"Sporthalle Ost (Zweifachhalle) (48145 Münster)";"0:3 / 48:75";"2025/26";"Kreisliga Münster Frauen";"mixed";"0:3";"48:75";"66";"0";":";"3";"20";":";"25";"20";"9";":";"25";"19";"19";":";"25";"27";
-"16.11.2025";"13:00:00";"Sonntag";"33";"Spieltag 7";"USC Münster VIII";"TSC Gievenbeck VI";"-";"USC Münster VIII";"0:3 / 23:75";"Kardinal-von-Galen-Gymnasium (48165 Münster)";"0:3 / 23:75";"2025/26";"Kreisliga Münster Frauen";"mixed";"0:3";"23:75";"52";"0";":";"3";"1";":";"25";"14";"10";":";"25";"17";"12";":";"25";"21";
-"21.11.2025";"16:30:00";"Freitag";"6";"Spieltag 2";"SV Ems Westbevern III";"SV Blau-Weiß Aasee VIII";"-";"SV Ems Westbevern III";"0:3 / 24:75";"Mehrzweckhalle Vadrup (48291 Telgte)";"0:3 / 24:75";"2025/26";"Kreisliga Münster Frauen";"mixed";"0:3";"24:75";"79";"0";":";"3";"5";":";"25";"46";"12";":";"25";"17";"7";":";"25";"16";
-"21.11.2025";"17:30:00";"Freitag";"19";"Spieltag 4";"SV Blau-Weiß Aasee IX";"SC Münster 08 II";"-";"SC Münster 08 II";"0:3 / 51:75";"Sporthalle Ost (Zweifachhalle) (48145 Münster)";"0:3 / 51:75";"2025/26";"Kreisliga Münster Frauen";"mixed";"0:3";"51:75";"84";"0";":";"3";"21";":";"25";"45";"20";":";"25";"23";"10";":";"25";"16";
-"22.11.2025";"14:15:00";"Samstag";"39";"Spieltag 8";"TSC Gievenbeck VI";"SV Ems Westbevern III";"-";"TSC Gievenbeck VI";"3:0 / 75:33";"Sporthalle der Mosaikschule (48161 Münster)";"3:0 / 75:33";"2025/26";"Kreisliga Münster Frauen";"mixed";"3:0";"75:33";"55";"3";":";"0";"25";":";"7";"21";"25";":";"7";"14";"25";":";"19";"20";
-"23.11.2025";"12:00:00";"Sonntag";"37";"Spieltag 8";"SC Münster 08 II";"USC Münster VIII";"-";"USC Münster VII";"3:0 / 75:53";"Kardinal-von-Galen-Gymnasium (48165 Münster)";"3:0 / 75:53";"2025/26";"Kreisliga Münster Frauen";"mixed";"3:0";"75:53";"60";"3";":";"0";"25";":";"22";"17";"25";":";"8";"17";"25";":";"23";"26";
-"28.11.2025";"18:00:00";"Freitag";"36";"Spieltag 8";"USC Münster VII";"SC Münster 08 III";"-";"USC Münster VII";"3:0 / 75:39";"Sporthalle Ost (Zweifachhalle) (48145 Münster)";"3:0 / 75:39";"2025/26";"Kreisliga Münster Frauen";"mixed";"3:0";"75:39";"45";"3";":";"0";"25";":";"18";"14";"25";":";"7";"15";"25";":";"14";"16";
-"29.11.2025";"12:00:00";"Samstag";"29";"Spieltag 6";"SV Ems Westbevern III";"USC Münster VIII";"-";"SV Ems Westbevern III";"Mehrzweckhalle Vadrup (48291 Telgte)";"Mehrzweckhalle Vadrup (48291 Telgte)";"-";"2025/26";"Kreisliga Münster Frauen";"mixed";
-"06.12.2025";"15:00:00";"Samstag";"41";"Spieltag 9";"SC Münster 08 III";"USC Münster VIII";"TSC Gievenbeck VI";"SC Münster 08 III";"2:3 / 98:101";"Sporthalle Ost (Zweifachhalle) (48145 Münster)";"2:3 / 98:101";"2025/26";"Kreisliga Münster Frauen";"mixed";"2:3";"98:101";"89";"2";":";"3";"21";":";"25";"16";"25";":";"15";"18";"25";":";"21";"22";"16";":";"25";"21";"11";":";"15";"12";
-"07.12.2025";"13:00:00";"Sonntag";"45";"Spieltag 9";"SV Blau-Weiß Aasee VIII";"SC Münster 08 II";"SV Ems Westbevern III";"SV Ems Westbevern III";"3:0 / 75:53";"St.-Christophorus-Schule (48291 Telgte)";"3:0 / 75:53";"2025/26";"Kreisliga Münster Frauen";"mixed";"3:0";"75:53";"43";"3";":";"0";"25";":";"14";"0";"25";":";"19";"18";"25";":";"20";"25";
-"15.12.2025";"18:30:00";"Montag";"47";"Spieltag 10";"USC Münster VIII";"USC Münster VII";"-";"USC Münster VIII";"0:3 / 42:75";"Kardinal-von-Galen-Gymnasium (48165 Münster)";"0:3 / 42:75";"2025/26";"Kreisliga Münster Frauen";"mixed";"0:3";"42:75";"-";"0";":";"3";"10";":";"25";"-";"19";":";"25";"-";"13";":";"25";"-";
-"07.01.2026";"17:30:00";"Mittwoch";"43";"Spieltag 9";"SV Ems Westbevern III";"USC Münster VII";"-";"USC Münster VII";"0:3 / 28:75";"Kardinal-von-Galen-Gymnasium (48165 Münster)";"0:3 / 28:75";"2025/26";"Kreisliga Münster Frauen";"mixed";"0:3";"28:75";"83";"0";":";"3";"11";":";"25";"51";"11";":";"25";"18";"6";":";"25";"14";
-"09.01.2026";"18:00:00";"Freitag";"46";"Spieltag 10";"SC Münster 08 II";"SC Münster 08 III";"-";"SC Münster 08 II";"3:0 / 75:40";"Sporthalle Ost (Zweifachhalle) (48145 Münster)";"3:0 / 75:40";"2025/26";"Kreisliga Münster Frauen";"mixed";"3:0";"75:40";"56";"3";":";"0";"25";":";"16";"20";"25";":";"15";"19";"25";":";"9";"17";
-"10.01.2026";"11:00:00";"Samstag";"53";"Spieltag 11";"USC Münster VII";"SV Blau-Weiß Aasee IX";"-";"USC Münster VII";"2:3 / 98:114";"Kardinal-von-Galen-Gymnasium (48165 Münster)";"2:3 / 98:114";"2025/26";"Kreisliga Münster Frauen";"mixed";"2:3";"98:114";"118";"2";":";"3";"28";":";"26";"32";"10";":";"25";"19";"22";":";"25";"25";"25";":";"23";"25";"13";":";"15";"17";
-"10.01.2026";"12:00:00";"Samstag";"51";"Spieltag 11";"SV Blau-Weiß Aasee VIII";"SV Ems Westbevern III";"TSC Gievenbeck VI";"SV Blau-Weiß Aasee VIII";"3:0 / 75:13";"Städtisches Wilhelm-Hittorf-Gymnasium (48151 Münster)";"3:0 / 75:13";"2025/26";"Kreisliga Münster Frauen";"mixed";"3:0";"75:13";"60";"3";":";"0";"25";":";"5";"33";"25";":";"2";"13";"25";":";"6";"14";
-"10.01.2026";"13:00:00";"Samstag";"52";"Spieltag 11";"TSC Gievenbeck VI";"SC Münster 08 III";"SV Blau-Weiß Aasee VIII";"SV Blau-Weiß Aasee VIII";"3:0 / 75:25";"Städtisches Wilhelm-Hittorf-Gymnasium (48151 Münster)";"3:0 / 75:25";"2025/26";"Kreisliga Münster Frauen";"mixed";"3:0";"75:25";"104";"3";":";"0";"25";":";"6";"75";"25";":";"11";"14";"25";":";"8";"15";
-"17.01.2026";"12:00:00";"Samstag";"59";"Spieltag 12";"SV Blau-Weiß Aasee IX";"USC Münster VIII";"-";"SV Blau-Weiß Aasee IX";"2:3 / 99:98";"Sporthalle der Bonhoeffer Schule (48151 Münster)";"2:3 / 99:98";"2025/26";"Kreisliga Münster Frauen";"mixed";"2:3";"99:98";"166";"2";":";"3";"20";":";"25";"85";"25";":";"17";"22";"25";":";"16";"20";"21";":";"25";"25";"8";":";"15";"14";
-"17.01.2026";"14:30:00";"Samstag";"56";"Spieltag 12";"TSC Gievenbeck VI";"SC Münster 08 II";"SC Münster 08 III";"TSC Gievenbeck VI";"3:0 / 75:50";"Sporthalle Ost (Zweifachhalle) (48145 Münster)";"3:0 / 75:50";"2025/26";"Kreisliga Münster Frauen";"mixed";"3:0";"75:50";"56";"3";":";"0";"25";":";"17";"14";"25";":";"18";"22";"25";":";"15";"20";
-"17.01.2026";"15:30:00";"Samstag";"61";"Spieltag 13";"SV Ems Westbevern III";"SC Münster 08 III";"SC Münster 08 II";"SC Münster 08 III";"0:3 / 31:75";"Sporthalle Ost (Zweifachhalle) (48145 Münster)";"0:3 / 31:75";"2025/26";"Kreisliga Münster Frauen";"mixed";"0:3";"31:75";"102";"0";":";"3";"8";":";"25";"72";"17";":";"25";"16";"6";":";"25";"14";
-"21.01.2026";"17:30:00";"Mittwoch";"60";"Spieltag 12";"USC Münster VII";"SV Blau-Weiß Aasee VIII";"-";"USC Münster VII";"3:0 / 75:58";"Kardinal-von-Galen-Gymnasium (48165 Münster)";"3:0 / 75:58";"2025/26";"Kreisliga Münster Frauen";"mixed";"3:0";"75:58";"100";"3";":";"0";"25";":";"21";"53";"25";":";"15";"23";"25";":";"22";"24";
-"24.01.2026";"12:00:00";"Samstag";"64";"Spieltag 13";"SC Münster 08 II";"SV Blau-Weiß Aasee IX";"TSC Gievenbeck VI";"SC Münster 08 II";"3:0 / 75:44";"Sporthalle Ost (Zweifachhalle) (48145 Münster)";"3:0 / 75:44";"2025/26";"Kreisliga Münster Frauen";"mixed";"3:0";"75:44";"60";"3";":";"0";"25";":";"15";"19";"25";":";"7";"15";"25";":";"22";"26";
-"24.01.2026";"13:00:00";"Samstag";"65";"Spieltag 13";"TSC Gievenbeck VI";"SV Blau-Weiß Aasee VIII";"SC Münster 08 II";"SC Münster 08 II";"3:1 / 97:70";"Sporthalle Ost (Zweifachhalle) (48145 Münster)";"3:1 / 97:70";"2025/26";"Kreisliga Münster Frauen";"mixed";"3:1";"97:70";"148";"3";":";"1";"25";":";"16";"81";"22";":";"25";"28";"25";":";"12";"18";"25";":";"17";"21";
-"29.01.2026";"00:00:00";"Donnerstag";"42";"Spieltag 9";"TSC Gievenbeck VI";"SV Blau-Weiß Aasee IX";"-";"-";"3:0 / 75:0";"";"3:0 / 75:0";"2025/26";"Kreisliga Münster Frauen";"mixed";"3:0";"75:0";"-";"3";":";"0";"25";":";"0";"-";"25";":";"0";"-";"25";":";"0";"-";
-"31.01.2026";"11:00:00";"Samstag";"70";"Spieltag 14";"SC Münster 08 II";"SV Ems Westbevern III";"SV Blau-Weiß Aasee IX";"SV Ems Westbevern III";"3:0 / 75:49";"Mehrzweckhalle Vadrup (48291 Telgte)";"3:0 / 75:49";"2025/26";"Kreisliga Münster Frauen";"mixed";"3:0";"75:49";"57";"3";":";"0";"25";":";"22";"24";"25";":";"11";"15";"25";":";"16";"18";
-"31.01.2026";"12:00:00";"Samstag";"49";"Spieltag 10";"SV Blau-Weiß Aasee IX";"SV Ems Westbevern III";"SC Münster 08 II";"SV Ems Westbevern III";"2:3 / 100:106";"Mehrzweckhalle Vadrup (48291 Telgte)";"2:3 / 100:106";"2025/26";"Kreisliga Münster Frauen";"mixed";"2:3";"100:106";"167";"2";":";"3";"25";":";"17";"69";"18";":";"25";"21";"26";":";"24";"34";"23";":";"25";"26";"8";":";"15";"17";
-"01.02.2026";"11:00:00";"Sonntag";"68";"Spieltag 14";"USC Münster VIII";"SV Blau-Weiß Aasee VIII";"SC Münster 08 III";"USC Münster VIII";"0:3 / 40:75";"Halle Berg Fidel (48151 Münster)";"0:3 / 40:75";"2025/26";"Kreisliga Münster Frauen";"mixed";"0:3";"40:75";"59";"0";":";"3";"13";":";"25";"22";"13";":";"25";"18";"14";":";"25";"19";
-"01.02.2026";"12:00:00";"Sonntag";"69";"Spieltag 14";"SC Münster 08 III";"SV Blau-Weiß Aasee IX";"USC Münster VIII";"USC Münster VIII";"1:3 / 96:98";"Halle Berg Fidel (48151 Münster)";"1:3 / 96:98";"2025/26";"Kreisliga Münster Frauen";"mixed";"1:3";"96:98";"145";"1";":";"3";"25";":";"20";"72";"23";":";"25";"25";"26";":";"28";"24";"22";":";"25";"24";
-"14.02.2026";"13:00:00";"Samstag";"74";"Spieltag 15";"USC Münster VIII";"SV Ems Westbevern III";"-";"-";"";"";"-";"2025/26";"Kreisliga Münster Frauen";"mixed";
-"15.02.2026";"12:00:00";"Sonntag";"72";"Spieltag 15";"SV Blau-Weiß Aasee VIII";"SC Münster 08 III";"TSC Gievenbeck VI";"SV Blau-Weiß Aasee VIII";"Städtisches Wilhelm-Hittorf-Gymnasium (48151 Münster)";"Städtisches Wilhelm-Hittorf-Gymnasium (48151 Münster)";"-";"2025/26";"Kreisliga Münster Frauen";"mixed";
-"15.02.2026";"13:00:00";"Sonntag";"75";"Spieltag 15";"TSC Gievenbeck VI";"USC Münster VII";"SV Blau-Weiß Aasee VIII";"SV Blau-Weiß Aasee VIII";"Städtisches Wilhelm-Hittorf-Gymnasium (48151 Münster)";"Städtisches Wilhelm-Hittorf-Gymnasium (48151 Münster)";"-";"2025/26";"Kreisliga Münster Frauen";"mixed";
-"21.02.2026";"00:00:00";"Samstag";"80";"Spieltag 16";"TSC Gievenbeck VI";"USC Münster VIII";"-";"-";"";"";"-";"2025/26";"Kreisliga Münster Frauen";"mixed";
-"22.02.2026";"11:00:00";"Sonntag";"76";"Spieltag 16";"USC Münster VII";"SC Münster 08 II";"SV Blau-Weiß Aasee VIII";"USC Münster VII";"Kardinal-von-Galen-Gymnasium (48165 Münster)";"Kardinal-von-Galen-Gymnasium (48165 Münster)";"-";"2025/26";"Kreisliga Münster Frauen";"mixed";
-"22.02.2026";"12:00:00";"Sonntag";"77";"Spieltag 16";"SV Blau-Weiß Aasee VIII";"SV Blau-Weiß Aasee IX";"USC Münster VII";"USC Münster VII";"Kardinal-von-Galen-Gymnasium (48165 Münster)";"Kardinal-von-Galen-Gymnasium (48165 Münster)";"-";"2025/26";"Kreisliga Münster Frauen";"mixed";
-"07.03.2026";"12:00:00";"Samstag";"81";"Spieltag 17";"SC Münster 08 III";"USC Münster VII";"USC Münster VIII";"SC Münster 08 III";"Sporthalle Ost (Zweifachhalle) (48145 Münster)";"Sporthalle Ost (Zweifachhalle) (48145 Münster)";"-";"2025/26";"Kreisliga Münster Frauen";"mixed";
-"07.03.2026";"12:00:00";"Samstag";"84";"Spieltag 17";"SV Ems Westbevern III";"TSC Gievenbeck VI";"-";"SV Ems Westbevern III";"St.-Christophorus-Schule (48291 Telgte)";"St.-Christophorus-Schule (48291 Telgte)";"-";"2025/26";"Kreisliga Münster Frauen";"mixed";
-"07.03.2026";"13:00:00";"Samstag";"82";"Spieltag 17";"USC Münster VIII";"SC Münster 08 II";"SC Münster 08 III";"SC Münster 08 III";"Sporthalle Ost (Zweifachhalle) (48145 Münster)";"Sporthalle Ost (Zweifachhalle) (48145 Münster)";"-";"2025/26";"Kreisliga Münster Frauen";"mixed";
-"22.03.2026";"11:00:00";"Sonntag";"86";"Spieltag 18";"USC Münster VII";"SV Ems Westbevern III";"SC Münster 08 II";"USC Münster VII";"Kardinal-von-Galen-Gymnasium (48165 Münster)";"Kardinal-von-Galen-Gymnasium (48165 Münster)";"-";"2025/26";"Kreisliga Münster Frauen";"mixed";
-"22.03.2026";"11:00:00";"Sonntag";"88";"Spieltag 18";"USC Münster VIII";"SC Münster 08 III";"SV Blau-Weiß Aasee IX";"USC Münster VIII";"Kardinal-von-Galen-Gymnasium (48165 Münster)";"Kardinal-von-Galen-Gymnasium (48165 Münster)";"-";"2025/26";"Kreisliga Münster Frauen";"mixed";
-"22.03.2026";"12:00:00";"Sonntag";"87";"Spieltag 18";"SC Münster 08 II";"SV Blau-Weiß Aasee VIII";"USC Münster VII";"USC Münster VII";"Kardinal-von-Galen-Gymnasium (48165 Münster)";"Kardinal-von-Galen-Gymnasium (48165 Münster)";"-";"2025/26";"Kreisliga Münster Frauen";"mixed";
-"22.03.2026";"12:00:00";"Sonntag";"90";"Spieltag 18";"SV Blau-Weiß Aasee IX";"TSC Gievenbeck VI";"USC Münster VIII";"USC Münster VIII";"Kardinal-von-Galen-Gymnasium (48165 Münster)";"Kardinal-von-Galen-Gymnasium (48165 Münster)";"-";"2025/26";"Kreisliga Münster Frauen";"mixed";
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+  <meta name="generator" content=
+  "HTML Tidy for Linux (vers 25 March 2009), see www.w3.org">
+  <meta http-equiv="Content-Type" content=
+  "text/html; charset=us-ascii">
+  <meta http-equiv="cache-control" content="max-age=0">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  <meta http-equiv="expires" content=
+  "Tue, 01 Jan 1980 1:00:00 GMT">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="refresh" content="60">
+  <style type="text/css">
+body {
+  color: #333;
+  font-family: Arial, Sans-Serif;
+  background-image: linear-gradient(bottom, #FFFFFF 0%, #DEF1F7 63%);
+  background-image: -o-linear-gradient(bottom, #FFFFFF 0%, #DEF1F7 63%);
+  background-image: -moz-linear-gradient(bottom, #FFFFFF 0%, #DEF1F7 63%);
+  background-image: -webkit-linear-gradient(bottom, #FFFFFF 0%, #DEF1F7 63%);
+  background-image: -ms-linear-gradient(bottom, #FFFFFF 0%, #DEF1F7 63%);
+
+  background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(0, #FFFFFF),
+    color-stop(0.63, #DEF1F7)
+  );
+  }
+
+  </style>
+
+  <title>SAMS Application Server - Wartung</title>
+</head>
+
+<body style="text-align: center">
+  <div style="position: absolute; top: 20px; right: 20px;">
+  <img width="300" height="135" alt="SAMS Logo" src=
+  "http://static.sams-server.de/sams-logo.png"></div><br>
+  <br>
+  <img width="319" height="407" style="margin-top: 160px" alt=
+  "Wartung - wir sind gleich wieder da" src=
+  "http://static.sams-server.de/tb_sign2-wartung.png"><br>
+  <br>
+  <br>
+  <p>Weitere Informationen zur Wartung finden Sie im <a href="http://wiki.sams-server.de/wiki/Wartungsfenster" target="_blank">SAMS-Wiki</a>.</p>
+
+  <p style="width: 500px; margin: auto;">Sollte diese Seite
+  ungew&ouml;hnlich lange erscheinen, laden Sie sie bitte
+  per STRG+F5 (Internet Explorer), STRG+Shift+R (sonstige Browser)
+  beziehungsweise CMD+Shift+R (OSX/Mac) neu.</p>
+
+
+  <p style=
+  "margin-top: 30px; font-size: 9pt; font-style: italic; text-align: center;"
+  xmlns:cc="http://creativecommons.org/ns#" xmlns:dct=
+  "http://purl.org/dc/terms/" about=
+  "http://theoatmeal.com/comics/state_web_summer#tumblr">
+  <span property="dct:title">Tumbeasts</span> (<a rel=
+  "cc:attributionURL" property="cc:attributionName" href=
+  "http://theoatmeal.com">Matthew Inman</a>) / <a rel="license"
+  href="http://creativecommons.org/licenses/by/3.0/">CC BY
+  3.0</a></p>
+</body>
+</html>
