@@ -103,7 +103,10 @@ jobs:
             exit 1
           }
 
+
+
           # ---------- NRW ----------
+          download_csv "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95245226" "Spielplan_Oberliga_6_wU13_*.csv" "Spielplan_Oberliga_6_wU13.csv"
           download_csv "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95239897" "Spielplan_Bezirksliga_14_Frauen_*.csv" "Spielplan_Bezirksliga_14_Frauen.csv"
           download_csv "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95244340" "Spielplan_Oberliga_2_Frauen_*.csv" "Spielplan_Oberliga_2_Frauen.csv"
           download_csv "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95243632" "Spielplan_Bezirksklasse_26_Frauen_*.csv" "Spielplan_Bezirksklasse_26_Frauen.csv"
