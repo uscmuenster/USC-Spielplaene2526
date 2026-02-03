@@ -37,7 +37,13 @@ dfs = []
 
 for file, team_code in csv_files:
     file_path = csv_dir / file
-    df = pd.read_csv(file_path, sep=";", encoding="cp1252")
+    pd.read_csv(
+        file_path,
+        sep=";",
+        encoding="cp1252",
+        engine="python",
+        on_bad_lines="skip"
+    )
     df.columns = df.columns.str.strip()
     df = df.rename(columns=rename_map)
 

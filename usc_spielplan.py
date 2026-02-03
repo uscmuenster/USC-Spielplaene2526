@@ -68,7 +68,17 @@ dfs = []
 
 for file, team_code in csv_files:
     file_path = csv_dir / file
-    df = pd.read_csv(file_path, sep=";", encoding="cp1252")
+    if not file_path.exists():
+        print(f"⚠️ CSV fehlt, übersprungen: {file_path}")
+        continue
+
+    df = pd.read_csv(
+        file_path,
+        sep=";",
+        encoding="cp1252",
+        engine="python",      # toleranter Parser
+        on_bad_lines="skip"   # defekte Zeilen überspringen
+    )
     df.columns = df.columns.str.strip()
     df = df.rename(columns=rename_map)
 
