@@ -54,14 +54,30 @@ csv_files = [
 usc_keywords = ["USC Münster", "USC Muenster", "USC MÜNSTER"]
 
 rename_map = {
+    # Kombi-Datum
+    "Datum und Uhrzeit": "Datum_Uhrzeit",
+
+    # Alternative Namen (falls andere Exporte kommen)
     "Datum": "Datum",
     "Uhrzeit": "Uhrzeit",
+    "Spieltag": "Datum",
+    "Uhrzeit Beginn": "Uhrzeit",
+    "Beginn": "Uhrzeit",
+
+    # Teams
     "Mannschaft 1": "Heim",
     "Mannschaft 2": "Gast",
+
+    # Offizielle/Orga
     "Schiedsgericht": "SR",
     "Gastgeber": "Gastgeber",
+
+    # Orte/Liga
     "Austragungsort": "Ort",
-    "Spielrunde": "Spielrunde"
+    "Spielrunde": "Spielrunde",
+
+    # Ergebnis (deine Datei hat "Ergebnis" bereits)
+    "Ergebnis": "Ergebnis",
 }
 
 dfs = []
@@ -81,6 +97,18 @@ for file, team_code in csv_files:
     )
     df.columns = df.columns.str.strip()
     df = df.rename(columns=rename_map)
+
+    # --- Datum/Uhrzeit normalisieren ---
+    if "Datum_Uhrzeit" in df.columns and ("Datum" not in df.columns or "Uhrzeit" not in df.columns):
+        # Beispielwert: "20.09.2025, 15:00:00"
+        parts = df["Datum_Uhrzeit"].astype(str).str.split(",", n=1, expand=True)
+
+        df["Datum"] = parts[0].astype(str).str.strip()
+        if parts.shape[1] > 1:
+            df["Uhrzeit"] = parts[1].astype(str).str.strip()
+        else:
+            df["Uhrzeit"] = ""
+
 
     required_cols = {"Datum", "Uhrzeit", "Heim", "Gast"}
     missing = required_cols - set(df.columns)
