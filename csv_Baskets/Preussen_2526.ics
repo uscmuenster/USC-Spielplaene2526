@@ -872,9 +872,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  n\n21. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
  /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
  ine.de/ical/loeschen
-DTSTAMP:20260203T090233Z
+DTSTAMP:20260203T100429Z
 CREATED:20250627T122547Z
-LAST-MODIFIED:20260203T090233Z
+LAST-MODIFIED:20260203T100429Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -896,9 +896,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  n\n22. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
  /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
  ine.de/ical/loeschen
-DTSTAMP:20260203T090237Z
+DTSTAMP:20260203T100432Z
 CREATED:20250627T122554Z
-LAST-MODIFIED:20260203T090237Z
+LAST-MODIFIED:20260203T100432Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -920,9 +920,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  n\n23. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
  /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
  ine.de/ical/loeschen
-DTSTAMP:20260203T090242Z
+DTSTAMP:20260203T100437Z
 CREATED:20250627T122613Z
-LAST-MODIFIED:20260203T090242Z
+LAST-MODIFIED:20260203T100437Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -944,9 +944,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  n\n24. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
  /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
  ine.de/ical/loeschen
-DTSTAMP:20260203T090247Z
+DTSTAMP:20260203T100441Z
 CREATED:20250627T122623Z
-LAST-MODIFIED:20260203T090247Z
+LAST-MODIFIED:20260203T100441Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -969,9 +969,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  esliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: termine.d
  e/ical/loeschen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20260203T090252Z
+DTSTAMP:20260203T100445Z
 CREATED:20250627T122633Z
-LAST-MODIFIED:20260203T090252Z
+LAST-MODIFIED:20260203T100445Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -995,9 +995,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  esliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: termine.d
  e/ical/loeschen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20260203T090256Z
+DTSTAMP:20260203T100449Z
 CREATED:20250627T122643Z
-LAST-MODIFIED:20260203T090256Z
+LAST-MODIFIED:20260203T100449Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1021,9 +1021,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  esliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: termine.d
  e/ical/loeschen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20260203T090301Z
+DTSTAMP:20260203T100452Z
 CREATED:20250627T122651Z
-LAST-MODIFIED:20260203T090301Z
+LAST-MODIFIED:20260203T100452Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1047,9 +1047,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  esliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: termine.d
  e/ical/loeschen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20260203T090305Z
+DTSTAMP:20260203T100455Z
 CREATED:20250627T122656Z
-LAST-MODIFIED:20260203T090305Z
+LAST-MODIFIED:20260203T100455Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1073,9 +1073,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  esliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: termine.d
  e/ical/loeschen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20260203T090311Z
+DTSTAMP:20260203T100502Z
 CREATED:20250627T122710Z
-LAST-MODIFIED:20260203T090311Z
+LAST-MODIFIED:20260203T100502Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1099,9 +1099,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  esliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: termine.d
  e/ical/loeschen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20260203T090314Z
+DTSTAMP:20260203T100507Z
 CREATED:20250627T124804Z
-LAST-MODIFIED:20260203T090314Z
+LAST-MODIFIED:20260203T100507Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1125,9 +1125,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  esliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: termine.d
  e/ical/loeschen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20260203T090318Z
+DTSTAMP:20260203T100512Z
 CREATED:20250627T124813Z
-LAST-MODIFIED:20260203T090318Z
+LAST-MODIFIED:20260203T100512Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1150,9 +1150,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  esliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: termine.d
  e/ical/loeschen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20260203T090321Z
+DTSTAMP:20260203T100516Z
 CREATED:20250627T124819Z
-LAST-MODIFIED:20260203T090321Z
+LAST-MODIFIED:20260203T100516Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1176,9 +1176,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  esliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: termine.d
  e/ical/loeschen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20260203T090326Z
+DTSTAMP:20260203T100521Z
 CREATED:20250627T124828Z
-LAST-MODIFIED:20260203T090326Z
+LAST-MODIFIED:20260203T100521Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1199,9 +1199,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  n\n34. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
  /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
  ine.de/ical/loeschen
-DTSTAMP:20260203T090329Z
+DTSTAMP:20260203T100525Z
 CREATED:20250627T124833Z
-LAST-MODIFIED:20260203T090329Z
+LAST-MODIFIED:20260203T100525Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
