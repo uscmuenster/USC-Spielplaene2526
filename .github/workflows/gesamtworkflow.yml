@@ -115,7 +115,7 @@ jobs:
           download_csv "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95251101" "Spielplan_NRW-Liga_wU14_*.csv" "Spielplan_NRW-Liga_wU14.csv"
           download_csv "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95251080" "Spielplan_Oberliga_5_wU14_*.csv" "Spielplan_Oberliga_5_wU14.csv"
           download_csv "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95250874" "Spielplan_NRW-Liga_wU18_*.csv" "Spielplan_NRW-Liga_wU18.csv"
-          download_csv "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95241488" "Spielplan_Kreisliga_Muenster_Frauen_*.csv" "Spielplan_Kreisliga_Muenster_Frauen.csv"
+          download_csv "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95241488" "Spielplan_Kreisliga*Frauen*.csv" "Spielplan_Kreisliga_Muenster_Frauen.csv"
 
           # ---------- Bundesliga ----------
           download_csv "https://www.volleyball-bundesliga.de/servlet/league/PlayingScheduleCsvExport?matchSeriesId=776311171" "Spielplan_1._Bundesliga_Frauen_*.csv" "Spielplan_1._Bundesliga_Frauen.csv"
