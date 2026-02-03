@@ -8,7 +8,7 @@ on:
     # Wochentage (Montag–Freitag): alle 6 Stunden
     - cron: '0 */6 * * 1-5'
 
-# ✅ Stabilitätstipp 2: verhindert überlappende Läufe
+# verhindert überlappende Läufe
 concurrency:
   group: pipeline
   cancel-in-progress: true
@@ -26,34 +26,34 @@ jobs:
         with:
           token: ${{ secrets.GH_PAT }}
 
-      - name: 🧹 Ordner csv_Baskets leeren (wenn vorhanden)
+      - name: 🧹 Ordner csv_Baskets leeren
         run: |
           mkdir -p csv_Baskets
           rm -f csv_Baskets/*
 
       - name: 🌐 Baskets-Kalender (ICS) herunterladen
-        run: curl -L "https://api.2basketballbundesliga.de/cal/562" --output csv_Baskets/Baskets_2526.ics
+        run: curl -L "https://api.2basketballbundesliga.de/cal/562" -o csv_Baskets/Baskets_2526.ics
 
       - name: 🌐 Preußen Münster-Kalender (ICS) herunterladen
         run: |
           curl -L "http://i.cal.to/ical/7477/bundesliga/sc-preussen-muenster/7dc6da48.a8ea1dd5-20526fdc.ics" \
-            --output csv_Baskets/Preussen_2526.ics || echo "⚠️ Preußen-ICS nicht erreichbar – Schritt übersprungen"
+            -o csv_Baskets/Preussen_2526.ics || echo "⚠️ Preußen-ICS nicht erreichbar"
 
-      - name: 🔁 Commit und Push der ICS-Dateien
+      - name: 🔁 Commit & Push ICS
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add -A csv_Baskets
-          git commit -m "📥 ICS-Dateien (Baskets & Preußen) aktualisiert" || echo "nichts zu committen"
+          git add csv_Baskets
+          git commit -m "📥 ICS-Dateien aktualisiert" || echo "nichts zu committen"
           git pull --rebase
           git push
 
-      - name: ⏱️ Pause (30s) nach ICS-Download
+      - name: ⏱️ Pause nach ICS
         run: sleep 30
 
-      # ==================================
-      # ENV/Deps einmalig für Python-Skripte
-      # ==================================
+      # =========================
+      # Python Setup
+      # =========================
       - name: 🐍 Python einrichten
         uses: actions/setup-python@v5
         with:
@@ -63,20 +63,20 @@ jobs:
         run: pip install pandas pytz
 
       # ===========================================
-      # BLOCK 2: Volleyball-CSV-Paket herunterladen
-      #          (server-Namen → feste Dateinamen)
+      # BLOCK 2: Volleyball-CSV herunterladen
       # ===========================================
       - name: 📁 Verzeichnis csvdata vorbereiten
         run: |
           mkdir -p csvdata
-          rm -f csvdata/*.csv
+          rm -f csvdata/*
 
       - name: 🌐 Volleyball-Spielpläne herunterladen & vereinheitlichen
         run: |
           set -e
+          shopt -s nullglob
           cd csvdata
 
-          download_and_rename () {
+          download_csv () {
             local url="$1"
             local pattern="$2"
             local target="$3"
@@ -84,114 +84,106 @@ jobs:
             echo "⬇️ Download: $target"
             curl -L -OJ "$url"
 
-            latest="$(ls -t $pattern 2>/dev/null | head -n 1)"
-            if [ -z "$latest" ]; then
-              echo "❌ FEHLER: Keine Datei gefunden für Pattern: $pattern"
-              ls -la
-              exit 1
+            files=($pattern)
+            if [ ${#files[@]} -gt 0 ]; then
+              latest="$(ls -t "${files[@]}" | head -n 1)"
+              mv "$latest" "$target"
+              echo "✅ $latest → $target"
+              return
             fi
 
-            mv "$latest" "$target"
-            echo "✅ $latest → $target"
+            if [ -f "PlayingScheduleCsvExport" ]; then
+              mv "PlayingScheduleCsvExport" "$target"
+              echo "✅ PlayingScheduleCsvExport → $target"
+              return
+            fi
+
+            echo "❌ FEHLER: Keine passende CSV für $target"
+            ls -la
+            exit 1
           }
 
-          # ---------- Volleyball-Bundesliga ----------
-          download_and_rename \
-            "https://www.volleyball-bundesliga.de/servlet/league/PlayingScheduleCsvExport?matchSeriesId=776311171" \
-            "Spielplan_1._Bundesliga_Frauen_*.csv" \
-            "Spielplan_1._Bundesliga_Frauen.csv"
+          # ---------- NRW ----------
+          download_csv "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95239897" "Spielplan_Bezirksliga_14_Frauen_*.csv" "Spielplan_Bezirksliga_14_Frauen.csv"
+          download_csv "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95244340" "Spielplan_Oberliga_2_Frauen_*.csv" "Spielplan_Oberliga_2_Frauen.csv"
+          download_csv "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95243632" "Spielplan_Bezirksklasse_26_Frauen_*.csv" "Spielplan_Bezirksklasse_26_Frauen.csv"
+          download_csv "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95245637" "Spielplan_NRW-Liga_wU16_*.csv" "Spielplan_NRW-Liga_wU16.csv"
+          download_csv "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95245654" "Spielplan_Oberliga_5_wU16_*.csv" "Spielplan_Oberliga_5_wU16.csv"
+          download_csv "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95251101" "Spielplan_NRW-Liga_wU14_*.csv" "Spielplan_NRW-Liga_wU14.csv"
+          download_csv "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95251080" "Spielplan_Oberliga_5_wU14_*.csv" "Spielplan_Oberliga_5_wU14.csv"
+          download_csv "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95250874" "Spielplan_NRW-Liga_wU18_*.csv" "Spielplan_NRW-Liga_wU18.csv"
+          download_csv "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95241488" "Spielplan_Kreisliga_Muenster_Frauen_*.csv" "Spielplan_Kreisliga_Muenster_Frauen.csv"
 
-          download_and_rename \
-            "https://www.volleyball-bundesliga.de/servlet/league/PlayingScheduleCsvExport?matchSeriesId=776309163" \
-            "Spielplan_2._Bundesliga_Frauen_Nord_*.csv" \
-            "Spielplan_2._Bundesliga_Frauen_Nord.csv"
+          # ---------- Bundesliga ----------
+          download_csv "https://www.volleyball-bundesliga.de/servlet/league/PlayingScheduleCsvExport?matchSeriesId=776311171" "Spielplan_1._Bundesliga_Frauen_*.csv" "Spielplan_1._Bundesliga_Frauen.csv"
+          download_csv "https://www.volleyball-bundesliga.de/servlet/league/PlayingScheduleCsvExport?matchSeriesId=776309163" "Spielplan_2._Bundesliga_Frauen_Nord_*.csv" "Spielplan_2._Bundesliga_Frauen_Nord.csv"
 
-          # ---------- Volleyball NRW ----------
-          download_and_rename \
-            "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95239897" \
-            "Spielplan_Oberliga_2_Frauen_*.csv" \
-            "Spielplan_Oberliga_2_Frauen.csv"
-
-          download_and_rename \
-            "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95245637" \
-            "Spielplan_Bezirksliga_14_Frauen_*.csv" \
-            "Spielplan_Bezirksliga_14_Frauen.csv"
-
-          download_and_rename \
-            "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95241488" \
-            "Spielplan_Kreisliga_Muenster_Frauen_*.csv" \
-            "Spielplan_Kreisliga_Muenster_Frauen.csv"
-
-          echo "📂 Ergebnis csvdata/:"
+          shopt -u nullglob
+          echo "📂 csvdata Inhalt:"
           ls -la
 
-      - name: 🔁 Commit und Push CSV (csvdata)
+      - name: 🔁 Commit & Push CSV
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add csvdata/
-          git diff --cached --quiet && echo "🟢 Keine Änderungen, nichts zu committen." || (
-            git commit -m "📊 Volleyball-Spielpläne aktualisiert (feste Dateinamen)"
-            git pull --rebase
-            git push
-          )
+          git add csvdata
+          git commit -m "📊 Volleyball-Spielpläne aktualisiert" || echo "nichts zu committen"
+          git pull --rebase
+          git push
 
-      - name: ⏱️ Pause (30s) nach CSV-Downloads
+      - name: ⏱️ Pause nach CSV
         run: sleep 30
 
       # =================================
-      # BLOCK 3: Baskets CSV aus ICS bauen
+      # BLOCK 3: Baskets CSV aus ICS
       # =================================
-      - name: 🛠 CSV aus ICS erzeugen mit baskets_csv.py
+      - name: 🛠 Baskets CSV erzeugen
         run: python baskets_csv.py
 
-      - name: 🔁 Commit und Push der Baskets-CSV
+      - name: 🔁 Commit & Push Baskets CSV
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git add csv_Baskets/Baskets_2526_Heimspiele.csv
-          git commit -m "CSV aus Baskets ICS generiert" || echo "nichts zu committen"
+          git commit -m "🏀 Baskets CSV aktualisiert" || echo "nichts zu committen"
           git pull --rebase
           git push
 
-      - name: ⏱️ Pause (30s) nach Baskets-CSV
+      - name: ⏱️ Pause
         run: sleep 30
 
-      # ==================================
-      # BLOCK 4: Preußen CSV aus ICS bauen
-      # ==================================
-      - name: 🛠 CSV aus ICS erzeugen mit preussen_csv.py
+      # =================================
+      # BLOCK 4: Preußen CSV aus ICS
+      # =================================
+      - name: 🛠 Preußen CSV erzeugen
         run: python preussen_csv.py
 
-      - name: 🔁 Commit und Push der Preußen-CSV
+      - name: 🔁 Commit & Push Preußen CSV
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git add csv_Baskets/Preussen_2526_Heimspiele.csv
-          git commit -m "CSV aus Preußen ICS generiert" || echo "nichts zu committen"
+          git commit -m "⚽ Preußen CSV aktualisiert" || echo "nichts zu committen"
           git pull --rebase
           git push
 
-      - name: ⏱️ Pause (30s) nach Preußen-CSV
+      - name: ⏱️ Pause
         run: sleep 30
 
       # =====================================
-      # BLOCK 5: HTML generieren & veröffentlichen
+      # BLOCK 5: HTML & ICS generieren
       # =====================================
-      - name: 🛠 HTML mit Ergebnis generieren
+      - name: 🛠 HTML & ICS generieren
         run: |
           python usc_baskets_preussen.py
           python usc_spielplan.py
           python usc_spielplan_ics.py
 
-      - name: 🔁 Commit und Push HTML
+      - name: 🔁 Commit & Push HTML
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add docs/index_trainer.html
-          git add docs/index.html
-          git add docs/indexapp.html
-          git add docs/usc_spielplan.ics
-          git commit -m "📅 HTML-Aktualisierung" || echo "nichts zu committen"
+          git add docs/
+          git commit -m "📅 Spielplan HTML & ICS aktualisiert" || echo "nichts zu committen"
           git pull --rebase
           git push
