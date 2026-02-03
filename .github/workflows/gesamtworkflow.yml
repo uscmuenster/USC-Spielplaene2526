@@ -66,28 +66,39 @@ jobs:
       # BLOCK 2: Volleyball-CSV-Paket herunterladen
       # ===========================================
       - name: 📁 Verzeichnis csvdata anlegen
-        run: mkdir -p csvdata
+        run: |
+          mkdir -p csvdata
+          rm -f csvdata/*.csv
 
-      - name: 🌐 CSV-Dateien herunterladen mit fester Umbenennung
+      - name: 🌐 Volleyball-CSV-Dateien herunterladen (feste Dateinamen)
         run: |
           cd csvdata
-          rm -f *.csv
-          urls=(
-            "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95239897"
-            "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95244340"
-            "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95243632"
-            "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95245637"
-            "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95245654"
-            "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95251101"
-            "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95251080"
-            "https://www.volleyball-bundesliga.de/servlet/league/PlayingScheduleCsvExport?matchSeriesId=776311171"
-            "https://www.volleyball-bundesliga.de/servlet/league/PlayingScheduleCsvExport?matchSeriesId=776309163"
-            "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95245226"
-            "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95250874"
-          )
-          for url in "${urls[@]}"; do
-            curl -L -OJ "$url"
-          done
+
+          # 1. Bundesliga Frauen
+          curl -L "https://www.volleyball-bundesliga.de/servlet/league/PlayingScheduleCsvExport?matchSeriesId=776311171" \
+            -o "Spielplan_1._Bundesliga_Frauen.csv"
+
+          # 2. Bundesliga Frauen
+          curl -L "https://www.volleyball-bundesliga.de/servlet/league/PlayingScheduleCsvExport?matchSeriesId=776309163" \
+            -o "Spielplan_2._Bundesliga_Frauen.csv"
+
+          # Oberliga Frauen
+          curl -L "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95239897" \
+            -o "Spielplan_Oberliga_Frauen.csv"
+
+          # Verbandsliga Frauen
+          curl -L "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95244340" \
+            -o "Spielplan_Verbandsliga_Frauen.csv"
+
+          # Landesliga Frauen
+          curl -L "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95243632" \
+            -o "Spielplan_Landesliga_Frauen.csv"
+
+          # Bezirksliga Frauen
+          curl -L "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95245637" \
+            -o "Spielplan_Bezirksliga_Frauen.csv"
+
+          # Kreisliga Münster Frauen
           curl -L "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95241488" \
             -o "Spielplan_Kreisliga_Muenster_Frauen.csv"
 
@@ -97,7 +108,7 @@ jobs:
           git config user.email "actions@github.com"
           git add csvdata/
           git diff --cached --quiet && echo "🟢 Keine Änderungen, nichts zu committen." || (
-            git commit -m "📊 Automatisches CSV-Update (mit Sonderzeichen-Handling)"
+            git commit -m "📊 Automatisches CSV-Update (stabile Dateinamen)"
             git pull --rebase
             git push
           )
