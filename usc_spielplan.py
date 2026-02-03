@@ -82,6 +82,14 @@ for file, team_code in csv_files:
     df.columns = df.columns.str.strip()
     df = df.rename(columns=rename_map)
 
+    required_cols = {"Datum", "Uhrzeit", "Heim", "Gast"}
+    missing = required_cols - set(df.columns)
+
+    if missing:
+        print(f"⚠️ CSV übersprungen ({file}): fehlende Spalten {missing}")
+        continue
+
+
     if "Ergebnis" not in df.columns:
         df["Ergebnis"] = ""
 
@@ -179,13 +187,15 @@ for file, team_code in csv_files:
         df = df[cols]
 
     dfs.append(df)
+if not dfs:
+    raise RuntimeError("❌ Keine gültigen CSV-Daten gefunden – Abbruch")
 
 df_all = pd.concat(dfs, ignore_index=True)
 
 def parse_datum(s):
     try:
-        return datetime.strptime(s, "%d.%m.%Y")
-    except:
+        return datetime.strptime(str(s).strip(), "%d.%m.%Y")
+    except Exception:
         return pd.NaT
 
 df_all["Datum_DT"] = df_all["Datum"].apply(parse_datum)
@@ -202,12 +212,12 @@ df_all["Woche_Label"] = df_all.apply(
 )
 
 def format_uhrzeit(uhr):
-    if uhr == "00:00:00":
-        return "???"
-    try:
-        return datetime.strptime(uhr, "%H:%M:%S").strftime("%H:%M")
-    except:
-        return uhr
+    for fmt in ("%H:%M:%S", "%H:%M"):
+        try:
+            return datetime.strptime(str(uhr).strip(), fmt).strftime("%H:%M")
+        except Exception:
+            pass
+    return "???"
 
 df_all["Uhrzeit"] = df_all["Uhrzeit"].apply(format_uhrzeit)
 
