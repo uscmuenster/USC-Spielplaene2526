@@ -64,43 +64,66 @@ jobs:
 
       # ===========================================
       # BLOCK 2: Volleyball-CSV-Paket herunterladen
+      #          (server-Namen → feste Dateinamen)
       # ===========================================
-      - name: 📁 Verzeichnis csvdata anlegen
+      - name: 📁 Verzeichnis csvdata vorbereiten
         run: |
           mkdir -p csvdata
           rm -f csvdata/*.csv
 
-      - name: 🌐 Volleyball-CSV-Dateien herunterladen (feste Dateinamen)
+      - name: 🌐 Volleyball-Spielpläne herunterladen & vereinheitlichen
         run: |
+          set -e
           cd csvdata
 
-          # 1. Bundesliga Frauen
-          curl -L "https://www.volleyball-bundesliga.de/servlet/league/PlayingScheduleCsvExport?matchSeriesId=776311171" \
-            -o "Spielplan_1._Bundesliga_Frauen.csv"
+          download_and_rename () {
+            local url="$1"
+            local pattern="$2"
+            local target="$3"
 
-          # 2. Bundesliga Frauen
-          curl -L "https://www.volleyball-bundesliga.de/servlet/league/PlayingScheduleCsvExport?matchSeriesId=776309163" \
-            -o "Spielplan_2._Bundesliga_Frauen.csv"
+            echo "⬇️ Download: $target"
+            curl -L -OJ "$url"
 
-          # Oberliga Frauen
-          curl -L "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95239897" \
-            -o "Spielplan_Oberliga_Frauen.csv"
+            latest="$(ls -t $pattern 2>/dev/null | head -n 1)"
+            if [ -z "$latest" ]; then
+              echo "❌ FEHLER: Keine Datei gefunden für Pattern: $pattern"
+              ls -la
+              exit 1
+            fi
 
-          # Verbandsliga Frauen
-          curl -L "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95244340" \
-            -o "Spielplan_Verbandsliga_Frauen.csv"
+            mv "$latest" "$target"
+            echo "✅ $latest → $target"
+          }
 
-          # Landesliga Frauen
-          curl -L "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95243632" \
-            -o "Spielplan_Landesliga_Frauen.csv"
+          # ---------- Volleyball-Bundesliga ----------
+          download_and_rename \
+            "https://www.volleyball-bundesliga.de/servlet/league/PlayingScheduleCsvExport?matchSeriesId=776311171" \
+            "Spielplan_1._Bundesliga_Frauen_*.csv" \
+            "Spielplan_1._Bundesliga_Frauen.csv"
 
-          # Bezirksliga Frauen
-          curl -L "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95245637" \
-            -o "Spielplan_Bezirksliga_Frauen.csv"
+          download_and_rename \
+            "https://www.volleyball-bundesliga.de/servlet/league/PlayingScheduleCsvExport?matchSeriesId=776309163" \
+            "Spielplan_2._Bundesliga_Frauen_Nord_*.csv" \
+            "Spielplan_2._Bundesliga_Frauen_Nord.csv"
 
-          # Kreisliga Münster Frauen
-          curl -L "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95241488" \
-            -o "Spielplan_Kreisliga_Muenster_Frauen.csv"
+          # ---------- Volleyball NRW ----------
+          download_and_rename \
+            "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95239897" \
+            "Spielplan_Oberliga_2_Frauen_*.csv" \
+            "Spielplan_Oberliga_2_Frauen.csv"
+
+          download_and_rename \
+            "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95245637" \
+            "Spielplan_Bezirksliga_14_Frauen_*.csv" \
+            "Spielplan_Bezirksliga_14_Frauen.csv"
+
+          download_and_rename \
+            "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95241488" \
+            "Spielplan_Kreisliga_Muenster_Frauen_*.csv" \
+            "Spielplan_Kreisliga_Muenster_Frauen.csv"
+
+          echo "📂 Ergebnis csvdata/:"
+          ls -la
 
       - name: 🔁 Commit und Push CSV (csvdata)
         run: |
@@ -108,7 +131,7 @@ jobs:
           git config user.email "actions@github.com"
           git add csvdata/
           git diff --cached --quiet && echo "🟢 Keine Änderungen, nichts zu committen." || (
-            git commit -m "📊 Automatisches CSV-Update (stabile Dateinamen)"
+            git commit -m "📊 Volleyball-Spielpläne aktualisiert (feste Dateinamen)"
             git pull --rebase
             git push
           )
