@@ -316,9 +316,6 @@ df_all["Datum_DT"] = pd.to_datetime(
     errors="coerce"
 )
 
-# Sicherheitscheck: nur echte Datetimes zulassen
-if not pd.api.types.is_datetime64_any_dtype(df_all["Datum_DT"]):
-    raise RuntimeError("❌ Datum_DT ist kein datetime64 – Abbruch")
 
 
 
@@ -326,11 +323,24 @@ tage_map = {
     "Monday": "Mo", "Tuesday": "Di", "Wednesday": "Mi", "Thursday": "Do",
     "Friday": "Fr", "Saturday": "Sa", "Sunday": "So"
 }
-df_all["Tag"] = df_all["Datum_DT"].dt.day_name().map(tage_map)
-df_all["Woche_Start"] = df_all["Datum_DT"].apply(lambda d: d - pd.to_timedelta(d.weekday(), unit="d"))
-df_all["Woche_Ende"] = df_all["Woche_Start"] + pd.to_timedelta(6, unit="d")
+
+# Tag: leer, wenn kein Datum vorhanden
+df_all["Tag"] = df_all["Datum_DT"].dt.day_name().map(tage_map).fillna("")
+
+# Woche nur berechnen, wenn Datum existiert
+df_all["Woche_Start"] = df_all["Datum_DT"].apply(
+    lambda d: d - pd.to_timedelta(d.weekday(), unit="d") if pd.notna(d) else pd.NaT
+)
+df_all["Woche_Ende"] = df_all["Woche_Start"].apply(
+    lambda d: d + pd.to_timedelta(6, unit="d") if pd.notna(d) else pd.NaT
+)
+
 df_all["Woche_Label"] = df_all.apply(
-    lambda row: f"Mo {row['Woche_Start'].strftime('%d.%m.%Y')} – So {row['Woche_Ende'].strftime('%d.%m.%Y')}",
+    lambda row: (
+        f"Mo {row['Woche_Start'].strftime('%d.%m.%Y')} – So {row['Woche_Ende'].strftime('%d.%m.%Y')}"
+        if pd.notna(row["Woche_Start"]) and pd.notna(row["Woche_Ende"])
+        else ""
+    ),
     axis=1
 )
 
@@ -383,16 +393,21 @@ df_all = df_all.apply(clean_all_names, axis=1)
 for col in ["Heim", "Gast", "SR", "Gastgeber"]:
     df_all[col] = df_all[col].str.replace(r'\b(USC-[U\d]+-\d) II\b', r'\1', regex=True)
 
-df_all = df_all.sort_values(by=["Datum_DT", "Uhrzeit"])
+df_all["_sort_dt"] = df_all["Datum_DT"].fillna(pd.Timestamp.max)
+df_all = (
+    df_all
+    .sort_values(by=["_sort_dt", "Uhrzeit"], kind="mergesort")
+    .drop(columns="_sort_dt")
+)
 
 # 🔴 Spiele filtern
 now = datetime.now(timezone("Europe/Berlin")).replace(tzinfo=None)
 
 df_all = df_all[
-    # Behalte immer USC-Spiele
-    (df_all["Heim"].str.contains("USC") | df_all["Gast"].str.contains("USC"))
+    (df_all["Heim"].str.contains("USC", na=False) | df_all["Gast"].str.contains("USC", na=False))
     |
-    # Behalte alle Nicht-USC-Spiele, wenn sie noch nicht gespielt sind
+    (df_all["Datum_DT"].isna())
+    |
     (df_all["Datum_DT"] >= now)
 ]
 spielrunden = sorted(df_all["Spielrunde"].dropna().unique())
@@ -427,7 +442,8 @@ table_rows = "\n".join(
     "<tr "
     + f'data-teams="{escape_text(row["USC_Team"])}"'
     + f' data-spielrunde="{escape_text(row["Spielrunde"])}" data-ort="{escape_text(row["Ort"])}"'
-    + f' data-week="{row["Woche_Start"].strftime("%Y-%m-%d")}" data-datum="{row["Datum_DT"].strftime("%Y-%m-%d")}">'
+    + f' data-week="{row["Woche_Start"].strftime("%Y-%m-%d") if pd.notna(row["Woche_Start"]) else ""}"'
+    + f' data-datum="{row["Datum_DT"].strftime("%Y-%m-%d") if pd.notna(row["Datum_DT"]) else ""}">'
     + render_cells(row)
     + "</tr>"
     for _, row in df_all.iterrows()
