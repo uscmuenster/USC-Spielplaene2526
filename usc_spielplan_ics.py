@@ -59,7 +59,10 @@ def normalize_columns(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def contains_usc(row) -> bool:
-    text = " ".join(str(row[c]).lower() for c in ["Heim", "Gast", "SR", "Gastgeber"])
+    text = " ".join(
+        str(row[c]).lower()
+        for c in ["Heim", "Gast", "SR", "Gastgeber"]
+    )
     return any(k in text for k in usc_keywords)
 
 
@@ -115,19 +118,23 @@ for file, team_code in csv_files:
     )
 
     df = normalize_columns(df)
-    df = df[df.apply(contains_usc, axis=1)]
-    df["USC_Team"] = team_code
 
-    for col in ["Heim", "Gast", "SR", "Gastgeber", "Ort", "Spielrunde"]:
-        df[col] = df.apply(lambda r: replace_usc_names(r[col], r["USC_Team"]), axis=1)
-
-    # 🔑 DATETIME IMMER erzeugen (auch wenn leer!)
+    # 👉 DATETIME IMMER anlegen (entscheidend!)
     df["DATETIME"] = pd.to_datetime(
         df["Datum"].astype(str).str.strip() + " " +
         df["Uhrzeit"].astype(str).str.strip(),
         errors="coerce",
         dayfirst=True
     )
+
+    df = df[df.apply(contains_usc, axis=1)]
+    df["USC_Team"] = team_code
+
+    for col in ["Heim", "Gast", "SR", "Gastgeber", "Ort", "Spielrunde"]:
+        df[col] = df.apply(
+            lambda r: replace_usc_names(r[col], r["USC_Team"]),
+            axis=1
+        )
 
     dfs.append(df)
 
@@ -137,18 +144,20 @@ if not dfs:
 df_all = pd.concat(dfs, ignore_index=True)
 
 # =========================
-# Heimspiele filtern
+# Heimspiele filtern + sortieren
 # =========================
+
+df_all = df_all.dropna(subset=["DATETIME"])
 
 def is_hosting_and_playing(row) -> bool:
     gastgeber = str(row["Gastgeber"]).startswith("USC")
     playing = str(row["Heim"]).startswith("USC") or str(row["Gast"]).startswith("USC")
     return gastgeber and playing
 
-df_all = df_all[df_all.apply(is_hosting_and_playing, axis=1)]
-
-# 🔑 erst jetzt NaT entfernen & sortieren
-df_all = df_all.dropna(subset=["DATETIME"]).sort_values("DATETIME")
+df_all = (
+    df_all[df_all.apply(is_hosting_and_playing, axis=1)]
+    .sort_values("DATETIME")
+)
 
 # =========================
 # ICS erzeugen
@@ -161,7 +170,9 @@ def generate_ics(df: pd.DataFrame, output="docs/usc_spielplan.ics"):
     Path("docs").mkdir(exist_ok=True)
 
     with open(output, "w", encoding="utf-8") as f:
-        f.write("BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//USC Münster//Spielplan//DE\n")
+        f.write("BEGIN:VCALENDAR\n")
+        f.write("VERSION:2.0\n")
+        f.write("PRODID:-//USC Münster//Spielplan//DE\n")
 
         for _, row in df.iterrows():
             start = berlin.localize(row["DATETIME"])
