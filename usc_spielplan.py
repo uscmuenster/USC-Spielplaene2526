@@ -240,12 +240,24 @@ def safe_weekday(dt):
         return ""
 
 df_all["Tag"] = df_all["Datum_DT"].apply(safe_weekday)
-df_all["Woche_Start"] = df_all["Datum_DT"].apply(lambda d: d - pd.to_timedelta(d.weekday(), unit="d"))
-df_all["Woche_Ende"] = df_all["Woche_Start"] + pd.to_timedelta(6, unit="d")
-df_all["Woche_Label"] = df_all.apply(
-    lambda row: f"Mo {row['Woche_Start'].strftime('%d.%m.%Y')} – So {row['Woche_Ende'].strftime('%d.%m.%Y')}",
-    axis=1
+# Woche berechnen – robust auch bei fehlendem Datum
+df_all["Woche_Start"] = df_all["Datum_DT"].apply(
+    lambda d: d - pd.to_timedelta(d.weekday(), unit="d") if pd.notna(d) else pd.NaT
 )
+
+df_all["Woche_Ende"] = df_all["Woche_Start"].apply(
+    lambda d: d + pd.to_timedelta(6, unit="d") if pd.notna(d) else pd.NaT
+)
+
+def make_woche_label(start, end):
+    if pd.isna(start) or pd.isna(end):
+        return ""
+    return f"Mo {start.strftime('%d.%m.%Y')} – So {end.strftime('%d.%m.%Y')}"
+
+df_all["Woche_Label"] = [
+    make_woche_label(s, e)
+    for s, e in zip(df_all["Woche_Start"], df_all["Woche_Ende"])
+]
 
 def format_uhrzeit(uhr):
     for fmt in ("%H:%M:%S", "%H:%M"):
