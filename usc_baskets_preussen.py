@@ -310,16 +310,16 @@ else:
 # ---------- Gesamttabelle zusammenbauen ----------
 df_all = pd.concat(dfs, ignore_index=True)
 
-def parse_datum(s):
-    if pd.isna(s):
-        return pd.NaT
-    s = str(s).strip()
-    if not s:
-        return pd.NaT
-    try:
-        return datetime.strptime(s, "%d.%m.%Y")
-    except Exception:
-        return pd.NaT
+df_all["Datum_DT"] = pd.to_datetime(
+    df_all["Datum"],
+    format="%d.%m.%Y",
+    errors="coerce"
+)
+
+# Sicherheitscheck: nur echte Datetimes zulassen
+if not pd.api.types.is_datetime64_any_dtype(df_all["Datum_DT"]):
+    raise RuntimeError("❌ Datum_DT ist kein datetime64 – Abbruch")
+
 
 df_all["Datum_DT"] = df_all["Datum"].apply(parse_datum)
 tage_map = {
