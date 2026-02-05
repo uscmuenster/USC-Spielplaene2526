@@ -89,18 +89,23 @@ for file, team_code in csv_files:
     for col in ["Heim", "Gast", "SR", "Gastgeber", "Ort", "Spielrunde"]:
         df[col] = df.apply(lambda row: replace_usc_names(row[col], row["USC_Team"]), axis=1)
 
-    # Datum/Uhrzeit parsen
-    def parse_dt(datum, uhrzeit):
-        try:
-            dt = datetime.strptime(f"{datum} {uhrzeit}", "%d.%m.%Y %H:%M:%S")
-        except:
-            try:
-                dt = datetime.strptime(f"{datum} {uhrzeit}", "%d.%m.%Y %H:%M")
-            except:
-                return pd.NaT
-        return dt
+    # Datum + Uhrzeit sicher kombinieren (vektorisiert, kein apply!)
+    df["DATETIME"] = pd.to_datetime(
+        df["Datum"].astype(str).str.strip() + " " + df["Uhrzeit"].astype(str).str.strip(),
+        format="%d.%m.%Y %H:%M:%S",
+        errors="coerce"
+    )
 
-    df["DATETIME"] = df.apply(lambda row: parse_dt(row["Datum"], row["Uhrzeit"]), axis=1)
+    # Fallback ohne Sekunden
+    mask = df["DATETIME"].isna()
+    df.loc[mask, "DATETIME"] = pd.to_datetime(
+        df.loc[mask, "Datum"].astype(str).str.strip() + " " +
+        df.loc[mask, "Uhrzeit"].astype(str).str.strip(),
+        format="%d.%m.%Y %H:%M",
+        errors="coerce"
+    )
+
+    # Ungültige Datensätze entfernen
     df = df.dropna(subset=["DATETIME"])
 
     dfs.append(df)
