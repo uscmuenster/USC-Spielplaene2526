@@ -231,7 +231,15 @@ tage_map = {
     "Monday": "Mo", "Tuesday": "Di", "Wednesday": "Mi", "Thursday": "Do",
     "Friday": "Fr", "Saturday": "Sa", "Sunday": "So"
 }
-df_all["Tag"] = df_all["Datum_DT"].dt.day_name().map(tage_map)
+def safe_weekday(dt):
+    if pd.isna(dt):
+        return ""
+    try:
+        return tage_map.get(dt.day_name(), "")
+    except Exception:
+        return ""
+
+df_all["Tag"] = df_all["Datum_DT"].apply(safe_weekday)
 df_all["Woche_Start"] = df_all["Datum_DT"].apply(lambda d: d - pd.to_timedelta(d.weekday(), unit="d"))
 df_all["Woche_Ende"] = df_all["Woche_Start"] + pd.to_timedelta(6, unit="d")
 df_all["Woche_Label"] = df_all.apply(
