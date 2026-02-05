@@ -271,13 +271,21 @@ df_all["Uhrzeit"] = df_all["Uhrzeit"].apply(format_uhrzeit)
 
 def clean_all_names(row):
     for col in ["Heim", "Gast", "SR", "Gastgeber", "Ort", "Spielrunde"]:
-        row[col] = replace_usc_names(row[col], row["USC_Team"])
+        val = row.get(col, "")
+        if pd.isna(val):
+            val = ""
+        row[col] = replace_usc_names(str(val), row["USC_Team"])
     return row
 
 df_all = df_all.apply(clean_all_names, axis=1)
 
 for col in ["Heim", "Gast", "SR", "Gastgeber"]:
-    df_all[col] = df_all[col].str.replace(r'\b(USC-[U\d]+-\d) II\b', r'\1', regex=True)
+    df_all[col] = (
+        df_all[col]
+        .fillna("")
+        .astype(str)
+        .str.replace(r'\b(USC-[U\d]+-\d) II\b', r'\1', regex=True)
+    )
 
 df_all = df_all.sort_values(by=["Datum_DT", "Uhrzeit"])
 
