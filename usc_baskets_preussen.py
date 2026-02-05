@@ -321,7 +321,7 @@ if not pd.api.types.is_datetime64_any_dtype(df_all["Datum_DT"]):
     raise RuntimeError("❌ Datum_DT ist kein datetime64 – Abbruch")
 
 
-df_all["Datum_DT"] = df_all["Datum"].apply(parse_datum)
+
 tage_map = {
     "Monday": "Mo", "Tuesday": "Di", "Wednesday": "Mi", "Thursday": "Do",
     "Friday": "Fr", "Saturday": "Sa", "Sunday": "So"
