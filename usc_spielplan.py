@@ -326,11 +326,21 @@ def render_cells(row):
     return "".join(f"<td>{escape_text(row.get(col, ''))}</td>" for col in columns_display)
 
 # Tabelle mit mehreren data-team Attributen
+def safe_date_attr(dt):
+    if pd.isna(dt):
+        return ""
+    try:
+        return dt.strftime("%Y-%m-%d")
+    except Exception:
+        return ""
+
 table_rows = "\n".join(
     "<tr "
-    + f'data-teams="{escape_text(row["USC_Team"])}"'
-    + f' data-spielrunde="{escape_text(row["Spielrunde"])}" data-ort="{escape_text(row["Ort"])}"'
-    + f' data-week="{row["Woche_Start"].strftime("%Y-%m-%d")}" data-datum="{row["Datum_DT"].strftime("%Y-%m-%d")}">'
+    + f'data-teams="{escape_text(row.get("USC_Team", ""))}"'
+    + f' data-spielrunde="{escape_text(row.get("Spielrunde", ""))}"'
+    + f' data-ort="{escape_text(row.get("Ort", ""))}"'
+    + f' data-week="{safe_date_attr(row.get("Woche_Start"))}"'
+    + f' data-datum="{safe_date_attr(row.get("Datum_DT"))}">'
     + render_cells(row)
     + "</tr>"
     for _, row in df_all.iterrows()
