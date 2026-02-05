@@ -29,23 +29,21 @@ heimspiele = []
 for event in events:
     lines = event.strip().splitlines()
 
-    # Gegner suchen
+    # SUMMARY lesen
     summary_line = next((line for line in lines if line.startswith("SUMMARY:")), None)
     if not summary_line:
         continue
 
     summary = summary_line.replace("SUMMARY:", "").strip()
 
-    # Nur Heimspiele: "Uni Baskets Münster vs XYZ"
+    # Nur Heimspiele
     if not summary.startswith("ProA Spiel Uni Baskets Münster vs "):
         continue
 
     gegner = summary.replace("ProA Spiel Uni Baskets Münster vs ", "").strip()
 
-    dtstart_line = next(
-        (line for line in lines if line.startswith("DTSTART")),
-        None
-    )
+    # DTSTART lesen (mit oder ohne Sekunden)
+    dtstart_line = next((line for line in lines if line.startswith("DTSTART")), None)
     if not dtstart_line:
         continue
 
@@ -56,7 +54,16 @@ for event in events:
             dt = datetime.strptime(dt_str, "%Y%m%dT%H%M%S")
         else:                  # YYYYMMDDTHHMM
             dt = datetime.strptime(dt_str, "%Y%m%dT%H%M")
+
         dt = berlin.localize(dt)
+
+        # 🔴 DAS WAR DER FEHLENDE TEIL
+        heimspiele.append((
+            dt.strftime("%d.%m.%Y"),
+            dt.strftime("%H:%M"),
+            gegner
+        ))
+
     except Exception as e:
         print(f"⚠️ Fehler beim Datum '{dt_str}': {e}")
         continue
