@@ -73,10 +73,26 @@ for file, team_code in csv_files:
         sep=";",
         encoding="cp1252",
         engine="python",      # toleranter CSV-Parser
-        on_bad_lines="skip"   # defekte Zeilen überspringen
+        on_bad_lines="skip",   # defekte Zeilen überspringen
+        quotechar='"',
     )
     df.columns = df.columns.str.strip()
     df = df.rename(columns=rename_map)
+
+    # ===== Datum + Uhrzeit aus "Datum und Uhrzeit" =====
+    if "Datum und Uhrzeit" in df.columns:
+        dt = pd.to_datetime(
+            df["Datum und Uhrzeit"]
+            .astype(str)
+            .str.replace(",", "", regex=False)   # "11.10.2025, 17:15:00" → "11.10.2025 17:15:00"
+            .str.strip(),
+            format="%d.%m.%Y %H:%M:%S",
+            errors="coerce",
+        )
+
+        df["Datum"] = dt.dt.strftime("%d.%m.%Y")
+        df["Uhrzeit"] = dt.dt.strftime("%H:%M")
+
 
     if "Ergebnis" not in df.columns:
         df["Ergebnis"] = ""
@@ -136,12 +152,29 @@ for file, team_code in csv_files:
     for col in ["Heim", "Gast", "SR", "Gastgeber", "Ort", "Spielrunde"]:
         df[col] = df.apply(lambda row: replace_usc_names(row[col], row["USC_Team"]), axis=1)
 
-    # (Änderung 2) Ergebnis neu aus Satzpunkte-Spalten formatieren
+    # (Änderung 2) Ergebnis aus Satzpunkte 1 / Satzpunkte 2 + Satzdetails erzeugen
     def get_result(row):
         try:
-            if pd.isna(row.get("Satzpunkte")) or str(row["Satzpunkte"]).strip() == "":
+            # Gesamtsätze Heim / Gast
+            sp1 = row.get("Satzpunkte 1", "")
+            sp2 = row.get("Satzpunkte 2", "")
+
+            if pd.isna(sp1) or pd.isna(sp2):
                 return ""
-            satzstand = str(row["Satzpunkte"]).strip()
+
+            sp1 = str(sp1).strip()
+            sp2 = str(sp2).strip()
+
+            if sp1 == "" or sp2 == "":
+                return ""
+
+            # Haupt-Ergebnis (z. B. 3:1)
+            try:
+                ergebnis = f"{int(float(sp1))}:{int(float(sp2))}"
+            except Exception:
+                ergebnis = f"{sp1}:{sp2}"
+
+            # Einzelne Satzstände (optional)
             saetze = []
             satzspalten = [
                 ("Satz 1 - Ballpunkte 1", "Satz 1 - Ballpunkte 2"),
@@ -150,25 +183,36 @@ for file, team_code in csv_files:
                 ("Satz 4 - Ballpunkte 1", "Satz 4 - Ballpunkte 2"),
                 ("Satz 5 - Ballpunkte 1", "Satz 5 - Ballpunkte 2"),
             ]
+
             for l, r in satzspalten:
                 left = row.get(l, "")
                 right = row.get(r, "")
-                if pd.notna(left) and pd.notna(right) and str(left).strip() != "" and str(right).strip() != "":
+
+                if (
+                    pd.notna(left)
+                    and pd.notna(right)
+                    and str(left).strip() != ""
+                    and str(right).strip() != ""
+                ):
                     try:
-                        left_val = int(float(left))
-                        right_val = int(float(right))
-                        saetze.append(f"{left_val}:{right_val}")
+                        saetze.append(f"{int(float(left))}:{int(float(right))}")
                     except Exception:
                         saetze.append(f"{str(left).strip()}:{str(right).strip()}")
-            return f"{satzstand} ({', '.join(saetze)})" if saetze else satzstand
+
+            return f"{ergebnis} ({', '.join(saetze)})" if saetze else ergebnis
+
         except Exception:
             return ""
 
-    if "Satzpunkte" in df.columns:
+
+    # Ergebnis nur berechnen, wenn Satzpunkte vorhanden sind
+    if "Satzpunkte 1" in df.columns and "Satzpunkte 2" in df.columns:
         df["Ergebnis"] = df.apply(get_result, axis=1)
 
+
+    # Ergebnis-Spalte direkt hinter Gastgeber einsortieren
     cols = df.columns.tolist()
-    if "Ergebnis" in cols:
+    if "Ergebnis" in cols and "Gastgeber" in cols:
         cols.remove("Ergebnis")
         pos = cols.index("Gastgeber") + 1
         cols = cols[:pos] + ["Ergebnis"] + cols[pos:]
@@ -267,9 +311,14 @@ else:
 df_all = pd.concat(dfs, ignore_index=True)
 
 def parse_datum(s):
+    if pd.isna(s):
+        return pd.NaT
+    s = str(s).strip()
+    if not s:
+        return pd.NaT
     try:
         return datetime.strptime(s, "%d.%m.%Y")
-    except:
+    except Exception:
         return pd.NaT
 
 df_all["Datum_DT"] = df_all["Datum"].apply(parse_datum)
