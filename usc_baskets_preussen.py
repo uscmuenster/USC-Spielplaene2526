@@ -325,7 +325,15 @@ tage_map = {
 }
 
 # Tag: leer, wenn kein Datum vorhanden
-df_all["Tag"] = df_all["Datum_DT"].dt.day_name().map(tage_map).fillna("")
+def safe_weekday(dt):
+    if pd.isna(dt):
+        return ""
+    try:
+        return tage_map.get(dt.day_name(), "")
+    except Exception:
+        return ""
+
+df_all["Tag"] = df_all["Datum_DT"].apply(safe_weekday)
 
 # Woche nur berechnen, wenn Datum existiert
 df_all["Woche_Start"] = df_all["Datum_DT"].apply(
