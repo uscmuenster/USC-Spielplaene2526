@@ -30,23 +30,35 @@ for event in events:
     lines = event.strip().splitlines()
 
     # Gegner suchen
-    summary_line = next((line for line in lines if line.startswith("SUMMARY:Uni Baskets Münster - ")), None)
+    summary_line = next((line for line in lines if line.startswith("SUMMARY:")), None)
     if not summary_line:
         continue
 
-    gegner = summary_line.replace("SUMMARY:Uni Baskets Münster - ", "").strip()
+    summary = summary_line.replace("SUMMARY:", "").strip()
 
-    dtstart_line = next((line for line in lines if line.startswith("DTSTART;TZID=Europe/Berlin:")), None)
+    # Nur Heimspiele: "Uni Baskets Münster vs XYZ"
+    if not summary.startswith("ProA Spiel Uni Baskets Münster vs "):
+        continue
+
+    gegner = summary.replace("ProA Spiel Uni Baskets Münster vs ", "").strip()
+
+    dtstart_line = next(
+        (line for line in lines if line.startswith("DTSTART")),
+        None
+    )
     if not dtstart_line:
         continue
 
+    dt_str = dtstart_line.split(":")[1].strip()
+
     try:
-        dt_str = dtstart_line.split(":")[1]
-        dt = datetime.strptime(dt_str, "%Y%m%dT%H%M%S")  # <-- jetzt korrekt mit Sekunden
+        if len(dt_str) == 15:  # YYYYMMDDTHHMMSS
+            dt = datetime.strptime(dt_str, "%Y%m%dT%H%M%S")
+        else:                  # YYYYMMDDTHHMM
+            dt = datetime.strptime(dt_str, "%Y%m%dT%H%M")
         dt = berlin.localize(dt)
-        heimspiele.append((dt.strftime("%d.%m.%Y"), dt.strftime("%H:%M"), gegner))
     except Exception as e:
-        print(f"⚠️ Fehler beim Datum: {e}")
+        print(f"⚠️ Fehler beim Datum '{dt_str}': {e}")
         continue
 
 # CSV schreiben
