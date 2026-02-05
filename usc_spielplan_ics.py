@@ -52,7 +52,7 @@ def normalize_columns(df: pd.DataFrame) -> pd.DataFrame:
         df["Datum"] = parts[0].str.strip()
         df["Uhrzeit"] = parts[1].str.strip() if parts.shape[1] > 1 else ""
 
-    # Spalten garantieren
+    # Pflichtspalten garantieren
     for col in ["Datum", "Uhrzeit", "Heim", "Gast", "SR", "Gastgeber", "Ort", "Spielrunde"]:
         if col not in df.columns:
             df[col] = ""
@@ -121,7 +121,6 @@ for file, team_code in csv_files:
 
     df = normalize_columns(df)
     df = df[df.apply(contains_usc, axis=1)]
-
     df["USC_Team"] = team_code
 
     for col in ["Heim", "Gast", "SR", "Gastgeber", "Ort", "Spielrunde"]:
@@ -130,7 +129,7 @@ for file, team_code in csv_files:
             axis=1
         )
 
-    # Datum + Uhrzeit (robust, vektorisiert)
+    # Datum + Uhrzeit → DATETIME (robust, vektorisiert)
     df["DATETIME"] = pd.to_datetime(
         df["Datum"].astype(str).str.strip() + " " +
         df["Uhrzeit"].astype(str).str.strip(),
@@ -188,8 +187,13 @@ def generate_ics(df: pd.DataFrame, output="docs/usc_spielplan.ics"):
             start = berlin.localize(row["DATETIME"])
             end = start + timedelta(hours=2)
 
+            uid = (
+                f"{start.strftime('%Y%m%dT%H%M')}-"
+                f"{row['Heim']}-vs-{row['Gast']}@usc"
+            ).replace(" ", "")
+
             f.write("BEGIN:VEVENT\n")
-            f.write(f"UID:{start.strftime('%Y%m%dT%H%M')}-{row['Heim']}-vs-{row['Gast']}@usc\n")
+            f.write(f"UID:{uid}\n")
             f.write(f"DTSTAMP:{datetime.utcnow().strftime('%Y%m%dT%H%M%SZ')}\n")
             f.write(f"DTSTART:{start.astimezone(utc).strftime('%Y%m%dT%H%M%SZ')}\n")
             f.write(f"DTEND:{end.astimezone(utc).strftime('%Y%m%dT%H%M%SZ')}\n")
