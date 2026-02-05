@@ -153,6 +153,12 @@ if not dfs:
 
 df_all = pd.concat(dfs, ignore_index=True)
 
+if "DATETIME" not in df_all.columns:
+    raise RuntimeError(
+        "❌ Spalte 'DATETIME' fehlt nach dem Zusammenführen. "
+        "Mindestens eine CSV erzeugt kein gültiges Datum."
+    )
+
 # =========================
 # Heimspiele filtern
 # =========================
@@ -163,10 +169,13 @@ def is_hosting_and_playing(row) -> bool:
     return gastgeber and playing
 
 
-df_all = (
-    df_all[df_all.apply(is_hosting_and_playing, axis=1)]
-    .sort_values("DATETIME")
-)
+df_all = df_all[df_all.apply(is_hosting_and_playing, axis=1)]
+
+# Nur sortieren, wenn DATETIME wirklich da ist
+if "DATETIME" in df_all.columns:
+    df_all = df_all.sort_values("DATETIME")
+else:
+    raise RuntimeError("❌ Sortierung nicht möglich: DATETIME fehlt")
 
 # =========================
 # ICS erzeugen
