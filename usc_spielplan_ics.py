@@ -46,13 +46,11 @@ def normalize_columns(df: pd.DataFrame) -> pd.DataFrame:
         "Spielrunde": "Spielrunde",
     })
 
-    # Kombi-Datum auftrennen
     if "Datum_Uhrzeit" in df.columns and "Datum" not in df.columns:
         parts = df["Datum_Uhrzeit"].astype(str).str.split(",", n=1, expand=True)
         df["Datum"] = parts[0].str.strip()
         df["Uhrzeit"] = parts[1].str.strip() if parts.shape[1] > 1 else ""
 
-    # Pflichtspalten garantieren
     for col in ["Datum", "Uhrzeit", "Heim", "Gast", "SR", "Gastgeber", "Ort", "Spielrunde"]:
         if col not in df.columns:
             df[col] = ""
@@ -61,10 +59,7 @@ def normalize_columns(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def contains_usc(row) -> bool:
-    text = " ".join(
-        str(row[c]).lower()
-        for c in ["Heim", "Gast", "SR", "Gastgeber"]
-    )
+    text = " ".join(str(row[c]).lower() for c in ["Heim", "Gast", "SR", "Gastgeber"])
     return any(k in text for k in usc_keywords)
 
 
@@ -124,40 +119,22 @@ for file, team_code in csv_files:
     df["USC_Team"] = team_code
 
     for col in ["Heim", "Gast", "SR", "Gastgeber", "Ort", "Spielrunde"]:
-        df[col] = df.apply(
-            lambda r: replace_usc_names(r[col], r["USC_Team"]),
-            axis=1
-        )
+        df[col] = df.apply(lambda r: replace_usc_names(r[col], r["USC_Team"]), axis=1)
 
-    # Datum + Uhrzeit → DATETIME (robust, vektorisiert)
+    # 🔑 DATETIME IMMER erzeugen (auch wenn leer!)
     df["DATETIME"] = pd.to_datetime(
         df["Datum"].astype(str).str.strip() + " " +
         df["Uhrzeit"].astype(str).str.strip(),
-        format="%d.%m.%Y %H:%M:%S",
-        errors="coerce"
+        errors="coerce",
+        dayfirst=True
     )
 
-    mask = df["DATETIME"].isna()
-    df.loc[mask, "DATETIME"] = pd.to_datetime(
-        df.loc[mask, "Datum"].astype(str).str.strip() + " " +
-        df.loc[mask, "Uhrzeit"].astype(str).str.strip(),
-        format="%d.%m.%Y %H:%M",
-        errors="coerce"
-    )
-
-    df = df.dropna(subset=["DATETIME"])
     dfs.append(df)
 
 if not dfs:
     raise RuntimeError("❌ Keine gültigen Spiele gefunden")
 
 df_all = pd.concat(dfs, ignore_index=True)
-
-if "DATETIME" not in df_all.columns:
-    raise RuntimeError(
-        "❌ Spalte 'DATETIME' fehlt nach dem Zusammenführen. "
-        "Mindestens eine CSV erzeugt kein gültiges Datum."
-    )
 
 # =========================
 # Heimspiele filtern
@@ -168,14 +145,10 @@ def is_hosting_and_playing(row) -> bool:
     playing = str(row["Heim"]).startswith("USC") or str(row["Gast"]).startswith("USC")
     return gastgeber and playing
 
-
 df_all = df_all[df_all.apply(is_hosting_and_playing, axis=1)]
 
-# Nur sortieren, wenn DATETIME wirklich da ist
-if "DATETIME" in df_all.columns:
-    df_all = df_all.sort_values("DATETIME")
-else:
-    raise RuntimeError("❌ Sortierung nicht möglich: DATETIME fehlt")
+# 🔑 erst jetzt NaT entfernen & sortieren
+df_all = df_all.dropna(subset=["DATETIME"]).sort_values("DATETIME")
 
 # =========================
 # ICS erzeugen
@@ -188,21 +161,14 @@ def generate_ics(df: pd.DataFrame, output="docs/usc_spielplan.ics"):
     Path("docs").mkdir(exist_ok=True)
 
     with open(output, "w", encoding="utf-8") as f:
-        f.write("BEGIN:VCALENDAR\n")
-        f.write("VERSION:2.0\n")
-        f.write("PRODID:-//USC Münster//Spielplan//DE\n")
+        f.write("BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//USC Münster//Spielplan//DE\n")
 
         for _, row in df.iterrows():
             start = berlin.localize(row["DATETIME"])
             end = start + timedelta(hours=2)
 
-            uid = (
-                f"{start.strftime('%Y%m%dT%H%M')}-"
-                f"{row['Heim']}-vs-{row['Gast']}@usc"
-            ).replace(" ", "")
-
             f.write("BEGIN:VEVENT\n")
-            f.write(f"UID:{uid}\n")
+            f.write(f"UID:{start.strftime('%Y%m%dT%H%M')}-{row['Heim']}-vs-{row['Gast']}@usc\n")
             f.write(f"DTSTAMP:{datetime.utcnow().strftime('%Y%m%dT%H%M%SZ')}\n")
             f.write(f"DTSTART:{start.astimezone(utc).strftime('%Y%m%dT%H%M%SZ')}\n")
             f.write(f"DTEND:{end.astimezone(utc).strftime('%Y%m%dT%H%M%SZ')}\n")
