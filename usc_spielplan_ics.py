@@ -3,6 +3,8 @@ from datetime import datetime, timedelta
 import pandas as pd
 from pytz import timezone
 
+from schedule_utils import load_csv_robust, normalize_schedule_datetime, get_datetime_sort_columns
+
 # =========================
 # Konfiguration
 # =========================
@@ -45,11 +47,7 @@ def normalize_columns(df: pd.DataFrame) -> pd.DataFrame:
         "Austragungsort": "Ort",
         "Spielrunde": "Spielrunde",
     })
-
-    if "Datum_Uhrzeit" in df.columns and "Datum" not in df.columns:
-        parts = df["Datum_Uhrzeit"].astype(str).str.split(",", n=1, expand=True)
-        df["Datum"] = parts[0].str.strip()
-        df["Uhrzeit"] = parts[1].str.strip() if parts.shape[1] > 1 else ""
+    df = normalize_schedule_datetime(df)
 
     for col in ["Datum", "Uhrzeit", "Heim", "Gast", "SR", "Gastgeber", "Ort", "Spielrunde"]:
         if col not in df.columns:
@@ -109,23 +107,9 @@ for file, team_code in csv_files:
     if not path.exists():
         continue
 
-    df = pd.read_csv(
-        path,
-        sep=";",
-        encoding="cp1252",
-        engine="python",
-        on_bad_lines="skip"
-    )
-
+    df = load_csv_robust(path, sep=";")
+    print(f"🔎 {file}: {df.columns.tolist()}")
     df = normalize_columns(df)
-
-    # 👉 DATETIME IMMER anlegen (entscheidend!)
-    df["DATETIME"] = pd.to_datetime(
-        df["Datum"].astype(str).str.strip() + " " +
-        df["Uhrzeit"].astype(str).str.strip(),
-        errors="coerce",
-        dayfirst=True
-    )
 
     df = df[df.apply(contains_usc, axis=1)]
     df["USC_Team"] = team_code
@@ -154,10 +138,10 @@ def is_hosting_and_playing(row) -> bool:
     playing = str(row["Heim"]).startswith("USC") or str(row["Gast"]).startswith("USC")
     return gastgeber and playing
 
-df_all = (
-    df_all[df_all.apply(is_hosting_and_playing, axis=1)]
-    .sort_values("DATETIME")
-)
+df_all = df_all[df_all.apply(is_hosting_and_playing, axis=1)]
+sort_cols = get_datetime_sort_columns(df_all)
+if sort_cols:
+    df_all = df_all.sort_values(sort_cols)
 
 # =========================
 # ICS erzeugen

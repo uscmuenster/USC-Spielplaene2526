@@ -3,37 +3,7 @@ from datetime import datetime
 import pandas as pd
 import os
 
-def load_csv_robust(file_path):
-    """
-    Robuster CSV-Loader:
-    - erkennt HTML-Fehlerseiten
-    - testet Encoding automatisch
-    - ignoriert kaputte Quotes
-    - überspringt defekte Zeilen
-    """
-
-    # Schnellcheck auf HTML statt CSV
-    with open(file_path, "r", encoding="utf-8", errors="ignore") as f:
-        head = f.read(1000).lower()
-
-    if "<html" in head or "doctype" in head:
-        raise RuntimeError(f"❌ Keine gültige CSV (HTML erhalten): {file_path}")
-
-    # Encoding testen
-    for enc in ["cp1252", "utf-8"]:
-        try:
-            return pd.read_csv(
-                file_path,
-                sep=";",
-                encoding=enc,
-                engine="python",     # toleranter Parser
-                quoting=3,           # IGNORIERT fehlerhafte Quotes
-                on_bad_lines="skip"  # überspringt kaputte Zeilen
-            )
-        except Exception:
-            continue
-
-    raise RuntimeError(f"❌ CSV konnte nicht gelesen werden: {file_path}")
+from schedule_utils import load_csv_robust, normalize_schedule_datetime, get_datetime_sort_columns
 
 
 # Verzeichnis
@@ -58,6 +28,7 @@ csv_files = [
 usc_keywords = ["USC Münster", "USC Muenster", "USC MÜNSTER"]
 
 rename_map = {
+    "Datum und Uhrzeit": "Datum_Uhrzeit",
     "Datum": "Datum",
     "Uhrzeit": "Uhrzeit",
     "Mannschaft 1": "Heim",
@@ -74,7 +45,9 @@ for file, team_code in csv_files:
     file_path = csv_dir / file
     df = load_csv_robust(file_path)
     df.columns = df.columns.str.strip()
+    print(f"🔎 {file}: {df.columns.tolist()}")
     df = df.rename(columns=rename_map)
+    df = normalize_schedule_datetime(df)
 
     def contains_usc(row):
         return any(usc.lower() in str(row[f]).lower() for f in ["Heim", "Gast", "SR", "Gastgeber"] for usc in usc_keywords)
@@ -144,6 +117,7 @@ def parse_datum(s):
         return pd.NaT
 
 df_all["Datum_DT"] = df_all["Datum"].apply(parse_datum)
+df_all = normalize_schedule_datetime(df_all)
 tage_map = {
     "Monday": "Mo", "Tuesday": "Di", "Wednesday": "Mi", "Thursday": "Do",
     "Friday": "Fr", "Saturday": "Sa", "Sunday": "So"
@@ -165,7 +139,9 @@ for col in ["Heim", "Gast", "SR", "Gastgeber"]:
     df_all[col] = df_all[col].str.replace(r'\b(USC-[U\d]+-\d) II\b', r'\1', regex=True)
 
 # Sortierung
-df_all = df_all.sort_values(by=["Datum_DT", "Uhrzeit"])
+sort_cols = get_datetime_sort_columns(df_all)
+if sort_cols:
+    df_all = df_all.sort_values(by=sort_cols)
 
 
 # Prüfe DataFrame

@@ -5,6 +5,7 @@ import html
 from pytz import timezone
 import re
 
+from schedule_utils import load_csv_robust, normalize_schedule_datetime, get_datetime_sort_columns
 from usc_team_links import build_team_table_overview
 
 
@@ -88,26 +89,11 @@ for file, team_code in csv_files:
         print(f"⚠️ CSV fehlt, übersprungen: {file_path}")
         continue
 
-    df = pd.read_csv(
-        file_path,
-        sep=";",
-        encoding="cp1252",
-        engine="python",      # toleranter Parser
-        on_bad_lines="skip"   # defekte Zeilen überspringen
-    )
+    df = load_csv_robust(file_path, sep=";")
     df.columns = df.columns.str.strip()
+    print(f"🔎 {file}: {df.columns.tolist()}")
     df = df.rename(columns=rename_map)
-
-    # --- Datum/Uhrzeit normalisieren ---
-    if "Datum_Uhrzeit" in df.columns and ("Datum" not in df.columns or "Uhrzeit" not in df.columns):
-        # Beispielwert: "20.09.2025, 15:00:00"
-        parts = df["Datum_Uhrzeit"].astype(str).str.split(",", n=1, expand=True)
-
-        df["Datum"] = parts[0].astype(str).str.strip()
-        if parts.shape[1] > 1:
-            df["Uhrzeit"] = parts[1].astype(str).str.strip()
-        else:
-            df["Uhrzeit"] = ""
+    df = normalize_schedule_datetime(df)
 
 
     required_cols = {"Datum", "Uhrzeit", "Heim", "Gast"}
@@ -227,6 +213,7 @@ def parse_datum(s):
         return pd.NaT
 
 df_all["Datum_DT"] = df_all["Datum"].apply(parse_datum)
+df_all = normalize_schedule_datetime(df_all)
 tage_map = {
     "Monday": "Mo", "Tuesday": "Di", "Wednesday": "Mi", "Thursday": "Do",
     "Friday": "Fr", "Saturday": "Sa", "Sunday": "So"
@@ -287,13 +274,15 @@ for col in ["Heim", "Gast", "SR", "Gastgeber"]:
         .str.replace(r'\b(USC-[U\d]+-\d) II\b', r'\1', regex=True)
     )
 
-df_all = df_all.sort_values(by=["Datum_DT", "Uhrzeit"])
+sort_cols = get_datetime_sort_columns(df_all)
+if sort_cols:
+    df_all = df_all.sort_values(by=sort_cols)
 
 # 🔴 Änderung 1: Vergangene Spiele mit Ergebnis ohne USC ausfiltern
 now = datetime.now(timezone("Europe/Berlin")).replace(tzinfo=None)
 df_all = df_all[~(
     (df_all["Ergebnis"].str.strip() != "") &
-    (df_all["Datum_DT"] < now) &
+    (df_all["DATETIME"].fillna(df_all["Datum_DT"]) < now) &
     ~(df_all["Heim"].str.contains("USC")) &
     ~(df_all["Gast"].str.contains("USC"))
 )]
@@ -340,7 +329,7 @@ table_rows = "\n".join(
     + f' data-spielrunde="{escape_text(row.get("Spielrunde", ""))}"'
     + f' data-ort="{escape_text(row.get("Ort", ""))}"'
     + f' data-week="{safe_date_attr(row.get("Woche_Start"))}"'
-    + f' data-datum="{safe_date_attr(row.get("Datum_DT"))}">'
+    + f' data-datum="{safe_date_attr(row.get("DATETIME", row.get("Datum_DT")))}">'
     + render_cells(row)
     + "</tr>"
     for _, row in df_all.iterrows()
