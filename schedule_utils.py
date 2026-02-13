@@ -47,7 +47,10 @@ def normalize_schedule_datetime(df: pd.DataFrame) -> pd.DataFrame:
             df["Uhrzeit"] = ""
 
         split_datum = parts[0].astype(str).str.strip()
-        split_uhrzeit = parts[1].astype(str).str.strip() if parts.shape[1] > 1 else ""
+        if parts.shape[1] > 1:
+            split_uhrzeit = parts[1].astype(str).str.strip()
+        else:
+            split_uhrzeit = pd.Series("", index=df.index)
 
         datum_missing = df["Datum"].astype(str).str.strip().eq("")
         uhrzeit_missing = df["Uhrzeit"].astype(str).str.strip().eq("")
@@ -61,17 +64,31 @@ def normalize_schedule_datetime(df: pd.DataFrame) -> pd.DataFrame:
         df["Uhrzeit"] = ""
 
     df["Datum"] = df["Datum"].astype(str).str.strip()
-    df["Uhrzeit"] = df["Uhrzeit"].astype(str).str.strip()
+    df["Uhrzeit"] = df["Uhrzeit"].astype(str).str.replace(r"\s*Uhr$", "", regex=True).str.strip()
 
-    df["DATETIME"] = pd.to_datetime(
-        df["Datum"].astype(str) + " " + df["Uhrzeit"].astype(str),
-        errors="coerce",
-        dayfirst=True,
-    )
+    datetime_input = df["Datum"].astype(str) + " " + df["Uhrzeit"].astype(str)
+    df["DATETIME"] = pd.to_datetime(datetime_input, format="%d.%m.%Y %H:%M", errors="coerce")
+
+    datetime_missing = df["DATETIME"].isna()
+    if datetime_missing.any():
+        df.loc[datetime_missing, "DATETIME"] = pd.to_datetime(
+            datetime_input[datetime_missing],
+            errors="coerce",
+            dayfirst=True,
+        )
+
     if "Datum_DT" not in df.columns:
-        df["Datum_DT"] = pd.to_datetime(df["Datum"], errors="coerce", dayfirst=True)
+        df["Datum_DT"] = pd.to_datetime(df["Datum"], format="%d.%m.%Y", errors="coerce")
     else:
-        df["Datum_DT"] = pd.to_datetime(df["Datum_DT"], errors="coerce", dayfirst=True)
+        df["Datum_DT"] = pd.to_datetime(df["Datum_DT"], errors="coerce")
+
+    datum_missing = df["Datum_DT"].isna()
+    if datum_missing.any():
+        df.loc[datum_missing, "Datum_DT"] = pd.to_datetime(
+            df.loc[datum_missing, "Datum"],
+            errors="coerce",
+            dayfirst=True,
+        )
 
     return df
 
