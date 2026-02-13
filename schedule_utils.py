@@ -54,17 +54,14 @@ def normalize_schedule_datetime(df: pd.DataFrame) -> pd.DataFrame:
         source_col = "Datum_Uhrzeit"
 
     if source_col is not None:
-        parts = df[source_col].astype(str).str.split(",", n=1, expand=True)
+        split_parts = df[source_col].astype(str).str.split(",", n=1)
         if "Datum" not in df.columns:
             df["Datum"] = ""
         if "Uhrzeit" not in df.columns:
             df["Uhrzeit"] = ""
 
-        split_datum = parts[0].astype(str).str.strip()
-        if parts.shape[1] > 1:
-            split_uhrzeit = parts[1].astype(str).str.strip()
-        else:
-            split_uhrzeit = pd.Series("", index=df.index)
+        split_datum = split_parts.str[0].fillna("").astype(str).str.strip()
+        split_uhrzeit = split_parts.str[1].fillna("").astype(str).str.strip()
 
         datum_missing = df["Datum"].astype(str).str.strip().eq("")
         uhrzeit_missing = df["Uhrzeit"].astype(str).str.strip().eq("")
