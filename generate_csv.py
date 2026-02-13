@@ -3,6 +3,39 @@ from datetime import datetime
 import pandas as pd
 import os
 
+def load_csv_robust(file_path):
+    """
+    Robuster CSV-Loader:
+    - erkennt HTML-Fehlerseiten
+    - testet Encoding automatisch
+    - ignoriert kaputte Quotes
+    - überspringt defekte Zeilen
+    """
+
+    # Schnellcheck auf HTML statt CSV
+    with open(file_path, "r", encoding="utf-8", errors="ignore") as f:
+        head = f.read(1000).lower()
+
+    if "<html" in head or "doctype" in head:
+        raise RuntimeError(f"❌ Keine gültige CSV (HTML erhalten): {file_path}")
+
+    # Encoding testen
+    for enc in ["cp1252", "utf-8"]:
+        try:
+            return pd.read_csv(
+                file_path,
+                sep=";",
+                encoding=enc,
+                engine="python",     # toleranter Parser
+                quoting=3,           # IGNORIERT fehlerhafte Quotes
+                on_bad_lines="skip"  # überspringt kaputte Zeilen
+            )
+        except Exception:
+            continue
+
+    raise RuntimeError(f"❌ CSV konnte nicht gelesen werden: {file_path}")
+
+
 # Verzeichnis
 csv_dir = Path("csvdata")
 
@@ -39,7 +72,7 @@ dfs = []
 
 for file, team_code in csv_files:
     file_path = csv_dir / file
-    df = pd.read_csv(file_path, sep=";", encoding="cp1252")
+    df = load_csv_robust(file_path)
     df.columns = df.columns.str.strip()
     df = df.rename(columns=rename_map)
 
