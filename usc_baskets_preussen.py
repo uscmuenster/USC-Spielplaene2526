@@ -89,17 +89,27 @@ for file, team_code in csv_files:
         if required_col not in df.columns:
             df[required_col] = ""
 
+    def row_text(row):
+        fields = [
+            "Heim",
+            "Gast",
+            "SR",
+            "Gastgeber",
+            "Mannschaft 1: Verein",
+            "Mannschaft 2: Verein",
+            "Schiedsgericht: Verein",
+            "Gastgeber: Verein",
+        ]
+        return " ".join(str(row.get(f, "")) for f in fields).lower()
+
     def contains_usc(row):
-        return any(
-            usc.lower() in str(row.get(f, "")).lower()
-            for f in ["Heim", "Gast", "SR", "Gastgeber"]
-            for usc in usc_keywords
-        )
+        text = row_text(row)
+        return ("usc" in text) or any(usc.lower() in text for usc in usc_keywords)
 
     df = df[df.apply(contains_usc, axis=1)]
 
     def get_usc_team(row):
-        text = f"{row.get('Heim', '')} {row.get('Gast', '')} {row.get('SR', '')} {row.get('Gastgeber', '')}".lower()
+        text = row_text(row)
         teams = []
         if file == "Spielplan_Bezirksklasse_26_Frauen.csv":
             if re.search(r"\busc münster vi\b", text):
