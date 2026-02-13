@@ -19,20 +19,6 @@ def load_csv_robust(file_path: Path, sep: str = ";") -> pd.DataFrame:
                 sep=sep,
                 encoding=enc,
                 engine="python",
-                quoting=csv.QUOTE_MINIMAL,
-                on_bad_lines="skip",
-            )
-        except Exception as exc:  # noqa: PERF203
-            last_error = exc
-
-    # Fallback: falls einzelne Exporte kaputte Quote-Strukturen enthalten.
-    for enc in ("cp1252", "utf-8", "utf-8-sig", "latin1"):
-        try:
-            return pd.read_csv(
-                file_path,
-                sep=sep,
-                encoding=enc,
-                engine="python",
                 quoting=csv.QUOTE_NONE,
                 on_bad_lines="skip",
             )
@@ -82,14 +68,6 @@ def normalize_schedule_datetime(df: pd.DataFrame) -> pd.DataFrame:
 
     datetime_input = df["Datum"].astype(str) + " " + df["Uhrzeit"].astype(str)
     df["DATETIME"] = pd.to_datetime(datetime_input, format="%d.%m.%Y %H:%M", errors="coerce")
-
-    datetime_missing = df["DATETIME"].isna()
-    if datetime_missing.any():
-        df.loc[datetime_missing, "DATETIME"] = pd.to_datetime(
-            datetime_input[datetime_missing],
-            format="%d.%m.%Y %H:%M:%S",
-            errors="coerce",
-        )
 
     datetime_missing = df["DATETIME"].isna()
     if datetime_missing.any():
