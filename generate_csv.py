@@ -19,21 +19,26 @@ def load_csv_robust(file_path):
     if "<html" in head or "doctype" in head:
         raise RuntimeError(f"❌ Keine gültige CSV (HTML erhalten): {file_path}")
 
-    # Encoding testen
-    for enc in ["cp1252", "utf-8"]:
-        try:
-            return pd.read_csv(
-                file_path,
-                sep=";",
-                encoding=enc,
-                engine="python",     # toleranter Parser
-                quoting=3,           # IGNORIERT fehlerhafte Quotes
-                on_bad_lines="skip"  # überspringt kaputte Zeilen
-            )
-        except Exception:
-            continue
+    try:
+        df = pd.read_csv(
+            file_path,
+            sep=";",
+            encoding="utf-8-sig",
+            engine="python",     # toleranter Parser
+            quoting=3,            # ignoriert fehlerhafte Quotes
+            on_bad_lines="skip"  # überspringt kaputte Zeilen
+        )
+    except Exception as exc:
+        raise RuntimeError(f"❌ CSV konnte nicht gelesen werden: {file_path}") from exc
 
-    raise RuntimeError(f"❌ CSV konnte nicht gelesen werden: {file_path}")
+    df.columns = (
+        df.columns.astype(str)
+        .str.replace("\ufeff", "", regex=False)
+        .str.strip()
+    )
+    df = df.loc[:, ~df.columns.str.contains("^Unnamed")]
+    df = df.dropna(axis=1, how="all")
+    return df
 
 
 # Verzeichnis

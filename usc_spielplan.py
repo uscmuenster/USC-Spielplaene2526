@@ -82,20 +82,32 @@ rename_map = {
 
 dfs = []
 
+
+def read_csv_clean(path: Path) -> pd.DataFrame:
+    df = pd.read_csv(
+        path,
+        sep=";",
+        encoding="utf-8-sig",
+        engine="python",
+        on_bad_lines="skip",
+    )
+
+    df.columns = (
+        df.columns.astype(str)
+        .str.replace("\ufeff", "", regex=False)
+        .str.strip()
+    )
+    df = df.loc[:, ~df.columns.str.contains("^Unnamed")]
+    df = df.dropna(axis=1, how="all")
+    return df
+
 for file, team_code in csv_files:
     file_path = csv_dir / file
     if not file_path.exists():
         print(f"⚠️ CSV fehlt, übersprungen: {file_path}")
         continue
 
-    df = pd.read_csv(
-        file_path,
-        sep=";",
-        encoding="utf-8-sig",
-        engine="python",      # toleranter Parser
-        on_bad_lines="skip"   # defekte Zeilen überspringen
-    )
-    df.columns = df.columns.str.strip()
+    df = read_csv_clean(file_path)
     df = df.rename(columns=rename_map)
 
     # --- Datum/Uhrzeit normalisieren ---

@@ -58,6 +58,24 @@ def normalize_columns(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
+def read_csv_clean(path: Path) -> pd.DataFrame:
+    df = pd.read_csv(
+        path,
+        sep=";",
+        encoding="utf-8-sig",
+        engine="python",
+        on_bad_lines="skip"
+    )
+    df.columns = (
+        df.columns.astype(str)
+        .str.replace("\ufeff", "", regex=False)
+        .str.strip()
+    )
+    df = df.loc[:, ~df.columns.str.contains("^Unnamed")]
+    df = df.dropna(axis=1, how="all")
+    return df
+
+
 def contains_usc(row) -> bool:
     text = " ".join(
         str(row[c]).lower()
@@ -109,13 +127,7 @@ for file, team_code in csv_files:
     if not path.exists():
         continue
 
-    df = pd.read_csv(
-        path,
-        sep=";",
-        encoding="utf-8-sig",
-        engine="python",
-        on_bad_lines="skip"
-    )
+    df = read_csv_clean(path)
 
     df = normalize_columns(df)
 
