@@ -71,7 +71,12 @@ dfs = []
 for file, team_code in csv_files:
     file_path = csv_dir / file
     df = load_csv_robust(file_path, sep=";")
-    df.columns = df.columns.str.strip()
+    df.columns = (
+        df.columns
+        .str.strip()
+        .str.strip('"')
+        .str.replace("\ufeff", "", regex=False)
+    )
     print(f"🔎 {file}: {df.columns.tolist()}")
     df = df.rename(columns=rename_map)
     df = normalize_schedule_datetime(df)
@@ -80,13 +85,21 @@ for file, team_code in csv_files:
     if "Ergebnis" not in df.columns:
         df["Ergebnis"] = ""
 
+    for required_col in ["Heim", "Gast", "SR", "Gastgeber", "Ort", "Spielrunde"]:
+        if required_col not in df.columns:
+            df[required_col] = ""
+
     def contains_usc(row):
-        return any(usc.lower() in str(row[f]).lower() for f in ["Heim", "Gast", "SR", "Gastgeber"] for usc in usc_keywords)
+        return any(
+            usc.lower() in str(row.get(f, "")).lower()
+            for f in ["Heim", "Gast", "SR", "Gastgeber"]
+            for usc in usc_keywords
+        )
 
     df = df[df.apply(contains_usc, axis=1)]
 
     def get_usc_team(row):
-        text = f"{row['Heim']} {row['Gast']} {row['SR']} {row['Gastgeber']}".lower()
+        text = f"{row.get('Heim', '')} {row.get('Gast', '')} {row.get('SR', '')} {row.get('Gastgeber', '')}".lower()
         teams = []
         if file == "Spielplan_Bezirksklasse_26_Frauen.csv":
             if re.search(r"\busc münster vi\b", text):
