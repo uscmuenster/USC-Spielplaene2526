@@ -5,6 +5,7 @@ import html
 from pytz import timezone
 import re
 
+from schedule_utils import load_csv_robust, normalize_schedule_datetime, get_datetime_sort_columns
 from usc_team_links import build_team_table_overview
 
 
@@ -54,6 +55,7 @@ csv_files = [
 usc_keywords = ["USC Münster", "USC Muenster", "USC MÜNSTER"]
 
 rename_map = {
+    "Datum und Uhrzeit": "Datum_Uhrzeit",
     "Datum": "Datum",
     "Uhrzeit": "Uhrzeit",
     "Mannschaft 1": "Heim",
@@ -68,30 +70,11 @@ dfs = []
 
 for file, team_code in csv_files:
     file_path = csv_dir / file
-    df = pd.read_csv(
-        file_path,
-        sep=";",
-        encoding="cp1252",
-        engine="python",      # toleranter CSV-Parser
-        on_bad_lines="skip",   # defekte Zeilen überspringen
-        quotechar='"',
-    )
+    df = load_csv_robust(file_path, sep=";")
     df.columns = df.columns.str.strip()
+    print(f"🔎 {file}: {df.columns.tolist()}")
     df = df.rename(columns=rename_map)
-
-    # ===== Datum + Uhrzeit aus "Datum und Uhrzeit" =====
-    if "Datum und Uhrzeit" in df.columns:
-        dt = pd.to_datetime(
-            df["Datum und Uhrzeit"]
-            .astype(str)
-            .str.replace(",", "", regex=False)   # "11.10.2025, 17:15:00" → "11.10.2025 17:15:00"
-            .str.strip(),
-            format="%d.%m.%Y %H:%M:%S",
-            errors="coerce",
-        )
-
-        df["Datum"] = dt.dt.strftime("%d.%m.%Y")
-        df["Uhrzeit"] = dt.dt.strftime("%H:%M")
+    df = normalize_schedule_datetime(df)
 
 
     if "Ergebnis" not in df.columns:
@@ -315,8 +298,7 @@ df_all["Datum_DT"] = pd.to_datetime(
     format="%d.%m.%Y",
     errors="coerce"
 )
-
-
+df_all = normalize_schedule_datetime(df_all)
 
 
 tage_map = {
@@ -401,12 +383,9 @@ df_all = df_all.apply(clean_all_names, axis=1)
 for col in ["Heim", "Gast", "SR", "Gastgeber"]:
     df_all[col] = df_all[col].str.replace(r'\b(USC-[U\d]+-\d) II\b', r'\1', regex=True)
 
-df_all["_sort_dt"] = df_all["Datum_DT"].fillna(pd.Timestamp.max)
-df_all = (
-    df_all
-    .sort_values(by=["_sort_dt", "Uhrzeit"], kind="mergesort")
-    .drop(columns="_sort_dt")
-)
+sort_cols = get_datetime_sort_columns(df_all)
+if sort_cols:
+    df_all = df_all.sort_values(by=sort_cols, kind="mergesort")
 
 # 🔴 Spiele filtern
 now = datetime.now(timezone("Europe/Berlin")).replace(tzinfo=None)
@@ -414,9 +393,9 @@ now = datetime.now(timezone("Europe/Berlin")).replace(tzinfo=None)
 df_all = df_all[
     (df_all["Heim"].str.contains("USC", na=False) | df_all["Gast"].str.contains("USC", na=False))
     |
-    (df_all["Datum_DT"].isna())
+    (df_all["DATETIME"].fillna(df_all["Datum_DT"]).isna())
     |
-    (df_all["Datum_DT"] >= now)
+    (df_all["DATETIME"].fillna(df_all["Datum_DT"]) >= now)
 ]
 spielrunden = sorted(df_all["Spielrunde"].dropna().unique())
 orte = sorted([o for o in df_all["Ort"].dropna().unique() if "münster" in o.lower()])
@@ -451,7 +430,7 @@ table_rows = "\n".join(
     + f'data-teams="{escape_text(row["USC_Team"])}"'
     + f' data-spielrunde="{escape_text(row["Spielrunde"])}" data-ort="{escape_text(row["Ort"])}"'
     + f' data-week="{row["Woche_Start"].strftime("%Y-%m-%d") if pd.notna(row["Woche_Start"]) else ""}"'
-    + f' data-datum="{row["Datum_DT"].strftime("%Y-%m-%d") if pd.notna(row["Datum_DT"]) else ""}">'
+    + f' data-datum="{row["DATETIME"].strftime("%Y-%m-%d") if pd.notna(row["DATETIME"]) else (row["Datum_DT"].strftime("%Y-%m-%d") if pd.notna(row["Datum_DT"]) else "")}">'
     + render_cells(row)
     + "</tr>"
     for _, row in df_all.iterrows()
