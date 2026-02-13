@@ -5,8 +5,6 @@ import html
 from pytz import timezone
 import re
 
-from schedule_utils import load_csv_robust, normalize_schedule_datetime, get_datetime_sort_columns
-
 # Aktuelle MESZ-Zeit für Anzeige im HTML
 mesz_time = datetime.now(timezone("Europe/Berlin")).strftime("%d.%m.%Y %H:%M")
 stand_info = f'<p class="text-muted mt-3">Stand: {mesz_time} MESZ</p>'
@@ -38,7 +36,6 @@ csv_files = [
 usc_keywords = ["USC Münster", "USC Muenster", "USC MÜNSTER"]
 
 rename_map = {
-    "Datum und Uhrzeit": "Datum_Uhrzeit",
     "Datum": "Datum",
     "Uhrzeit": "Uhrzeit",
     "Mannschaft 1": "Heim",
@@ -53,11 +50,9 @@ dfs = []
 
 for file, team_code in csv_files:
     file_path = csv_dir / file
-    df = load_csv_robust(file_path, sep=";")
+    df = pd.read_csv(file_path, sep=";", encoding="cp1252")
     df.columns = df.columns.str.strip()
-    print(f"🔎 {file}: {df.columns.tolist()}")
     df = df.rename(columns=rename_map)
-    df = normalize_schedule_datetime(df)
 
     if "Ergebnis" not in df.columns:
         df["Ergebnis"] = ""
@@ -154,7 +149,6 @@ def parse_datum(s):
         return pd.NaT
 
 df_all["Datum_DT"] = df_all["Datum"].apply(parse_datum)
-df_all = normalize_schedule_datetime(df_all)
 tage_map = {
     "Monday": "Mo", "Tuesday": "Di", "Wednesday": "Mi", "Thursday": "Do",
     "Friday": "Fr", "Saturday": "Sa", "Sunday": "So"
@@ -181,9 +175,7 @@ df_all = df_all.apply(clean_all_names, axis=1)
 for col in ["Heim", "Gast", "SR", "Gastgeber"]:
     df_all[col] = df_all[col].str.replace(r'\b(USC-[U\d]+-\d) II\b', r'\1', regex=True)
 
-sort_cols = get_datetime_sort_columns(df_all)
-if sort_cols:
-    df_all = df_all.sort_values(by=sort_cols)
+df_all = df_all.sort_values(by=["Datum_DT", "Uhrzeit"])
 
 spielrunden = sorted(df_all["Spielrunde"].dropna().unique())
 orte = sorted([o for o in df_all["Ort"].dropna().unique() if "münster" in o.lower()])
