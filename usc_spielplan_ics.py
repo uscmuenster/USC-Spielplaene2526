@@ -112,7 +112,7 @@ for file, team_code in csv_files:
     df = pd.read_csv(
         path,
         sep=";",
-        encoding="cp1252",
+        encoding="utf-8-sig",
         engine="python",
         on_bad_lines="skip"
     )

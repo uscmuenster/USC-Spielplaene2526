@@ -91,7 +91,7 @@ for file, team_code in csv_files:
     df = pd.read_csv(
         file_path,
         sep=";",
-        encoding="cp1252",
+        encoding="utf-8-sig",
         engine="python",      # toleranter Parser
         on_bad_lines="skip"   # defekte Zeilen überspringen
     )

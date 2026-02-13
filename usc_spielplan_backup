@@ -50,7 +50,7 @@ dfs = []
 
 for file, team_code in csv_files:
     file_path = csv_dir / file
-    df = pd.read_csv(file_path, sep=";", encoding="cp1252")
+    df = pd.read_csv(file_path, sep=";", encoding="utf-8-sig")
     df.columns = df.columns.str.strip()
     df = df.rename(columns=rename_map)
 
