@@ -84,13 +84,22 @@ dfs = []
 
 
 def read_csv_clean(path: Path) -> pd.DataFrame:
-    df = pd.read_csv(
-        path,
-        sep=";",
-        encoding="utf-8-sig",
-        engine="python",
-        on_bad_lines="skip",
-    )
+    last_error = None
+    for encoding in ("utf-8-sig", "cp1252", "latin1"):
+        try:
+            df = pd.read_csv(
+                path,
+                sep=";",
+                encoding=encoding,
+                encoding_errors="replace",
+                engine="python",
+                on_bad_lines="skip",
+            )
+            break
+        except UnicodeDecodeError as exc:
+            last_error = exc
+    else:
+        raise last_error
 
     df.columns = (
         df.columns.astype(str)

@@ -82,6 +82,21 @@ def read_csv_clean(path: Path) -> pd.DataFrame:
     df = df.loc[:, ~df.columns.str.contains("^Unnamed")]
     df = df.dropna(axis=1, how="all")
     return df
+
+
+def read_csv_with_fallback(path: Path, **kwargs) -> pd.DataFrame:
+    last_error = None
+    for encoding in ("utf-8-sig", "cp1252", "latin1"):
+        try:
+            return pd.read_csv(
+                path,
+                encoding=encoding,
+                encoding_errors="replace",
+                **kwargs,
+            )
+        except UnicodeDecodeError as exc:
+            last_error = exc
+    raise last_error
 rename_map = {
     "Datum": "Datum",
     "Uhrzeit": "Uhrzeit",
@@ -243,7 +258,7 @@ for file, team_code in csv_files:
 
 # 🟧 Baskets-Spiele ergänzen
 baskets_file = Path("csv_Baskets/Baskets_2526_Heimspiele.csv")
-df_baskets = pd.read_csv(baskets_file)
+df_baskets = read_csv_with_fallback(baskets_file)
 
 df_baskets["Heim"] = "Uni Baskets Münster"
 df_baskets["Ort"] = "Sporthalle Berg Fidel (48153 Münster)"
@@ -286,7 +301,7 @@ if preussen_file is None:
     # Falls Datei (noch) nicht existiert, ohne Fehler fortfahren
     pass
 else:
-    df_preussen = pd.read_csv(preussen_file)
+    df_preussen = read_csv_with_fallback(preussen_file)
     # Flexible Spalten-Übernahme (falls mal "Uhrzeit" statt "Startzeit" o.ä.)
     col_map = {}
     if "Startzeit" in df_preussen.columns and "Uhrzeit" not in df_preussen.columns:
