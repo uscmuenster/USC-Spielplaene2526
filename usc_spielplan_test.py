@@ -48,10 +48,38 @@ rename_map = {
 
 dfs = []
 
+
+def read_csv_clean(path: Path) -> pd.DataFrame:
+    last_error = None
+    for encoding in ("utf-8-sig", "cp1252", "latin1"):
+        try:
+            df = pd.read_csv(
+                path,
+                sep=";",
+                encoding=encoding,
+                encoding_errors="replace",
+                engine="python",
+                on_bad_lines="skip",
+            )
+            break
+        except UnicodeDecodeError as exc:
+            last_error = exc
+    else:
+        raise last_error
+
+    df.columns = (
+        df.columns.astype(str)
+        .str.replace("﻿", "", regex=False)
+        .str.strip()
+    )
+    df = df.loc[:, ~df.columns.str.contains("^Unnamed")]
+    df = df.dropna(axis=1, how="all")
+    return df
+
+
 for file, team_code in csv_files:
     file_path = csv_dir / file
-    df = pd.read_csv(file_path, sep=";", encoding="utf-8-sig")
-    df.columns = df.columns.str.strip()
+    df = read_csv_clean(file_path)
     df = df.rename(columns=rename_map)
 
     if "Ergebnis" not in df.columns:
