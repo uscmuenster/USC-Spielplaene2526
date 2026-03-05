@@ -873,9 +873,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  n\n25. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
  /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
  ine.de/ical/loeschen
-DTSTAMP:20260305T110622Z
+DTSTAMP:20260305T170635Z
 CREATED:20250627T122633Z
-LAST-MODIFIED:20260305T110622Z
+LAST-MODIFIED:20260305T170635Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -897,9 +897,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  n\n26. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
  /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
  ine.de/ical/loeschen
-DTSTAMP:20260305T110626Z
+DTSTAMP:20260305T170640Z
 CREATED:20250627T122643Z
-LAST-MODIFIED:20260305T110626Z
+LAST-MODIFIED:20260305T170640Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -921,9 +921,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  n\n27. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
  /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
  ine.de/ical/loeschen
-DTSTAMP:20260305T110631Z
+DTSTAMP:20260305T170645Z
 CREATED:20250627T122651Z
-LAST-MODIFIED:20260305T110631Z
+LAST-MODIFIED:20260305T170645Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -933,80 +933,72 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:685e8e10af46b@7477.calovo
-DTSTART;TZID=Europe/Berlin;VALUE=DATE:20260404
+DTSTART;TZID=Europe/Berlin:20260405T133000
 SEQUENCE:0
 TRANSP:TRANSPARENT
 STATUS:CONFIRMED
-DTEND;TZID=Europe/Berlin;VALUE=DATE:20260406
+DTEND;TZID=Europe/Berlin:20260405T153000
 LOCATION:Holstein-Stadion
-SUMMARY:* Holstein Kiel - SC Preußen Münster | 2. Bundesliga | 28. Spielt
- ag
+SUMMARY:Holstein Kiel - SC Preußen Münster | 2. Bundesliga | 28. Spieltag
 DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
- n\n28. Spieltag\n\nAchtung: Der endgültige Spieltermin wurde noch nicht f
- estgelegt.\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de/bund
- esliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: termine.d
- e/ical/loeschen
-X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20260305T110633Z
+ n\n28. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
+ /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
+ ine.de/ical/loeschen
+DTSTAMP:20260305T170648Z
 CREATED:20250627T122656Z
-LAST-MODIFIED:20260305T110633Z
+LAST-MODIFIED:20260305T170648Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
-DESCRIPTION:Reminder: * Holstein Kiel - SC Preußen Münster | 2. Bundeslig
- a | 28. Spieltag
+DESCRIPTION:Reminder: Holstein Kiel - SC Preußen Münster | 2. Bundesliga 
+ | 28. Spieltag
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:685e8e1e666f1@7477.calovo
-DTSTART;TZID=Europe/Berlin;VALUE=DATE:20260410
+DTSTART;TZID=Europe/Berlin:20260411T130000
 SEQUENCE:0
 TRANSP:TRANSPARENT
 STATUS:CONFIRMED
-DTEND;TZID=Europe/Berlin;VALUE=DATE:20260413
+DTEND;TZID=Europe/Berlin:20260411T150000
 LOCATION:LVM-Preußenstadion
-SUMMARY:* SC Preußen Münster - SpVgg Greuther Fürth | 2. Bundesliga | 29
- . Spieltag
+SUMMARY:SC Preußen Münster - SpVgg Greuther Fürth | 2. Bundesliga | 29. 
+ Spieltag
 DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
- n\n29. Spieltag\n\nAchtung: Der endgültige Spieltermin wurde noch nicht f
- estgelegt.\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de/bund
- esliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: termine.d
- e/ical/loeschen
-X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20260305T110639Z
+ n\n29. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
+ /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
+ ine.de/ical/loeschen
+DTSTAMP:20260305T170654Z
 CREATED:20250627T122710Z
-LAST-MODIFIED:20260305T110639Z
+LAST-MODIFIED:20260305T170654Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
-DESCRIPTION:Reminder: * SC Preußen Münster - SpVgg Greuther Fürth | 2. B
- undesliga | 29. Spieltag
+DESCRIPTION:Reminder: SC Preußen Münster - SpVgg Greuther Fürth | 2. Bun
+ desliga | 29. Spieltag
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:685e9304904cb@7477.calovo
-DTSTART;TZID=Europe/Berlin;VALUE=DATE:20260417
+DTSTART;TZID=Europe/Berlin:20260419T133000
 SEQUENCE:0
 TRANSP:TRANSPARENT
 STATUS:CONFIRMED
-DTEND;TZID=Europe/Berlin;VALUE=DATE:20260420
+DTEND;TZID=Europe/Berlin:20260419T153000
 LOCATION:VELTINS-Arena
-SUMMARY:* FC Schalke 04 - SC Preußen Münster | 2. Bundesliga | 30. Spielt
- ag
+SUMMARY:FC Schalke 04 - SC Preußen Münster | 2. Bundesliga | 30. Spieltag
 DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
- n\n30. Spieltag\n\nAchtung: Der endgültige Spieltermin wurde noch nicht f
- estgelegt.\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de/bund
- esliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: termine.d
- e/ical/loeschen
-X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20260305T110642Z
+ n\n30. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
+ /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
+ ine.de/ical/loeschen
+DTSTAMP:20260305T170657Z
 CREATED:20250627T124804Z
-LAST-MODIFIED:20260305T110642Z
+LAST-MODIFIED:20260305T170657Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
-DESCRIPTION:Reminder: * FC Schalke 04 - SC Preußen Münster | 2. Bundeslig
- a | 30. Spieltag
+DESCRIPTION:Reminder: FC Schalke 04 - SC Preußen Münster | 2. Bundesliga 
+ | 30. Spieltag
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -1025,9 +1017,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  esliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: termine.d
  e/ical/loeschen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20260305T110646Z
+DTSTAMP:20260305T170704Z
 CREATED:20250627T124813Z
-LAST-MODIFIED:20260305T110646Z
+LAST-MODIFIED:20260305T170704Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1050,9 +1042,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  esliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: termine.d
  e/ical/loeschen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20260305T110649Z
+DTSTAMP:20260305T170709Z
 CREATED:20250627T124819Z
-LAST-MODIFIED:20260305T110649Z
+LAST-MODIFIED:20260305T170709Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1076,9 +1068,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  esliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: termine.d
  e/ical/loeschen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20260305T110653Z
+DTSTAMP:20260305T170714Z
 CREATED:20250627T124828Z
-LAST-MODIFIED:20260305T110653Z
+LAST-MODIFIED:20260305T170714Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1099,9 +1091,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  n\n34. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
  /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
  ine.de/ical/loeschen
-DTSTAMP:20260305T110657Z
+DTSTAMP:20260305T170719Z
 CREATED:20250627T124833Z
-LAST-MODIFIED:20260305T110657Z
+LAST-MODIFIED:20260305T170719Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
