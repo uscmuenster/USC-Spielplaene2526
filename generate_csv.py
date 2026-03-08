@@ -41,6 +41,7 @@ def load_csv_robust(file_path):
         df.columns.astype(str)
         .str.replace("\ufeff", "", regex=False)
         .str.strip()
+        .str.strip('"')
     )
     df = df.loc[:, ~df.columns.str.contains("^Unnamed")]
     df = df.dropna(axis=1, how="all")
@@ -80,10 +81,27 @@ rename_map = {
 }
 
 def normalize_columns(df):
+    df.columns = df.columns.astype(str).str.strip().str.strip('"')
+
+    if "Datum und Uhrzeit" in df.columns:
+        dt = (
+            df["Datum und Uhrzeit"]
+            .astype(str)
+            .str.strip()
+            .str.strip('"')
+        )
+        split_dt = dt.str.split(",", n=1, expand=True)
+        if "Datum" not in df.columns:
+            df["Datum"] = split_dt[0].str.strip()
+        if "Uhrzeit" not in df.columns:
+            df["Uhrzeit"] = split_dt[1].fillna("").str.strip()
+
     df = df.rename(columns=rename_map)
     for col in ["Datum", "Uhrzeit", "Heim", "Gast", "SR", "Gastgeber", "Ort", "Spielrunde"]:
         if col not in df.columns:
             df[col] = ""
+        else:
+            df[col] = df[col].astype(str).str.strip().str.strip('"')
     return df
 
 dfs = []
@@ -159,13 +177,7 @@ df_all = pd.concat(dfs, ignore_index=True)
 print("📊 Anzahl Spiele im df_all:", len(df_all))
 print("🔍 Spalten:", df_all.columns.tolist())
 
-def parse_datum(s):
-    try:
-        return datetime.strptime(s, "%d.%m.%Y")
-    except:
-        return pd.NaT
-
-df_all["Datum_DT"] = df_all["Datum"].apply(parse_datum)
+df_all["Datum_DT"] = pd.to_datetime(df_all["Datum"], format="%d.%m.%Y", errors="coerce")
 tage_map = {
     "Monday": "Mo", "Tuesday": "Di", "Wednesday": "Mi", "Thursday": "Do",
     "Friday": "Fr", "Saturday": "Sa", "Sunday": "So"
@@ -184,7 +196,13 @@ df_all["Uhrzeit"] = df_all["Uhrzeit"].apply(format_uhrzeit)
 
 # Korrektur: "USC-U14-2 II" → "USC-U14-2"
 for col in ["Heim", "Gast", "SR", "Gastgeber"]:
-    df_all[col] = df_all[col].str.replace(r'\b(USC-[U\d]+-\d) II\b', r'\1', regex=True)
+    if col in df_all.columns:
+        df_all[col] = (
+            df_all[col]
+            .fillna("")
+            .astype(str)
+            .str.replace(r'\b(USC-[U\d]+-\d) II\b', r'\1', regex=True)
+        )
 
 # Sortierung
 df_all = df_all.sort_values(by=["Datum_DT", "Uhrzeit"])
