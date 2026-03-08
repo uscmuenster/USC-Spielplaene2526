@@ -176,10 +176,13 @@ def is_hosting_and_playing(row) -> bool:
     playing = str(row["Heim"]).startswith("USC") or str(row["Gast"]).startswith("USC")
     return gastgeber and playing
 
-df_all = (
-    df_all[df_all.apply(is_hosting_and_playing, axis=1)]
-    .sort_values("DATETIME")
-)
+if df_all.empty:
+    df_all = df_all.iloc[0:0]
+else:
+    host_mask = df_all.apply(is_hosting_and_playing, axis=1).astype(bool)
+    df_all = df_all.loc[host_mask]
+
+df_all = df_all.sort_values("DATETIME")
 
 # =========================
 # ICS erzeugen
