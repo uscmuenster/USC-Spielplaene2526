@@ -338,6 +338,7 @@ h1 { font-size: 1rem; margin-bottom: 0.5rem; }
       const now = new Date();
       const cutoff = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 10);
       const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      let visibleRows = 0;
       document.querySelectorAll("#spielplan tbody tr").forEach(row => {
         const teamList = (row.dataset.teams || "").split("/");
         const matchTeam = !team || teamList.includes(team);
@@ -348,8 +349,18 @@ h1 { font-size: 1rem; margin-bottom: 0.5rem; }
         const isRecent = !rowDate || rowDate >= cutoff;
         const isFuture = !rowDate || rowDate >= today;
         const withinTime = week ? true : (showPast ? true : (isFuture || isRecent));
-        row.style.display = (matchTeam && matchRunde && matchOrt && matchWeek && withinTime) ? "" : "none";
+        const isVisible = matchTeam && matchRunde && matchOrt && matchWeek && withinTime;
+        row.style.display = isVisible ? "" : "none";
+        if (isVisible) visibleRows++;
       });
+
+      // Wenn ohne "Vergangene Spiele" keine Zeilen sichtbar sind,
+      // automatisch auf komplette Saisonansicht umschalten.
+      if (!week && !showPast && visibleRows === 0) {
+        const togglePast = document.getElementById("togglePast");
+        togglePast.checked = true;
+        filter();
+      }
     }
     function resetFilter() {
       document.getElementById("filterTeam").value = "";
