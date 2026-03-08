@@ -91,7 +91,6 @@ def read_csv_clean(path: Path) -> pd.DataFrame:
                 path,
                 sep=";",
                 encoding=encoding,
-                encoding_errors="replace",
                 engine="python",
                 on_bad_lines="skip",
             )
@@ -99,7 +98,16 @@ def read_csv_clean(path: Path) -> pd.DataFrame:
         except UnicodeDecodeError as exc:
             last_error = exc
     else:
-        raise last_error
+        # Letzter Fallback: Datei trotz defekter Bytes laden,
+        # damit der Workflow nicht komplett scheitert.
+        df = pd.read_csv(
+            path,
+            sep=";",
+            encoding="latin1",
+            encoding_errors="replace",
+            engine="python",
+            on_bad_lines="skip",
+        )
 
     df.columns = (
         df.columns.astype(str)
