@@ -192,7 +192,11 @@ def parse_datum(s):
         return pd.NaT
 
 
-df_all["Datum_DT"] = df_all["Datum"].apply(parse_datum)
+df_all["Datum_DT"] = pd.to_datetime(
+    df_all["Datum"],
+    format="%d.%m.%Y",
+    errors="coerce"
+)
 
 tage_map = {
     "Monday": "Mo",
