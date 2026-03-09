@@ -79,32 +79,21 @@ rename_map = {
     "Spielrunde": "Spielrunde"
 }
 
-def normalize_columns(df):
-    df = df.rename(columns=rename_map)
-    for col in ["Datum", "Uhrzeit", "Heim", "Gast", "SR", "Gastgeber", "Ort", "Spielrunde"]:
-        if col not in df.columns:
-            df[col] = ""
-    return df
-
 dfs = []
 
 for file, team_code in csv_files:
     file_path = csv_dir / file
     df = load_csv_robust(file_path)
     df.columns = df.columns.str.strip()
-    df = normalize_columns(df)
+    df = df.rename(columns=rename_map)
 
     def contains_usc(row):
-        return any(
-            usc.lower() in str(row.get(f, "")).lower()
-            for f in ["Heim", "Gast", "SR", "Gastgeber"]
-            for usc in usc_keywords
-        )
+        return any(usc.lower() in str(row[f]).lower() for f in ["Heim", "Gast", "SR", "Gastgeber"] for usc in usc_keywords)
 
     df = df[df.apply(contains_usc, axis=1)]
 
     def get_usc_team(row):
-        text = f"{row.get('Heim', '')} {row.get('Gast', '')} {row.get('SR', '')} {row.get('Gastgeber', '')}".lower()
+        text = f"{row['Heim']} {row['Gast']} {row['SR']} {row['Gastgeber']}".lower()
         if file == "Spielplan_Bezirksklasse_26_Frauen.csv":
             if "usc münster vi" in text:
                 return "USC6"
@@ -150,7 +139,7 @@ for file, team_code in csv_files:
         return s
 
     for col in ["Heim", "Gast", "SR", "Gastgeber", "Ort", "Spielrunde"]:
-        df[col] = df.apply(lambda row: replace_usc_names(row.get(col, ""), row["USC_Team"]), axis=1)
+        df[col] = df.apply(lambda row: replace_usc_names(row[col], row["USC_Team"]), axis=1)
 
     dfs.append(df)
 
