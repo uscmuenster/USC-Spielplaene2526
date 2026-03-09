@@ -177,6 +177,12 @@ df_all = pd.concat(dfs, ignore_index=True)
 print("📊 Anzahl Spiele im df_all:", len(df_all))
 print("🔍 Spalten:", df_all.columns.tolist())
 
+def parse_datum(s):
+    try:
+        return datetime.strptime(s, "%d.%m.%Y")
+    except:
+        return pd.NaT
+
 df_all["Datum_DT"] = pd.to_datetime(df_all["Datum"], format="%d.%m.%Y", errors="coerce")
 tage_map = {
     "Monday": "Mo", "Tuesday": "Di", "Wednesday": "Mi", "Thursday": "Do",
@@ -196,13 +202,7 @@ df_all["Uhrzeit"] = df_all["Uhrzeit"].apply(format_uhrzeit)
 
 # Korrektur: "USC-U14-2 II" → "USC-U14-2"
 for col in ["Heim", "Gast", "SR", "Gastgeber"]:
-    if col in df_all.columns:
-        df_all[col] = (
-            df_all[col]
-            .fillna("")
-            .astype(str)
-            .str.replace(r'\b(USC-[U\d]+-\d) II\b', r'\1', regex=True)
-        )
+    df_all[col] = df_all[col].str.replace(r'\b(USC-[U\d]+-\d) II\b', r'\1', regex=True)
 
 # Sortierung
 df_all = df_all.sort_values(by=["Datum_DT", "Uhrzeit"])
