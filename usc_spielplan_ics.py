@@ -2,6 +2,7 @@ from pathlib import Path
 from datetime import datetime, timedelta
 import pandas as pd
 from pytz import timezone
+import re
 
 # =========================
 # Konfiguration
@@ -24,39 +25,11 @@ csv_files = [
     ("Spielplan_Kreisliga_Muenster_Frauen.csv", None),
 ]
 
-usc_keywords = ["usc münster", "usc muenster", "usc münster"]
+usc_keywords = ["USC Münster", "USC Muenster", "USC MÜNSTER"]
 
 # =========================
-# Hilfsfunktionen
+# CSV lesen
 # =========================
-
-def normalize_columns(df: pd.DataFrame) -> pd.DataFrame:
-    df.columns = df.columns.astype(str).str.strip()
-
-    df = df.rename(columns={
-        "Datum und Uhrzeit": "Datum_Uhrzeit",
-        "Spieltag": "Datum",
-        "Uhrzeit Beginn": "Uhrzeit",
-        "Beginn": "Uhrzeit",
-        "Mannschaft 1": "Heim",
-        "Mannschaft 2": "Gast",
-        "Schiedsgericht": "SR",
-        "Gastgeber": "Gastgeber",
-        "Austragungsort": "Ort",
-        "Spielrunde": "Spielrunde",
-    })
-
-    if "Datum_Uhrzeit" in df.columns and "Datum" not in df.columns:
-        parts = df["Datum_Uhrzeit"].astype(str).str.split(",", n=1, expand=True)
-        df["Datum"] = parts[0].str.strip()
-        df["Uhrzeit"] = parts[1].str.strip() if parts.shape[1] > 1 else ""
-
-    for col in ["Datum", "Uhrzeit", "Heim", "Gast", "SR", "Gastgeber", "Ort", "Spielrunde"]:
-        if col not in df.columns:
-            df[col] = ""
-
-    return df
-
 
 def read_csv_clean(path: Path) -> pd.DataFrame:
     last_error = None
@@ -89,41 +62,37 @@ def read_csv_clean(path: Path) -> pd.DataFrame:
     return df
 
 
-def contains_usc(row) -> bool:
-    text = " ".join(
-        str(row[c]).lower()
-        for c in ["Heim", "Gast", "SR", "Gastgeber"]
+# =========================
+# USC prüfen
+# =========================
+
+def contains_usc(row):
+    return any(
+        usc.lower() in str(row[f]).lower()
+        for f in ["Heim", "Gast", "SR", "Gastgeber"]
+        for usc in usc_keywords
     )
-    return any(k in text for k in usc_keywords)
 
 
-def replace_usc_names(s: str, team: str) -> str:
+# =========================
+# USC Namen kürzen
+# =========================
+
+def replace_usc_names(s, team):
     s = str(s)
 
-    base = [
+    replacements = [
         ("USC Münster VIII", "USC8"),
         ("USC Münster VII", "USC7"),
-        ("USC Münster VI",  "USC6"),
-        ("USC Münster V",   "USC5"),
-        ("USC Münster IV",  "USC4"),
+        ("USC Münster VI", "USC6"),
+        ("USC Münster V", "USC5"),
+        ("USC Münster IV", "USC4"),
         ("USC Münster III", "USC3"),
-        ("USC Münster II",  "USC2"),
-        ("USC Münster",     "USC1"),
+        ("USC Münster II", "USC2"),
+        ("USC Münster", "USC1"),
     ]
 
-    team_specific = {
-        "USC-U14-1": [("USC1", "USC-U14-1")],
-        "USC-U14-2": [("USC2", "USC-U14-2")],
-        "USC-U16-1": [("USC1", "USC-U16-1")],
-        "USC-U16-2": [("USC2", "USC-U16-2")],
-        "USC-U18":   [("USC1", "USC-U18")],
-        "USC-U13":   [("USC1", "USC-U13")],
-    }
-
-    for old, new in base:
-        s = s.replace(old, new)
-
-    for old, new in team_specific.get(team, []):
+    for old, new in replacements:
         s = s.replace(old, new)
 
     return s
@@ -133,74 +102,97 @@ def replace_usc_names(s: str, team: str) -> str:
 # CSVs einlesen
 # =========================
 
+rename_map = {
+    "Datum": "Datum",
+    "Uhrzeit": "Uhrzeit",
+    "Mannschaft 1": "Heim",
+    "Mannschaft 2": "Gast",
+    "Schiedsgericht": "SR",
+    "Gastgeber": "Gastgeber",
+    "Austragungsort": "Ort",
+    "Spielrunde": "Spielrunde",
+}
+
 dfs = []
 
 for file, team_code in csv_files:
 
-    path = csv_dir / file
-    if not path.exists():
+    file_path = csv_dir / file
+
+    if not file_path.exists():
         continue
 
-    df = read_csv_clean(path)
-    df = normalize_columns(df)
+    df = read_csv_clean(file_path)
 
-    # DATETIME erzeugen
-    if "Datum_Uhrzeit" in df.columns:
-        df["DATETIME"] = pd.to_datetime(
-            df["Datum_Uhrzeit"].astype(str).str.replace(",", "", regex=False),
+    df = df.rename(columns=rename_map)
+
+    # Datum + Uhrzeit aus "Datum und Uhrzeit"
+    if "Datum und Uhrzeit" in df.columns:
+
+        dt = pd.to_datetime(
+            df["Datum und Uhrzeit"]
+            .astype(str)
+            .str.replace(",", "", regex=False)
+            .str.strip(),
             format="%d.%m.%Y %H:%M:%S",
-            errors="coerce"
+            errors="coerce",
         )
-    else:
-        df["DATETIME"] = pd.to_datetime(
-            df["Datum"].astype(str).str.strip() + " " +
-            df["Uhrzeit"].astype(str).str.strip(),
-            dayfirst=True,
-            errors="coerce"
-        )
+
+        df["Datum"] = dt.dt.strftime("%d.%m.%Y")
+        df["Uhrzeit"] = dt.dt.strftime("%H:%M")
+
+    # Datum als datetime
+    df["Datum_DT"] = pd.to_datetime(
+        df["Datum"],
+        format="%d.%m.%Y",
+        errors="coerce"
+    )
 
     df = df[df.apply(contains_usc, axis=1)]
-
-    # ungültige Datumswerte entfernen
-    df = df.dropna(subset=["DATETIME"])
-
-    if df.empty:
-        continue
 
     df["USC_Team"] = team_code
 
     for col in ["Heim", "Gast", "SR", "Gastgeber", "Ort", "Spielrunde"]:
-        df[col] = df.apply(
-            lambda r: replace_usc_names(r[col], r["USC_Team"]),
-            axis=1
-        )
+        if col in df.columns:
+            df[col] = df.apply(
+                lambda r: replace_usc_names(r[col], r["USC_Team"]),
+                axis=1
+            )
 
     dfs.append(df)
 
 if not dfs:
-    raise RuntimeError("❌ Keine gültigen Spiele gefunden")
+    print("⚠️ Keine USC Spiele gefunden")
+    exit()
 
 df_all = pd.concat(dfs, ignore_index=True)
 
 # =========================
-# Heimspiele filtern + sortieren
+# Sortieren (stabil)
 # =========================
 
-def is_hosting_and_playing(row) -> bool:
-    gastgeber = str(row["Gastgeber"]).startswith("USC")
-    playing = str(row["Heim"]).startswith("USC") or str(row["Gast"]).startswith("USC")
-    return gastgeber and playing
+df_all["_sort_dt"] = df_all["Datum_DT"].fillna(pd.Timestamp.max)
 
+df_all = (
+    df_all
+    .sort_values(by=["_sort_dt", "Uhrzeit"], kind="mergesort")
+    .drop(columns="_sort_dt")
+)
 
-df_all = df_all[df_all.apply(is_hosting_and_playing, axis=1)]
-df_all = df_all.sort_values("DATETIME")
+# =========================
+# Heimspiele filtern
+# =========================
 
+def is_hosting(row):
+    return str(row["Gastgeber"]).startswith("USC")
+
+df_all = df_all[df_all.apply(is_hosting, axis=1)]
 
 # =========================
 # ICS erzeugen
 # =========================
 
-def generate_ics(df: pd.DataFrame, output="docs/usc_spielplan.ics"):
+def generate_ics(df, output="docs/usc_spielplan.ics"):
 
     berlin = timezone("Europe/Berlin")
     utc = timezone("UTC")
@@ -215,21 +207,51 @@ def generate_ics(df: pd.DataFrame, output="docs/usc_spielplan.ics"):
 
         for _, row in df.iterrows():
 
-            start = berlin.localize(row["DATETIME"])
+            if pd.isna(row["Datum_DT"]):
+                continue
+
+            try:
+                time_part = row["Uhrzeit"] if row["Uhrzeit"] else "12:00"
+                dt = datetime.strptime(
+                    f"{row['Datum']} {time_part}",
+                    "%d.%m.%Y %H:%M"
+                )
+            except Exception:
+                continue
+
+            start = berlin.localize(dt)
             end = start + timedelta(hours=2)
 
             f.write("BEGIN:VEVENT\n")
-            f.write(f"UID:{start.strftime('%Y%m%dT%H%M')}-{row['Heim']}-vs-{row['Gast']}@usc\n")
-            f.write(f"DTSTAMP:{datetime.utcnow().strftime('%Y%m%dT%H%M%SZ')}\n")
-            f.write(f"DTSTART:{start.astimezone(utc).strftime('%Y%m%dT%H%M%SZ')}\n")
-            f.write(f"DTEND:{end.astimezone(utc).strftime('%Y%m%dT%H%M%SZ')}\n")
+
+            f.write(
+                f"UID:{start.strftime('%Y%m%dT%H%M')}-{row['Heim']}-vs-{row['Gast']}@usc\n"
+            )
+
+            f.write(
+                f"DTSTAMP:{datetime.utcnow().strftime('%Y%m%dT%H%M%SZ')}\n"
+            )
+
+            f.write(
+                f"DTSTART:{start.astimezone(utc).strftime('%Y%m%dT%H%M%SZ')}\n"
+            )
+
+            f.write(
+                f"DTEND:{end.astimezone(utc).strftime('%Y%m%dT%H%M%SZ')}\n"
+            )
+
             f.write(f"SUMMARY:{row['Heim']} vs {row['Gast']}\n")
-            f.write(f"LOCATION:{str(row['Ort']).replace(chr(10), ' ')}\n")
+
+            f.write(
+                f"LOCATION:{str(row['Ort']).replace(chr(10),' ')}\n"
+            )
+
             f.write(
                 "DESCRIPTION:"
-                f"Gastgeber: {row['Gastgeber']}\\n"
-                f"Spielrunde: {row['Spielrunde']}\n"
+                f"Spielrunde: {row['Spielrunde']}\\n"
+                f"Gastgeber: {row['Gastgeber']}\n"
             )
+
             f.write("END:VEVENT\n")
 
         f.write("END:VCALENDAR\n")
