@@ -5,13 +5,6 @@ import os
 
 
 def load_csv_robust(file_path):
-    """
-    Robuster CSV-Loader:
-    - erkennt HTML-Fehlerseiten
-    - testet Encoding automatisch
-    - ignoriert kaputte Quotes
-    - überspringt defekte Zeilen
-    """
 
     with open(file_path, "r", encoding="utf-8", errors="ignore") as f:
         head = f.read(1000).lower()
@@ -20,7 +13,9 @@ def load_csv_robust(file_path):
         raise RuntimeError(f"❌ Keine gültige CSV (HTML erhalten): {file_path}")
 
     last_error = None
+
     for encoding in ("utf-8-sig", "cp1252", "latin1"):
+
         try:
             df = pd.read_csv(
                 file_path,
@@ -32,8 +27,10 @@ def load_csv_robust(file_path):
                 on_bad_lines="skip"
             )
             break
+
         except UnicodeDecodeError as exc:
             last_error = exc
+
     else:
         raise RuntimeError(f"❌ CSV konnte nicht gelesen werden: {file_path}") from last_error
 
@@ -50,10 +47,8 @@ def load_csv_robust(file_path):
     return df
 
 
-# Verzeichnis
 csv_dir = Path("csvdata")
 
-# CSV-Dateien mit zugehörigen USC-Codes
 csv_files = [
     ("Spielplan_1._Bundesliga_Frauen.csv", "USC1"),
     ("Spielplan_2._Bundesliga_Frauen_Nord.csv", "USC2"),
@@ -68,8 +63,6 @@ csv_files = [
     ("Spielplan_Bezirksklasse_26_Frauen.csv", None),
     ("Spielplan_Kreisliga_Muenster_Frauen.csv", None),
 ]
-
-usc_keywords = ["usc münster", "usc muenster"]
 
 rename_map = {
     "Datum": "Datum",
@@ -92,8 +85,8 @@ for file, team_code in csv_files:
     df.columns = df.columns.str.strip()
     df = df.rename(columns=rename_map)
 
-    # Datum/Uhrzeit erzeugen wenn nur "Datum und Uhrzeit" existiert
     if "Datum und Uhrzeit" in df.columns:
+
         dt = pd.to_datetime(
             df["Datum und Uhrzeit"]
             .astype(str)
@@ -108,12 +101,23 @@ for file, team_code in csv_files:
 
     def contains_usc(row):
 
+        fields = [
+            "Heim",
+            "Gast",
+            "SR",
+            "Gastgeber",
+            "Mannschaft 1: Verein",
+            "Mannschaft 2: Verein",
+            "Schiedsgericht: Verein",
+            "Gastgeber: Verein",
+        ]
+
         text = " ".join(
             str(row.get(f, "")).lower()
-            for f in ["Heim", "Gast", "SR", "Gastgeber"]
+            for f in fields
         )
 
-        return any(k in text for k in usc_keywords)
+        return "usc münster" in text or "usc muenster" in text
 
     df = df[df.apply(contains_usc, axis=1)]
 
@@ -219,7 +223,12 @@ def format_uhrzeit(uhr):
 df_all["Uhrzeit"] = df_all["Uhrzeit"].apply(format_uhrzeit)
 
 for col in ["Heim", "Gast", "SR", "Gastgeber"]:
-    df_all[col] = df_all[col].str.replace(r'\b(USC-[U\d]+-\d) II\b', r'\1', regex=True)
+
+    df_all[col] = (
+        df_all[col]
+        .astype(str)
+        .str.replace(r'\b(USC-[U\d]+-\d) II\b', r'\1', regex=True)
+    )
 
 df_all = df_all.sort_values(by=["Datum_DT", "Uhrzeit"])
 
