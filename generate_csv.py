@@ -4,6 +4,13 @@ import pandas as pd
 import os
 
 def load_csv_robust(file_path):
+    """
+    Robuster CSV-Loader:
+    - erkennt HTML-Fehlerseiten
+    - testet Encoding automatisch
+    - ignoriert kaputte Quotes
+    - überspringt defekte Zeilen
+    """
 
     with open(file_path, "r", encoding="utf-8", errors="ignore") as f:
         head = f.read(1000).lower()
@@ -12,7 +19,6 @@ def load_csv_robust(file_path):
         raise RuntimeError(f"❌ Keine gültige CSV (HTML erhalten): {file_path}")
 
     last_error = None
-
     for encoding in ("utf-8-sig", "cp1252", "latin1"):
         try:
             df = pd.read_csv(
@@ -38,12 +44,13 @@ def load_csv_robust(file_path):
 
     df = df.loc[:, ~df.columns.str.contains("^Unnamed")]
     df = df.dropna(axis=1, how="all")
-
     return df
 
 
+# Verzeichnis
 csv_dir = Path("csvdata")
 
+# CSV-Dateien mit zugehörigen USC-Codes
 csv_files = [
     ("Spielplan_1._Bundesliga_Frauen.csv", "USC1"),
     ("Spielplan_2._Bundesliga_Frauen_Nord.csv", "USC2"),
@@ -59,9 +66,11 @@ csv_files = [
     ("Spielplan_Kreisliga_Muenster_Frauen.csv", None),
 ]
 
-usc_keywords = ["usc münster", "usc muenster"]
+usc_keywords = ["USC Münster", "USC Muenster", "USC MÜNSTER"]
 
 rename_map = {
+    "Datum": "Datum",
+    "Uhrzeit": "Uhrzeit",
     "Mannschaft 1": "Heim",
     "Mannschaft 2": "Gast",
     "Schiedsgericht": "SR",
@@ -73,98 +82,92 @@ rename_map = {
 dfs = []
 
 for file, team_code in csv_files:
-
     file_path = csv_dir / file
-
-    if not file_path.exists():
-        continue
-
     df = load_csv_robust(file_path)
-
+    df.columns = df.columns.str.strip()
     df = df.rename(columns=rename_map)
 
-    # Datum + Uhrzeit aus "Datum und Uhrzeit"
-    if "Datum und Uhrzeit" in df.columns:
-
-        dt = pd.to_datetime(
-            df["Datum und Uhrzeit"]
-            .astype(str)
-            .str.replace(",", "", regex=False)
-            .str.strip(),
-            format="%d.%m.%Y %H:%M:%S",
-            errors="coerce"
-        )
-
-        df["Datum"] = dt.dt.strftime("%d.%m.%Y")
-        df["Uhrzeit"] = dt.dt.strftime("%H:%M:%S")
-
-    # fehlende Spalten anlegen
-    for col in ["Heim", "Gast", "SR", "Gastgeber", "Ort", "Spielrunde"]:
-        if col not in df.columns:
-            df[col] = ""
-
-    # USC Filter robust
+    # FIX: row.get statt row[]
     def contains_usc(row):
-
-        for field in ["Heim", "Gast", "SR", "Gastgeber"]:
-
-            text = str(row.get(field, "")).lower()
-
-            for usc in usc_keywords:
-                if usc in text:
-                    return True
-
-        return False
+        return any(
+            usc.lower() in str(row.get(f, "")).lower()
+            for f in ["Heim", "Gast", "SR", "Gastgeber"]
+            for usc in usc_keywords
+        )
 
     df = df[df.apply(contains_usc, axis=1)]
 
-    if df.empty:
-        continue
+    def get_usc_team(row):
+        text = f"{row.get('Heim','')} {row.get('Gast','')} {row.get('SR','')} {row.get('Gastgeber','')}".lower()
+        if file == "Spielplan_Bezirksklasse_26_Frauen.csv":
+            if "usc münster vi" in text:
+                return "USC6"
+            elif "usc münster v" in text:
+                return "USC5"
+            else:
+                return "USC5/6"
 
-    df["USC_Team"] = team_code
+        if file == "Spielplan_Kreisliga_Muenster_Frauen.csv":
+            if "usc münster viii" in text:
+                return "USC8"
+            elif "usc münster vii" in text:
+                return "USC7"
+            elif "usc münster" in text:
+                return "USC7/8"
+
+        return team_code
+
+    df["USC_Team"] = df.apply(get_usc_team, axis=1)
 
     def replace_usc_names(s, team):
-
         s = str(s)
 
-        replacements = [
+        global_replacements = [
             ("USC Münster VIII", "USC8"),
             ("USC Münster VII", "USC7"),
-            ("USC Münster VI", "USC6"),
-            ("USC Münster V", "USC5"),
-            ("USC Münster IV", "USC4"),
+            ("USC Münster VI",  "USC6"),
+            ("USC Münster V",   "USC5"),
+            ("USC Münster IV",  "USC4"),
             ("USC Münster III", "USC3"),
-            ("USC Münster II", "USC2"),
-            ("USC Münster", "USC1"),
+            ("USC Münster II",  "USC2"),
+            ("USC Münster",     "USC1"),
         ]
 
-        for old, new in replacements:
+        team_specific = {
+            "USC-U14-1": [("USC1", "USC-U14-1")],
+            "USC-U14-2": [("USC2", "USC-U14-2")],
+            "USC-U16-1": [("USC1", "USC-U16-1")],
+            "USC-U16-2": [("USC2", "USC-U16-2")],
+            "USC-U18":   [("USC1", "USC-U18")],
+            "USC-U13":   [("USC1", "USC-U13")],
+        }
+
+        for old, new in global_replacements:
+            s = s.replace(old, new)
+
+        for old, new in team_specific.get(team, []):
             s = s.replace(old, new)
 
         return s
 
     for col in ["Heim", "Gast", "SR", "Gastgeber", "Ort", "Spielrunde"]:
-
-        df[col] = df.apply(
-            lambda row: replace_usc_names(row[col], row["USC_Team"]),
-            axis=1
-        )
+        df[col] = df.apply(lambda row: replace_usc_names(row.get(col, ""), row["USC_Team"]), axis=1)
 
     dfs.append(df)
 
-if not dfs:
-    raise RuntimeError("❌ Keine USC Spiele gefunden")
 
 df_all = pd.concat(dfs, ignore_index=True)
 
 print("📊 Anzahl Spiele im df_all:", len(df_all))
 print("🔍 Spalten:", df_all.columns.tolist())
 
-df_all["Datum_DT"] = pd.to_datetime(
-    df_all["Datum"],
-    format="%d.%m.%Y",
-    errors="coerce"
-)
+def parse_datum(s):
+    try:
+        return datetime.strptime(s, "%d.%m.%Y")
+    except:
+        return pd.NaT
+
+df_all["Datum_DT"] = df_all["Datum"].apply(parse_datum)
 
 tage_map = {
     "Monday": "Mo", "Tuesday": "Di", "Wednesday": "Mi", "Thursday": "Do",
@@ -174,10 +177,8 @@ tage_map = {
 df_all["Tag"] = df_all["Datum_DT"].dt.day_name().map(tage_map)
 
 def format_uhrzeit(uhr):
-
     if uhr == "00:00:00":
         return "???"
-
     try:
         return datetime.strptime(uhr, "%H:%M:%S").strftime("%H:%M")
     except:
@@ -186,12 +187,7 @@ def format_uhrzeit(uhr):
 df_all["Uhrzeit"] = df_all["Uhrzeit"].apply(format_uhrzeit)
 
 for col in ["Heim", "Gast", "SR", "Gastgeber"]:
-
-    df_all[col] = df_all[col].str.replace(
-        r'\b(USC-[U\d]+-\d) II\b',
-        r'\1',
-        regex=True
-    )
+    df_all[col] = df_all[col].str.replace(r'\b(USC-[U\d]+-\d) II\b', r'\1', regex=True)
 
 df_all = df_all.sort_values(by=["Datum_DT", "Uhrzeit"])
 
@@ -203,13 +199,8 @@ print("📂 Ordnerinhalt:", os.listdir())
 
 csv_path = Path("docs/spielplan.csv")
 
-Path("docs").mkdir(exist_ok=True)
-
-df_all.to_csv(
-    csv_path,
-    index=False,
-    sep=";",
-    encoding="utf-8-sig"
-)
-
-print(f"✅ CSV-Datei erfolgreich gespeichert unter: {csv_path.resolve()}")
+try:
+    df_all.to_csv(csv_path, index=False, sep=";", encoding="utf-8-sig")
+    print(f"✅ CSV-Datei erfolgreich gespeichert unter: {csv_path.resolve()}")
+except Exception as e:
+    print("❌ Fehler beim Schreiben der CSV-Datei:", e)
