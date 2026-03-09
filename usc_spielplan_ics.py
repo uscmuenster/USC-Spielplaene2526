@@ -141,13 +141,20 @@ for file, team_code in csv_files:
 
     df = normalize_columns(df)
 
-    # 👉 DATETIME IMMER anlegen (entscheidend!)
-    df["DATETIME"] = pd.to_datetime(
-        df["Datum"].astype(str).str.strip() + " " +
-        df["Uhrzeit"].astype(str).str.strip(),
-        errors="coerce",
-        dayfirst=True
-    )
+    # DATETIME robust erzeugen
+    if "Datum_Uhrzeit" in df.columns:
+        df["DATETIME"] = pd.to_datetime(
+            df["Datum_Uhrzeit"].astype(str).str.replace(",", "", regex=False),
+            format="%d.%m.%Y %H:%M:%S",
+            errors="coerce"
+        )
+    else:
+        df["DATETIME"] = pd.to_datetime(
+            df["Datum"].astype(str).str.strip() + " " +
+            df["Uhrzeit"].astype(str).str.strip(),
+            dayfirst=True,
+            errors="coerce"
+        )
 
     df = df[df.apply(contains_usc, axis=1)]
     df["USC_Team"] = team_code
