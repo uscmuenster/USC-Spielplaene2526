@@ -39,6 +39,7 @@ def load_csv_robust(file_path):
     df.columns = (
         df.columns.astype(str)
         .str.replace("\ufeff", "", regex=False)
+        .str.replace('"', "", regex=False)
         .str.strip()
     )
 
