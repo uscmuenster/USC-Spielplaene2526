@@ -46,6 +46,7 @@ def load_csv_robust(file_path):
 
     df = df.loc[:, ~df.columns.str.contains("^Unnamed")]
     df = df.dropna(axis=1, how="all")
+
     return df
 
 
@@ -68,7 +69,7 @@ csv_files = [
     ("Spielplan_Kreisliga_Muenster_Frauen.csv", None),
 ]
 
-usc_keywords = ["USC Münster", "USC Muenster", "USC MÜNSTER"]
+usc_keywords = ["usc münster", "usc muenster"]
 
 rename_map = {
     "Datum": "Datum",
@@ -106,11 +107,13 @@ for file, team_code in csv_files:
         df["Uhrzeit"] = dt.dt.strftime("%H:%M")
 
     def contains_usc(row):
-        return any(
-            usc.lower() in str(row.get(f, "")).lower()
+
+        text = " ".join(
+            str(row.get(f, "")).lower()
             for f in ["Heim", "Gast", "SR", "Gastgeber"]
-            for usc in usc_keywords
         )
+
+        return any(k in text for k in usc_keywords)
 
     df = df[df.apply(contains_usc, axis=1)]
 
@@ -183,15 +186,6 @@ df_all = pd.concat(dfs, ignore_index=True)
 print("📊 Anzahl Spiele im df_all:", len(df_all))
 print("🔍 Spalten:", df_all.columns.tolist())
 
-
-def parse_datum(s):
-
-    try:
-        return datetime.strptime(s, "%d.%m.%Y")
-    except:
-        return pd.NaT
-
-
 df_all["Datum_DT"] = pd.to_datetime(
     df_all["Datum"],
     format="%d.%m.%Y",
@@ -224,20 +218,16 @@ def format_uhrzeit(uhr):
 
 df_all["Uhrzeit"] = df_all["Uhrzeit"].apply(format_uhrzeit)
 
-
 for col in ["Heim", "Gast", "SR", "Gastgeber"]:
     df_all[col] = df_all[col].str.replace(r'\b(USC-[U\d]+-\d) II\b', r'\1', regex=True)
 
-
 df_all = df_all.sort_values(by=["Datum_DT", "Uhrzeit"])
-
 
 print(f"🔍 Anzahl Zeilen: {len(df_all)}")
 print(f"📄 Spalten: {df_all.columns.tolist()}")
 
 print("📁 Aktuelles Arbeitsverzeichnis:", os.getcwd())
 print("📂 Ordnerinhalt:", os.listdir())
-
 
 csv_path = Path("docs/spielplan.csv")
 
