@@ -60,6 +60,7 @@ def normalize_columns(df: pd.DataFrame) -> pd.DataFrame:
 
 def read_csv_clean(path: Path) -> pd.DataFrame:
     last_error = None
+
     for encoding in ("utf-8-sig", "cp1252", "latin1"):
         try:
             df = pd.read_csv(
@@ -81,8 +82,10 @@ def read_csv_clean(path: Path) -> pd.DataFrame:
         .str.replace("\ufeff", "", regex=False)
         .str.strip()
     )
+
     df = df.loc[:, ~df.columns.str.contains("^Unnamed")]
     df = df.dropna(axis=1, how="all")
+
     return df
 
 
@@ -133,15 +136,15 @@ def replace_usc_names(s: str, team: str) -> str:
 dfs = []
 
 for file, team_code in csv_files:
+
     path = csv_dir / file
     if not path.exists():
         continue
 
     df = read_csv_clean(path)
-
     df = normalize_columns(df)
 
-    # DATETIME robust erzeugen
+    # DATETIME erzeugen
     if "Datum_Uhrzeit" in df.columns:
         df["DATETIME"] = pd.to_datetime(
             df["Datum_Uhrzeit"].astype(str).str.replace(",", "", regex=False),
@@ -157,6 +160,13 @@ for file, team_code in csv_files:
         )
 
     df = df[df.apply(contains_usc, axis=1)]
+
+    # ungültige Datumswerte entfernen
+    df = df.dropna(subset=["DATETIME"])
+
+    if df.empty:
+        continue
+
     df["USC_Team"] = team_code
 
     for col in ["Heim", "Gast", "SR", "Gastgeber", "Ort", "Spielrunde"]:
@@ -176,34 +186,35 @@ df_all = pd.concat(dfs, ignore_index=True)
 # Heimspiele filtern + sortieren
 # =========================
 
-df_all = df_all.dropna(subset=["DATETIME"])
-
 def is_hosting_and_playing(row) -> bool:
     gastgeber = str(row["Gastgeber"]).startswith("USC")
     playing = str(row["Heim"]).startswith("USC") or str(row["Gast"]).startswith("USC")
     return gastgeber and playing
 
-df_all = (
-    df_all[df_all.apply(is_hosting_and_playing, axis=1)]
-    .sort_values("DATETIME")
-)
+
+df_all = df_all[df_all.apply(is_hosting_and_playing, axis=1)]
+df_all = df_all.sort_values("DATETIME")
+
 
 # =========================
 # ICS erzeugen
 # =========================
 
 def generate_ics(df: pd.DataFrame, output="docs/usc_spielplan.ics"):
+
     berlin = timezone("Europe/Berlin")
     utc = timezone("UTC")
 
     Path("docs").mkdir(exist_ok=True)
 
     with open(output, "w", encoding="utf-8") as f:
+
         f.write("BEGIN:VCALENDAR\n")
         f.write("VERSION:2.0\n")
         f.write("PRODID:-//USC Münster//Spielplan//DE\n")
 
         for _, row in df.iterrows():
+
             start = berlin.localize(row["DATETIME"])
             end = start + timedelta(hours=2)
 
