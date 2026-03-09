@@ -3,6 +3,7 @@ from datetime import datetime
 import pandas as pd
 import os
 
+
 def load_csv_robust(file_path):
     """
     Robuster CSV-Loader:
@@ -83,12 +84,27 @@ rename_map = {
 dfs = []
 
 for file, team_code in csv_files:
+
     file_path = csv_dir / file
     df = load_csv_robust(file_path)
+
     df.columns = df.columns.str.strip()
     df = df.rename(columns=rename_map)
 
-    # FIX: row.get statt row[]
+    # Datum/Uhrzeit erzeugen wenn nur "Datum und Uhrzeit" existiert
+    if "Datum und Uhrzeit" in df.columns:
+        dt = pd.to_datetime(
+            df["Datum und Uhrzeit"]
+            .astype(str)
+            .str.replace(",", "", regex=False)
+            .str.strip(),
+            format="%d.%m.%Y %H:%M:%S",
+            errors="coerce",
+        )
+
+        df["Datum"] = dt.dt.strftime("%d.%m.%Y")
+        df["Uhrzeit"] = dt.dt.strftime("%H:%M")
+
     def contains_usc(row):
         return any(
             usc.lower() in str(row.get(f, "")).lower()
@@ -99,8 +115,11 @@ for file, team_code in csv_files:
     df = df[df.apply(contains_usc, axis=1)]
 
     def get_usc_team(row):
+
         text = f"{row.get('Heim','')} {row.get('Gast','')} {row.get('SR','')} {row.get('Gastgeber','')}".lower()
+
         if file == "Spielplan_Bezirksklasse_26_Frauen.csv":
+
             if "usc münster vi" in text:
                 return "USC6"
             elif "usc münster v" in text:
@@ -109,6 +128,7 @@ for file, team_code in csv_files:
                 return "USC5/6"
 
         if file == "Spielplan_Kreisliga_Muenster_Frauen.csv":
+
             if "usc münster viii" in text:
                 return "USC8"
             elif "usc münster vii" in text:
@@ -121,6 +141,7 @@ for file, team_code in csv_files:
     df["USC_Team"] = df.apply(get_usc_team, axis=1)
 
     def replace_usc_names(s, team):
+
         s = str(s)
 
         global_replacements = [
@@ -162,41 +183,57 @@ df_all = pd.concat(dfs, ignore_index=True)
 print("📊 Anzahl Spiele im df_all:", len(df_all))
 print("🔍 Spalten:", df_all.columns.tolist())
 
+
 def parse_datum(s):
+
     try:
         return datetime.strptime(s, "%d.%m.%Y")
     except:
         return pd.NaT
 
+
 df_all["Datum_DT"] = df_all["Datum"].apply(parse_datum)
 
 tage_map = {
-    "Monday": "Mo", "Tuesday": "Di", "Wednesday": "Mi", "Thursday": "Do",
-    "Friday": "Fr", "Saturday": "Sa", "Sunday": "So"
+    "Monday": "Mo",
+    "Tuesday": "Di",
+    "Wednesday": "Mi",
+    "Thursday": "Do",
+    "Friday": "Fr",
+    "Saturday": "Sa",
+    "Sunday": "So"
 }
 
 df_all["Tag"] = df_all["Datum_DT"].dt.day_name().map(tage_map)
 
+
 def format_uhrzeit(uhr):
+
     if uhr == "00:00:00":
         return "???"
+
     try:
         return datetime.strptime(uhr, "%H:%M:%S").strftime("%H:%M")
     except:
         return uhr
 
+
 df_all["Uhrzeit"] = df_all["Uhrzeit"].apply(format_uhrzeit)
+
 
 for col in ["Heim", "Gast", "SR", "Gastgeber"]:
     df_all[col] = df_all[col].str.replace(r'\b(USC-[U\d]+-\d) II\b', r'\1', regex=True)
 
+
 df_all = df_all.sort_values(by=["Datum_DT", "Uhrzeit"])
+
 
 print(f"🔍 Anzahl Zeilen: {len(df_all)}")
 print(f"📄 Spalten: {df_all.columns.tolist()}")
 
 print("📁 Aktuelles Arbeitsverzeichnis:", os.getcwd())
 print("📂 Ordnerinhalt:", os.listdir())
+
 
 csv_path = Path("docs/spielplan.csv")
 
