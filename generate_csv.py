@@ -41,7 +41,6 @@ def load_csv_robust(file_path):
         df.columns.astype(str)
         .str.replace("\ufeff", "", regex=False)
         .str.strip()
-        .str.strip('"')
     )
     df = df.loc[:, ~df.columns.str.contains("^Unnamed")]
     df = df.dropna(axis=1, how="all")
@@ -81,27 +80,10 @@ rename_map = {
 }
 
 def normalize_columns(df):
-    df.columns = df.columns.astype(str).str.strip().str.strip('"')
-
-    if "Datum und Uhrzeit" in df.columns:
-        dt = (
-            df["Datum und Uhrzeit"]
-            .astype(str)
-            .str.strip()
-            .str.strip('"')
-        )
-        split_dt = dt.str.split(",", n=1, expand=True)
-        if "Datum" not in df.columns:
-            df["Datum"] = split_dt[0].str.strip()
-        if "Uhrzeit" not in df.columns:
-            df["Uhrzeit"] = split_dt[1].fillna("").str.strip()
-
     df = df.rename(columns=rename_map)
     for col in ["Datum", "Uhrzeit", "Heim", "Gast", "SR", "Gastgeber", "Ort", "Spielrunde"]:
         if col not in df.columns:
             df[col] = ""
-        else:
-            df[col] = df[col].astype(str).str.strip().str.strip('"')
     return df
 
 dfs = []
@@ -183,7 +165,7 @@ def parse_datum(s):
     except:
         return pd.NaT
 
-df_all["Datum_DT"] = pd.to_datetime(df_all["Datum"], format="%d.%m.%Y", errors="coerce")
+df_all["Datum_DT"] = df_all["Datum"].apply(parse_datum)
 tage_map = {
     "Monday": "Mo", "Tuesday": "Di", "Wednesday": "Mi", "Thursday": "Do",
     "Friday": "Fr", "Saturday": "Sa", "Sunday": "So"
