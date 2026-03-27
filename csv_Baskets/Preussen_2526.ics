@@ -897,9 +897,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  n\n28. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
  /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
  ine.de/ical/loeschen
-DTSTAMP:20260327T130327Z
+DTSTAMP:20260327T150322Z
 CREATED:20250627T122656Z
-LAST-MODIFIED:20260327T130327Z
+LAST-MODIFIED:20260327T150322Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -921,9 +921,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  n\n29. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
  /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
  ine.de/ical/loeschen
-DTSTAMP:20260327T130337Z
+DTSTAMP:20260327T150327Z
 CREATED:20250627T122710Z
-LAST-MODIFIED:20260327T130337Z
+LAST-MODIFIED:20260327T150327Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -944,9 +944,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  n\n30. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
  /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
  ine.de/ical/loeschen
-DTSTAMP:20260327T130341Z
+DTSTAMP:20260327T150331Z
 CREATED:20250627T124804Z
-LAST-MODIFIED:20260327T130341Z
+LAST-MODIFIED:20260327T150331Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -956,79 +956,73 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:685e930ddefb6@7477.calovo
-DTSTART;TZID=Europe/Berlin;VALUE=DATE:20260424
+DTSTART;TZID=Europe/Berlin:20260425T130000
 SEQUENCE:0
 TRANSP:TRANSPARENT
 STATUS:CONFIRMED
-DTEND;TZID=Europe/Berlin;VALUE=DATE:20260427
+DTEND;TZID=Europe/Berlin:20260425T150000
 LOCATION:LVM-Preußenstadion
-SUMMARY:* SC Preußen Münster - DSC Arminia Bielefeld | 2. Bundesliga | 31
- . Spieltag
+SUMMARY:SC Preußen Münster - DSC Arminia Bielefeld | 2. Bundesliga | 31. 
+ Spieltag
 DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
- n\n31. Spieltag\n\nAchtung: Der endgültige Spieltermin wurde noch nicht f
- estgelegt.\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de/bund
- esliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: termine.d
- e/ical/loeschen
-X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20260327T130347Z
+ n\n31. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
+ /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
+ ine.de/ical/loeschen
+DTSTAMP:20260327T150335Z
 CREATED:20250627T124813Z
-LAST-MODIFIED:20260327T130347Z
+LAST-MODIFIED:20260327T150335Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
-DESCRIPTION:Reminder: * SC Preußen Münster - DSC Arminia Bielefeld | 2. B
- undesliga | 31. Spieltag
+DESCRIPTION:Reminder: SC Preußen Münster - DSC Arminia Bielefeld | 2. Bun
+ desliga | 31. Spieltag
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:685e9313bdc10@7477.calovo
-DTSTART;TZID=Europe/Berlin;VALUE=DATE:20260502
+DTSTART;TZID=Europe/Berlin:20260503T133000
 SEQUENCE:0
 TRANSP:TRANSPARENT
 STATUS:CONFIRMED
-DTEND;TZID=Europe/Berlin;VALUE=DATE:20260504
+DTEND;TZID=Europe/Berlin:20260503T153000
 LOCATION:Heinz von Heiden Arena
-SUMMARY:* Hannover 96 - SC Preußen Münster | 2. Bundesliga | 32. Spieltag
+SUMMARY:Hannover 96 - SC Preußen Münster | 2. Bundesliga | 32. Spieltag
 DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
- n\n32. Spieltag\n\nAchtung: Der endgültige Spieltermin wurde noch nicht f
- estgelegt.\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de/bund
- esliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: termine.d
- e/ical/loeschen
-X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20260327T130352Z
+ n\n32. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
+ /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
+ ine.de/ical/loeschen
+DTSTAMP:20260327T150339Z
 CREATED:20250627T124819Z
-LAST-MODIFIED:20260327T130352Z
+LAST-MODIFIED:20260327T150339Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
-DESCRIPTION:Reminder: * Hannover 96 - SC Preußen Münster | 2. Bundesliga 
- | 32. Spieltag
+DESCRIPTION:Reminder: Hannover 96 - SC Preußen Münster | 2. Bundesliga | 
+ 32. Spieltag
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:685e931ca77f0@7477.calovo
-DTSTART;TZID=Europe/Berlin;VALUE=DATE:20260508
+DTSTART;TZID=Europe/Berlin:20260510T133000
 SEQUENCE:0
 TRANSP:TRANSPARENT
 STATUS:CONFIRMED
-DTEND;TZID=Europe/Berlin;VALUE=DATE:20260511
+DTEND;TZID=Europe/Berlin:20260510T153000
 LOCATION:LVM-Preußenstadion
-SUMMARY:* SC Preußen Münster - SV Darmstadt 98 | 2. Bundesliga | 33. Spie
- ltag
+SUMMARY:SC Preußen Münster - SV Darmstadt 98 | 2. Bundesliga | 33. Spielt
+ ag
 DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
- n\n33. Spieltag\n\nAchtung: Der endgültige Spieltermin wurde noch nicht f
- estgelegt.\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de/bund
- esliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: termine.d
- e/ical/loeschen
-X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20260327T130358Z
+ n\n33. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
+ /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
+ ine.de/ical/loeschen
+DTSTAMP:20260327T150343Z
 CREATED:20250627T124828Z
-LAST-MODIFIED:20260327T130358Z
+LAST-MODIFIED:20260327T150343Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
-DESCRIPTION:Reminder: * SC Preußen Münster - SV Darmstadt 98 | 2. Bundesl
- iga | 33. Spieltag
+DESCRIPTION:Reminder: SC Preußen Münster - SV Darmstadt 98 | 2. Bundeslig
+ a | 33. Spieltag
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -1044,9 +1038,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  n\n34. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
  /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
  ine.de/ical/loeschen
-DTSTAMP:20260327T130405Z
+DTSTAMP:20260327T150346Z
 CREATED:20250627T124833Z
-LAST-MODIFIED:20260327T130405Z
+LAST-MODIFIED:20260327T150346Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
