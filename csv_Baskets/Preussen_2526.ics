@@ -11,30 +11,6 @@ X-WR-TIMEZONE:Europe/Berlin
 X-WR-RELCALID:7dc6da48.a8ea1dd5@7477.calovo.com
 X-PUBLISHED-TTL:PT30M
 BEGIN:VEVENT
-UID:6686a4065b393@7477.calovo
-DTSTART;TZID=Europe/Berlin:20250330T133000
-SEQUENCE:0
-TRANSP:TRANSPARENT
-STATUS:CONFIRMED
-DTEND;TZID=Europe/Berlin:20250330T153000
-LOCATION:Preußenstadion
-SUMMARY:SC Preußen Münster - Eintracht Braunschweig | 2. Bundesliga | 27.
-  Spieltag
-DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
- n\n27. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
- /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
- ine.de/ical/loeschen
-DTSTAMP:20250330T091053Z
-CREATED:20240704T133046Z
-LAST-MODIFIED:20250330T091053Z
-BEGIN:VALARM
-TRIGGER:-P0DT1H0M0S
-ACTION:DISPLAY
-DESCRIPTION:Reminder: SC Preußen Münster - Eintracht Braunschweig | 2. Bu
- ndesliga | 27. Spieltag
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
 UID:6686a40a0c78e@7477.calovo
 DTSTART;TZID=Europe/Berlin:20250405T130000
 SEQUENCE:0
