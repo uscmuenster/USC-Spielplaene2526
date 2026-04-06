@@ -11,28 +11,6 @@ X-WR-TIMEZONE:Europe/Berlin
 X-WR-RELCALID:7dc6da48.a8ea1dd5@7477.calovo.com
 X-PUBLISHED-TTL:PT30M
 BEGIN:VEVENT
-UID:67531f9c44462@7477.calovo
-DTSTART;TZID=Europe/Berlin:20250406T133000
-SEQUENCE:0
-TRANSP:TRANSPARENT
-STATUS:CONFIRMED
-DTEND;TZID=Europe/Berlin:20250406T153000
-LOCATION:Merkur Spielarena
-SUMMARY:Fortuna Düsseldorf - SC Preußen Münster | Test
-DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
- n\nFortuna Düsseldorf vs. SC Preußen Münster\n\n\n\n\nAnbieter-Impressu
- m: https://www.bundesliga.com/de/bundesliga/info/impressum/\n\n\ncalovo Ka
- lender löschen? Anleitung: termine.de/ical/loeschen
-DTSTAMP:20250405T210055Z
-CREATED:20241206T160028Z
-LAST-MODIFIED:20250405T210055Z
-BEGIN:VALARM
-TRIGGER:-P0DT1H0M0S
-ACTION:DISPLAY
-DESCRIPTION:Reminder: Fortuna Düsseldorf - SC Preußen Münster | Test
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
 UID:6686a411327d7@7477.calovo
 DTSTART;TZID=Europe/Berlin:20250413T133000
 SEQUENCE:0
