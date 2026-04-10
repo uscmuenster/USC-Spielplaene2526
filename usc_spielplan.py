@@ -4,6 +4,7 @@ import pandas as pd
 import html
 from pytz import timezone
 import re
+import unicodedata
 
 from team_config import get_csv_files
 from usc_team_links import build_team_table_overview
@@ -39,7 +40,16 @@ csv_dir = Path("csvdata")
 # CSV-Dateien mit zugehörigen USC-Codes aus zentraler Konfiguration
 csv_files = get_csv_files()
 
-usc_keywords = ["USC Münster", "USC Muenster", "USC MÜNSTER"]
+USC_SEARCH_FIELDS = [
+    "Heim",
+    "Gast",
+    "SR",
+    "Gastgeber",
+    "Mannschaft 1: Verein",
+    "Mannschaft 2: Verein",
+    "Schiedsgericht: Verein",
+    "Gastgeber: Verein",
+]
 
 rename_map = {
     # Kombi-Datum
@@ -79,7 +89,6 @@ def read_csv_clean(path: Path) -> pd.DataFrame:
                 path,
                 sep=";",
                 encoding=encoding,
-                encoding_errors="replace",
                 engine="python",
                 on_bad_lines="skip",
             )
@@ -87,7 +96,16 @@ def read_csv_clean(path: Path) -> pd.DataFrame:
         except UnicodeDecodeError as exc:
             last_error = exc
     else:
-        raise last_error
+        if last_error is not None:
+            print(f"⚠️ Encoding-Fallback für {path.name}: {last_error}")
+        df = pd.read_csv(
+            path,
+            sep=";",
+            encoding="utf-8-sig",
+            encoding_errors="replace",
+            engine="python",
+            on_bad_lines="skip",
+        )
 
     df.columns = (
         df.columns.astype(str)
@@ -97,6 +115,12 @@ def read_csv_clean(path: Path) -> pd.DataFrame:
     df = df.loc[:, ~df.columns.str.contains("^Unnamed")]
     df = df.dropna(axis=1, how="all")
     return df
+
+
+def normalize_search_text(value) -> str:
+    text = str(value or "").lower().replace("�", "u")
+    text = unicodedata.normalize("NFKD", text)
+    return "".join(ch for ch in text if not unicodedata.combining(ch))
 
 for file, team_code in csv_files:
     file_path = csv_dir / file
@@ -131,12 +155,13 @@ for file, team_code in csv_files:
         df["Ergebnis"] = ""
 
     def contains_usc(row):
-        return any(usc.lower() in str(row[f]).lower() for f in ["Heim", "Gast", "SR", "Gastgeber"] for usc in usc_keywords)
+        text = " ".join(normalize_search_text(row.get(f, "")) for f in USC_SEARCH_FIELDS)
+        return any(usc in text for usc in ("usc munster", "usc muenster"))
 
     df = df[df.apply(contains_usc, axis=1)]
 
     def get_usc_team(row):
-        text = f"{row['Heim']} {row['Gast']} {row['SR']} {row['Gastgeber']}".lower()
+        text = f"{row.get('Heim', '')} {row.get('Gast', '')} {row.get('SR', '')} {row.get('Gastgeber', '')}".lower()
         teams = []
         if file == "Spielplan_Bezirksklasse_26_Frauen.csv":
             if re.search(r"\busc münster vi\b", text):
