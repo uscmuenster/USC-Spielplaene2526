@@ -66,64 +66,10 @@ jobs:
       # BLOCK 2: Volleyball-CSV herunterladen
       # ===========================================
       - name: 📁 Verzeichnis csvdata vorbereiten
-        run: |
-          mkdir -p csvdata
-          rm -f csvdata/*
+        run: mkdir -p csvdata
 
-      - name: 🌐 Volleyball-Spielpläne herunterladen & vereinheitlichen
-        run: |
-          set -e
-          shopt -s nullglob
-          cd csvdata
-
-          download_csv () {
-            local url="$1"
-            local pattern="$2"
-            local target="$3"
-
-            echo "⬇️ Download: $target"
-            curl -L -OJ "$url"
-
-            files=($pattern)
-            if [ ${#files[@]} -gt 0 ]; then
-              latest="$(ls -t "${files[@]}" | head -n 1)"
-              mv "$latest" "$target"
-              echo "✅ $latest → $target"
-              return
-            fi
-
-            if [ -f "PlayingScheduleCsvExport" ]; then
-              mv "PlayingScheduleCsvExport" "$target"
-              echo "✅ PlayingScheduleCsvExport → $target"
-              return
-            fi
-
-            echo "❌ FEHLER: Keine passende CSV für $target"
-            ls -la
-            exit 1
-          }
-
-
-
-          # ---------- NRW ----------
-          download_csv "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95245226" "Spielplan_Oberliga_6_wU13_*.csv" "Spielplan_Oberliga_6_wU13.csv"
-          download_csv "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95239897" "Spielplan_Bezirksliga_14_Frauen_*.csv" "Spielplan_Bezirksliga_14_Frauen.csv"
-          download_csv "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95244340" "Spielplan_Oberliga_2_Frauen_*.csv" "Spielplan_Oberliga_2_Frauen.csv"
-          download_csv "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95243632" "Spielplan_Bezirksklasse_26_Frauen_*.csv" "Spielplan_Bezirksklasse_26_Frauen.csv"
-          download_csv "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95245637" "Spielplan_NRW-Liga_wU16_*.csv" "Spielplan_NRW-Liga_wU16.csv"
-          download_csv "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95245654" "Spielplan_Oberliga_5_wU16_*.csv" "Spielplan_Oberliga_5_wU16.csv"
-          download_csv "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95251101" "Spielplan_NRW-Liga_wU14_*.csv" "Spielplan_NRW-Liga_wU14.csv"
-          download_csv "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95251080" "Spielplan_Oberliga_5_wU14_*.csv" "Spielplan_Oberliga_5_wU14.csv"
-          download_csv "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95250874" "Spielplan_NRW-Liga_wU18_*.csv" "Spielplan_NRW-Liga_wU18.csv"
-          download_csv "https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95241488" "Spielplan_Kreisliga*Frauen*.csv" "Spielplan_Kreisliga_Muenster_Frauen.csv"
-
-          # ---------- Bundesliga ----------
-          download_csv "https://www.volleyball-bundesliga.de/servlet/league/PlayingScheduleCsvExport?matchSeriesId=776311171" "Spielplan_1._Bundesliga_Frauen_*.csv" "Spielplan_1._Bundesliga_Frauen.csv"
-          download_csv "https://www.volleyball-bundesliga.de/servlet/league/PlayingScheduleCsvExport?matchSeriesId=776309163" "Spielplan_2._Bundesliga_Frauen_Nord_*.csv" "Spielplan_2._Bundesliga_Frauen_Nord.csv"
-
-          shopt -u nullglob
-          echo "📂 csvdata Inhalt:"
-          ls -la
+      - name: 🌐 Volleyball-Spielpläne aus zentraler CSV laden
+        run: python download_volleyball_csv.py
 
       - name: 🔁 Commit & Push CSV
         run: |
