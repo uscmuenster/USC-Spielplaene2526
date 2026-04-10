@@ -5,6 +5,8 @@ import html
 from pytz import timezone
 import re
 
+from team_config import get_csv_files
+
 # Aktuelle MESZ-Zeit für Anzeige im HTML
 mesz_time = datetime.now(timezone("Europe/Berlin")).strftime("%d.%m.%Y %H:%M")
 stand_info = f'<p class="text-muted mt-3">Stand: {mesz_time} MESZ</p>'
@@ -17,21 +19,8 @@ reload_button = """
 # Verzeichnis
 csv_dir = Path("csvdata")
 
-# CSV-Dateien mit zugehörigen USC-Codes
-csv_files = [
-    ("Spielplan_1._Bundesliga_Frauen.csv", "USC1"),
-    ("Spielplan_2._Bundesliga_Frauen_Nord.csv", "USC2"),
-    ("Spielplan_Oberliga_2_Frauen.csv", "USC3"),
-    ("Spielplan_Bezirksliga_14_Frauen.csv", "USC4"),
-    ("Spielplan_NRW-Liga_wU14.csv", "USC-U14-1"),
-    ("Spielplan_NRW-Liga_wU16.csv", "USC-U16-1"),
-    ("Spielplan_NRW-Liga_wU18.csv", "USC-U18"),
-    ("Spielplan_Oberliga_5_wU14.csv", "USC-U14-2"),
-    ("Spielplan_Oberliga_5_wU16.csv", "USC-U16-2"),
-    ("Spielplan_Oberliga_6_wU13.csv", "USC-U13"),
-    ("Spielplan_Bezirksklasse_26_Frauen.csv", None),
-    ("Spielplan_Kreisliga_Muenster_Frauen.csv", None),
-]
+# CSV-Dateien mit zugehörigen USC-Codes aus zentraler Konfiguration
+csv_files = get_csv_files()
 
 usc_keywords = ["USC Münster", "USC Muenster", "USC MÜNSTER"]
 

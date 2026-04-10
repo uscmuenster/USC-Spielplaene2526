@@ -37,7 +37,7 @@ Alle HTML-/CSV-/ICS-Dateien werden aus den Python-Skripten generiert. Änderunge
 1. Für jede USC-Mannschaft im SAMS-System eine CSV mit Semikolon als Trenner exportieren.
 2. Die Dateien exakt so benennen wie in den Skripten hinterlegt (z. B. `Spielplan_1._Bundesliga_Frauen.csv`).
 3. Die CSV-Dateien nach `csvdata/` kopieren und vorhandene Versionen überschreiben.
-4. Falls neue Teams hinzukommen oder Dateinamen sich ändern, sowohl die `csv_files`-Listen in `usc_spielplan.py`, `usc_baskets_preussen.py`, `generate_csv.py` und `usc_spielplan_ics.py` als auch ggf. die Team-Code-Zuweisungen und Regex-Anpassungen aktualisieren.
+4. Falls neue Teams hinzukommen oder Dateinamen sich ändern, `config/team_sources.csv` sowie ggf. die Team-Code-Zuweisungen und Regex-Anpassungen aktualisieren.
 
 ### Uni Baskets & Preußen Münster (ICS)
 
@@ -56,7 +56,7 @@ Alle HTML-/CSV-/ICS-Dateien werden aus den Python-Skripten generiert. Änderunge
   - `docs/index.html` mit Standardschriftgrößen.
   - `docs/indexapp.html` mit reduzierter Typografie für mobile Ansichten.
 - Anpassungspunkte:
-  - `csv_files` für neue Ligen oder Umbenennungen.
+  - `config/team_sources.csv` für neue Ligen, Team-Zuordnungen oder Umbenennungen.
   - Regex-Logik in `get_usc_team`/`replace_usc_names`, falls Namensschemata sich ändern.
   - Styling direkt im eingebetteten CSS.
 
@@ -125,14 +125,14 @@ Die Skripte können unabhängig voneinander laufen. Nach jeder Ausführung die e
 - Trigger: manueller Start oder stündlich per Cron. Über `concurrency` wird ein paralleler Lauf verhindert.
 - Ablauf in fünf Blöcken:
   1. **ICS-Download**: Löscht `csv_Baskets`, lädt ICS der Uni Baskets & Preußen und committed Änderungen.
-  2. **CSV-Download**: Lädt alle Volleyball-Spielpläne nach `csvdata/` (feste URLs) und committed sie.
+  2. **CSV-Download**: Lädt alle Volleyball-Spielpläne anhand der zentralen Konfiguration in `config/team_sources.csv` nach `csvdata/` und committed sie.
   3. **Baskets-CSV**: Wandelt das Baskets-ICS in eine Heimspiel-CSV um und committed das Ergebnis.
   4. **Preußen-CSV**: Gleiches Vorgehen für Preußen Münster.
   5. **HTML/ICS-Erstellung**: Führt `usc_baskets_preussen.py`, `usc_spielplan.py` und `usc_spielplan_ics.py` aus und committed die generierten Dateien in `docs/`.
 - Jeder Block nutzt kurze Pausen (`sleep 30`), damit externe Systeme Updates verarbeiten können.
 - Voraussetzungen: gültiges PAT in `secrets.GH_PAT` mit Schreibrechten, damit Commits aus dem Workflow möglich sind.
 
-> **Tipp:** Falls zusätzliche Mannschaften aufgenommen werden oder URLs wechseln, zuerst die Python-Skripte aktualisieren und danach die entsprechenden Download-Abschnitte (URL-Listen, Dateinamen) im Workflow anpassen.
+> **Tipp:** Falls zusätzliche Mannschaften aufgenommen werden oder URLs wechseln, `config/team_sources.csv` anpassen. Die Skripte und der Workflow nutzen diese Datei automatisch.
 
 ## Veröffentlichung über GitHub Pages
 
