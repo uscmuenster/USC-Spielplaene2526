@@ -2,6 +2,7 @@ from pathlib import Path
 from datetime import datetime
 import pandas as pd
 import os
+import unicodedata
 
 from team_config import get_csv_files
 
@@ -23,7 +24,6 @@ def load_csv_robust(file_path):
                 file_path,
                 sep=";",
                 encoding=encoding,
-                encoding_errors="replace",
                 engine="python",
                 quoting=3,
                 on_bad_lines="skip"
@@ -34,7 +34,16 @@ def load_csv_robust(file_path):
             last_error = exc
 
     else:
-        raise RuntimeError(f"❌ CSV konnte nicht gelesen werden: {file_path}") from last_error
+        print(f"⚠️ Encoding-Fallback für {file_path.name}: {last_error}")
+        df = pd.read_csv(
+            file_path,
+            sep=";",
+            encoding="utf-8-sig",
+            encoding_errors="replace",
+            engine="python",
+            quoting=3,
+            on_bad_lines="skip",
+        )
 
     df.columns = (
         df.columns.astype(str)
@@ -47,6 +56,12 @@ def load_csv_robust(file_path):
     df = df.dropna(axis=1, how="all")
 
     return df
+
+
+def normalize_search_text(value):
+    text = str(value or "").lower().replace("�", "u")
+    text = unicodedata.normalize("NFKD", text)
+    return "".join(ch for ch in text if not unicodedata.combining(ch))
 
 
 csv_dir = Path("csvdata")
@@ -101,12 +116,8 @@ for file, team_code in csv_files:
             "Gastgeber: Verein",
         ]
 
-        text = " ".join(
-            str(row.get(f, "")).lower()
-            for f in fields
-        )
-
-        return "usc münster" in text or "usc muenster" in text
+        text = " ".join(normalize_search_text(row.get(f, "")) for f in fields)
+        return "usc munster" in text or "usc muenster" in text
 
     df = df[df.apply(contains_usc, axis=1)]
 

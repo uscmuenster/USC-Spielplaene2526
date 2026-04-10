@@ -109,7 +109,7 @@ def build_team_table_overview(team_codes: Iterable[str]) -> str:
 
     unique_codes = sorted({code for code in team_codes if code}, key=lambda code: USC_TEAM_TABLE_INFO.get(code, {}).get("order", 999))
     if not unique_codes:
-        return ""
+        unique_codes = sorted(USC_TEAM_TABLE_INFO.keys(), key=lambda code: USC_TEAM_TABLE_INFO.get(code, {}).get("order", 999))
 
     rows = []
     for code in unique_codes:
