@@ -8,9 +8,9 @@ X-WR-TIMEZONE:Europe/Berlin
 REFRESH-INTERVAL;VALUE=DURATION:PT1H
 X-PUBLISHED-TTL:PT1H
 BEGIN:VEVENT
-UID:298c7e28-7e00-4955-ac8a-ff745a9106fb
+UID:cc148a65-b8f7-4cc3-a949-1a086067c839
 SEQUENCE:0
-DTSTAMP:20260310T135220
+DTSTAMP:20260421T143128
 DTSTART:20250926T193000
 DTEND:20250926T213000
 SUMMARY:ProA Spiel Artland Dragons vs Uni Baskets Münster
@@ -20,9 +20,9 @@ URL;VALUE=URI:https://sporteurope.tv/artland-dragons/proa-artland-dragons-
  vs-uni-baskets-muenster-11
 END:VEVENT
 BEGIN:VEVENT
-UID:b8e02065-ef6e-402d-a4cc-e37ed8ab9c6a
+UID:eadb63ec-ea2e-4294-83a9-fce78bc23397
 SEQUENCE:0
-DTSTAMP:20260310T135220
+DTSTAMP:20260421T143128
 DTSTART:20251004T193000
 DTEND:20251004T213000
 SUMMARY:ProA Spiel Uni Baskets Münster vs Eisbären Bremerhaven
@@ -32,9 +32,9 @@ URL;VALUE=URI:https://sporteurope.tv/uni-baskets-muenster/proa-uni-baskets
  -muenster-vs-eisbaeren-bremerhaven-5
 END:VEVENT
 BEGIN:VEVENT
-UID:ffe10e4d-5ab0-4418-992c-9d45c85929db
+UID:9889df38-7635-489c-b793-df3328260245
 SEQUENCE:0
-DTSTAMP:20260310T135220
+DTSTAMP:20260421T143128
 DTSTART:20251011T190000
 DTEND:20251011T210000
 SUMMARY:ProA Spiel Phoenix Hagen vs Uni Baskets Münster
@@ -44,9 +44,9 @@ URL;VALUE=URI:https://sporteurope.tv/phoenix-hagen/proa-phoenix-hagen-vs-u
  ni-baskets-muenster-9
 END:VEVENT
 BEGIN:VEVENT
-UID:a27eb6a0-2c62-448a-a497-a280cae975a2
+UID:6f2da78b-aefb-4149-a176-5af1c6d190a2
 SEQUENCE:0
-DTSTAMP:20260310T135220
+DTSTAMP:20260421T143128
 DTSTART:20251018T200000
 DTEND:20251018T220000
 SUMMARY:ProA Spiel Uni Baskets Münster vs VfL SparkassenStars Bochum
@@ -56,9 +56,9 @@ URL;VALUE=URI:https://sporteurope.tv/uni-baskets-muenster/proa-uni-baskets
  -muenster-vs-vfl-sparkassenstars-bochum-21
 END:VEVENT
 BEGIN:VEVENT
-UID:6be0f73a-28d1-4216-a3ac-58bc2d7f6d80
+UID:f2754064-273b-41ea-a792-cd0b1d344c97
 SEQUENCE:0
-DTSTAMP:20260310T135220
+DTSTAMP:20260421T143128
 DTSTART:20251025T193000
 DTEND:20251025T213000
 SUMMARY:ProA Spiel PS Karlsruhe LIONS vs Uni Baskets Münster
@@ -68,9 +68,9 @@ URL;VALUE=URI:https://sporteurope.tv/ps-karlsruhe-lions/proa-ps-karlsruhe-
  lions-vs-uni-baskets-muenster-13
 END:VEVENT
 BEGIN:VEVENT
-UID:a82e7acc-e9d2-4f15-9db3-c020b3084640
+UID:98063119-edbd-45c7-bad9-5bd2be44ce16
 SEQUENCE:0
-DTSTAMP:20260310T135220
+DTSTAMP:20260421T143128
 DTSTART:20251102T160000
 DTEND:20251102T180000
 SUMMARY:ProA Spiel Bayer Giants Leverkusen vs Uni Baskets Münster
@@ -80,9 +80,9 @@ URL;VALUE=URI:https://sporteurope.tv/bayer-giants-leverkusen/proa-bayer-gi
  ants-leverkusen-vs-uni-baskets-muenster
 END:VEVENT
 BEGIN:VEVENT
-UID:1b61f7c9-aa8e-4fc8-93ec-51aec111fed8
+UID:8fc759ad-25c6-410d-b700-d6e3c688d445
 SEQUENCE:0
-DTSTAMP:20260310T135220
+DTSTAMP:20260421T143128
 DTSTART:20251107T200000
 DTEND:20251107T220000
 SUMMARY:ProA Spiel Uni Baskets Münster vs RheinStars Köln
@@ -92,9 +92,9 @@ URL;VALUE=URI:https://sporteurope.tv/uni-baskets-muenster/proa-uni-baskets
  -muenster-vs-rheinstars-koeln
 END:VEVENT
 BEGIN:VEVENT
-UID:c15ad46a-2ed1-40b0-a6bc-cd68c16e3be6
+UID:ca284b4e-4c92-4cab-b908-a08075310c39
 SEQUENCE:0
-DTSTAMP:20260310T135220
+DTSTAMP:20260421T143128
 DTSTART:20251110T193000
 DTEND:20251110T213000
 SUMMARY:ProA Spiel EPG Baskets Koblenz vs Uni Baskets Münster
@@ -104,9 +104,9 @@ URL;VALUE=URI:https://sporteurope.tv/epgbasketskoblenz/proa-epg-baskets-ko
  blenz-vs-uni-baskets-muenster-5
 END:VEVENT
 BEGIN:VEVENT
-UID:b05b920e-4fcc-48f6-9639-5ec8a1870c63
+UID:2e442e31-4f0c-49a4-a6c3-df4d66f319dd
 SEQUENCE:0
-DTSTAMP:20260310T135220
+DTSTAMP:20260421T143128
 DTSTART:20251115T193000
 DTEND:20251115T213000
 SUMMARY:ProA Spiel Uni Baskets Münster vs GIESSEN 46ers
@@ -116,9 +116,9 @@ URL;VALUE=URI:https://sporteurope.tv/uni-baskets-muenster/proa-uni-baskets
  -muenster-vs-giessen-46ers-4
 END:VEVENT
 BEGIN:VEVENT
-UID:21e34b5c-8668-4b61-97cf-84fa8e0deb4b
+UID:ecf47977-28a6-4bbe-a580-986eae0f1f08
 SEQUENCE:0
-DTSTAMP:20260310T135220
+DTSTAMP:20260421T143128
 DTSTART:20251122T200000
 DTEND:20251122T220000
 SUMMARY:ProA Spiel HAKRO Merlins Crailsheim vs Uni Baskets Münster
@@ -128,9 +128,9 @@ URL;VALUE=URI:https://sporteurope.tv/hakromerlins/proa-hakro-merlins-crail
  sheim-vs-uni-baskets-muenster-4
 END:VEVENT
 BEGIN:VEVENT
-UID:9c8dce32-8560-4dc0-bd64-18be5c34a6d0
+UID:62cda8fb-f8b6-457d-99bb-2a083bde3b55
 SEQUENCE:0
-DTSTAMP:20260310T135220
+DTSTAMP:20260421T143128
 DTSTART:20251206T193000
 DTEND:20251206T213000
 SUMMARY:ProA Spiel Uni Baskets Münster vs Paderborn Baskets
@@ -140,9 +140,9 @@ URL;VALUE=URI:https://sporteurope.tv/uni-baskets-muenster/proa-uni-baskets
  -muenster-vs-gartenzaun24-baskets-paderborn-6-0
 END:VEVENT
 BEGIN:VEVENT
-UID:e89bcdf2-36e2-4c61-bcae-9f06d78c19b8
+UID:16d7a007-9049-4de6-a241-ebda03f17a87
 SEQUENCE:0
-DTSTAMP:20260310T135220
+DTSTAMP:20260421T143128
 DTSTART:20251213T193000
 DTEND:20251213T213000
 SUMMARY:ProA Spiel Tigers Tübingen vs Uni Baskets Münster
@@ -152,9 +152,9 @@ URL;VALUE=URI:https://sporteurope.tv/tigers-tuebingen/proa-tigers-tuebinge
  n-vs-uni-baskets-muenster-4
 END:VEVENT
 BEGIN:VEVENT
-UID:3913cf66-f445-4b06-bac4-a3fa97a383a4
+UID:92243d63-0c05-432a-a17d-3488684cd4b7
 SEQUENCE:0
-DTSTAMP:20260310T135220
+DTSTAMP:20260421T143128
 DTSTART:20251218T200000
 DTEND:20251218T220000
 SUMMARY:ProA Spiel Uni Baskets Münster vs Bozic Estriche Knights Kirchhei
@@ -165,9 +165,9 @@ URL;VALUE=URI:https://sporteurope.tv/uni-baskets-muenster/proa-uni-baskets
  -muenster-vs-bozic-estriche-knights-kirchheim-11
 END:VEVENT
 BEGIN:VEVENT
-UID:33ba173d-dc62-47ae-b3e9-59c9cad3bfba
+UID:fac01ad7-6bfd-45fd-a94f-ed1778919889
 SEQUENCE:0
-DTSTAMP:20260310T135220
+DTSTAMP:20260421T143128
 DTSTART:20251221T183000
 DTEND:20251221T203000
 SUMMARY:ProA Spiel Uni Baskets Münster vs SBB Baskets 
@@ -177,9 +177,9 @@ URL;VALUE=URI:https://sporteurope.tv/uni-baskets-muenster/proa-uni-baskets
  -muenster-vs-sbb-baskets-wolmirstedt
 END:VEVENT
 BEGIN:VEVENT
-UID:bade46e4-49aa-4e20-ba5e-238540ea53b6
+UID:b98ecbb0-699f-4f2e-8818-2cd90b249ce4
 SEQUENCE:0
-DTSTAMP:20260310T135220
+DTSTAMP:20260421T143128
 DTSTART:20251227T190000
 DTEND:20251227T210000
 SUMMARY:ProA Spiel BBC Bayreuth vs Uni Baskets Münster
@@ -189,9 +189,9 @@ URL;VALUE=URI:https://sporteurope.tv/bbc-bayreuth/proa-bbc-bayreuth-vs-uni
  -baskets-muenster-8
 END:VEVENT
 BEGIN:VEVENT
-UID:1ba5a2cd-ede8-4a46-9226-f84b4a2fb94e
+UID:e8689ad6-a014-4721-b455-6a394ede36ea
 SEQUENCE:0
-DTSTAMP:20260310T135220
+DTSTAMP:20260421T143128
 DTSTART:20260103T183000
 DTEND:20260103T203000
 SUMMARY:ProA Spiel BG Göttingen vs Uni Baskets Münster
@@ -201,9 +201,9 @@ URL;VALUE=URI:https://sporteurope.tv/bg-goettingen/proa-bg-goettingen-vs-u
  ni-baskets-muenster-1
 END:VEVENT
 BEGIN:VEVENT
-UID:01fa3c4a-60f0-4f26-8eb4-e730b0348b52
+UID:ba08f5d7-1d05-41ca-9124-eef23ee4fca4
 SEQUENCE:0
-DTSTAMP:20260310T135220
+DTSTAMP:20260421T143128
 DTSTART:20260110T193000
 DTEND:20260110T213000
 SUMMARY:ProA Spiel Uni Baskets Münster vs Nürnberg Falcons BC
@@ -213,9 +213,9 @@ URL;VALUE=URI:https://sporteurope.tv/uni-baskets-muenster/proa-uni-baskets
  -muenster-vs-nuernberg-falcons-bc-9
 END:VEVENT
 BEGIN:VEVENT
-UID:f9b11b69-6bee-4cad-9d03-55f39a512780
+UID:9b54e1b4-4510-4173-84d5-8a225fb1b867
 SEQUENCE:0
-DTSTAMP:20260310T135220
+DTSTAMP:20260421T143128
 DTSTART:20260117T190000
 DTEND:20260117T210000
 SUMMARY:ProA Spiel Bozic Estriche Knights Kirchheim vs Uni Baskets Münste
@@ -226,9 +226,9 @@ URL;VALUE=URI:https://sporteurope.tv/bozic-estriche-knights-kirchheim/proa
  -bozic-estriche-knights-kirchheim-vs-uni-baskets-muenster-13
 END:VEVENT
 BEGIN:VEVENT
-UID:87714c1b-eb18-4047-8ca0-ce2091949bb6
+UID:4aa0a7ff-686a-4f8c-a7b5-69b338602692
 SEQUENCE:0
-DTSTAMP:20260310T135220
+DTSTAMP:20260421T143128
 DTSTART:20260125T180000
 DTEND:20260125T200000
 SUMMARY:ProA Spiel Uni Baskets Münster vs HAKRO Merlins Crailsheim
@@ -238,9 +238,9 @@ URL;VALUE=URI:https://sporteurope.tv/uni-baskets-muenster/proa-uni-baskets
  -muenster-vs-hakro-merlins-crailsheim-6
 END:VEVENT
 BEGIN:VEVENT
-UID:a128ebf9-708e-4923-b783-838714f1c8fd
+UID:0b3d6cd7-b3c0-4535-92bf-45b4d4d89b48
 SEQUENCE:0
-DTSTAMP:20260310T135220
+DTSTAMP:20260421T143128
 DTSTART:20260130T200000
 DTEND:20260130T220000
 SUMMARY:ProA Spiel GIESSEN 46ers vs Uni Baskets Münster
@@ -250,9 +250,9 @@ URL;VALUE=URI:https://sporteurope.tv/giessen-46er/proa-giessen-46ers-vs-un
  i-baskets-muenster-4
 END:VEVENT
 BEGIN:VEVENT
-UID:b868a8ab-f16e-41fd-b7a9-cdbe4da1f1ff
+UID:56e7682a-e8e4-4252-8462-9a2be655d5aa
 SEQUENCE:0
-DTSTAMP:20260310T135220
+DTSTAMP:20260421T143128
 DTSTART:20260205T193000
 DTEND:20260205T213000
 SUMMARY:ProA Spiel Uni Baskets Münster vs EPG Baskets Koblenz
@@ -262,9 +262,9 @@ URL;VALUE=URI:https://sporteurope.tv/uni-baskets-muenster/proa-uni-baskets
  -muenster-vs-epg-baskets-koblenz-4
 END:VEVENT
 BEGIN:VEVENT
-UID:95a12ac8-2061-4bb7-9703-142eec9bde93
+UID:6160769d-3c2e-442b-8722-72d28ed6fe08
 SEQUENCE:0
-DTSTAMP:20260310T135220
+DTSTAMP:20260421T143128
 DTSTART:20260208T170000
 DTEND:20260208T190000
 SUMMARY:ProA Spiel RheinStars Köln vs Uni Baskets Münster
@@ -274,9 +274,9 @@ URL;VALUE=URI:https://sporteurope.tv/rheinstars-koeln/proa-rheinstars-koel
  n-vs-uni-baskets-muenster
 END:VEVENT
 BEGIN:VEVENT
-UID:297c4632-264c-4d70-9169-67531baa42c3
+UID:28a7ba5d-9b22-485e-a9fd-6f380474d4c0
 SEQUENCE:0
-DTSTAMP:20260310T135220
+DTSTAMP:20260421T143128
 DTSTART:20260214T193000
 DTEND:20260214T213000
 SUMMARY:ProA Spiel Uni Baskets Münster vs Bayer Giants Leverkusen
@@ -286,9 +286,9 @@ URL;VALUE=URI:https://sporteurope.tv/uni-baskets-muenster/proa-uni-baskets
  -muenster-vs-bayer-giants-leverkusen
 END:VEVENT
 BEGIN:VEVENT
-UID:277b088f-c918-404d-b7e3-39a66b365346
+UID:424a7890-7c68-46e5-8d53-40b93f8a87dd
 SEQUENCE:0
-DTSTAMP:20260310T135220
+DTSTAMP:20260421T143128
 DTSTART:20260220T193000
 DTEND:20260220T213000
 SUMMARY:ProA Spiel Paderborn Baskets vs Uni Baskets Münster
@@ -298,9 +298,9 @@ URL;VALUE=URI:https://sporteurope.tv/paderborn-baskets/proa-paderborn-bask
  ets-vs-uni-baskets-muenster
 END:VEVENT
 BEGIN:VEVENT
-UID:27f0638d-eda8-4b71-9f1d-720df07d4e6e
+UID:9356d32e-1f18-43ba-b2c4-99a13040309d
 SEQUENCE:0
-DTSTAMP:20260310T135220
+DTSTAMP:20260421T143128
 DTSTART:20260306T200000
 DTEND:20260306T220000
 SUMMARY:ProA Spiel Uni Baskets Münster vs BBC Bayreuth
@@ -310,9 +310,9 @@ URL;VALUE=URI:https://sporteurope.tv/uni-baskets-muenster/proa-uni-baskets
  -muenster-vs-bbc-bayreuth-11
 END:VEVENT
 BEGIN:VEVENT
-UID:b5a870a8-c967-4278-a0dc-0e8a605c1522
+UID:a1d12f23-9023-4cfb-8cc1-8fc40c762926
 SEQUENCE:0
-DTSTAMP:20260310T135220
+DTSTAMP:20260421T143128
 DTSTART:20260308T150000
 DTEND:20260308T170000
 SUMMARY:ProA Spiel Eisbären Bremerhaven vs Uni Baskets Münster
@@ -322,9 +322,9 @@ URL;VALUE=URI:https://sporteurope.tv/eisbaerenbremerhaven/proa-eisbaeren-b
  remerhaven-vs-uni-baskets-muenster-9
 END:VEVENT
 BEGIN:VEVENT
-UID:2589c9f5-1897-430c-8048-2bd2e27a092f
+UID:ba265303-1ac4-48ef-bfb1-d630755bc0f5
 SEQUENCE:0
-DTSTAMP:20260310T135220
+DTSTAMP:20260421T143128
 DTSTART:20260315T180000
 DTEND:20260315T200000
 SUMMARY:ProA Spiel Uni Baskets Münster vs BG Göttingen
@@ -334,9 +334,9 @@ URL;VALUE=URI:https://sporteurope.tv/uni-baskets-muenster/proa-uni-baskets
  -muenster-vs-bg-goettingen
 END:VEVENT
 BEGIN:VEVENT
-UID:f6b52a76-8543-4572-906e-8a6289727652
+UID:5c43ab69-d77c-4ae5-946e-e90f02886fc4
 SEQUENCE:0
-DTSTAMP:20260310T135220
+DTSTAMP:20260421T143128
 DTSTART:20260321T183000
 DTEND:20260321T203000
 SUMMARY:ProA Spiel Nürnberg Falcons BC vs Uni Baskets Münster
@@ -346,9 +346,9 @@ URL;VALUE=URI:https://sporteurope.tv/nuernberg-falcons-bc/proa-nuernberg-f
  alcons-bc-vs-uni-baskets-muenster-9
 END:VEVENT
 BEGIN:VEVENT
-UID:baa420da-5eb4-42da-8e8f-72522e2bcadb
+UID:3cb64f96-07e6-4405-bf42-4456428b280a
 SEQUENCE:0
-DTSTAMP:20260310T135220
+DTSTAMP:20260421T143128
 DTSTART:20260328T193000
 DTEND:20260328T213000
 SUMMARY:ProA Spiel Uni Baskets Münster vs PS Karlsruhe LIONS
@@ -358,53 +358,63 @@ URL;VALUE=URI:https://sporteurope.tv/uni-baskets-muenster/proa-uni-baskets
  -muenster-vs-ps-karlsruhe-lions-10
 END:VEVENT
 BEGIN:VEVENT
-UID:efc751a4-5f78-4132-b046-209d8c65f172
+UID:efb94069-31b4-457b-a8c1-96b81d742398
 SEQUENCE:0
-DTSTAMP:20260310T135220
+DTSTAMP:20260421T143128
 DTSTART:20260404T193000
 DTEND:20260404T213000
 SUMMARY:ProA Spiel Uni Baskets Münster vs Tigers Tübingen
 LOCATION:Sporthalle Berg Fidel\, Münster
 DESCRIPTION:
+URL;VALUE=URI:https://sporteurope.tv/uni-baskets-muenster/proa-uni-baskets
+ -muenster-vs-tigers-tuebingen-4
 END:VEVENT
 BEGIN:VEVENT
-UID:4f96d3eb-9ec8-4294-bfae-20bfd05a8b14
+UID:c77f586d-124f-4fdc-beac-61feb84b2229
 SEQUENCE:0
-DTSTAMP:20260310T135220
+DTSTAMP:20260421T143128
 DTSTART:20260410T193000
 DTEND:20260410T213000
 SUMMARY:ProA Spiel SBB Baskets  vs Uni Baskets Münster
 LOCATION:Wolfgang-Lakenmacher-Halle\, Magdeburg
 DESCRIPTION:
+URL;VALUE=URI:https://sporteurope.tv/sbbbasketswolmirstedt/proa-sbb-basket
+ s-wolmirstedt-vs-uni-baskets-muenster
 END:VEVENT
 BEGIN:VEVENT
-UID:fd5ebdeb-5e68-4f86-bfe2-38c59ee936a2
+UID:0e883e04-b8c9-40e1-855e-471e6d1b3b5e
 SEQUENCE:0
-DTSTAMP:20260310T135220
+DTSTAMP:20260421T143128
 DTSTART:20260418T193000
 DTEND:20260418T213000
 SUMMARY:ProA Spiel Uni Baskets Münster vs Artland Dragons
 LOCATION:Sporthalle Berg Fidel\, Münster
 DESCRIPTION:
+URL;VALUE=URI:https://sporteurope.tv/uni-baskets-muenster/proa-uni-baskets
+ -muenster-vs-artland-dragons-10
 END:VEVENT
 BEGIN:VEVENT
-UID:87b9f78b-de85-4465-9de2-09c8b5078c10
+UID:7f50f84a-57a7-411a-a6df-ca0e9595d928
 SEQUENCE:0
-DTSTAMP:20260310T135220
+DTSTAMP:20260421T143128
 DTSTART:20260425T190000
 DTEND:20260425T210000
 SUMMARY:ProA Spiel VfL SparkassenStars Bochum vs Uni Baskets Münster
 LOCATION:BONES HANDS ARENA\, Bochum
 DESCRIPTION:
+URL;VALUE=URI:https://sporteurope.tv/sparkassenstars-bochum/proa-vfl-spark
+ assenstars-bochum-vs-uni-baskets-muenster-7-0
 END:VEVENT
 BEGIN:VEVENT
-UID:07e4ae34-78d7-4918-816c-3dc7487c27f5
+UID:e7f91d84-ac10-4c0d-b125-26bda7628388
 SEQUENCE:0
-DTSTAMP:20260310T135220
+DTSTAMP:20260421T143128
 DTSTART:20260502T193000
 DTEND:20260502T213000
 SUMMARY:ProA Spiel Uni Baskets Münster vs Phoenix Hagen
 LOCATION:Sporthalle Berg Fidel\, Münster
 DESCRIPTION:
+URL;VALUE=URI:https://sporteurope.tv/uni-baskets-muenster/proa-uni-baskets
+ -muenster-vs-phoenix-hagen-7
 END:VEVENT
 END:VCALENDAR
