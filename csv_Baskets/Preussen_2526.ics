@@ -852,9 +852,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  n\n31. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
  /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
  ine.de/ical/loeschen
-DTSTAMP:20260422T230500Z
+DTSTAMP:20260423T100056Z
 CREATED:20250627T124813Z
-LAST-MODIFIED:20260422T230500Z
+LAST-MODIFIED:20260423T100056Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -875,9 +875,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  n\n32. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
  /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
  ine.de/ical/loeschen
-DTSTAMP:20260422T230509Z
+DTSTAMP:20260423T100104Z
 CREATED:20250627T124819Z
-LAST-MODIFIED:20260422T230509Z
+LAST-MODIFIED:20260423T100104Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -899,9 +899,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  n\n33. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
  /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
  ine.de/ical/loeschen
-DTSTAMP:20260422T230514Z
+DTSTAMP:20260423T100110Z
 CREATED:20250627T124828Z
-LAST-MODIFIED:20260422T230514Z
+LAST-MODIFIED:20260423T100110Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -922,9 +922,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  n\n34. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
  /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
  ine.de/ical/loeschen
-DTSTAMP:20260422T230518Z
+DTSTAMP:20260423T100115Z
 CREATED:20250627T124833Z
-LAST-MODIFIED:20260422T230518Z
+LAST-MODIFIED:20260423T100115Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
