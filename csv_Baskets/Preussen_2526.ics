@@ -11,30 +11,6 @@ X-WR-TIMEZONE:Europe/Berlin
 X-WR-RELCALID:7dc6da48.a8ea1dd5@7477.calovo.com
 X-PUBLISHED-TTL:PT30M
 BEGIN:VEVENT
-UID:6686a421b8489@7477.calovo
-DTSTART;TZID=Europe/Berlin:20250502T183000
-SEQUENCE:0
-TRANSP:TRANSPARENT
-STATUS:CONFIRMED
-DTEND;TZID=Europe/Berlin:20250502T203000
-LOCATION:Avnet Arena
-SUMMARY:1. FC Magdeburg - SC Preußen Münster | 2. Bundesliga | 32. Spielt
- ag
-DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
- n\n32. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
- /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
- ine.de/ical/loeschen
-DTSTAMP:20250502T150710Z
-CREATED:20240704T133113Z
-LAST-MODIFIED:20250502T150710Z
-BEGIN:VALARM
-TRIGGER:-P0DT1H0M0S
-ACTION:DISPLAY
-DESCRIPTION:Reminder: 1. FC Magdeburg - SC Preußen Münster | 2. Bundeslig
- a | 32. Spieltag
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
 UID:6686a426e14dd@7477.calovo
 DTSTART;TZID=Europe/Berlin:20250509T183000
 SEQUENCE:0
@@ -851,9 +827,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  n\n32. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
  /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
  ine.de/ical/loeschen
-DTSTAMP:20260502T180331Z
+DTSTAMP:20260502T220246Z
 CREATED:20250627T124819Z
-LAST-MODIFIED:20260502T180331Z
+LAST-MODIFIED:20260502T220246Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -875,9 +851,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  n\n33. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
  /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
  ine.de/ical/loeschen
-DTSTAMP:20260502T180335Z
+DTSTAMP:20260502T220251Z
 CREATED:20250627T124828Z
-LAST-MODIFIED:20260502T180335Z
+LAST-MODIFIED:20260502T220251Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -898,9 +874,9 @@ DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
  n\n34. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
  /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
  ine.de/ical/loeschen
-DTSTAMP:20260502T180338Z
+DTSTAMP:20260502T220254Z
 CREATED:20250627T124833Z
-LAST-MODIFIED:20260502T180338Z
+LAST-MODIFIED:20260502T220254Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
