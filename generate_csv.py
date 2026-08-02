@@ -85,6 +85,10 @@ dfs = []
 for file, team_code in csv_files:
 
     file_path = csv_dir / file
+    if not file_path.exists():
+        print(f"⚠️ CSV nicht gefunden, wird übersprungen: {file_path}")
+        continue
+
     df = load_csv_robust(file_path)
 
     df.columns = df.columns.str.strip()

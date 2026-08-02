@@ -131,6 +131,10 @@ dfs = []
 
 for file, team_code in csv_files:
     file_path = csv_dir / file
+    if not file_path.exists():
+        print(f"⚠️ CSV nicht gefunden, wird übersprungen: {file_path}")
+        continue
+
     df = read_csv_clean(file_path)
     df = df.rename(columns=rename_map)
 
