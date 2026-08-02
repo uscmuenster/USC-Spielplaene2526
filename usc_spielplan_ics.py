@@ -3,6 +3,7 @@ from datetime import datetime, timedelta
 import pandas as pd
 from pytz import timezone
 
+from csv_utils import read_semicolon_csv
 from team_config import get_csv_files
 from usc_team_names import replace_usc_names
 
@@ -19,37 +20,6 @@ usc_keywords = ["USC Münster", "USC Muenster", "USC MÜNSTER"]
 # =========================
 # CSV lesen
 # =========================
-
-def read_csv_clean(path: Path) -> pd.DataFrame:
-    last_error = None
-
-    for encoding in ("utf-8-sig", "cp1252", "latin1"):
-        try:
-            df = pd.read_csv(
-                path,
-                sep=";",
-                encoding=encoding,
-                encoding_errors="replace",
-                engine="python",
-                on_bad_lines="skip"
-            )
-            break
-        except UnicodeDecodeError as exc:
-            last_error = exc
-    else:
-        raise last_error
-
-    df.columns = (
-        df.columns.astype(str)
-        .str.replace("\ufeff", "", regex=False)
-        .str.strip()
-    )
-
-    df = df.loc[:, ~df.columns.str.contains("^Unnamed")]
-    df = df.dropna(axis=1, how="all")
-
-    return df
-
 
 # =========================
 # USC prüfen
@@ -87,7 +57,7 @@ for file, team_code in csv_files:
     if not file_path.exists():
         continue
 
-    df = read_csv_clean(file_path)
+    df = read_semicolon_csv(file_path)
 
     df = df.rename(columns=rename_map)
 
