@@ -2,9 +2,9 @@ from pathlib import Path
 from datetime import datetime, timedelta
 import pandas as pd
 from pytz import timezone
-import re
 
 from team_config import get_csv_files
+from usc_team_names import replace_usc_names
 
 # =========================
 # Konfiguration
@@ -61,30 +61,6 @@ def contains_usc(row):
         for f in ["Heim", "Gast", "SR", "Gastgeber"]
         for usc in usc_keywords
     )
-
-
-# =========================
-# USC Namen kürzen
-# =========================
-
-def replace_usc_names(s, team):
-    s = str(s)
-
-    replacements = [
-        ("USC Münster VIII", "USC8"),
-        ("USC Münster VII", "USC7"),
-        ("USC Münster VI", "USC6"),
-        ("USC Münster V", "USC5"),
-        ("USC Münster IV", "USC4"),
-        ("USC Münster III", "USC3"),
-        ("USC Münster II", "USC2"),
-        ("USC Münster", "USC1"),
-    ]
-
-    for old, new in replacements:
-        s = s.replace(old, new)
-
-    return s
 
 
 # =========================

@@ -5,6 +5,7 @@ import os
 import unicodedata
 
 from team_config import get_csv_files
+from usc_team_names import get_usc_team, replace_usc_names
 
 
 def load_csv_robust(file_path):
@@ -121,66 +122,10 @@ for file, team_code in csv_files:
 
     df = df[df.apply(contains_usc, axis=1)]
 
-    def get_usc_team(row):
-
-        text = f"{row.get('Heim','')} {row.get('Gast','')} {row.get('SR','')} {row.get('Gastgeber','')}".lower()
-
-        if file == "Spielplan_Bezirksklasse_26_Frauen.csv":
-
-            if "usc münster vi" in text:
-                return "USC6"
-            elif "usc münster v" in text:
-                return "USC5"
-            else:
-                return "USC5/6"
-
-        if file == "Spielplan_Kreisliga_Muenster_Frauen.csv":
-
-            if "usc münster viii" in text:
-                return "USC8"
-            elif "usc münster vii" in text:
-                return "USC7"
-            elif "usc münster" in text:
-                return "USC7/8"
-
-        return team_code
-
-    df["USC_Team"] = df.apply(get_usc_team, axis=1)
-
-    def replace_usc_names(s, team):
-
-        s = str(s)
-
-        global_replacements = [
-            ("USC Münster VIII", "USC8"),
-            ("USC Münster VII", "USC7"),
-            ("USC Münster VI",  "USC6"),
-            ("USC Münster V",   "USC5"),
-            ("USC Münster IV",  "USC4"),
-            ("USC Münster III", "USC3"),
-            ("USC Münster II",  "USC2"),
-            ("USC Münster",     "USC1"),
-        ]
-
-        team_specific = {
-            "USC-U14-1": [("USC1", "USC-U14-1")],
-            "USC-U14-2": [("USC2", "USC-U14-2")],
-            "USC-U16-1": [("USC1", "USC-U16-1")],
-            "USC-U16-2": [("USC2", "USC-U16-2")],
-            "USC-U18":   [("USC1", "USC-U18")],
-            "USC-U13":   [("USC1", "USC-U13")],
-        }
-
-        for old, new in global_replacements:
-            s = s.replace(old, new)
-
-        for old, new in team_specific.get(team, []):
-            s = s.replace(old, new)
-
-        return s
+    df["USC_Team"] = df.apply(lambda row: get_usc_team(row, team_code), axis=1)
 
     for col in ["Heim", "Gast", "SR", "Gastgeber", "Ort", "Spielrunde"]:
-        df[col] = df.apply(lambda row: replace_usc_names(row.get(col, ""), row["USC_Team"]), axis=1)
+        df[col] = df.apply(lambda row: replace_usc_names(row.get(col, ""), team_code), axis=1)
 
     dfs.append(df)
 
