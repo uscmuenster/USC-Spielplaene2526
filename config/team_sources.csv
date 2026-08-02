@@ -1,14 +1,12 @@
 team;wettbewerb;link;datei
-USC1;VBL;https://www.volleyball-bundesliga.de/servlet/league/PlayingScheduleCsvExport?matchSeriesId=776311171;Spielplan_1._Bundesliga_Frauen.csv
-USC1;VBL-Playoffs;https://www.volleyball-bundesliga.de/servlet/league/PlayingScheduleCsvExport?matchSeriesId=776311124;Spielplan_1._Bundesliga_Frauen_Playoffs.csv
-USC2;2.BLFN;https://www.volleyball-bundesliga.de/servlet/league/PlayingScheduleCsvExport?matchSeriesId=776309163;Spielplan_2._Bundesliga_Frauen_Nord.csv
-USC3;OL;https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95244340;Spielplan_Oberliga_2_Frauen.csv
-USC4;BL;https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95239897;Spielplan_Bezirksliga_14_Frauen.csv
-USC5/USC6;BK;https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95243632;Spielplan_Bezirksklasse_26_Frauen.csv
-USC7/USC8;KL;https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95241488;Spielplan_Kreisliga_Muenster_Frauen.csv
-USC-U18;NRW-Liga wU18;https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95250874;Spielplan_NRW-Liga_wU18.csv
-USC-U16-1;NRW-Liga wU16;https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95245637;Spielplan_NRW-Liga_wU16.csv
-USC-U16-2;OL wU16;https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95245654;Spielplan_Oberliga_5_wU16.csv
-USC-U14-1;NRW-Liga wU14;https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95251101;Spielplan_NRW-Liga_wU14.csv
-USC-U14-2;OL wU14;https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95251080;Spielplan_Oberliga_5_wU14.csv
-USC-U13;OL wU13;https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=95245226;Spielplan_Oberliga_6_wU13.csv
+USC1;VBL;https://www.volleyball-bundesliga.de/servlet/league/PlayingScheduleCsvExport?matchSeriesId=781343569;Spielplan_1._Bundesliga_Frauen.csv
+USC1;VBL-Playoffs;;Spielplan_1._Bundesliga_Frauen_Playoffs.csv
+USC2;2.BLFN;https://www.volleyball-bundesliga.de/servlet/league/PlayingScheduleCsvExport?matchSeriesId=781344722;Spielplan_2._Bundesliga_Frauen_Nord.csv
+USC3;OL;https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=116018472;Spielplan_Oberliga_2_Frauen.csv
+USC4/USC5;BL;https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=116020281;Spielplan_Bezirksliga_14_Frauen.csv
+USC6;BK;https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=116022284;Spielplan_Bezirksklasse_26_Frauen.csv
+USC-U18-1;NRW-Liga wU18;https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=116016208;Spielplan_NRW-Liga_wU18.csv
+USC-U18-2;OL6 wU18;https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=116016166;Spielplan_Oberliga_6_wU18.csv
+USC-U16-1;NRW-Liga wU16;https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=116016847;Spielplan_NRW-Liga_wU16.csv
+USC-U14-1/USC-U14-2;OL4 wU14;https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=116018144;Spielplan_Oberliga_4_wU14.csv
+USC-U13-1/USC-U13-2;OL5 wU13;https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=116015739;Spielplan_Oberliga_5_wU13.csv
