@@ -37,9 +37,7 @@ def get_csv_files(config_path: Path = TEAM_SOURCES_PATH) -> list[tuple[str, str 
 
     csv_files: list[tuple[str, str | None]] = []
     for row in load_team_sources(config_path):
-        team = row["team"]
-        team_code = team if "/" not in team else None
-        csv_files.append((row["datei"], team_code))
+        csv_files.append((row["datei"], row["team"] or None))
     return csv_files
 
 
@@ -54,4 +52,5 @@ def get_download_sources(config_path: Path = TEAM_SOURCES_PATH) -> list[dict[str
             "datei": row["datei"],
         }
         for row in load_team_sources(config_path)
+        if row["link"]
     ]
