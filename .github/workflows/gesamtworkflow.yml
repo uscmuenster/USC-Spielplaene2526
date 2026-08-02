@@ -32,7 +32,7 @@ jobs:
           rm -f csv_Baskets/*
 
       - name: 🌐 Baskets-Kalender (ICS) herunterladen
-        run: curl -L "https://api.2basketballbundesliga.de/cal/probN" -o csv_Baskets/Baskets_2526.ics
+        run: curl -L "https://api.2basketballbundesliga.de/cal/562" -o csv_Baskets/Baskets_2526.ics
 
       - name: 🌐 Preußen Münster-Kalender (ICS) herunterladen
         run: |
