@@ -43,8 +43,8 @@ USC_TEAM_TABLE_INFO = {
     },
     "USC5": {
         "name": "USC5",
-        "league": "Bezirksklasse 26 Frauen",
-        "url": _nrw("cms/home/erwachsene/bezirksklassen/bezirksklassen_frauen/bezirksklasse_26_frauen.xhtml"),
+        "league": "Bezirksliga 14 Frauen",
+        "url": _nrw("cms/home/erwachsene/bezirksligen/bezirksligen_frauen/bezirksliga_14_frauen.xhtml"),
         "order": 50,
     },
     "USC6": {
@@ -53,53 +53,47 @@ USC_TEAM_TABLE_INFO = {
         "url": _nrw("cms/home/erwachsene/bezirksklassen/bezirksklassen_frauen/bezirksklasse_26_frauen.xhtml"),
         "order": 55,
     },
-    "USC7": {
-        "name": "USC7",
-        "league": "Kreisliga Münster Frauen",
-        "url": "https://ergebnisdienst.volleyball.nrw/cms/home/erwachsene/kreisligen/alle_kreisligen.xhtml?LeaguePresenter.view=resultTable&LeaguePresenter.matchSeriesId=95241488#samsCmsComponent_103072206",
-        "order": 60,
-    },
-    "USC8": {
-        "name": "USC8",
-        "league": "Kreisliga Münster Frauen",
-        "url": "https://ergebnisdienst.volleyball.nrw/cms/home/erwachsene/kreisligen/alle_kreisligen.xhtml?LeaguePresenter.view=resultTable&LeaguePresenter.matchSeriesId=95241488#samsCmsComponent_103072206",
-        "order": 65,
-    },
-    "USC-U18": {
-        "name": "USC-U18",
+    "USC-U18-1": {
+        "name": "USC-U18-1",
         "league": "NRW-Liga wU18",
         "url": "https://ergebnisdienst.volleyball.nrw/cms/home/jugend/u18/u18_weiblich/nrw_liga.xhtml",
         "order": 110,
     },
-    "USC-U16-1": {
-        "name": "USC-U16-1",
+    "USC-U18-2": {
+        "name": "USC-U18-2",
+        "league": "Oberliga 6 wU18",
+        "url": "https://ergebnisdienst.volleyball.nrw/cms/home/jugend/u18/u18_weiblich/oberliga_6.xhtml",
+        "order": 115,
+    },
+    "USC-U16": {
+        "name": "USC-U16",
         "league": "NRW-Liga wU16",
         "url": "https://ergebnisdienst.volleyball.nrw/cms/home/jugend/u16/u16_weiblich/nrw_liga.xhtml",
         "order": 120,
     },
-    "USC-U16-2": {
-        "name": "USC-U16-2",
-        "league": "Oberliga 5 wU16",
-        "url": "https://ergebnisdienst.volleyball.nrw/cms/home/jugend/u16/u16_weiblich/oberliga_5.xhtml",
-        "order": 130,
-    },
     "USC-U14-1": {
         "name": "USC-U14-1",
-        "league": "NRW-Liga wU14",
-        "url": "https://ergebnisdienst.volleyball.nrw/cms/home/jugend/u14/nrw_ligen/wu14_NRW.xhtml",
-        "order": 140,
+        "league": "Oberliga 4 wU14",
+        "url": "https://ergebnisdienst.volleyball.nrw/cms/home/jugend/u14/u14_weiblich/oberliga_4.xhtml",
+        "order": 150,
     },
     "USC-U14-2": {
         "name": "USC-U14-2",
-        "league": "Oberliga 5 wU14",
-        "url": "https://ergebnisdienst.volleyball.nrw/cms/home/jugend/u14/u14_weiblich/oberliga_5.xhtml",
-        "order": 150,
+        "league": "Oberliga 4 wU14",
+        "url": "https://ergebnisdienst.volleyball.nrw/cms/home/jugend/u14/u14_weiblich/oberliga_4.xhtml",
+        "order": 155,
     },
-    "USC-U13": {
-        "name": "USC-U13",
-        "league": "Oberliga 6 wU13",
-        "url": "https://ergebnisdienst.volleyball.nrw/cms/home/jugend/u13/u13_weiblich/oberliga_6.xhtml",
+    "USC-U13-1": {
+        "name": "USC-U13-1",
+        "league": "Oberliga 5 wU13",
+        "url": "https://ergebnisdienst.volleyball.nrw/cms/home/jugend/u13/u13_weiblich/oberliga_5.xhtml",
         "order": 160,
+    },
+    "USC-U13-2": {
+        "name": "USC-U13-2",
+        "league": "Oberliga 5 wU13",
+        "url": "https://ergebnisdienst.volleyball.nrw/cms/home/jugend/u13/u13_weiblich/oberliga_5.xhtml",
+        "order": 170,
     },
 }
 
