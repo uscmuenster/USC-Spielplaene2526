@@ -418,7 +418,7 @@ html_code = f"""<!doctype html>
 </head>
 <body class="p-4">
   <div class="container">
-    <h1 class="mb-2">USC Münster – Spielplan 2025/26</h1>
+    <h1 class="mb-2">USC Münster – Spielpläne</h1>
     {stand_info}
     {team_tables_html}
     <div class="accordion mb-3" id="filterAccordion">
