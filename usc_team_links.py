@@ -65,8 +65,8 @@ USC_TEAM_TABLE_INFO = {
         "url": "https://ergebnisdienst.volleyball.nrw/cms/home/jugend/u18/u18_weiblich/oberliga_6.xhtml",
         "order": 115,
     },
-    "USC-U16": {
-        "name": "USC-U16",
+    "USC-U16-1": {
+        "name": "USC-U16-1",
         "league": "NRW-Liga wU16",
         "url": "https://ergebnisdienst.volleyball.nrw/cms/home/jugend/u16/u16_weiblich/nrw_liga.xhtml",
         "order": 120,

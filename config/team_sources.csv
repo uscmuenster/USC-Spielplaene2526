@@ -1,5 +1,6 @@
 team;wettbewerb;link;datei
 USC1;VBL;https://www.volleyball-bundesliga.de/servlet/league/PlayingScheduleCsvExport?matchSeriesId=781343569;Spielplan_1._Bundesliga_Frauen.csv
+USC1;VBL-Playoffs;;Spielplan_1._Bundesliga_Frauen_Playoffs.csv
 USC2;2.BLFN;https://www.volleyball-bundesliga.de/servlet/league/PlayingScheduleCsvExport?matchSeriesId=781344722;Spielplan_2._Bundesliga_Frauen_Nord.csv
 USC3;OL;https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=116018472;Spielplan_Oberliga_2_Frauen.csv
 USC4/USC5;BL;https://ergebnisdienst.volleyball.nrw/servlet/league/PlayingScheduleCsvExport?matchSeriesId=116020281;Spielplan_Bezirksliga_14_Frauen.csv
