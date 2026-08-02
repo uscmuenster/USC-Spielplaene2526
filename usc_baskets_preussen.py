@@ -334,7 +334,7 @@ else:
     # Pflichtfelder setzen/ergänzen
     df_preussen["Heim"] = "Preußen Münster"
     df_preussen["Ort"] = "Sporthalle Berg Fidel (48153 Münster)"
-    df_preussen["Spielrunde"] = "Fußball 2. BL"
+    df_preussen["Spielrunde"] = "Fußball 3.Liga"
     df_preussen["SR"] = ""
     df_preussen["Gastgeber"] = "Preußen Münster"
     df_preussen["Ergebnis"] = ""  # wichtig für Filterlogik
