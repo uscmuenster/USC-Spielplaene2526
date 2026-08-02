@@ -18,6 +18,21 @@ class UscTeamNamesTest(unittest.TestCase):
         self.assertEqual(replace_usc_names("USC Münster", configured_team), "USC-U14-1")
         self.assertEqual(replace_usc_names("USC Münster II", configured_team), "USC-U14-2")
 
+    def test_replaces_export_number_for_single_youth_team(self):
+        self.assertEqual(
+            replace_usc_names("USC Münster II", "USC-U18-2"),
+            "USC-U18-2",
+        )
+
+    def test_replaces_single_youth_team_in_every_schedule_role(self):
+        row = {
+            "Heim": "Auswärtsteam",
+            "Gast": "Auswärtsteam 2",
+            "SR": "USC Münster II",
+            "Gastgeber": "USC Münster II",
+        }
+        self.assertEqual(get_usc_team(row, "USC-U18-2"), "USC-U18-2")
+
     def test_detects_team_from_combined_source(self):
         row = {"Heim": "USC Münster IV", "Gast": "USC Münster V"}
         self.assertEqual(get_usc_team(row, "USC4/USC5"), "USC4/USC5")
