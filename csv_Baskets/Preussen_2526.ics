@@ -10,880 +10,6 @@ X-WR-CALDESC:Alle 2. Bundesliga-Spieltermine von SC Preußen Münster immer
 X-WR-TIMEZONE:Europe/Berlin
 X-WR-RELCALID:7dc6da48.a8ea1dd5@7477.calovo.com
 X-PUBLISHED-TTL:PT30M
-BEGIN:VEVENT
-UID:6686a426e14dd@7477.calovo
-DTSTART;TZID=Europe/Berlin:20250509T183000
-SEQUENCE:0
-TRANSP:TRANSPARENT
-STATUS:CONFIRMED
-DTEND;TZID=Europe/Berlin:20250509T203000
-LOCATION:Preußenstadion
-SUMMARY:SC Preußen Münster - Hertha BSC | 2. Bundesliga | 33. Spieltag
-DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
- n\n33. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
- /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
- ine.de/ical/loeschen
-DTSTAMP:20250509T150118Z
-CREATED:20240704T133118Z
-LAST-MODIFIED:20250509T150118Z
-BEGIN:VALARM
-TRIGGER:-P0DT1H0M0S
-ACTION:DISPLAY
-DESCRIPTION:Reminder: SC Preußen Münster - Hertha BSC | 2. Bundesliga | 3
- 3. Spieltag
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:6686a42c82a5a@7477.calovo
-DTSTART;TZID=Europe/Berlin:20250518T153000
-SEQUENCE:0
-TRANSP:TRANSPARENT
-STATUS:CONFIRMED
-DTEND;TZID=Europe/Berlin:20250518T173000
-LOCATION:Donaustadion
-SUMMARY:SSV Ulm 1846 Fussball - SC Preußen Münster | 2. Bundesliga | 34. 
- Spieltag
-DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
- n\n34. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
- /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
- ine.de/ical/loeschen
-DTSTAMP:20250518T080043Z
-CREATED:20240704T133124Z
-LAST-MODIFIED:20250518T080043Z
-BEGIN:VALARM
-TRIGGER:-P0DT1H0M0S
-ACTION:DISPLAY
-DESCRIPTION:Reminder: SSV Ulm 1846 Fussball - SC Preußen Münster | 2. Bun
- desliga | 34. Spieltag
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:685e8cfdd9ac8@7477.calovo
-DTSTART;TZID=Europe/Berlin:20250802T130000
-SEQUENCE:0
-TRANSP:TRANSPARENT
-STATUS:CONFIRMED
-DTEND;TZID=Europe/Berlin:20250802T150000
-LOCATION:BBBank Wildpark
-SUMMARY:Karlsruher SC - SC Preußen Münster | 2. Bundesliga | 1. Spieltag
-DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
- n\n1. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de/
- bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: termi
- ne.de/ical/loeschen
-DTSTAMP:20250802T050057Z
-CREATED:20250627T122221Z
-LAST-MODIFIED:20250802T050057Z
-BEGIN:VALARM
-TRIGGER:-P0DT1H0M0S
-ACTION:DISPLAY
-DESCRIPTION:Reminder: Karlsruher SC - SC Preußen Münster | 2. Bundesliga 
- | 1. Spieltag
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:685e8d03155f5@7477.calovo
-DTSTART;TZID=Europe/Berlin:20250808T183000
-SEQUENCE:0
-TRANSP:TRANSPARENT
-STATUS:CONFIRMED
-DTEND;TZID=Europe/Berlin:20250808T203000
-LOCATION:LVM-Preußenstadion
-SUMMARY:SC Preußen Münster - SC Paderborn 07 | 2. Bundesliga | 2. Spielta
- g
-DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
- n\n2. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de/
- bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: termi
- ne.de/ical/loeschen
-DTSTAMP:20250808T150320Z
-CREATED:20250627T122227Z
-LAST-MODIFIED:20250808T150320Z
-BEGIN:VALARM
-TRIGGER:-P0DT1H0M0S
-ACTION:DISPLAY
-DESCRIPTION:Reminder: SC Preußen Münster - SC Paderborn 07 | 2. Bundeslig
- a | 2. Spieltag
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:6859b2b323cf1@7477.calovo
-DTSTART;TZID=Europe/Berlin:20250818T180000
-SEQUENCE:0
-TRANSP:TRANSPARENT
-STATUS:CONFIRMED
-DTEND;TZID=Europe/Berlin:20250818T200000
-LOCATION:LVM-Preußenstadion
-SUMMARY:SC Preußen Münster - Hertha BSC | DFB-Pokal | 1. Runde
-DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
- n\n1. Runde\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de/bun
- desliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: termine.
- de/ical/loeschen
-DTSTAMP:20250817T190044Z
-CREATED:20250623T200155Z
-LAST-MODIFIED:20250817T190044Z
-BEGIN:VALARM
-TRIGGER:-P0DT1H0M0S
-ACTION:DISPLAY
-DESCRIPTION:Reminder: SC Preußen Münster - Hertha BSC | DFB-Pokal | 1. Ru
- nde
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:685e8d11d3ec5@7477.calovo
-DTSTART;TZID=Europe/Berlin:20250822T183000
-SEQUENCE:0
-TRANSP:TRANSPARENT
-STATUS:CONFIRMED
-DTEND;TZID=Europe/Berlin:20250822T203000
-LOCATION:LVM-Preußenstadion
-SUMMARY:SC Preußen Münster - 1. FC Nürnberg | 2. Bundesliga | 3. Spielta
- g
-DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
- n\n3. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de/
- bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: termi
- ne.de/ical/loeschen
-DTSTAMP:20250822T160452Z
-CREATED:20250627T122241Z
-LAST-MODIFIED:20250822T160452Z
-BEGIN:VALARM
-TRIGGER:-P0DT1H0M0S
-ACTION:DISPLAY
-DESCRIPTION:Reminder: SC Preußen Münster - 1. FC Nürnberg | 2. Bundeslig
- a | 3. Spieltag
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:685e8d179e467@7477.calovo
-DTSTART;TZID=Europe/Berlin:20250830T130000
-SEQUENCE:0
-TRANSP:TRANSPARENT
-STATUS:CONFIRMED
-DTEND;TZID=Europe/Berlin:20250830T150000
-LOCATION:Vonovia Ruhrstadion
-SUMMARY:VfL Bochum 1848 - SC Preußen Münster | 2. Bundesliga | 4. Spielta
- g
-DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
- n\n4. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de/
- bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: termi
- ne.de/ical/loeschen
-DTSTAMP:20250830T050156Z
-CREATED:20250627T122247Z
-LAST-MODIFIED:20250830T050156Z
-BEGIN:VALARM
-TRIGGER:-P0DT1H0M0S
-ACTION:DISPLAY
-DESCRIPTION:Reminder: VfL Bochum 1848 - SC Preußen Münster | 2. Bundeslig
- a | 4. Spieltag
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:685e8d228127e@7477.calovo
-DTSTART;TZID=Europe/Berlin:20250914T133000
-SEQUENCE:0
-TRANSP:TRANSPARENT
-STATUS:CONFIRMED
-DTEND;TZID=Europe/Berlin:20250914T153000
-LOCATION:LVM-Preußenstadion
-SUMMARY:SC Preußen Münster - Fortuna Düsseldorf | 2. Bundesliga | 5. Spi
- eltag
-DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
- n\n5. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de/
- bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: termi
- ne.de/ical/loeschen
-DTSTAMP:20250913T210119Z
-CREATED:20250627T122258Z
-LAST-MODIFIED:20250913T210119Z
-BEGIN:VALARM
-TRIGGER:-P0DT1H0M0S
-ACTION:DISPLAY
-DESCRIPTION:Reminder: SC Preußen Münster - Fortuna Düsseldorf | 2. Bunde
- sliga | 5. Spieltag
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:685e8d2bb57e3@7477.calovo
-DTSTART;TZID=Europe/Berlin:20250919T183000
-SEQUENCE:0
-TRANSP:TRANSPARENT
-STATUS:CONFIRMED
-DTEND;TZID=Europe/Berlin:20250919T203000
-LOCATION:Fritz-Walter-Stadion
-SUMMARY:1. FC Kaiserslautern - SC Preußen Münster | 2. Bundesliga | 6. Sp
- ieltag
-DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
- n\n6. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de/
- bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: termi
- ne.de/ical/loeschen
-DTSTAMP:20250919T150337Z
-CREATED:20250627T122307Z
-LAST-MODIFIED:20250919T150337Z
-BEGIN:VALARM
-TRIGGER:-P0DT1H0M0S
-ACTION:DISPLAY
-DESCRIPTION:Reminder: 1. FC Kaiserslautern - SC Preußen Münster | 2. Bund
- esliga | 6. Spieltag
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:685e8d368adaa@7477.calovo
-DTSTART;TZID=Europe/Berlin:20250928T133000
-SEQUENCE:0
-TRANSP:TRANSPARENT
-STATUS:CONFIRMED
-DTEND;TZID=Europe/Berlin:20250928T153000
-LOCATION:LVM-Preußenstadion
-SUMMARY:SC Preußen Münster - Eintracht Braunschweig | 2. Bundesliga | 7. 
- Spieltag
-DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
- n\n7. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de/
- bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: termi
- ne.de/ical/loeschen
-DTSTAMP:20250928T050039Z
-CREATED:20250627T122318Z
-LAST-MODIFIED:20250928T050039Z
-BEGIN:VALARM
-TRIGGER:-P0DT1H0M0S
-ACTION:DISPLAY
-DESCRIPTION:Reminder: SC Preußen Münster - Eintracht Braunschweig | 2. Bu
- ndesliga | 7. Spieltag
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:685e8d3d0c999@7477.calovo
-DTSTART;TZID=Europe/Berlin:20251004T130000
-SEQUENCE:0
-TRANSP:TRANSPARENT
-STATUS:CONFIRMED
-DTEND;TZID=Europe/Berlin:20251004T150000
-LOCATION:Olympiastadion
-SUMMARY:Hertha BSC - SC Preußen Münster | 2. Bundesliga | 8. Spieltag
-DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
- n\n8. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de/
- bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: termi
- ne.de/ical/loeschen
-DTSTAMP:20251004T090043Z
-CREATED:20250627T122325Z
-LAST-MODIFIED:20251004T090043Z
-BEGIN:VALARM
-TRIGGER:-P0DT1H0M0S
-ACTION:DISPLAY
-DESCRIPTION:Reminder: Hertha BSC - SC Preußen Münster | 2. Bundesliga | 8
- . Spieltag
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:685e8d4967663@7477.calovo
-DTSTART;TZID=Europe/Berlin:20251018T130000
-SEQUENCE:0
-TRANSP:TRANSPARENT
-STATUS:CONFIRMED
-DTEND;TZID=Europe/Berlin:20251018T150000
-LOCATION:LVM-Preußenstadion
-SUMMARY:SC Preußen Münster - SG Dynamo Dresden | 2. Bundesliga | 9. Spiel
- tag
-DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
- n\n9. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de/
- bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: termi
- ne.de/ical/loeschen
-DTSTAMP:20251007T160621Z
-CREATED:20250627T122337Z
-LAST-MODIFIED:20251007T160621Z
-BEGIN:VALARM
-TRIGGER:-P0DT1H0M0S
-ACTION:DISPLAY
-DESCRIPTION:Reminder: SC Preußen Münster - SG Dynamo Dresden | 2. Bundesl
- iga | 9. Spieltag
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:685e8d4f44de2@7477.calovo
-DTSTART;TZID=Europe/Berlin:20251026T133000
-SEQUENCE:0
-TRANSP:TRANSPARENT
-STATUS:CONFIRMED
-DTEND;TZID=Europe/Berlin:20251026T153000
-LOCATION:Avnet Arena
-SUMMARY:1. FC Magdeburg - SC Preußen Münster | 2. Bundesliga | 10. Spielt
- ag
-DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
- n\n10. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
- /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
- ine.de/ical/loeschen
-DTSTAMP:20251007T160624Z
-CREATED:20250627T122343Z
-LAST-MODIFIED:20251007T160624Z
-BEGIN:VALARM
-TRIGGER:-P0DT1H0M0S
-ACTION:DISPLAY
-DESCRIPTION:Reminder: 1. FC Magdeburg - SC Preußen Münster | 2. Bundeslig
- a | 10. Spieltag
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:685e8d5adf968@7477.calovo
-DTSTART;TZID=Europe/Berlin:20251031T183000
-SEQUENCE:0
-TRANSP:TRANSPARENT
-STATUS:CONFIRMED
-DTEND;TZID=Europe/Berlin:20251031T203000
-LOCATION:LVM-Preußenstadion
-SUMMARY:SC Preußen Münster - Holstein Kiel | 2. Bundesliga | 11. Spieltag
-DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
- n\n11. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
- /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
- ine.de/ical/loeschen
-DTSTAMP:20251031T150443Z
-CREATED:20250627T122354Z
-LAST-MODIFIED:20251031T150443Z
-BEGIN:VALARM
-TRIGGER:-P0DT1H0M0S
-ACTION:DISPLAY
-DESCRIPTION:Reminder: SC Preußen Münster - Holstein Kiel | 2. Bundesliga 
- | 11. Spieltag
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:685e8d65151df@7477.calovo
-DTSTART;TZID=Europe/Berlin:20251107T183000
-SEQUENCE:0
-TRANSP:TRANSPARENT
-STATUS:CONFIRMED
-DTEND;TZID=Europe/Berlin:20251107T203000
-LOCATION:Sportpark Ronhof | Thomas Sommer
-SUMMARY:SpVgg Greuther Fürth - SC Preußen Münster | 2. Bundesliga | 12. 
- Spieltag
-DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
- n\n12. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
- /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
- ine.de/ical/loeschen
-DTSTAMP:20251107T160141Z
-CREATED:20250627T122405Z
-LAST-MODIFIED:20251107T160141Z
-BEGIN:VALARM
-TRIGGER:-P0DT1H0M0S
-ACTION:DISPLAY
-DESCRIPTION:Reminder: SpVgg Greuther Fürth - SC Preußen Münster | 2. Bun
- desliga | 12. Spieltag
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:685e8d7405016@7477.calovo
-DTSTART;TZID=Europe/Berlin:20251122T130000
-SEQUENCE:0
-TRANSP:TRANSPARENT
-STATUS:CONFIRMED
-DTEND;TZID=Europe/Berlin:20251122T150000
-LOCATION:LVM-Preußenstadion
-SUMMARY:SC Preußen Münster - FC Schalke 04 | 2. Bundesliga | 13. Spieltag
-DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
- n\n13. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
- /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
- ine.de/ical/loeschen
-DTSTAMP:20251121T220111Z
-CREATED:20250627T122420Z
-LAST-MODIFIED:20251121T220111Z
-BEGIN:VALARM
-TRIGGER:-P0DT1H0M0S
-ACTION:DISPLAY
-DESCRIPTION:Reminder: SC Preußen Münster - FC Schalke 04 | 2. Bundesliga 
- | 13. Spieltag
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:685e8d7c46b38@7477.calovo
-DTSTART;TZID=Europe/Berlin:20251130T133000
-SEQUENCE:0
-TRANSP:TRANSPARENT
-STATUS:CONFIRMED
-DTEND;TZID=Europe/Berlin:20251130T153000
-LOCATION:SchücoArena
-SUMMARY:DSC Arminia Bielefeld - SC Preußen Münster | 2. Bundesliga | 14. 
- Spieltag
-DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
- n\n14. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
- /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
- ine.de/ical/loeschen
-DTSTAMP:20251130T060035Z
-CREATED:20250627T122428Z
-LAST-MODIFIED:20251130T060035Z
-BEGIN:VALARM
-TRIGGER:-P0DT1H0M0S
-ACTION:DISPLAY
-DESCRIPTION:Reminder: DSC Arminia Bielefeld - SC Preußen Münster | 2. Bun
- desliga | 14. Spieltag
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:685e8d8482bf2@7477.calovo
-DTSTART;TZID=Europe/Berlin:20251205T183000
-SEQUENCE:0
-TRANSP:TRANSPARENT
-STATUS:CONFIRMED
-DTEND;TZID=Europe/Berlin:20251205T203000
-LOCATION:LVM-Preußenstadion
-SUMMARY:SC Preußen Münster - Hannover 96 | 2. Bundesliga | 15. Spieltag
-DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
- n\n15. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
- /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
- ine.de/ical/loeschen
-DTSTAMP:20251205T110035Z
-CREATED:20250627T122436Z
-LAST-MODIFIED:20251205T110035Z
-BEGIN:VALARM
-TRIGGER:-P0DT1H0M0S
-ACTION:DISPLAY
-DESCRIPTION:Reminder: SC Preußen Münster - Hannover 96 | 2. Bundesliga | 
- 15. Spieltag
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:685e8d8ca69cf@7477.calovo
-DTSTART;TZID=Europe/Berlin:20251214T133000
-SEQUENCE:0
-TRANSP:TRANSPARENT
-STATUS:CONFIRMED
-DTEND;TZID=Europe/Berlin:20251214T153000
-LOCATION:Merck-Stadion am Böllenfalltor
-SUMMARY:SV Darmstadt 98 - SC Preußen Münster | 2. Bundesliga | 16. Spielt
- ag
-DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
- n\n16. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
- /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
- ine.de/ical/loeschen
-DTSTAMP:20251213T220051Z
-CREATED:20250627T122444Z
-LAST-MODIFIED:20251213T220051Z
-BEGIN:VALARM
-TRIGGER:-P0DT1H0M0S
-ACTION:DISPLAY
-DESCRIPTION:Reminder: SV Darmstadt 98 - SC Preußen Münster | 2. Bundeslig
- a | 16. Spieltag
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:685e8d9609bb8@7477.calovo
-DTSTART;TZID=Europe/Berlin:20251221T133000
-SEQUENCE:0
-TRANSP:TRANSPARENT
-STATUS:CONFIRMED
-DTEND;TZID=Europe/Berlin:20251221T153000
-LOCATION:LVM-Preußenstadion
-SUMMARY:SC Preußen Münster - SV Elversberg | 2. Bundesliga | 17. Spieltag
-DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
- n\n17. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
- /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
- ine.de/ical/loeschen
-DTSTAMP:20251220T220032Z
-CREATED:20250627T122454Z
-LAST-MODIFIED:20251220T220032Z
-BEGIN:VALARM
-TRIGGER:-P0DT1H0M0S
-ACTION:DISPLAY
-DESCRIPTION:Reminder: SC Preußen Münster - SV Elversberg | 2. Bundesliga 
- | 17. Spieltag
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:685e8dadd3ae8@7477.calovo
-DTSTART;TZID=Europe/Berlin:20260117T130000
-SEQUENCE:0
-TRANSP:TRANSPARENT
-STATUS:CONFIRMED
-DTEND;TZID=Europe/Berlin:20260117T150000
-LOCATION:LVM-Preußenstadion
-SUMMARY:SC Preußen Münster - Karlsruher SC | 2. Bundesliga | 18. Spieltag
-DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
- n\n18. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
- /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
- ine.de/ical/loeschen
-DTSTAMP:20260116T220036Z
-CREATED:20250627T122517Z
-LAST-MODIFIED:20260116T220036Z
-BEGIN:VALARM
-TRIGGER:-P0DT1H0M0S
-ACTION:DISPLAY
-DESCRIPTION:Reminder: SC Preußen Münster - Karlsruher SC | 2. Bundesliga 
- | 18. Spieltag
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:685e8db564ef0@7477.calovo
-DTSTART;TZID=Europe/Berlin:20260125T133000
-SEQUENCE:0
-TRANSP:TRANSPARENT
-STATUS:CONFIRMED
-DTEND;TZID=Europe/Berlin:20260125T153000
-LOCATION:Home Deluxe Arena
-SUMMARY:SC Paderborn 07 - SC Preußen Münster | 2. Bundesliga | 19. Spielt
- ag
-DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
- n\n19. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
- /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
- ine.de/ical/loeschen
-DTSTAMP:20260125T120041Z
-CREATED:20250627T122525Z
-LAST-MODIFIED:20260125T120041Z
-BEGIN:VALARM
-TRIGGER:-P0DT1H0M0S
-ACTION:DISPLAY
-DESCRIPTION:Reminder: SC Paderborn 07 - SC Preußen Münster | 2. Bundeslig
- a | 19. Spieltag
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:685e8dc070bd2@7477.calovo
-DTSTART;TZID=Europe/Berlin:20260130T183000
-SEQUENCE:0
-TRANSP:TRANSPARENT
-STATUS:CONFIRMED
-DTEND;TZID=Europe/Berlin:20260130T203000
-LOCATION:Max-Morlock-Stadion
-SUMMARY:1. FC Nürnberg - SC Preußen Münster | 2. Bundesliga | 20. Spielt
- ag
-DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
- n\n20. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
- /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
- ine.de/ical/loeschen
-DTSTAMP:20260130T160046Z
-CREATED:20250627T122536Z
-LAST-MODIFIED:20260130T160046Z
-BEGIN:VALARM
-TRIGGER:-P0DT1H0M0S
-ACTION:DISPLAY
-DESCRIPTION:Reminder: 1. FC Nürnberg - SC Preußen Münster | 2. Bundeslig
- a | 20. Spieltag
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:685e8dcb7ca89@7477.calovo
-DTSTART;TZID=Europe/Berlin:20260206T183000
-SEQUENCE:0
-TRANSP:TRANSPARENT
-STATUS:CONFIRMED
-DTEND;TZID=Europe/Berlin:20260206T203000
-LOCATION:LVM-Preußenstadion
-SUMMARY:SC Preußen Münster - VfL Bochum 1848 | 2. Bundesliga | 21. Spielt
- ag
-DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
- n\n21. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
- /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
- ine.de/ical/loeschen
-DTSTAMP:20260206T110543Z
-CREATED:20250627T122547Z
-LAST-MODIFIED:20260206T110543Z
-BEGIN:VALARM
-TRIGGER:-P0DT1H0M0S
-ACTION:DISPLAY
-DESCRIPTION:Reminder: SC Preußen Münster - VfL Bochum 1848 | 2. Bundeslig
- a | 21. Spieltag
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:685e8dd2a3cab@7477.calovo
-DTSTART;TZID=Europe/Berlin:20260213T183000
-SEQUENCE:0
-TRANSP:TRANSPARENT
-STATUS:CONFIRMED
-DTEND;TZID=Europe/Berlin:20260213T203000
-LOCATION:Merkur Spielarena
-SUMMARY:Fortuna Düsseldorf - SC Preußen Münster | 2. Bundesliga | 22. Sp
- ieltag
-DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
- n\n22. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
- /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
- ine.de/ical/loeschen
-DTSTAMP:20260212T110412Z
-CREATED:20250627T122554Z
-LAST-MODIFIED:20260212T110412Z
-BEGIN:VALARM
-TRIGGER:-P0DT1H0M0S
-ACTION:DISPLAY
-DESCRIPTION:Reminder: Fortuna Düsseldorf - SC Preußen Münster | 2. Bunde
- sliga | 22. Spieltag
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:685e8de521272@7477.calovo
-DTSTART;TZID=Europe/Berlin:20260222T133000
-SEQUENCE:0
-TRANSP:TRANSPARENT
-STATUS:CONFIRMED
-DTEND;TZID=Europe/Berlin:20260222T153000
-LOCATION:LVM-Preußenstadion
-SUMMARY:SC Preußen Münster - 1. FC Kaiserslautern | 2. Bundesliga | 23. S
- pieltag
-DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
- n\n23. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
- /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
- ine.de/ical/loeschen
-DTSTAMP:20260221T220110Z
-CREATED:20250627T122613Z
-LAST-MODIFIED:20260221T220110Z
-BEGIN:VALARM
-TRIGGER:-P0DT1H0M0S
-ACTION:DISPLAY
-DESCRIPTION:Reminder: SC Preußen Münster - 1. FC Kaiserslautern | 2. Bund
- esliga | 23. Spieltag
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:685e8def78294@7477.calovo
-DTSTART;TZID=Europe/Berlin:20260301T133000
-SEQUENCE:0
-TRANSP:TRANSPARENT
-STATUS:CONFIRMED
-DTEND;TZID=Europe/Berlin:20260301T153000
-LOCATION:EINTRACHT-STADION
-SUMMARY:Eintracht Braunschweig - SC Preußen Münster | 2. Bundesliga | 24.
-  Spieltag
-DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
- n\n24. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
- /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
- ine.de/ical/loeschen
-DTSTAMP:20260228T220049Z
-CREATED:20250627T122623Z
-LAST-MODIFIED:20260228T220049Z
-BEGIN:VALARM
-TRIGGER:-P0DT1H0M0S
-ACTION:DISPLAY
-DESCRIPTION:Reminder: Eintracht Braunschweig - SC Preußen Münster | 2. Bu
- ndesliga | 24. Spieltag
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:685e8df927066@7477.calovo
-DTSTART;TZID=Europe/Berlin:20260308T133000
-SEQUENCE:0
-TRANSP:TRANSPARENT
-STATUS:CONFIRMED
-DTEND;TZID=Europe/Berlin:20260308T153000
-LOCATION:LVM-Preußenstadion
-SUMMARY:SC Preußen Münster - Hertha BSC | 2. Bundesliga | 25. Spieltag
-DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
- n\n25. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
- /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
- ine.de/ical/loeschen
-DTSTAMP:20260307T220923Z
-CREATED:20250627T122633Z
-LAST-MODIFIED:20260307T220923Z
-BEGIN:VALARM
-TRIGGER:-P0DT1H0M0S
-ACTION:DISPLAY
-DESCRIPTION:Reminder: SC Preußen Münster - Hertha BSC | 2. Bundesliga | 2
- 5. Spieltag
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:685e8e03b162a@7477.calovo
-DTSTART;TZID=Europe/Berlin:20260315T133000
-SEQUENCE:0
-TRANSP:TRANSPARENT
-STATUS:CONFIRMED
-DTEND;TZID=Europe/Berlin:20260315T153000
-LOCATION:Rudolf-Harbig-Stadion
-SUMMARY:SG Dynamo Dresden - SC Preußen Münster | 2. Bundesliga | 26. Spie
- ltag
-DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
- n\n26. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
- /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
- ine.de/ical/loeschen
-DTSTAMP:20260314T220413Z
-CREATED:20250627T122643Z
-LAST-MODIFIED:20260314T220413Z
-BEGIN:VALARM
-TRIGGER:-P0DT1H0M0S
-ACTION:DISPLAY
-DESCRIPTION:Reminder: SG Dynamo Dresden - SC Preußen Münster | 2. Bundesl
- iga | 26. Spieltag
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:685e8e0bdb944@7477.calovo
-DTSTART;TZID=Europe/Berlin:20260322T133000
-SEQUENCE:0
-TRANSP:TRANSPARENT
-STATUS:CONFIRMED
-DTEND;TZID=Europe/Berlin:20260322T153000
-LOCATION:LVM-Preußenstadion
-SUMMARY:SC Preußen Münster - 1. FC Magdeburg | 2. Bundesliga | 27. Spielt
- ag
-DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
- n\n27. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
- /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
- ine.de/ical/loeschen
-DTSTAMP:20260321T200136Z
-CREATED:20250627T122651Z
-LAST-MODIFIED:20260321T200136Z
-BEGIN:VALARM
-TRIGGER:-P0DT1H0M0S
-ACTION:DISPLAY
-DESCRIPTION:Reminder: SC Preußen Münster - 1. FC Magdeburg | 2. Bundeslig
- a | 27. Spieltag
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:685e8e10af46b@7477.calovo
-DTSTART;TZID=Europe/Berlin:20260405T133000
-SEQUENCE:0
-TRANSP:TRANSPARENT
-STATUS:CONFIRMED
-DTEND;TZID=Europe/Berlin:20260405T153000
-LOCATION:Holstein-Stadion
-SUMMARY:Holstein Kiel - SC Preußen Münster | 2. Bundesliga | 28. Spieltag
-DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
- n\n28. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
- /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
- ine.de/ical/loeschen
-DTSTAMP:20260404T220438Z
-CREATED:20250627T122656Z
-LAST-MODIFIED:20260404T220438Z
-BEGIN:VALARM
-TRIGGER:-P0DT1H0M0S
-ACTION:DISPLAY
-DESCRIPTION:Reminder: Holstein Kiel - SC Preußen Münster | 2. Bundesliga 
- | 28. Spieltag
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:685e8e1e666f1@7477.calovo
-DTSTART;TZID=Europe/Berlin:20260411T130000
-SEQUENCE:0
-TRANSP:TRANSPARENT
-STATUS:CONFIRMED
-DTEND;TZID=Europe/Berlin:20260411T150000
-LOCATION:LVM-Preußenstadion
-SUMMARY:SC Preußen Münster - SpVgg Greuther Fürth | 2. Bundesliga | 29. 
- Spieltag
-DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
- n\n29. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
- /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
- ine.de/ical/loeschen
-DTSTAMP:20260410T210552Z
-CREATED:20250627T122710Z
-LAST-MODIFIED:20260410T210552Z
-BEGIN:VALARM
-TRIGGER:-P0DT1H0M0S
-ACTION:DISPLAY
-DESCRIPTION:Reminder: SC Preußen Münster - SpVgg Greuther Fürth | 2. Bun
- desliga | 29. Spieltag
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:685e9304904cb@7477.calovo
-DTSTART;TZID=Europe/Berlin:20260419T133000
-SEQUENCE:0
-TRANSP:TRANSPARENT
-STATUS:CONFIRMED
-DTEND;TZID=Europe/Berlin:20260419T153000
-LOCATION:VELTINS-Arena
-SUMMARY:FC Schalke 04 - SC Preußen Münster | 2. Bundesliga | 30. Spieltag
-DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
- n\n30. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
- /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
- ine.de/ical/loeschen
-DTSTAMP:20260418T210135Z
-CREATED:20250627T124804Z
-LAST-MODIFIED:20260418T210135Z
-BEGIN:VALARM
-TRIGGER:-P0DT1H0M0S
-ACTION:DISPLAY
-DESCRIPTION:Reminder: FC Schalke 04 - SC Preußen Münster | 2. Bundesliga 
- | 30. Spieltag
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:685e930ddefb6@7477.calovo
-DTSTART;TZID=Europe/Berlin:20260425T130000
-SEQUENCE:0
-TRANSP:TRANSPARENT
-STATUS:CONFIRMED
-DTEND;TZID=Europe/Berlin:20260425T150000
-LOCATION:LVM-Preußenstadion
-SUMMARY:SC Preußen Münster - DSC Arminia Bielefeld | 2. Bundesliga | 31. 
- Spieltag
-DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
- n\n31. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
- /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
- ine.de/ical/loeschen
-DTSTAMP:20260424T210836Z
-CREATED:20250627T124813Z
-LAST-MODIFIED:20260424T210836Z
-BEGIN:VALARM
-TRIGGER:-P0DT1H0M0S
-ACTION:DISPLAY
-DESCRIPTION:Reminder: SC Preußen Münster - DSC Arminia Bielefeld | 2. Bun
- desliga | 31. Spieltag
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:685e9313bdc10@7477.calovo
-DTSTART;TZID=Europe/Berlin:20260503T133000
-SEQUENCE:0
-TRANSP:TRANSPARENT
-STATUS:CONFIRMED
-DTEND;TZID=Europe/Berlin:20260503T153000
-LOCATION:Heinz von Heiden Arena
-SUMMARY:Hannover 96 - SC Preußen Münster | 2. Bundesliga | 32. Spieltag
-DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
- n\n32. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
- /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
- ine.de/ical/loeschen
-DTSTAMP:20260502T220246Z
-CREATED:20250627T124819Z
-LAST-MODIFIED:20260502T220246Z
-BEGIN:VALARM
-TRIGGER:-P0DT1H0M0S
-ACTION:DISPLAY
-DESCRIPTION:Reminder: Hannover 96 - SC Preußen Münster | 2. Bundesliga | 
- 32. Spieltag
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:685e931ca77f0@7477.calovo
-DTSTART;TZID=Europe/Berlin:20260510T133000
-SEQUENCE:0
-TRANSP:TRANSPARENT
-STATUS:CONFIRMED
-DTEND;TZID=Europe/Berlin:20260510T153000
-LOCATION:LVM-Preußenstadion
-SUMMARY:SC Preußen Münster - SV Darmstadt 98 | 2. Bundesliga | 33. Spielt
- ag
-DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
- n\n33. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
- /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
- ine.de/ical/loeschen
-DTSTAMP:20260504T110229Z
-CREATED:20250627T124828Z
-LAST-MODIFIED:20260504T110229Z
-BEGIN:VALARM
-TRIGGER:-P0DT1H0M0S
-ACTION:DISPLAY
-DESCRIPTION:Reminder: SC Preußen Münster - SV Darmstadt 98 | 2. Bundeslig
- a | 33. Spieltag
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:685e9321a2eca@7477.calovo
-DTSTART;TZID=Europe/Berlin:20260517T153000
-SEQUENCE:0
-TRANSP:TRANSPARENT
-STATUS:CONFIRMED
-DTEND;TZID=Europe/Berlin:20260517T173000
-LOCATION:URSAPHARM-Arena
-SUMMARY:SV Elversberg - SC Preußen Münster | 2. Bundesliga | 34. Spieltag
-DESCRIPTION:Dieser Kalenderservice wird dir präsentiert von bundesliga.de\
- n\n34. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.bundesliga.com/de
- /bundesliga/info/impressum/\n\n\ncalovo Kalender löschen? Anleitung: term
- ine.de/ical/loeschen
-DTSTAMP:20260504T110236Z
-CREATED:20250627T124833Z
-LAST-MODIFIED:20260504T110236Z
-BEGIN:VALARM
-TRIGGER:-P0DT1H0M0S
-ACTION:DISPLAY
-DESCRIPTION:Reminder: SV Elversberg - SC Preußen Münster | 2. Bundesliga 
- | 34. Spieltag
-END:VALARM
-END:VEVENT
 BEGIN:VTIMEZONE
 TZID:Europe/Berlin
 X-LIC-LOCATION:Europe/Berlin
@@ -902,4 +28,1845 @@ DTSTART:19961027T030000
 RRULE:FREQ=YEARLY;INTERVAL=1;BYMONTH=10;BYDAY=-1SU
 END:STANDARD
 END:VTIMEZONE
+BEGIN:VEVENT
+UID:685e8cfdd9ac8@7477.calovo
+DTSTART;TZID=Europe/Berlin:20250802T130000
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin:20250802T150000
+LOCATION:calovo.de | BBBank Wildpark
+SUMMARY:Karlsruher SC - SC Preußen Münster | 2. Bundesliga | 1. Spieltag
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n1. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.b
+ undesliga.com/de/bundesliga/info/impressum/\n\n\ncalovo Kalender entfernen
+ ? Anleitung: calovo.de/kalender-entfernen
+DTSTAMP:20250802T050057Z
+CREATED:20250627T122221Z
+LAST-MODIFIED:20250802T050057Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: Karlsruher SC - SC Preußen Münster | 2. Bundesliga 
+ | 1. Spieltag
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:685e8d03155f5@7477.calovo
+DTSTART;TZID=Europe/Berlin:20250808T183000
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin:20250808T203000
+LOCATION:calovo.de | LVM-Preußenstadion
+SUMMARY:SC Preußen Münster - SC Paderborn 07 | 2. Bundesliga | 2. Spielta
+ g
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n2. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.b
+ undesliga.com/de/bundesliga/info/impressum/\n\n\ncalovo Kalender entfernen
+ ? Anleitung: calovo.de/kalender-entfernen
+DTSTAMP:20250808T150320Z
+CREATED:20250627T122227Z
+LAST-MODIFIED:20250808T150320Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: SC Preußen Münster - SC Paderborn 07 | 2. Bundeslig
+ a | 2. Spieltag
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:6859b2b323cf1@7477.calovo
+DTSTART;TZID=Europe/Berlin:20250818T180000
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin:20250818T200000
+LOCATION:calovo.de | LVM-Preußenstadion
+SUMMARY:SC Preußen Münster - Hertha BSC | DFB-Pokal | 1. Runde
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n1. Runde\n\n\n\n\nAnbieter-Impressum: https://www.bund
+ esliga.com/de/bundesliga/info/impressum/\n\n\ncalovo Kalender entfernen? A
+ nleitung: calovo.de/kalender-entfernen
+DTSTAMP:20250817T190044Z
+CREATED:20250623T200155Z
+LAST-MODIFIED:20250817T190044Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: SC Preußen Münster - Hertha BSC | DFB-Pokal | 1. Ru
+ nde
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:685e8d11d3ec5@7477.calovo
+DTSTART;TZID=Europe/Berlin:20250822T183000
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin:20250822T203000
+LOCATION:calovo.de | LVM-Preußenstadion
+SUMMARY:SC Preußen Münster - 1. FC Nürnberg | 2. Bundesliga | 3. Spielta
+ g
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n3. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.b
+ undesliga.com/de/bundesliga/info/impressum/\n\n\ncalovo Kalender entfernen
+ ? Anleitung: calovo.de/kalender-entfernen
+DTSTAMP:20250822T160452Z
+CREATED:20250627T122241Z
+LAST-MODIFIED:20250822T160452Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: SC Preußen Münster - 1. FC Nürnberg | 2. Bundeslig
+ a | 3. Spieltag
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:685e8d179e467@7477.calovo
+DTSTART;TZID=Europe/Berlin:20250830T130000
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin:20250830T150000
+LOCATION:calovo.de | Vonovia Ruhrstadion
+SUMMARY:VfL Bochum 1848 - SC Preußen Münster | 2. Bundesliga | 4. Spielta
+ g
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n4. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.b
+ undesliga.com/de/bundesliga/info/impressum/\n\n\ncalovo Kalender entfernen
+ ? Anleitung: calovo.de/kalender-entfernen
+DTSTAMP:20250830T050156Z
+CREATED:20250627T122247Z
+LAST-MODIFIED:20250830T050156Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: VfL Bochum 1848 - SC Preußen Münster | 2. Bundeslig
+ a | 4. Spieltag
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:685e8d228127e@7477.calovo
+DTSTART;TZID=Europe/Berlin:20250914T133000
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin:20250914T153000
+LOCATION:calovo.de | LVM-Preußenstadion
+SUMMARY:SC Preußen Münster - Fortuna Düsseldorf | 2. Bundesliga | 5. Spi
+ eltag
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n5. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.b
+ undesliga.com/de/bundesliga/info/impressum/\n\n\ncalovo Kalender entfernen
+ ? Anleitung: calovo.de/kalender-entfernen
+DTSTAMP:20250913T210119Z
+CREATED:20250627T122258Z
+LAST-MODIFIED:20250913T210119Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: SC Preußen Münster - Fortuna Düsseldorf | 2. Bunde
+ sliga | 5. Spieltag
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:685e8d2bb57e3@7477.calovo
+DTSTART;TZID=Europe/Berlin:20250919T183000
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin:20250919T203000
+LOCATION:calovo.de | Fritz-Walter-Stadion
+SUMMARY:1. FC Kaiserslautern - SC Preußen Münster | 2. Bundesliga | 6. Sp
+ ieltag
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n6. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.b
+ undesliga.com/de/bundesliga/info/impressum/\n\n\ncalovo Kalender entfernen
+ ? Anleitung: calovo.de/kalender-entfernen
+DTSTAMP:20250919T150337Z
+CREATED:20250627T122307Z
+LAST-MODIFIED:20250919T150337Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: 1. FC Kaiserslautern - SC Preußen Münster | 2. Bund
+ esliga | 6. Spieltag
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:685e8d368adaa@7477.calovo
+DTSTART;TZID=Europe/Berlin:20250928T133000
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin:20250928T153000
+LOCATION:calovo.de | LVM-Preußenstadion
+SUMMARY:SC Preußen Münster - Eintracht Braunschweig | 2. Bundesliga | 7. 
+ Spieltag
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n7. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.b
+ undesliga.com/de/bundesliga/info/impressum/\n\n\ncalovo Kalender entfernen
+ ? Anleitung: calovo.de/kalender-entfernen
+DTSTAMP:20250928T050039Z
+CREATED:20250627T122318Z
+LAST-MODIFIED:20250928T050039Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: SC Preußen Münster - Eintracht Braunschweig | 2. Bu
+ ndesliga | 7. Spieltag
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:685e8d3d0c999@7477.calovo
+DTSTART;TZID=Europe/Berlin:20251004T130000
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin:20251004T150000
+LOCATION:calovo.de | Olympiastadion
+SUMMARY:Hertha BSC - SC Preußen Münster | 2. Bundesliga | 8. Spieltag
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n8. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.b
+ undesliga.com/de/bundesliga/info/impressum/\n\n\ncalovo Kalender entfernen
+ ? Anleitung: calovo.de/kalender-entfernen
+DTSTAMP:20251004T090043Z
+CREATED:20250627T122325Z
+LAST-MODIFIED:20251004T090043Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: Hertha BSC - SC Preußen Münster | 2. Bundesliga | 8
+ . Spieltag
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:685e8d4967663@7477.calovo
+DTSTART;TZID=Europe/Berlin:20251018T130000
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin:20251018T150000
+LOCATION:calovo.de | LVM-Preußenstadion
+SUMMARY:SC Preußen Münster - SG Dynamo Dresden | 2. Bundesliga | 9. Spiel
+ tag
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n9. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.b
+ undesliga.com/de/bundesliga/info/impressum/\n\n\ncalovo Kalender entfernen
+ ? Anleitung: calovo.de/kalender-entfernen
+DTSTAMP:20251007T160621Z
+CREATED:20250627T122337Z
+LAST-MODIFIED:20251007T160621Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: SC Preußen Münster - SG Dynamo Dresden | 2. Bundesl
+ iga | 9. Spieltag
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:685e8d4f44de2@7477.calovo
+DTSTART;TZID=Europe/Berlin:20251026T133000
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin:20251026T153000
+LOCATION:calovo.de | Avnet Arena
+SUMMARY:1. FC Magdeburg - SC Preußen Münster | 2. Bundesliga | 10. Spielt
+ ag
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n10. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.
+ bundesliga.com/de/bundesliga/info/impressum/\n\n\ncalovo Kalender entferne
+ n? Anleitung: calovo.de/kalender-entfernen
+DTSTAMP:20251007T160624Z
+CREATED:20250627T122343Z
+LAST-MODIFIED:20251007T160624Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: 1. FC Magdeburg - SC Preußen Münster | 2. Bundeslig
+ a | 10. Spieltag
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:685e8d5adf968@7477.calovo
+DTSTART;TZID=Europe/Berlin:20251031T183000
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin:20251031T203000
+LOCATION:calovo.de | LVM-Preußenstadion
+SUMMARY:SC Preußen Münster - Holstein Kiel | 2. Bundesliga | 11. Spieltag
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n11. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.
+ bundesliga.com/de/bundesliga/info/impressum/\n\n\ncalovo Kalender entferne
+ n? Anleitung: calovo.de/kalender-entfernen
+DTSTAMP:20251031T150443Z
+CREATED:20250627T122354Z
+LAST-MODIFIED:20251031T150443Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: SC Preußen Münster - Holstein Kiel | 2. Bundesliga 
+ | 11. Spieltag
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:685e8d65151df@7477.calovo
+DTSTART;TZID=Europe/Berlin:20251107T183000
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin:20251107T203000
+LOCATION:calovo.de | Sportpark Ronhof | Thomas Sommer
+SUMMARY:SpVgg Greuther Fürth - SC Preußen Münster | 2. Bundesliga | 12. 
+ Spieltag
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n12. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.
+ bundesliga.com/de/bundesliga/info/impressum/\n\n\ncalovo Kalender entferne
+ n? Anleitung: calovo.de/kalender-entfernen
+DTSTAMP:20251107T160141Z
+CREATED:20250627T122405Z
+LAST-MODIFIED:20251107T160141Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: SpVgg Greuther Fürth - SC Preußen Münster | 2. Bun
+ desliga | 12. Spieltag
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:685e8d7405016@7477.calovo
+DTSTART;TZID=Europe/Berlin:20251122T130000
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin:20251122T150000
+LOCATION:calovo.de | LVM-Preußenstadion
+SUMMARY:SC Preußen Münster - FC Schalke 04 | 2. Bundesliga | 13. Spieltag
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n13. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.
+ bundesliga.com/de/bundesliga/info/impressum/\n\n\ncalovo Kalender entferne
+ n? Anleitung: calovo.de/kalender-entfernen
+DTSTAMP:20251121T220111Z
+CREATED:20250627T122420Z
+LAST-MODIFIED:20251121T220111Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: SC Preußen Münster - FC Schalke 04 | 2. Bundesliga 
+ | 13. Spieltag
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:685e8d7c46b38@7477.calovo
+DTSTART;TZID=Europe/Berlin:20251130T133000
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin:20251130T153000
+LOCATION:calovo.de | SchücoArena
+SUMMARY:DSC Arminia Bielefeld - SC Preußen Münster | 2. Bundesliga | 14. 
+ Spieltag
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n14. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.
+ bundesliga.com/de/bundesliga/info/impressum/\n\n\ncalovo Kalender entferne
+ n? Anleitung: calovo.de/kalender-entfernen
+DTSTAMP:20251130T060035Z
+CREATED:20250627T122428Z
+LAST-MODIFIED:20251130T060035Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: DSC Arminia Bielefeld - SC Preußen Münster | 2. Bun
+ desliga | 14. Spieltag
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:685e8d8482bf2@7477.calovo
+DTSTART;TZID=Europe/Berlin:20251205T183000
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin:20251205T203000
+LOCATION:calovo.de | LVM-Preußenstadion
+SUMMARY:SC Preußen Münster - Hannover 96 | 2. Bundesliga | 15. Spieltag
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n15. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.
+ bundesliga.com/de/bundesliga/info/impressum/\n\n\ncalovo Kalender entferne
+ n? Anleitung: calovo.de/kalender-entfernen
+DTSTAMP:20251205T110035Z
+CREATED:20250627T122436Z
+LAST-MODIFIED:20251205T110035Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: SC Preußen Münster - Hannover 96 | 2. Bundesliga | 
+ 15. Spieltag
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:685e8d8ca69cf@7477.calovo
+DTSTART;TZID=Europe/Berlin:20251214T133000
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin:20251214T153000
+LOCATION:calovo.de | Merck-Stadion am Böllenfalltor
+SUMMARY:SV Darmstadt 98 - SC Preußen Münster | 2. Bundesliga | 16. Spielt
+ ag
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n16. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.
+ bundesliga.com/de/bundesliga/info/impressum/\n\n\ncalovo Kalender entferne
+ n? Anleitung: calovo.de/kalender-entfernen
+DTSTAMP:20251213T220051Z
+CREATED:20250627T122444Z
+LAST-MODIFIED:20251213T220051Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: SV Darmstadt 98 - SC Preußen Münster | 2. Bundeslig
+ a | 16. Spieltag
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:685e8d9609bb8@7477.calovo
+DTSTART;TZID=Europe/Berlin:20251221T133000
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin:20251221T153000
+LOCATION:calovo.de | LVM-Preußenstadion
+SUMMARY:SC Preußen Münster - SV Elversberg | 2. Bundesliga | 17. Spieltag
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n17. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.
+ bundesliga.com/de/bundesliga/info/impressum/\n\n\ncalovo Kalender entferne
+ n? Anleitung: calovo.de/kalender-entfernen
+DTSTAMP:20251220T220032Z
+CREATED:20250627T122454Z
+LAST-MODIFIED:20251220T220032Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: SC Preußen Münster - SV Elversberg | 2. Bundesliga 
+ | 17. Spieltag
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:685e8dadd3ae8@7477.calovo
+DTSTART;TZID=Europe/Berlin:20260117T130000
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin:20260117T150000
+LOCATION:calovo.de | LVM-Preußenstadion
+SUMMARY:SC Preußen Münster - Karlsruher SC | 2. Bundesliga | 18. Spieltag
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n18. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.
+ bundesliga.com/de/bundesliga/info/impressum/\n\n\ncalovo Kalender entferne
+ n? Anleitung: calovo.de/kalender-entfernen
+DTSTAMP:20260116T220036Z
+CREATED:20250627T122517Z
+LAST-MODIFIED:20260116T220036Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: SC Preußen Münster - Karlsruher SC | 2. Bundesliga 
+ | 18. Spieltag
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:685e8db564ef0@7477.calovo
+DTSTART;TZID=Europe/Berlin:20260125T133000
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin:20260125T153000
+LOCATION:calovo.de | Home Deluxe Arena
+SUMMARY:SC Paderborn 07 - SC Preußen Münster | 2. Bundesliga | 19. Spielt
+ ag
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n19. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.
+ bundesliga.com/de/bundesliga/info/impressum/\n\n\ncalovo Kalender entferne
+ n? Anleitung: calovo.de/kalender-entfernen
+DTSTAMP:20260125T120041Z
+CREATED:20250627T122525Z
+LAST-MODIFIED:20260125T120041Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: SC Paderborn 07 - SC Preußen Münster | 2. Bundeslig
+ a | 19. Spieltag
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:685e8dc070bd2@7477.calovo
+DTSTART;TZID=Europe/Berlin:20260130T183000
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin:20260130T203000
+LOCATION:calovo.de | Max-Morlock-Stadion
+SUMMARY:1. FC Nürnberg - SC Preußen Münster | 2. Bundesliga | 20. Spielt
+ ag
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n20. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.
+ bundesliga.com/de/bundesliga/info/impressum/\n\n\ncalovo Kalender entferne
+ n? Anleitung: calovo.de/kalender-entfernen
+DTSTAMP:20260130T160046Z
+CREATED:20250627T122536Z
+LAST-MODIFIED:20260130T160046Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: 1. FC Nürnberg - SC Preußen Münster | 2. Bundeslig
+ a | 20. Spieltag
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:685e8dcb7ca89@7477.calovo
+DTSTART;TZID=Europe/Berlin:20260206T183000
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin:20260206T203000
+LOCATION:calovo.de | LVM-Preußenstadion
+SUMMARY:SC Preußen Münster - VfL Bochum 1848 | 2. Bundesliga | 21. Spielt
+ ag
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n21. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.
+ bundesliga.com/de/bundesliga/info/impressum/\n\n\ncalovo Kalender entferne
+ n? Anleitung: calovo.de/kalender-entfernen
+DTSTAMP:20260206T110543Z
+CREATED:20250627T122547Z
+LAST-MODIFIED:20260206T110543Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: SC Preußen Münster - VfL Bochum 1848 | 2. Bundeslig
+ a | 21. Spieltag
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:685e8dd2a3cab@7477.calovo
+DTSTART;TZID=Europe/Berlin:20260213T183000
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin:20260213T203000
+LOCATION:calovo.de | Merkur Spielarena
+SUMMARY:Fortuna Düsseldorf - SC Preußen Münster | 2. Bundesliga | 22. Sp
+ ieltag
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n22. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.
+ bundesliga.com/de/bundesliga/info/impressum/\n\n\ncalovo Kalender entferne
+ n? Anleitung: calovo.de/kalender-entfernen
+DTSTAMP:20260212T110412Z
+CREATED:20250627T122554Z
+LAST-MODIFIED:20260212T110412Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: Fortuna Düsseldorf - SC Preußen Münster | 2. Bunde
+ sliga | 22. Spieltag
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:685e8de521272@7477.calovo
+DTSTART;TZID=Europe/Berlin:20260222T133000
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin:20260222T153000
+LOCATION:calovo.de | LVM-Preußenstadion
+SUMMARY:SC Preußen Münster - 1. FC Kaiserslautern | 2. Bundesliga | 23. S
+ pieltag
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n23. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.
+ bundesliga.com/de/bundesliga/info/impressum/\n\n\ncalovo Kalender entferne
+ n? Anleitung: calovo.de/kalender-entfernen
+DTSTAMP:20260221T220110Z
+CREATED:20250627T122613Z
+LAST-MODIFIED:20260221T220110Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: SC Preußen Münster - 1. FC Kaiserslautern | 2. Bund
+ esliga | 23. Spieltag
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:685e8def78294@7477.calovo
+DTSTART;TZID=Europe/Berlin:20260301T133000
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin:20260301T153000
+LOCATION:calovo.de | EINTRACHT-STADION
+SUMMARY:Eintracht Braunschweig - SC Preußen Münster | 2. Bundesliga | 24.
+  Spieltag
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n24. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.
+ bundesliga.com/de/bundesliga/info/impressum/\n\n\ncalovo Kalender entferne
+ n? Anleitung: calovo.de/kalender-entfernen
+DTSTAMP:20260228T220049Z
+CREATED:20250627T122623Z
+LAST-MODIFIED:20260228T220049Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: Eintracht Braunschweig - SC Preußen Münster | 2. Bu
+ ndesliga | 24. Spieltag
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:685e8df927066@7477.calovo
+DTSTART;TZID=Europe/Berlin:20260308T133000
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin:20260308T153000
+LOCATION:calovo.de | LVM-Preußenstadion
+SUMMARY:SC Preußen Münster - Hertha BSC | 2. Bundesliga | 25. Spieltag
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n25. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.
+ bundesliga.com/de/bundesliga/info/impressum/\n\n\ncalovo Kalender entferne
+ n? Anleitung: calovo.de/kalender-entfernen
+DTSTAMP:20260307T220923Z
+CREATED:20250627T122633Z
+LAST-MODIFIED:20260307T220923Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: SC Preußen Münster - Hertha BSC | 2. Bundesliga | 2
+ 5. Spieltag
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:685e8e03b162a@7477.calovo
+DTSTART;TZID=Europe/Berlin:20260315T133000
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin:20260315T153000
+LOCATION:calovo.de | Rudolf-Harbig-Stadion
+SUMMARY:SG Dynamo Dresden - SC Preußen Münster | 2. Bundesliga | 26. Spie
+ ltag
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n26. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.
+ bundesliga.com/de/bundesliga/info/impressum/\n\n\ncalovo Kalender entferne
+ n? Anleitung: calovo.de/kalender-entfernen
+DTSTAMP:20260314T220413Z
+CREATED:20250627T122643Z
+LAST-MODIFIED:20260314T220413Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: SG Dynamo Dresden - SC Preußen Münster | 2. Bundesl
+ iga | 26. Spieltag
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:685e8e0bdb944@7477.calovo
+DTSTART;TZID=Europe/Berlin:20260322T133000
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin:20260322T153000
+LOCATION:calovo.de | LVM-Preußenstadion
+SUMMARY:SC Preußen Münster - 1. FC Magdeburg | 2. Bundesliga | 27. Spielt
+ ag
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n27. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.
+ bundesliga.com/de/bundesliga/info/impressum/\n\n\ncalovo Kalender entferne
+ n? Anleitung: calovo.de/kalender-entfernen
+DTSTAMP:20260321T200136Z
+CREATED:20250627T122651Z
+LAST-MODIFIED:20260321T200136Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: SC Preußen Münster - 1. FC Magdeburg | 2. Bundeslig
+ a | 27. Spieltag
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:685e8e10af46b@7477.calovo
+DTSTART;TZID=Europe/Berlin:20260405T133000
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin:20260405T153000
+LOCATION:calovo.de | Holstein-Stadion
+SUMMARY:Holstein Kiel - SC Preußen Münster | 2. Bundesliga | 28. Spieltag
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n28. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.
+ bundesliga.com/de/bundesliga/info/impressum/\n\n\ncalovo Kalender entferne
+ n? Anleitung: calovo.de/kalender-entfernen
+DTSTAMP:20260404T220438Z
+CREATED:20250627T122656Z
+LAST-MODIFIED:20260404T220438Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: Holstein Kiel - SC Preußen Münster | 2. Bundesliga 
+ | 28. Spieltag
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:685e8e1e666f1@7477.calovo
+DTSTART;TZID=Europe/Berlin:20260411T130000
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin:20260411T150000
+LOCATION:calovo.de | LVM-Preußenstadion
+SUMMARY:SC Preußen Münster - SpVgg Greuther Fürth | 2. Bundesliga | 29. 
+ Spieltag
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n29. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.
+ bundesliga.com/de/bundesliga/info/impressum/\n\n\ncalovo Kalender entferne
+ n? Anleitung: calovo.de/kalender-entfernen
+DTSTAMP:20260410T210552Z
+CREATED:20250627T122710Z
+LAST-MODIFIED:20260410T210552Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: SC Preußen Münster - SpVgg Greuther Fürth | 2. Bun
+ desliga | 29. Spieltag
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:685e9304904cb@7477.calovo
+DTSTART;TZID=Europe/Berlin:20260419T133000
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin:20260419T153000
+LOCATION:calovo.de | VELTINS-Arena
+SUMMARY:FC Schalke 04 - SC Preußen Münster | 2. Bundesliga | 30. Spieltag
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n30. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.
+ bundesliga.com/de/bundesliga/info/impressum/\n\n\ncalovo Kalender entferne
+ n? Anleitung: calovo.de/kalender-entfernen
+DTSTAMP:20260418T210135Z
+CREATED:20250627T124804Z
+LAST-MODIFIED:20260418T210135Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: FC Schalke 04 - SC Preußen Münster | 2. Bundesliga 
+ | 30. Spieltag
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:685e930ddefb6@7477.calovo
+DTSTART;TZID=Europe/Berlin:20260425T130000
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin:20260425T150000
+LOCATION:calovo.de | LVM-Preußenstadion
+SUMMARY:SC Preußen Münster - DSC Arminia Bielefeld | 2. Bundesliga | 31. 
+ Spieltag
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n31. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.
+ bundesliga.com/de/bundesliga/info/impressum/\n\n\ncalovo Kalender entferne
+ n? Anleitung: calovo.de/kalender-entfernen
+DTSTAMP:20260424T210836Z
+CREATED:20250627T124813Z
+LAST-MODIFIED:20260424T210836Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: SC Preußen Münster - DSC Arminia Bielefeld | 2. Bun
+ desliga | 31. Spieltag
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:685e9313bdc10@7477.calovo
+DTSTART;TZID=Europe/Berlin:20260503T133000
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin:20260503T153000
+LOCATION:calovo.de | Heinz von Heiden Arena
+SUMMARY:Hannover 96 - SC Preußen Münster | 2. Bundesliga | 32. Spieltag
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n32. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.
+ bundesliga.com/de/bundesliga/info/impressum/\n\n\ncalovo Kalender entferne
+ n? Anleitung: calovo.de/kalender-entfernen
+DTSTAMP:20260502T220246Z
+CREATED:20250627T124819Z
+LAST-MODIFIED:20260502T220246Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: Hannover 96 - SC Preußen Münster | 2. Bundesliga | 
+ 32. Spieltag
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:685e931ca77f0@7477.calovo
+DTSTART;TZID=Europe/Berlin:20260510T133000
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin:20260510T153000
+LOCATION:calovo.de | LVM-Preußenstadion
+SUMMARY:SC Preußen Münster - SV Darmstadt 98 | 2. Bundesliga | 33. Spielt
+ ag
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n33. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.
+ bundesliga.com/de/bundesliga/info/impressum/\n\n\ncalovo Kalender entferne
+ n? Anleitung: calovo.de/kalender-entfernen
+DTSTAMP:20260509T210146Z
+CREATED:20250627T124828Z
+LAST-MODIFIED:20260509T210146Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: SC Preußen Münster - SV Darmstadt 98 | 2. Bundeslig
+ a | 33. Spieltag
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:685e9321a2eca@7477.calovo
+DTSTART;TZID=Europe/Berlin:20260517T153000
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin:20260517T173000
+LOCATION:calovo.de | URSAPHARM-Arena
+SUMMARY:SV Elversberg - SC Preußen Münster | 2. Bundesliga | 34. Spieltag
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n\n\n34. Spieltag\n\n\n\n\nAnbieter-Impressum: https://
+ www.bundesliga.com/de/bundesliga/info/impressum/\n\n\ncalovo Kalender entf
+ ernen? Anleitung: calovo.de/kalender-entfernen
+DTSTAMP:20260517T130213Z
+CREATED:20250627T124833Z
+LAST-MODIFIED:20260517T130213Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: SV Elversberg - SC Preußen Münster | 2. Bundesliga 
+ | 34. Spieltag
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:6a4e665884db3@7477.calovo
+DTSTART;TZID=Europe/Berlin:20260808T140000
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin:20260808T160000
+LOCATION:calovo.de | BRITA Arena
+SUMMARY:SV Wehen Wiesbaden - SC Preußen Münster | 3. Liga
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n\n\nSV Wehen Wiesbaden vs. SC Preußen Münster\n\n\n\
+ n\nAnbieter-Impressum: https://www.bundesliga.com/de/bundesliga/info/impre
+ ssum/\n\n\ncalovo Kalender entfernen? Anleitung: calovo.de/kalender-entfer
+ nen
+DTSTAMP:20260729T150103Z
+CREATED:20260708T150144Z
+LAST-MODIFIED:20260729T150103Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: SV Wehen Wiesbaden - SC Preußen Münster | 3. Liga
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:6a4e665b39f86@7477.calovo
+DTSTART;TZID=Europe/Berlin:20260815T140000
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin:20260815T160000
+LOCATION:calovo.de | LVM-Preußenstadion
+SUMMARY:SC Preußen Münster - FC Ingolstadt 04 | 3. Liga
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n\n\nSC Preußen Münster vs. FC Ingolstadt 04\n\n\n\n\
+ nAnbieter-Impressum: https://www.bundesliga.com/de/bundesliga/info/impress
+ um/\n\n\ncalovo Kalender entfernen? Anleitung: calovo.de/kalender-entferne
+ n
+DTSTAMP:20260729T150108Z
+CREATED:20260708T150147Z
+LAST-MODIFIED:20260729T150108Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: SC Preußen Münster - FC Ingolstadt 04 | 3. Liga
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:6a4516da7cdf6@7477.calovo
+DTSTART;TZID=Europe/Berlin:20260821T180000
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin:20260821T200000
+LOCATION:calovo.de | LVM-Preußenstadion
+SUMMARY:SC Preußen Münster - Karlsruher SC | DFB-Pokal | 1. Runde
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n\n\n1. Runde\n\n\n\n\nAnbieter-Impressum: https://www.
+ bundesliga.com/de/bundesliga/info/impressum/\n\n\ncalovo Kalender entferne
+ n? Anleitung: calovo.de/kalender-entfernen
+DTSTAMP:20260729T150109Z
+CREATED:20260701T133210Z
+LAST-MODIFIED:20260729T150109Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: SC Preußen Münster - Karlsruher SC | DFB-Pokal | 1.
+  Runde
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:6a4e6665b2a33@7477.calovo
+DTSTART;TZID=Europe/Berlin:20260830T193000
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin:20260830T213000
+LOCATION:calovo.de | Sportpark Höhenberg
+SUMMARY:FC Viktoria Köln - SC Preußen Münster | 3. Liga
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n\n\nFC Viktoria Köln vs. SC Preußen Münster\n\n\n\n
+ \nAnbieter-Impressum: https://www.bundesliga.com/de/bundesliga/info/impres
+ sum/\n\n\ncalovo Kalender entfernen? Anleitung: calovo.de/kalender-entfern
+ en
+DTSTAMP:20260729T150515Z
+CREATED:20260708T150157Z
+LAST-MODIFIED:20260729T150515Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: FC Viktoria Köln - SC Preußen Münster | 3. Liga
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:6a4e666bbb0b1@7477.calovo
+DTSTART;TZID=Europe/Berlin:20260905T140000
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin:20260905T160000
+LOCATION:calovo.de | LVM-Preußenstadion
+SUMMARY:SC Preußen Münster - TSV Havelse | 3. Liga
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n\n\nSC Preußen Münster vs. TSV Havelse\n\n\n\n\nAnbi
+ eter-Impressum: https://www.bundesliga.com/de/bundesliga/info/impressum/\n
+ \n\ncalovo Kalender entfernen? Anleitung: calovo.de/kalender-entfernen
+DTSTAMP:20260729T150133Z
+CREATED:20260708T150203Z
+LAST-MODIFIED:20260729T150133Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: SC Preußen Münster - TSV Havelse | 3. Liga
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:6a4e66722c3c6@7477.calovo
+DTSTART;TZID=Europe/Berlin:20260913T133000
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin:20260913T153000
+LOCATION:calovo.de | GAZi-Stadion auf der Waldau
+SUMMARY:VfB Stuttgart II - SC Preußen Münster | 3. Liga
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n\n\nVfB Stuttgart II vs. SC Preußen Münster\n\n\n\n\
+ nAnbieter-Impressum: https://www.bundesliga.com/de/bundesliga/info/impress
+ um/\n\n\ncalovo Kalender entfernen? Anleitung: calovo.de/kalender-entferne
+ n
+DTSTAMP:20260729T150517Z
+CREATED:20260708T150210Z
+LAST-MODIFIED:20260729T150517Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: VfB Stuttgart II - SC Preußen Münster | 3. Liga
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:6a4e6672c8a99@7477.calovo
+DTSTART;TZID=Europe/Berlin:20260916T190000
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin:20260916T210000
+LOCATION:calovo.de | LVM-Preußenstadion
+SUMMARY:SC Preußen Münster - 1. FC Saarbrücken | 3. Liga
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n\n\nSC Preußen Münster vs. 1. FC Saarbrücken\n\n\n\
+ n\nAnbieter-Impressum: https://www.bundesliga.com/de/bundesliga/info/impre
+ ssum/\n\n\ncalovo Kalender entfernen? Anleitung: calovo.de/kalender-entfer
+ nen
+DTSTAMP:20260729T150140Z
+CREATED:20260708T150210Z
+LAST-MODIFIED:20260729T150140Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: SC Preußen Münster - 1. FC Saarbrücken | 3. Liga
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:6a4e66783b62d@7477.calovo
+DTSTART;TZID=Europe/Berlin:20260920T163000
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin:20260920T183000
+LOCATION:calovo.de | Carl-Benz-Stadion
+SUMMARY:SV Waldhof Mannheim - SC Preußen Münster | 3. Liga
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n\n\nSV Waldhof Mannheim vs. SC Preußen Münster\n\n\n
+ \n\nAnbieter-Impressum: https://www.bundesliga.com/de/bundesliga/info/impr
+ essum/\n\n\ncalovo Kalender entfernen? Anleitung: calovo.de/kalender-entfe
+ rnen
+DTSTAMP:20260729T150518Z
+CREATED:20260708T150216Z
+LAST-MODIFIED:20260729T150518Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: SV Waldhof Mannheim - SC Preußen Münster | 3. Liga
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:6a4e667d0f7f8@7477.calovo
+DTSTART;TZID=Europe/Berlin;VALUE=DATE:20261009
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin;VALUE=DATE:20261012
+LOCATION:calovo.de | LVM-Preußenstadion
+SUMMARY:* SC Preußen Münster - Rot-Weiss Essen | 3. Liga
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n\n\nSC Preußen Münster vs. Rot-Weiss Essen\n\nAchtun
+ g: Der endgültige Spieltermin wurde noch nicht festgelegt.\n\n\n\n\nAnbie
+ ter-Impressum: https://www.bundesliga.com/de/bundesliga/info/impressum/\n\
+ n\ncalovo Kalender entfernen? Anleitung: calovo.de/kalender-entfernen
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+DTSTAMP:20260729T150153Z
+CREATED:20260708T150221Z
+LAST-MODIFIED:20260729T150153Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: * SC Preußen Münster - Rot-Weiss Essen | 3. Liga
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:6a4e667ebefbb@7477.calovo
+DTSTART;TZID=Europe/Berlin;VALUE=DATE:20261013
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin;VALUE=DATE:20261015
+LOCATION:calovo.de | LVM-Preußenstadion
+SUMMARY:* SC Preußen Münster - Fortuna Düsseldorf | 3. Liga
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n\n\nSC Preußen Münster vs. Fortuna Düsseldorf\n\nAc
+ htung: Der endgültige Spieltermin wurde noch nicht festgelegt.\n\n\n\n\nA
+ nbieter-Impressum: https://www.bundesliga.com/de/bundesliga/info/impressum
+ /\n\n\ncalovo Kalender entfernen? Anleitung: calovo.de/kalender-entfernen
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+DTSTAMP:20260729T150154Z
+CREATED:20260708T150222Z
+LAST-MODIFIED:20260729T150154Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: * SC Preußen Münster - Fortuna Düsseldorf | 3. Lig
+ a
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:6a4e668493b21@7477.calovo
+DTSTART;TZID=Europe/Berlin;VALUE=DATE:20261016
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin;VALUE=DATE:20261019
+LOCATION:calovo.de | WIRmachenDRUCK Arena
+SUMMARY:* SG Sonnenhof Großaspach - SC Preußen Münster | 3. Liga
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n\n\nSG Sonnenhof Großaspach vs. SC Preußen Münster\
+ n\nAchtung: Der endgültige Spieltermin wurde noch nicht festgelegt.\n\n\n
+ \n\nAnbieter-Impressum: https://www.bundesliga.com/de/bundesliga/info/impr
+ essum/\n\n\ncalovo Kalender entfernen? Anleitung: calovo.de/kalender-entfe
+ rnen
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+DTSTAMP:20260729T150203Z
+CREATED:20260708T150228Z
+LAST-MODIFIED:20260729T150203Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: * SG Sonnenhof Großaspach - SC Preußen Münster | 3
+ . Liga
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:6a4e66886482c@7477.calovo
+DTSTART;TZID=Europe/Berlin;VALUE=DATE:20261023
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin;VALUE=DATE:20261026
+LOCATION:calovo.de | LVM-Preußenstadion
+SUMMARY:* SC Preußen Münster - Fortuna Köln | 3. Liga
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n\n\nSC Preußen Münster vs. Fortuna Köln\n\nAchtung:
+  Der endgültige Spieltermin wurde noch nicht festgelegt.\n\n\n\n\nAnbiete
+ r-Impressum: https://www.bundesliga.com/de/bundesliga/info/impressum/\n\n\
+ ncalovo Kalender entfernen? Anleitung: calovo.de/kalender-entfernen
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+DTSTAMP:20260729T150209Z
+CREATED:20260708T150232Z
+LAST-MODIFIED:20260729T150209Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: * SC Preußen Münster - Fortuna Köln | 3. Liga
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:6a4e668d54227@7477.calovo
+DTSTART;TZID=Europe/Berlin;VALUE=DATE:20261030
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin;VALUE=DATE:20261102
+LOCATION:calovo.de | Tivoli
+SUMMARY:* Alemannia Aachen - SC Preußen Münster | 3. Liga
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n\n\nAlemannia Aachen vs. SC Preußen Münster\n\nAchtu
+ ng: Der endgültige Spieltermin wurde noch nicht festgelegt.\n\n\n\n\nAnbi
+ eter-Impressum: https://www.bundesliga.com/de/bundesliga/info/impressum/\n
+ \n\ncalovo Kalender entfernen? Anleitung: calovo.de/kalender-entfernen
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+DTSTAMP:20260729T150216Z
+CREATED:20260708T150237Z
+LAST-MODIFIED:20260729T150216Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: * Alemannia Aachen - SC Preußen Münster | 3. Liga
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:6a4e6691d7437@7477.calovo
+DTSTART;TZID=Europe/Berlin;VALUE=DATE:20261106
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin;VALUE=DATE:20261109
+LOCATION:calovo.de | LVM-Preußenstadion
+SUMMARY:* SC Preußen Münster - MSV Duisburg | 3. Liga
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n\n\nSC Preußen Münster vs. MSV Duisburg\n\nAchtung: 
+ Der endgültige Spieltermin wurde noch nicht festgelegt.\n\n\n\n\nAnbieter
+ -Impressum: https://www.bundesliga.com/de/bundesliga/info/impressum/\n\n\n
+ calovo Kalender entfernen? Anleitung: calovo.de/kalender-entfernen
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+DTSTAMP:20260729T150222Z
+CREATED:20260708T150241Z
+LAST-MODIFIED:20260729T150222Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: * SC Preußen Münster - MSV Duisburg | 3. Liga
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:6a4e66982f637@7477.calovo
+DTSTART;TZID=Europe/Berlin;VALUE=DATE:20261120
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin;VALUE=DATE:20261123
+LOCATION:calovo.de | Dietmar-Hopp-Stadion
+SUMMARY:* TSG Hoffenheim II - SC Preußen Münster | 3. Liga
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n\n\nTSG Hoffenheim II vs. SC Preußen Münster\n\nAcht
+ ung: Der endgültige Spieltermin wurde noch nicht festgelegt.\n\n\n\n\nAnb
+ ieter-Impressum: https://www.bundesliga.com/de/bundesliga/info/impressum/\
+ n\n\ncalovo Kalender entfernen? Anleitung: calovo.de/kalender-entfernen
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+DTSTAMP:20260729T150231Z
+CREATED:20260708T150248Z
+LAST-MODIFIED:20260729T150231Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: * TSG Hoffenheim II - SC Preußen Münster | 3. Liga
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:6a4e669c804ac@7477.calovo
+DTSTART;TZID=Europe/Berlin;VALUE=DATE:20261127
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin;VALUE=DATE:20261130
+LOCATION:calovo.de | LVM-Preußenstadion
+SUMMARY:* SC Preußen Münster - SC Verl | 3. Liga
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n\n\nSC Preußen Münster vs. SC Verl\n\nAchtung: Der e
+ ndgültige Spieltermin wurde noch nicht festgelegt.\n\n\n\n\nAnbieter-Impr
+ essum: https://www.bundesliga.com/de/bundesliga/info/impressum/\n\n\ncalov
+ o Kalender entfernen? Anleitung: calovo.de/kalender-entfernen
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+DTSTAMP:20260729T150236Z
+CREATED:20260708T150252Z
+LAST-MODIFIED:20260729T150236Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: * SC Preußen Münster - SC Verl | 3. Liga
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:6a4e66a14c986@7477.calovo
+DTSTART;TZID=Europe/Berlin;VALUE=DATE:20261204
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin;VALUE=DATE:20261207
+LOCATION:calovo.de | Jahnstadion Regensburg
+SUMMARY:* SSV Jahn Regensburg - SC Preußen Münster | 3. Liga
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n\n\nSSV Jahn Regensburg vs. SC Preußen Münster\n\nAc
+ htung: Der endgültige Spieltermin wurde noch nicht festgelegt.\n\n\n\n\nA
+ nbieter-Impressum: https://www.bundesliga.com/de/bundesliga/info/impressum
+ /\n\n\ncalovo Kalender entfernen? Anleitung: calovo.de/kalender-entfernen
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+DTSTAMP:20260729T150243Z
+CREATED:20260708T150257Z
+LAST-MODIFIED:20260729T150243Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: * SSV Jahn Regensburg - SC Preußen Münster | 3. Lig
+ a
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:6a4e66a52c8df@7477.calovo
+DTSTART;TZID=Europe/Berlin;VALUE=DATE:20261211
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin;VALUE=DATE:20261214
+LOCATION:calovo.de | LVM-Preußenstadion
+SUMMARY:* SC Preußen Münster - SV Meppen | 3. Liga
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n\n\nSC Preußen Münster vs. SV Meppen\n\nAchtung: Der
+  endgültige Spieltermin wurde noch nicht festgelegt.\n\n\n\n\nAnbieter-Im
+ pressum: https://www.bundesliga.com/de/bundesliga/info/impressum/\n\n\ncal
+ ovo Kalender entfernen? Anleitung: calovo.de/kalender-entfernen
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+DTSTAMP:20260729T150248Z
+CREATED:20260708T150301Z
+LAST-MODIFIED:20260729T150248Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: * SC Preußen Münster - SV Meppen | 3. Liga
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:6a4e66ab99955@7477.calovo
+DTSTART;TZID=Europe/Berlin;VALUE=DATE:20261218
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin;VALUE=DATE:20261221
+LOCATION:calovo.de | Ostseestadion
+SUMMARY:* F.C. Hansa Rostock - SC Preußen Münster | 3. Liga
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n\n\nF.C. Hansa Rostock vs. SC Preußen Münster\n\nAch
+ tung: Der endgültige Spieltermin wurde noch nicht festgelegt.\n\n\n\n\nAn
+ bieter-Impressum: https://www.bundesliga.com/de/bundesliga/info/impressum/
+ \n\n\ncalovo Kalender entfernen? Anleitung: calovo.de/kalender-entfernen
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+DTSTAMP:20260729T150255Z
+CREATED:20260708T150307Z
+LAST-MODIFIED:20260729T150255Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: * F.C. Hansa Rostock - SC Preußen Münster | 3. Liga
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:6a4e66b53a890@7477.calovo
+DTSTART;TZID=Europe/Berlin;VALUE=DATE:20270115
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin;VALUE=DATE:20270118
+LOCATION:calovo.de | LVM-Preußenstadion
+SUMMARY:* SC Preußen Münster - FC Würzburger Kickers | 3. Liga
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n\n\nSC Preußen Münster vs. FC Würzburger Kickers\n\
+ nAchtung: Der endgültige Spieltermin wurde noch nicht festgelegt.\n\n\n\n
+ \nAnbieter-Impressum: https://www.bundesliga.com/de/bundesliga/info/impres
+ sum/\n\n\ncalovo Kalender entfernen? Anleitung: calovo.de/kalender-entfern
+ en
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+DTSTAMP:20260729T150309Z
+CREATED:20260708T150317Z
+LAST-MODIFIED:20260729T150309Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: * SC Preußen Münster - FC Würzburger Kickers | 3. 
+ Liga
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:6a4e66b916959@7477.calovo
+DTSTART;TZID=Europe/Berlin;VALUE=DATE:20270122
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin;VALUE=DATE:20270125
+LOCATION:calovo.de | LVM-Preußenstadion
+SUMMARY:* SC Preußen Münster - SV Wehen Wiesbaden | 3. Liga
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n\n\nSC Preußen Münster vs. SV Wehen Wiesbaden\n\nAch
+ tung: Der endgültige Spieltermin wurde noch nicht festgelegt.\n\n\n\n\nAn
+ bieter-Impressum: https://www.bundesliga.com/de/bundesliga/info/impressum/
+ \n\n\ncalovo Kalender entfernen? Anleitung: calovo.de/kalender-entfernen
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+DTSTAMP:20260729T150314Z
+CREATED:20260708T150321Z
+LAST-MODIFIED:20260729T150314Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: * SC Preußen Münster - SV Wehen Wiesbaden | 3. Liga
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:6a4e66bde1310@7477.calovo
+DTSTART;TZID=Europe/Berlin;VALUE=DATE:20270129
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin;VALUE=DATE:20270201
+LOCATION:calovo.de | Audi Sportpark
+SUMMARY:* FC Ingolstadt 04 - SC Preußen Münster | 3. Liga
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n\n\nFC Ingolstadt 04 vs. SC Preußen Münster\n\nAchtu
+ ng: Der endgültige Spieltermin wurde noch nicht festgelegt.\n\n\n\n\nAnbi
+ eter-Impressum: https://www.bundesliga.com/de/bundesliga/info/impressum/\n
+ \n\ncalovo Kalender entfernen? Anleitung: calovo.de/kalender-entfernen
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+DTSTAMP:20260729T150322Z
+CREATED:20260708T150325Z
+LAST-MODIFIED:20260729T150322Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: * FC Ingolstadt 04 - SC Preußen Münster | 3. Liga
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:6a4e66c209cc1@7477.calovo
+DTSTART;TZID=Europe/Berlin;VALUE=DATE:20270205
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin;VALUE=DATE:20270208
+LOCATION:calovo.de | LVM-Preußenstadion
+SUMMARY:* SC Preußen Münster - FC Viktoria Köln | 3. Liga
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n\n\nSC Preußen Münster vs. FC Viktoria Köln\n\nAcht
+ ung: Der endgültige Spieltermin wurde noch nicht festgelegt.\n\n\n\n\nAnb
+ ieter-Impressum: https://www.bundesliga.com/de/bundesliga/info/impressum/\
+ n\n\ncalovo Kalender entfernen? Anleitung: calovo.de/kalender-entfernen
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+DTSTAMP:20260729T150328Z
+CREATED:20260708T150330Z
+LAST-MODIFIED:20260729T150328Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: * SC Preußen Münster - FC Viktoria Köln | 3. Liga
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:6a4e66c6a479b@7477.calovo
+DTSTART;TZID=Europe/Berlin;VALUE=DATE:20270212
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin;VALUE=DATE:20270215
+LOCATION:calovo.de | Wilhelm-Langrehr-Stadion
+SUMMARY:* TSV Havelse - SC Preußen Münster | 3. Liga
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n\n\nTSV Havelse vs. SC Preußen Münster\n\nAchtung: D
+ er endgültige Spieltermin wurde noch nicht festgelegt.\n\n\n\n\nAnbieter-
+ Impressum: https://www.bundesliga.com/de/bundesliga/info/impressum/\n\n\nc
+ alovo Kalender entfernen? Anleitung: calovo.de/kalender-entfernen
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+DTSTAMP:20260729T150335Z
+CREATED:20260708T150334Z
+LAST-MODIFIED:20260729T150335Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: * TSV Havelse - SC Preußen Münster | 3. Liga
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:6a4e66cb092e0@7477.calovo
+DTSTART;TZID=Europe/Berlin;VALUE=DATE:20270219
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin;VALUE=DATE:20270222
+LOCATION:calovo.de | LVM-Preußenstadion
+SUMMARY:* SC Preußen Münster - VfB Stuttgart II | 3. Liga
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n\n\nSC Preußen Münster vs. VfB Stuttgart II\n\nAchtu
+ ng: Der endgültige Spieltermin wurde noch nicht festgelegt.\n\n\n\n\nAnbi
+ eter-Impressum: https://www.bundesliga.com/de/bundesliga/info/impressum/\n
+ \n\ncalovo Kalender entfernen? Anleitung: calovo.de/kalender-entfernen
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+DTSTAMP:20260729T150340Z
+CREATED:20260708T150339Z
+LAST-MODIFIED:20260729T150340Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: * SC Preußen Münster - VfB Stuttgart II | 3. Liga
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:6a4e66d0c601e@7477.calovo
+DTSTART;TZID=Europe/Berlin;VALUE=DATE:20270226
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin;VALUE=DATE:20270301
+LOCATION:calovo.de | Ludwigsparkstadion
+SUMMARY:* 1. FC Saarbrücken - SC Preußen Münster | 3. Liga
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n\n\n1. FC Saarbrücken vs. SC Preußen Münster\n\nAch
+ tung: Der endgültige Spieltermin wurde noch nicht festgelegt.\n\n\n\n\nAn
+ bieter-Impressum: https://www.bundesliga.com/de/bundesliga/info/impressum/
+ \n\n\ncalovo Kalender entfernen? Anleitung: calovo.de/kalender-entfernen
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+DTSTAMP:20260729T150347Z
+CREATED:20260708T150344Z
+LAST-MODIFIED:20260729T150347Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: * 1. FC Saarbrücken - SC Preußen Münster | 3. Liga
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:6a4e66d495b9b@7477.calovo
+DTSTART;TZID=Europe/Berlin;VALUE=DATE:20270302
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin;VALUE=DATE:20270304
+LOCATION:calovo.de | LVM-Preußenstadion
+SUMMARY:* SC Preußen Münster - SV Waldhof Mannheim | 3. Liga
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n\n\nSC Preußen Münster vs. SV Waldhof Mannheim\n\nAc
+ htung: Der endgültige Spieltermin wurde noch nicht festgelegt.\n\n\n\n\nA
+ nbieter-Impressum: https://www.bundesliga.com/de/bundesliga/info/impressum
+ /\n\n\ncalovo Kalender entfernen? Anleitung: calovo.de/kalender-entfernen
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+DTSTAMP:20260729T150352Z
+CREATED:20260708T150348Z
+LAST-MODIFIED:20260729T150352Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: * SC Preußen Münster - SV Waldhof Mannheim | 3. Lig
+ a
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:6a4e66d8da55e@7477.calovo
+DTSTART;TZID=Europe/Berlin;VALUE=DATE:20270305
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin;VALUE=DATE:20270308
+LOCATION:calovo.de | Stadion an der Hafenstraße
+SUMMARY:* Rot-Weiss Essen - SC Preußen Münster | 3. Liga
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n\n\nRot-Weiss Essen vs. SC Preußen Münster\n\nAchtun
+ g: Der endgültige Spieltermin wurde noch nicht festgelegt.\n\n\n\n\nAnbie
+ ter-Impressum: https://www.bundesliga.com/de/bundesliga/info/impressum/\n\
+ n\ncalovo Kalender entfernen? Anleitung: calovo.de/kalender-entfernen
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+DTSTAMP:20260729T150357Z
+CREATED:20260708T150352Z
+LAST-MODIFIED:20260729T150357Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: * Rot-Weiss Essen - SC Preußen Münster | 3. Liga
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:6a4e66dd7aae5@7477.calovo
+DTSTART;TZID=Europe/Berlin;VALUE=DATE:20270312
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin;VALUE=DATE:20270315
+LOCATION:calovo.de | Merkur Spielarena
+SUMMARY:* Fortuna Düsseldorf - SC Preußen Münster | 3. Liga
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n\n\nFortuna Düsseldorf vs. SC Preußen Münster\n\nAc
+ htung: Der endgültige Spieltermin wurde noch nicht festgelegt.\n\n\n\n\nA
+ nbieter-Impressum: https://www.bundesliga.com/de/bundesliga/info/impressum
+ /\n\n\ncalovo Kalender entfernen? Anleitung: calovo.de/kalender-entfernen
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+DTSTAMP:20260729T150404Z
+CREATED:20260708T150357Z
+LAST-MODIFIED:20260729T150404Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: * Fortuna Düsseldorf - SC Preußen Münster | 3. Lig
+ a
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:6a4e66ded5c10@7477.calovo
+DTSTART;TZID=Europe/Berlin;VALUE=DATE:20270316
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin;VALUE=DATE:20270318
+LOCATION:calovo.de | LVM-Preußenstadion
+SUMMARY:* SC Preußen Münster - SG Sonnenhof Großaspach | 3. Liga
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n\n\nSC Preußen Münster vs. SG Sonnenhof Großaspach\
+ n\nAchtung: Der endgültige Spieltermin wurde noch nicht festgelegt.\n\n\n
+ \n\nAnbieter-Impressum: https://www.bundesliga.com/de/bundesliga/info/impr
+ essum/\n\n\ncalovo Kalender entfernen? Anleitung: calovo.de/kalender-entfe
+ rnen
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+DTSTAMP:20260729T150405Z
+CREATED:20260708T150358Z
+LAST-MODIFIED:20260729T150405Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: * SC Preußen Münster - SG Sonnenhof Großaspach | 3
+ . Liga
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:6a4e66e57e872@7477.calovo
+DTSTART;TZID=Europe/Berlin;VALUE=DATE:20270319
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin;VALUE=DATE:20270322
+LOCATION:calovo.de | Südstadion
+SUMMARY:* Fortuna Köln - SC Preußen Münster | 3. Liga
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n\n\nFortuna Köln vs. SC Preußen Münster\n\nAchtung:
+  Der endgültige Spieltermin wurde noch nicht festgelegt.\n\n\n\n\nAnbiete
+ r-Impressum: https://www.bundesliga.com/de/bundesliga/info/impressum/\n\n\
+ ncalovo Kalender entfernen? Anleitung: calovo.de/kalender-entfernen
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+DTSTAMP:20260729T150412Z
+CREATED:20260708T150405Z
+LAST-MODIFIED:20260729T150412Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: * Fortuna Köln - SC Preußen Münster | 3. Liga
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:6a4e66ea11241@7477.calovo
+DTSTART;TZID=Europe/Berlin;VALUE=DATE:20270402
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin;VALUE=DATE:20270405
+LOCATION:calovo.de | LVM-Preußenstadion
+SUMMARY:* SC Preußen Münster - Alemannia Aachen | 3. Liga
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n\n\nSC Preußen Münster vs. Alemannia Aachen\n\nAchtu
+ ng: Der endgültige Spieltermin wurde noch nicht festgelegt.\n\n\n\n\nAnbi
+ eter-Impressum: https://www.bundesliga.com/de/bundesliga/info/impressum/\n
+ \n\ncalovo Kalender entfernen? Anleitung: calovo.de/kalender-entfernen
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+DTSTAMP:20260729T150419Z
+CREATED:20260708T150410Z
+LAST-MODIFIED:20260729T150419Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: * SC Preußen Münster - Alemannia Aachen | 3. Liga
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:6a4e66eeba221@7477.calovo
+DTSTART;TZID=Europe/Berlin;VALUE=DATE:20270409
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin;VALUE=DATE:20270412
+LOCATION:calovo.de | SCHAUINSLAND-REISEN-ARENA
+SUMMARY:* MSV Duisburg - SC Preußen Münster | 3. Liga
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n\n\nMSV Duisburg vs. SC Preußen Münster\n\nAchtung: 
+ Der endgültige Spieltermin wurde noch nicht festgelegt.\n\n\n\n\nAnbieter
+ -Impressum: https://www.bundesliga.com/de/bundesliga/info/impressum/\n\n\n
+ calovo Kalender entfernen? Anleitung: calovo.de/kalender-entfernen
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+DTSTAMP:20260729T150425Z
+CREATED:20260708T150414Z
+LAST-MODIFIED:20260729T150425Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: * MSV Duisburg - SC Preußen Münster | 3. Liga
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:6a4e66f334196@7477.calovo
+DTSTART;TZID=Europe/Berlin;VALUE=DATE:20270416
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin;VALUE=DATE:20270419
+LOCATION:calovo.de | LVM-Preußenstadion
+SUMMARY:* SC Preußen Münster - TSG Hoffenheim II | 3. Liga
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n\n\nSC Preußen Münster vs. TSG Hoffenheim II\n\nAcht
+ ung: Der endgültige Spieltermin wurde noch nicht festgelegt.\n\n\n\n\nAnb
+ ieter-Impressum: https://www.bundesliga.com/de/bundesliga/info/impressum/\
+ n\n\ncalovo Kalender entfernen? Anleitung: calovo.de/kalender-entfernen
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+DTSTAMP:20260729T150430Z
+CREATED:20260708T150419Z
+LAST-MODIFIED:20260729T150430Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: * SC Preußen Münster - TSG Hoffenheim II | 3. Liga
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:6a4e66f842f46@7477.calovo
+DTSTART;TZID=Europe/Berlin;VALUE=DATE:20270423
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin;VALUE=DATE:20270426
+LOCATION:calovo.de | SPORTCLUB Arena
+SUMMARY:* SC Verl - SC Preußen Münster | 3. Liga
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n\n\nSC Verl vs. SC Preußen Münster\n\nAchtung: Der e
+ ndgültige Spieltermin wurde noch nicht festgelegt.\n\n\n\n\nAnbieter-Impr
+ essum: https://www.bundesliga.com/de/bundesliga/info/impressum/\n\n\ncalov
+ o Kalender entfernen? Anleitung: calovo.de/kalender-entfernen
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+DTSTAMP:20260729T150436Z
+CREATED:20260708T150424Z
+LAST-MODIFIED:20260729T150436Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: * SC Verl - SC Preußen Münster | 3. Liga
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:6a4e66f9dee37@7477.calovo
+DTSTART;TZID=Europe/Berlin;VALUE=DATE:20270427
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin;VALUE=DATE:20270429
+LOCATION:calovo.de | LVM-Preußenstadion
+SUMMARY:* SC Preußen Münster - SSV Jahn Regensburg | 3. Liga
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n\n\nSC Preußen Münster vs. SSV Jahn Regensburg\n\nAc
+ htung: Der endgültige Spieltermin wurde noch nicht festgelegt.\n\n\n\n\nA
+ nbieter-Impressum: https://www.bundesliga.com/de/bundesliga/info/impressum
+ /\n\n\ncalovo Kalender entfernen? Anleitung: calovo.de/kalender-entfernen
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+DTSTAMP:20260729T150437Z
+CREATED:20260708T150425Z
+LAST-MODIFIED:20260729T150437Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: * SC Preußen Münster - SSV Jahn Regensburg | 3. Lig
+ a
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:6a4e66ffee316@7477.calovo
+DTSTART;TZID=Europe/Berlin;VALUE=DATE:20270507
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin;VALUE=DATE:20270510
+LOCATION:calovo.de | Hänsch-Arena
+SUMMARY:* SV Meppen - SC Preußen Münster | 3. Liga
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n\n\nSV Meppen vs. SC Preußen Münster\n\nAchtung: Der
+  endgültige Spieltermin wurde noch nicht festgelegt.\n\n\n\n\nAnbieter-Im
+ pressum: https://www.bundesliga.com/de/bundesliga/info/impressum/\n\n\ncal
+ ovo Kalender entfernen? Anleitung: calovo.de/kalender-entfernen
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+DTSTAMP:20260729T150443Z
+CREATED:20260708T150431Z
+LAST-MODIFIED:20260729T150443Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: * SV Meppen - SC Preußen Münster | 3. Liga
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:6a4e67038ba7e@7477.calovo
+DTSTART;TZID=Europe/Berlin;VALUE=DATE:20270514
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin;VALUE=DATE:20270517
+LOCATION:calovo.de | LVM-Preußenstadion
+SUMMARY:* SC Preußen Münster - F.C. Hansa Rostock | 3. Liga
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n\n\nSC Preußen Münster vs. F.C. Hansa Rostock\n\nAch
+ tung: Der endgültige Spieltermin wurde noch nicht festgelegt.\n\n\n\n\nAn
+ bieter-Impressum: https://www.bundesliga.com/de/bundesliga/info/impressum/
+ \n\n\ncalovo Kalender entfernen? Anleitung: calovo.de/kalender-entfernen
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+DTSTAMP:20260729T150447Z
+CREATED:20260708T150435Z
+LAST-MODIFIED:20260729T150447Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: * SC Preußen Münster - F.C. Hansa Rostock | 3. Liga
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:6a4e6707b5b70@7477.calovo
+DTSTART;TZID=Europe/Berlin;VALUE=DATE:20270522
+SEQUENCE:0
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+DTEND;TZID=Europe/Berlin;VALUE=DATE:20270523
+LOCATION:calovo.de | AKON ARENA
+SUMMARY:* FC Würzburger Kickers - SC Preußen Münster | 3. Liga
+DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
+ s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
+ ostenlos_starten\n\n\n\nFC Würzburger Kickers vs. SC Preußen Münster\n\
+ nAchtung: Der endgültige Spieltermin wurde noch nicht festgelegt.\n\n\n\n
+ \nAnbieter-Impressum: https://www.bundesliga.com/de/bundesliga/info/impres
+ sum/\n\n\ncalovo Kalender entfernen? Anleitung: calovo.de/kalender-entfern
+ en
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+DTSTAMP:20260729T150452Z
+CREATED:20260708T150439Z
+LAST-MODIFIED:20260729T150452Z
+BEGIN:VALARM
+TRIGGER:-P0DT1H0M0S
+ACTION:DISPLAY
+DESCRIPTION:Reminder: * FC Würzburger Kickers - SC Preußen Münster | 3. 
+ Liga
+END:VALARM
+END:VEVENT
 END:VCALENDAR
