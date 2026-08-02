@@ -33,7 +33,12 @@ def replace_usc_names(value: object, configured_team: str | None = None) -> str:
         result = result.replace(old, new)
 
     team_codes = split_team_codes(configured_team)
-    if team_codes and all("-U" in code for code in team_codes):
+    if len(team_codes) == 1 and "-U" in team_codes[0]:
+        # In einer eigenen Jugend-Liga bezeichnet jede USC-Nummer aus dem
+        # SAMS-Export das konfigurierte Team. Die Nummer im Export entspricht
+        # nicht zwingend der Nummer im altersklassenuebergreifenden Teamcode.
+        result = re.sub(r"\bUSC\d+\b", team_codes[0], result)
+    elif team_codes and all("-U" in code for code in team_codes):
         for number, code in enumerate(team_codes, start=1):
             result = re.sub(rf"\bUSC{number}\b", code, result)
 
