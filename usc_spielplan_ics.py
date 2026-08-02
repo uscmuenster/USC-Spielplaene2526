@@ -119,9 +119,12 @@ for file, team_code in csv_files:
 
     for col in ["Heim", "Gast", "SR", "Gastgeber", "Ort", "Spielrunde"]:
         if col in df.columns:
-            df[col] = df.apply(
-                lambda r: replace_usc_names(r[col], r["USC_Team"]),
-                axis=1
+            # Series.map liefert auch bei einem leeren Filter stets eine Series.
+            # DataFrame.apply(axis=1) liefert bei einem leeren DataFrame dagegen
+            # je nach pandas-Version einen DataFrame, der keiner einzelnen Spalte
+            # zugewiesen werden kann ("Columns must be same length as key").
+            df[col] = df[col].map(
+                lambda value: replace_usc_names(value, team_code)
             )
 
     dfs.append(df)
