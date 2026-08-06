@@ -1048,9 +1048,9 @@ DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
  \n\nAnbieter-Impressum: https://www.bundesliga.com/de/bundesliga/info/impr
  essum/\n\n\ncalovo Kalender entfernen? Anleitung: calovo.de/kalender-entfe
  rnen
-DTSTAMP:20260805T130454Z
+DTSTAMP:20260805T130801Z
 CREATED:20260708T150216Z
-LAST-MODIFIED:20260805T130454Z
+LAST-MODIFIED:20260805T130801Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
