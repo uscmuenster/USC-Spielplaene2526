@@ -29,31 +29,6 @@ RRULE:FREQ=YEARLY;INTERVAL=1;BYMONTH=10;BYDAY=-1SU
 END:STANDARD
 END:VTIMEZONE
 BEGIN:VEVENT
-UID:685e8d03155f5@7477.calovo
-DTSTART;TZID=Europe/Berlin:20250808T183000
-SEQUENCE:0
-TRANSP:TRANSPARENT
-STATUS:CONFIRMED
-DTEND;TZID=Europe/Berlin:20250808T203000
-LOCATION:calovo.de | LVM-Preußenstadion
-SUMMARY:SC Preußen Münster - SC Paderborn 07 | 2. Bundesliga | 2. Spielta
- g
-DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
- s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
- ostenlos_starten\n\n2. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.b
- undesliga.com/de/bundesliga/info/impressum/\n\n\ncalovo Kalender entfernen
- ? Anleitung: calovo.de/kalender-entfernen
-DTSTAMP:20250808T150320Z
-CREATED:20250627T122227Z
-LAST-MODIFIED:20250808T150320Z
-BEGIN:VALARM
-TRIGGER:-P0DT1H0M0S
-ACTION:DISPLAY
-DESCRIPTION:Reminder: SC Preußen Münster - SC Paderborn 07 | 2. Bundeslig
- a | 2. Spieltag
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
 UID:6859b2b323cf1@7477.calovo
 DTSTART;TZID=Europe/Berlin:20250818T180000
 SEQUENCE:0
