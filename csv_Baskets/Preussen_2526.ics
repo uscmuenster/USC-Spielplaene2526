@@ -879,9 +879,9 @@ DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
  \nAnbieter-Impressum: https://www.bundesliga.com/de/bundesliga/info/impres
  sum/\n\n\ncalovo Kalender entfernen? Anleitung: calovo.de/kalender-entfern
  en
-DTSTAMP:20260826T113113Z
+DTSTAMP:20260827T135749Z
 CREATED:20260708T150157Z
-LAST-MODIFIED:20260826T113113Z
+LAST-MODIFIED:20260827T135749Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -902,9 +902,9 @@ DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
  ostenlos_starten\n\n\n\nSC Preußen Münster vs. TSV Havelse\n\n\n\n\nAnbi
  eter-Impressum: https://www.bundesliga.com/de/bundesliga/info/impressum/\n
  \n\ncalovo Kalender entfernen? Anleitung: calovo.de/kalender-entfernen
-DTSTAMP:20260826T112705Z
+DTSTAMP:20260827T135355Z
 CREATED:20260708T150203Z
-LAST-MODIFIED:20260826T112705Z
+LAST-MODIFIED:20260827T135355Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -926,9 +926,9 @@ DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
  nAnbieter-Impressum: https://www.bundesliga.com/de/bundesliga/info/impress
  um/\n\n\ncalovo Kalender entfernen? Anleitung: calovo.de/kalender-entferne
  n
-DTSTAMP:20260826T113115Z
+DTSTAMP:20260827T135750Z
 CREATED:20260708T150210Z
-LAST-MODIFIED:20260826T113115Z
+LAST-MODIFIED:20260827T135750Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -950,9 +950,9 @@ DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
  n\nAnbieter-Impressum: https://www.bundesliga.com/de/bundesliga/info/impre
  ssum/\n\n\ncalovo Kalender entfernen? Anleitung: calovo.de/kalender-entfer
  nen
-DTSTAMP:20260826T112713Z
+DTSTAMP:20260827T135404Z
 CREATED:20260708T150210Z
-LAST-MODIFIED:20260826T112713Z
+LAST-MODIFIED:20260827T135404Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -974,9 +974,9 @@ DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
  \n\nAnbieter-Impressum: https://www.bundesliga.com/de/bundesliga/info/impr
  essum/\n\n\ncalovo Kalender entfernen? Anleitung: calovo.de/kalender-entfe
  rnen
-DTSTAMP:20260826T113116Z
+DTSTAMP:20260827T135751Z
 CREATED:20260708T150216Z
-LAST-MODIFIED:20260826T113116Z
+LAST-MODIFIED:20260827T135751Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -989,7 +989,7 @@ DTSTART;VALUE=DATE:20261009
 SEQUENCE:0
 TRANSP:TRANSPARENT
 STATUS:CONFIRMED
-DTEND;VALUE=DATE:20261013
+DTEND;VALUE=DATE:20261012
 LOCATION:calovo.de | LVM-Preußenstadion
 SUMMARY:* SC Preußen Münster - Rot-Weiss Essen | 3. Liga
 DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
@@ -999,9 +999,9 @@ DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
  ter-Impressum: https://www.bundesliga.com/de/bundesliga/info/impressum/\n\
  n\ncalovo Kalender entfernen? Anleitung: calovo.de/kalender-entfernen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20260826T112726Z
+DTSTAMP:20260827T135418Z
 CREATED:20260708T150221Z
-LAST-MODIFIED:20260826T112726Z
+LAST-MODIFIED:20260827T135418Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1014,7 +1014,7 @@ DTSTART;VALUE=DATE:20261013
 SEQUENCE:0
 TRANSP:TRANSPARENT
 STATUS:CONFIRMED
-DTEND;VALUE=DATE:20261016
+DTEND;VALUE=DATE:20261015
 LOCATION:calovo.de | LVM-Preußenstadion
 SUMMARY:* SC Preußen Münster - Fortuna Düsseldorf | 3. Liga
 DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
@@ -1024,9 +1024,9 @@ DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
  nbieter-Impressum: https://www.bundesliga.com/de/bundesliga/info/impressum
  /\n\n\ncalovo Kalender entfernen? Anleitung: calovo.de/kalender-entfernen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20260826T112727Z
+DTSTAMP:20260827T135419Z
 CREATED:20260708T150222Z
-LAST-MODIFIED:20260826T112727Z
+LAST-MODIFIED:20260827T135419Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1040,7 +1040,7 @@ DTSTART;VALUE=DATE:20261016
 SEQUENCE:0
 TRANSP:TRANSPARENT
 STATUS:CONFIRMED
-DTEND;VALUE=DATE:20261020
+DTEND;VALUE=DATE:20261019
 LOCATION:calovo.de | WIRmachenDRUCK Arena
 SUMMARY:* SG Sonnenhof Großaspach - SC Preußen Münster | 3. Liga
 DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
@@ -1051,9 +1051,9 @@ DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
  essum/\n\n\ncalovo Kalender entfernen? Anleitung: calovo.de/kalender-entfe
  rnen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20260826T112735Z
+DTSTAMP:20260827T135425Z
 CREATED:20260708T150228Z
-LAST-MODIFIED:20260826T112735Z
+LAST-MODIFIED:20260827T135425Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1067,7 +1067,7 @@ DTSTART;VALUE=DATE:20261023
 SEQUENCE:0
 TRANSP:TRANSPARENT
 STATUS:CONFIRMED
-DTEND;VALUE=DATE:20261027
+DTEND;VALUE=DATE:20261026
 LOCATION:calovo.de | LVM-Preußenstadion
 SUMMARY:* SC Preußen Münster - Fortuna Köln | 3. Liga
 DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
@@ -1077,9 +1077,9 @@ DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
  r-Impressum: https://www.bundesliga.com/de/bundesliga/info/impressum/\n\n\
  ncalovo Kalender entfernen? Anleitung: calovo.de/kalender-entfernen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20260826T112742Z
+DTSTAMP:20260827T135431Z
 CREATED:20260708T150232Z
-LAST-MODIFIED:20260826T112742Z
+LAST-MODIFIED:20260827T135431Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1092,7 +1092,7 @@ DTSTART;VALUE=DATE:20261030
 SEQUENCE:0
 TRANSP:TRANSPARENT
 STATUS:CONFIRMED
-DTEND;VALUE=DATE:20261103
+DTEND;VALUE=DATE:20261102
 LOCATION:calovo.de | Tivoli
 SUMMARY:* Alemannia Aachen - SC Preußen Münster | 3. Liga
 DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
@@ -1102,9 +1102,9 @@ DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
  eter-Impressum: https://www.bundesliga.com/de/bundesliga/info/impressum/\n
  \n\ncalovo Kalender entfernen? Anleitung: calovo.de/kalender-entfernen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20260826T112750Z
+DTSTAMP:20260827T135437Z
 CREATED:20260708T150237Z
-LAST-MODIFIED:20260826T112750Z
+LAST-MODIFIED:20260827T135437Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1117,7 +1117,7 @@ DTSTART;VALUE=DATE:20261106
 SEQUENCE:0
 TRANSP:TRANSPARENT
 STATUS:CONFIRMED
-DTEND;VALUE=DATE:20261110
+DTEND;VALUE=DATE:20261109
 LOCATION:calovo.de | LVM-Preußenstadion
 SUMMARY:* SC Preußen Münster - MSV Duisburg | 3. Liga
 DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
@@ -1127,9 +1127,9 @@ DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
  -Impressum: https://www.bundesliga.com/de/bundesliga/info/impressum/\n\n\n
  calovo Kalender entfernen? Anleitung: calovo.de/kalender-entfernen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20260826T112755Z
+DTSTAMP:20260827T135443Z
 CREATED:20260708T150241Z
-LAST-MODIFIED:20260826T112755Z
+LAST-MODIFIED:20260827T135443Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1142,7 +1142,7 @@ DTSTART;VALUE=DATE:20261120
 SEQUENCE:0
 TRANSP:TRANSPARENT
 STATUS:CONFIRMED
-DTEND;VALUE=DATE:20261124
+DTEND;VALUE=DATE:20261123
 LOCATION:calovo.de | Dietmar-Hopp-Stadion
 SUMMARY:* TSG Hoffenheim II - SC Preußen Münster | 3. Liga
 DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
@@ -1152,9 +1152,9 @@ DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
  ieter-Impressum: https://www.bundesliga.com/de/bundesliga/info/impressum/\
  n\n\ncalovo Kalender entfernen? Anleitung: calovo.de/kalender-entfernen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20260826T112804Z
+DTSTAMP:20260827T135451Z
 CREATED:20260708T150248Z
-LAST-MODIFIED:20260826T112804Z
+LAST-MODIFIED:20260827T135451Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1167,7 +1167,7 @@ DTSTART;VALUE=DATE:20261127
 SEQUENCE:0
 TRANSP:TRANSPARENT
 STATUS:CONFIRMED
-DTEND;VALUE=DATE:20261201
+DTEND;VALUE=DATE:20261130
 LOCATION:calovo.de | LVM-Preußenstadion
 SUMMARY:* SC Preußen Münster - SC Verl | 3. Liga
 DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
@@ -1177,9 +1177,9 @@ DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
  essum: https://www.bundesliga.com/de/bundesliga/info/impressum/\n\n\ncalov
  o Kalender entfernen? Anleitung: calovo.de/kalender-entfernen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20260826T112809Z
+DTSTAMP:20260827T135457Z
 CREATED:20260708T150252Z
-LAST-MODIFIED:20260826T112809Z
+LAST-MODIFIED:20260827T135457Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1192,7 +1192,7 @@ DTSTART;VALUE=DATE:20261204
 SEQUENCE:0
 TRANSP:TRANSPARENT
 STATUS:CONFIRMED
-DTEND;VALUE=DATE:20261208
+DTEND;VALUE=DATE:20261207
 LOCATION:calovo.de | Jahnstadion Regensburg
 SUMMARY:* SSV Jahn Regensburg - SC Preußen Münster | 3. Liga
 DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
@@ -1202,9 +1202,9 @@ DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
  nbieter-Impressum: https://www.bundesliga.com/de/bundesliga/info/impressum
  /\n\n\ncalovo Kalender entfernen? Anleitung: calovo.de/kalender-entfernen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20260826T112816Z
+DTSTAMP:20260827T135508Z
 CREATED:20260708T150257Z
-LAST-MODIFIED:20260826T112816Z
+LAST-MODIFIED:20260827T135508Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1218,7 +1218,7 @@ DTSTART;VALUE=DATE:20261211
 SEQUENCE:0
 TRANSP:TRANSPARENT
 STATUS:CONFIRMED
-DTEND;VALUE=DATE:20261215
+DTEND;VALUE=DATE:20261214
 LOCATION:calovo.de | LVM-Preußenstadion
 SUMMARY:* SC Preußen Münster - SV Meppen | 3. Liga
 DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
@@ -1228,9 +1228,9 @@ DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
  pressum: https://www.bundesliga.com/de/bundesliga/info/impressum/\n\n\ncal
  ovo Kalender entfernen? Anleitung: calovo.de/kalender-entfernen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20260826T112822Z
+DTSTAMP:20260827T135515Z
 CREATED:20260708T150301Z
-LAST-MODIFIED:20260826T112822Z
+LAST-MODIFIED:20260827T135515Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1243,7 +1243,7 @@ DTSTART;VALUE=DATE:20261218
 SEQUENCE:0
 TRANSP:TRANSPARENT
 STATUS:CONFIRMED
-DTEND;VALUE=DATE:20261222
+DTEND;VALUE=DATE:20261221
 LOCATION:calovo.de | Ostseestadion
 SUMMARY:* F.C. Hansa Rostock - SC Preußen Münster | 3. Liga
 DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
@@ -1253,9 +1253,9 @@ DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
  bieter-Impressum: https://www.bundesliga.com/de/bundesliga/info/impressum/
  \n\n\ncalovo Kalender entfernen? Anleitung: calovo.de/kalender-entfernen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20260826T112828Z
+DTSTAMP:20260827T135523Z
 CREATED:20260708T150307Z
-LAST-MODIFIED:20260826T112828Z
+LAST-MODIFIED:20260827T135523Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1268,7 +1268,7 @@ DTSTART;VALUE=DATE:20270115
 SEQUENCE:0
 TRANSP:TRANSPARENT
 STATUS:CONFIRMED
-DTEND;VALUE=DATE:20270119
+DTEND;VALUE=DATE:20270118
 LOCATION:calovo.de | LVM-Preußenstadion
 SUMMARY:* SC Preußen Münster - FC Würzburger Kickers | 3. Liga
 DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
@@ -1279,9 +1279,9 @@ DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
  sum/\n\n\ncalovo Kalender entfernen? Anleitung: calovo.de/kalender-entfern
  en
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20260826T112840Z
+DTSTAMP:20260827T135538Z
 CREATED:20260708T150317Z
-LAST-MODIFIED:20260826T112840Z
+LAST-MODIFIED:20260827T135538Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1295,7 +1295,7 @@ DTSTART;VALUE=DATE:20270122
 SEQUENCE:0
 TRANSP:TRANSPARENT
 STATUS:CONFIRMED
-DTEND;VALUE=DATE:20270126
+DTEND;VALUE=DATE:20270125
 LOCATION:calovo.de | LVM-Preußenstadion
 SUMMARY:* SC Preußen Münster - SV Wehen Wiesbaden | 3. Liga
 DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
@@ -1305,9 +1305,9 @@ DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
  bieter-Impressum: https://www.bundesliga.com/de/bundesliga/info/impressum/
  \n\n\ncalovo Kalender entfernen? Anleitung: calovo.de/kalender-entfernen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20260826T112845Z
+DTSTAMP:20260827T135544Z
 CREATED:20260708T150321Z
-LAST-MODIFIED:20260826T112845Z
+LAST-MODIFIED:20260827T135544Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1320,7 +1320,7 @@ DTSTART;VALUE=DATE:20270129
 SEQUENCE:0
 TRANSP:TRANSPARENT
 STATUS:CONFIRMED
-DTEND;VALUE=DATE:20270202
+DTEND;VALUE=DATE:20270201
 LOCATION:calovo.de | Audi Sportpark
 SUMMARY:* FC Ingolstadt 04 - SC Preußen Münster | 3. Liga
 DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
@@ -1330,9 +1330,9 @@ DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
  eter-Impressum: https://www.bundesliga.com/de/bundesliga/info/impressum/\n
  \n\ncalovo Kalender entfernen? Anleitung: calovo.de/kalender-entfernen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20260826T112851Z
+DTSTAMP:20260827T135552Z
 CREATED:20260708T150325Z
-LAST-MODIFIED:20260826T112851Z
+LAST-MODIFIED:20260827T135552Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1345,7 +1345,7 @@ DTSTART;VALUE=DATE:20270205
 SEQUENCE:0
 TRANSP:TRANSPARENT
 STATUS:CONFIRMED
-DTEND;VALUE=DATE:20270209
+DTEND;VALUE=DATE:20270208
 LOCATION:calovo.de | LVM-Preußenstadion
 SUMMARY:* SC Preußen Münster - FC Viktoria Köln | 3. Liga
 DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
@@ -1355,9 +1355,9 @@ DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
  ieter-Impressum: https://www.bundesliga.com/de/bundesliga/info/impressum/\
  n\n\ncalovo Kalender entfernen? Anleitung: calovo.de/kalender-entfernen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20260826T112857Z
+DTSTAMP:20260827T135557Z
 CREATED:20260708T150330Z
-LAST-MODIFIED:20260826T112857Z
+LAST-MODIFIED:20260827T135557Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1370,7 +1370,7 @@ DTSTART;VALUE=DATE:20270212
 SEQUENCE:0
 TRANSP:TRANSPARENT
 STATUS:CONFIRMED
-DTEND;VALUE=DATE:20270216
+DTEND;VALUE=DATE:20270215
 LOCATION:calovo.de | Wilhelm-Langrehr-Stadion
 SUMMARY:* TSV Havelse - SC Preußen Münster | 3. Liga
 DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
@@ -1380,9 +1380,9 @@ DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
  Impressum: https://www.bundesliga.com/de/bundesliga/info/impressum/\n\n\nc
  alovo Kalender entfernen? Anleitung: calovo.de/kalender-entfernen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20260826T112905Z
+DTSTAMP:20260827T135607Z
 CREATED:20260708T150334Z
-LAST-MODIFIED:20260826T112905Z
+LAST-MODIFIED:20260827T135607Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1395,7 +1395,7 @@ DTSTART;VALUE=DATE:20270219
 SEQUENCE:0
 TRANSP:TRANSPARENT
 STATUS:CONFIRMED
-DTEND;VALUE=DATE:20270223
+DTEND;VALUE=DATE:20270222
 LOCATION:calovo.de | LVM-Preußenstadion
 SUMMARY:* SC Preußen Münster - VfB Stuttgart II | 3. Liga
 DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
@@ -1405,9 +1405,9 @@ DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
  eter-Impressum: https://www.bundesliga.com/de/bundesliga/info/impressum/\n
  \n\ncalovo Kalender entfernen? Anleitung: calovo.de/kalender-entfernen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20260826T112911Z
+DTSTAMP:20260827T135614Z
 CREATED:20260708T150339Z
-LAST-MODIFIED:20260826T112911Z
+LAST-MODIFIED:20260827T135614Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1420,7 +1420,7 @@ DTSTART;VALUE=DATE:20270226
 SEQUENCE:0
 TRANSP:TRANSPARENT
 STATUS:CONFIRMED
-DTEND;VALUE=DATE:20270302
+DTEND;VALUE=DATE:20270301
 LOCATION:calovo.de | Ludwigsparkstadion
 SUMMARY:* 1. FC Saarbrücken - SC Preußen Münster | 3. Liga
 DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
@@ -1430,9 +1430,9 @@ DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
  bieter-Impressum: https://www.bundesliga.com/de/bundesliga/info/impressum/
  \n\n\ncalovo Kalender entfernen? Anleitung: calovo.de/kalender-entfernen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20260826T112918Z
+DTSTAMP:20260827T135621Z
 CREATED:20260708T150344Z
-LAST-MODIFIED:20260826T112918Z
+LAST-MODIFIED:20260827T135621Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1445,7 +1445,7 @@ DTSTART;VALUE=DATE:20270302
 SEQUENCE:0
 TRANSP:TRANSPARENT
 STATUS:CONFIRMED
-DTEND;VALUE=DATE:20270305
+DTEND;VALUE=DATE:20270304
 LOCATION:calovo.de | LVM-Preußenstadion
 SUMMARY:* SC Preußen Münster - SV Waldhof Mannheim | 3. Liga
 DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
@@ -1455,9 +1455,9 @@ DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
  nbieter-Impressum: https://www.bundesliga.com/de/bundesliga/info/impressum
  /\n\n\ncalovo Kalender entfernen? Anleitung: calovo.de/kalender-entfernen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20260826T112924Z
+DTSTAMP:20260827T135626Z
 CREATED:20260708T150348Z
-LAST-MODIFIED:20260826T112924Z
+LAST-MODIFIED:20260827T135626Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1471,7 +1471,7 @@ DTSTART;VALUE=DATE:20270305
 SEQUENCE:0
 TRANSP:TRANSPARENT
 STATUS:CONFIRMED
-DTEND;VALUE=DATE:20270309
+DTEND;VALUE=DATE:20270308
 LOCATION:calovo.de | Stadion an der Hafenstraße
 SUMMARY:* Rot-Weiss Essen - SC Preußen Münster | 3. Liga
 DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
@@ -1481,9 +1481,9 @@ DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
  ter-Impressum: https://www.bundesliga.com/de/bundesliga/info/impressum/\n\
  n\ncalovo Kalender entfernen? Anleitung: calovo.de/kalender-entfernen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20260826T112931Z
+DTSTAMP:20260827T135632Z
 CREATED:20260708T150352Z
-LAST-MODIFIED:20260826T112931Z
+LAST-MODIFIED:20260827T135632Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1496,7 +1496,7 @@ DTSTART;VALUE=DATE:20270312
 SEQUENCE:0
 TRANSP:TRANSPARENT
 STATUS:CONFIRMED
-DTEND;VALUE=DATE:20270316
+DTEND;VALUE=DATE:20270315
 LOCATION:calovo.de | Merkur Spielarena
 SUMMARY:* Fortuna Düsseldorf - SC Preußen Münster | 3. Liga
 DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
@@ -1506,9 +1506,9 @@ DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
  nbieter-Impressum: https://www.bundesliga.com/de/bundesliga/info/impressum
  /\n\n\ncalovo Kalender entfernen? Anleitung: calovo.de/kalender-entfernen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20260826T112938Z
+DTSTAMP:20260827T135638Z
 CREATED:20260708T150357Z
-LAST-MODIFIED:20260826T112938Z
+LAST-MODIFIED:20260827T135638Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1522,7 +1522,7 @@ DTSTART;VALUE=DATE:20270316
 SEQUENCE:0
 TRANSP:TRANSPARENT
 STATUS:CONFIRMED
-DTEND;VALUE=DATE:20270319
+DTEND;VALUE=DATE:20270318
 LOCATION:calovo.de | LVM-Preußenstadion
 SUMMARY:* SC Preußen Münster - SG Sonnenhof Großaspach | 3. Liga
 DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
@@ -1533,9 +1533,9 @@ DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
  essum/\n\n\ncalovo Kalender entfernen? Anleitung: calovo.de/kalender-entfe
  rnen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20260826T112939Z
+DTSTAMP:20260827T135640Z
 CREATED:20260708T150358Z
-LAST-MODIFIED:20260826T112939Z
+LAST-MODIFIED:20260827T135640Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1549,7 +1549,7 @@ DTSTART;VALUE=DATE:20270319
 SEQUENCE:0
 TRANSP:TRANSPARENT
 STATUS:CONFIRMED
-DTEND;VALUE=DATE:20270323
+DTEND;VALUE=DATE:20270322
 LOCATION:calovo.de | Südstadion
 SUMMARY:* Fortuna Köln - SC Preußen Münster | 3. Liga
 DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
@@ -1559,9 +1559,9 @@ DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
  r-Impressum: https://www.bundesliga.com/de/bundesliga/info/impressum/\n\n\
  ncalovo Kalender entfernen? Anleitung: calovo.de/kalender-entfernen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20260826T112946Z
+DTSTAMP:20260827T135646Z
 CREATED:20260708T150405Z
-LAST-MODIFIED:20260826T112946Z
+LAST-MODIFIED:20260827T135646Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1574,7 +1574,7 @@ DTSTART;VALUE=DATE:20270402
 SEQUENCE:0
 TRANSP:TRANSPARENT
 STATUS:CONFIRMED
-DTEND;VALUE=DATE:20270406
+DTEND;VALUE=DATE:20270405
 LOCATION:calovo.de | LVM-Preußenstadion
 SUMMARY:* SC Preußen Münster - Alemannia Aachen | 3. Liga
 DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
@@ -1584,9 +1584,9 @@ DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
  eter-Impressum: https://www.bundesliga.com/de/bundesliga/info/impressum/\n
  \n\ncalovo Kalender entfernen? Anleitung: calovo.de/kalender-entfernen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20260826T112952Z
+DTSTAMP:20260827T135652Z
 CREATED:20260708T150410Z
-LAST-MODIFIED:20260826T112952Z
+LAST-MODIFIED:20260827T135652Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1599,7 +1599,7 @@ DTSTART;VALUE=DATE:20270409
 SEQUENCE:0
 TRANSP:TRANSPARENT
 STATUS:CONFIRMED
-DTEND;VALUE=DATE:20270413
+DTEND;VALUE=DATE:20270412
 LOCATION:calovo.de | SCHAUINSLAND-REISEN-ARENA
 SUMMARY:* MSV Duisburg - SC Preußen Münster | 3. Liga
 DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
@@ -1609,9 +1609,9 @@ DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
  -Impressum: https://www.bundesliga.com/de/bundesliga/info/impressum/\n\n\n
  calovo Kalender entfernen? Anleitung: calovo.de/kalender-entfernen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20260826T112958Z
+DTSTAMP:20260827T135659Z
 CREATED:20260708T150414Z
-LAST-MODIFIED:20260826T112958Z
+LAST-MODIFIED:20260827T135659Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1624,7 +1624,7 @@ DTSTART;VALUE=DATE:20270416
 SEQUENCE:0
 TRANSP:TRANSPARENT
 STATUS:CONFIRMED
-DTEND;VALUE=DATE:20270420
+DTEND;VALUE=DATE:20270419
 LOCATION:calovo.de | LVM-Preußenstadion
 SUMMARY:* SC Preußen Münster - TSG Hoffenheim II | 3. Liga
 DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
@@ -1634,9 +1634,9 @@ DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
  ieter-Impressum: https://www.bundesliga.com/de/bundesliga/info/impressum/\
  n\n\ncalovo Kalender entfernen? Anleitung: calovo.de/kalender-entfernen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20260826T113012Z
+DTSTAMP:20260827T135708Z
 CREATED:20260708T150419Z
-LAST-MODIFIED:20260826T113012Z
+LAST-MODIFIED:20260827T135708Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1649,7 +1649,7 @@ DTSTART;VALUE=DATE:20270423
 SEQUENCE:0
 TRANSP:TRANSPARENT
 STATUS:CONFIRMED
-DTEND;VALUE=DATE:20270427
+DTEND;VALUE=DATE:20270426
 LOCATION:calovo.de | SPORTCLUB Arena
 SUMMARY:* SC Verl - SC Preußen Münster | 3. Liga
 DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
@@ -1659,9 +1659,9 @@ DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
  essum: https://www.bundesliga.com/de/bundesliga/info/impressum/\n\n\ncalov
  o Kalender entfernen? Anleitung: calovo.de/kalender-entfernen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20260826T113023Z
+DTSTAMP:20260827T135714Z
 CREATED:20260708T150424Z
-LAST-MODIFIED:20260826T113023Z
+LAST-MODIFIED:20260827T135714Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1674,7 +1674,7 @@ DTSTART;VALUE=DATE:20270427
 SEQUENCE:0
 TRANSP:TRANSPARENT
 STATUS:CONFIRMED
-DTEND;VALUE=DATE:20270430
+DTEND;VALUE=DATE:20270429
 LOCATION:calovo.de | LVM-Preußenstadion
 SUMMARY:* SC Preußen Münster - SSV Jahn Regensburg | 3. Liga
 DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
@@ -1684,9 +1684,9 @@ DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
  nbieter-Impressum: https://www.bundesliga.com/de/bundesliga/info/impressum
  /\n\n\ncalovo Kalender entfernen? Anleitung: calovo.de/kalender-entfernen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20260826T113025Z
+DTSTAMP:20260827T135715Z
 CREATED:20260708T150425Z
-LAST-MODIFIED:20260826T113025Z
+LAST-MODIFIED:20260827T135715Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1700,7 +1700,7 @@ DTSTART;VALUE=DATE:20270507
 SEQUENCE:0
 TRANSP:TRANSPARENT
 STATUS:CONFIRMED
-DTEND;VALUE=DATE:20270511
+DTEND;VALUE=DATE:20270510
 LOCATION:calovo.de | Hänsch-Arena
 SUMMARY:* SV Meppen - SC Preußen Münster | 3. Liga
 DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
@@ -1710,9 +1710,9 @@ DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
  pressum: https://www.bundesliga.com/de/bundesliga/info/impressum/\n\n\ncal
  ovo Kalender entfernen? Anleitung: calovo.de/kalender-entfernen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20260826T113036Z
+DTSTAMP:20260827T135722Z
 CREATED:20260708T150431Z
-LAST-MODIFIED:20260826T113036Z
+LAST-MODIFIED:20260827T135722Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1725,7 +1725,7 @@ DTSTART;VALUE=DATE:20270514
 SEQUENCE:0
 TRANSP:TRANSPARENT
 STATUS:CONFIRMED
-DTEND;VALUE=DATE:20270518
+DTEND;VALUE=DATE:20270517
 LOCATION:calovo.de | LVM-Preußenstadion
 SUMMARY:* SC Preußen Münster - F.C. Hansa Rostock | 3. Liga
 DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
@@ -1735,9 +1735,9 @@ DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
  bieter-Impressum: https://www.bundesliga.com/de/bundesliga/info/impressum/
  \n\n\ncalovo Kalender entfernen? Anleitung: calovo.de/kalender-entfernen
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20260826T113043Z
+DTSTAMP:20260827T135728Z
 CREATED:20260708T150435Z
-LAST-MODIFIED:20260826T113043Z
+LAST-MODIFIED:20260827T135728Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
@@ -1750,7 +1750,7 @@ DTSTART;VALUE=DATE:20270522
 SEQUENCE:0
 TRANSP:TRANSPARENT
 STATUS:CONFIRMED
-DTEND;VALUE=DATE:20270524
+DTEND;VALUE=DATE:20270523
 LOCATION:calovo.de | AKON ARENA
 SUMMARY:* FC Würzburger Kickers - SC Preußen Münster | 3. Liga
 DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
@@ -1761,9 +1761,9 @@ DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
  sum/\n\n\ncalovo Kalender entfernen? Anleitung: calovo.de/kalender-entfern
  en
 X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-DTSTAMP:20260826T113050Z
+DTSTAMP:20260827T135734Z
 CREATED:20260708T150439Z
-LAST-MODIFIED:20260826T113050Z
+LAST-MODIFIED:20260827T135734Z
 BEGIN:VALARM
 TRIGGER:-P0DT1H0M0S
 ACTION:DISPLAY
