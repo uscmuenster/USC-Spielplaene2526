@@ -29,31 +29,6 @@ RRULE:FREQ=YEARLY;INTERVAL=1;BYMONTH=10;BYDAY=-1SU
 END:STANDARD
 END:VTIMEZONE
 BEGIN:VEVENT
-UID:685e8d179e467@7477.calovo
-DTSTART;TZID=Europe/Berlin:20250830T130000
-SEQUENCE:0
-TRANSP:TRANSPARENT
-STATUS:CONFIRMED
-DTEND;TZID=Europe/Berlin:20250830T150000
-LOCATION:calovo.de | Vonovia Ruhrstadion
-SUMMARY:VfL Bochum 1848 - SC Preußen Münster | 2. Bundesliga | 4. Spielta
- g
-DESCRIPTION:Dieser Terminservice wird präsentiert von calovo.de - kostenlo
- s eigenen Kalender anlegen und mit der Welt teilen: http://bit.ly/calovo_k
- ostenlos_starten\n\n4. Spieltag\n\n\n\n\nAnbieter-Impressum: https://www.b
- undesliga.com/de/bundesliga/info/impressum/\n\n\ncalovo Kalender entfernen
- ? Anleitung: calovo.de/kalender-entfernen
-DTSTAMP:20250830T050156Z
-CREATED:20250627T122247Z
-LAST-MODIFIED:20250830T050156Z
-BEGIN:VALARM
-TRIGGER:-P0DT1H0M0S
-ACTION:DISPLAY
-DESCRIPTION:Reminder: VfL Bochum 1848 - SC Preußen Münster | 2. Bundeslig
- a | 4. Spieltag
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
 UID:685e8d228127e@7477.calovo
 DTSTART;TZID=Europe/Berlin:20250914T133000
 SEQUENCE:0
